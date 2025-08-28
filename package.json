@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "frida-il2cpp-bridge": "^0.12.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.3.0",
+    "jest": "^30.0.5",
+    "ts-jest": "^29.4.1"
+  }
+}
