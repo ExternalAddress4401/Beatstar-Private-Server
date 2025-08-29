@@ -13,7 +13,7 @@ In its current state you don't unless you're a power user. If you are keep readi
 3. Edit the `host` in `index.ts` to point to your PC's local IP
 4. Start `server.ts` with `tsx server.ts`
 5. Connect your phone to the host PC and run `frida -U -f com.spaceapegames.beatstar -l index.ts`
-6. If done correctly login packets will flow through the custom server. Currently only some of them are iplemented
+6. If done correctly login packets will flow through the custom server. Currently only some of them are implemented
 
 ### I'm not rooted :(
 

@@ -1,5 +1,6 @@
 export type ProtoType =
   | "varint"
+  | "varint-repeat"
   | "boolean"
   | "string"
   | "string-repeat"
@@ -17,6 +18,7 @@ interface BaseCMSField {
 interface PlainCMSField extends BaseCMSField {
   type:
     | "varint"
+    | "varint-repeat"
     | "boolean"
     | "string"
     | "string-repeat"

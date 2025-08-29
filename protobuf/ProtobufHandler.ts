@@ -86,6 +86,14 @@ export class ProtobufHandler {
           case "signed-varint":
             dict[cmsRow.name] = this.toInt64(protoData[key]);
             break;
+          case "varint-repeat":
+            const varints = [];
+            const varintBuffer = new ProtobufHandler("READ", protoData[key][0]);
+            while (varintBuffer.hasMore()) {
+              varints.push(varintBuffer.readVarint());
+            }
+            dict[cmsRow.name] = varints;
+            break;
           case "string":
             dict[cmsRow.name] = protoData[key].map((el: string) =>
               el.toString()
@@ -192,6 +200,15 @@ export class ProtobufHandler {
         case "signed-varint":
           this.writeKey(key, this.typeToWire(subProto.type));
           this.writeInt64Varint(json[subProto.name]);
+          break;
+        case "varint-repeat":
+          const varintBuffer = new ProtobufHandler("WRITE");
+          for (const varint of json[subProto.name]) {
+            varintBuffer.writeVarint(Number(varint));
+          }
+          this.writeKey(key, this.typeToWire(subProto.type));
+          this.writeVarint(varintBuffer.getUsed().length);
+          this.writeBuffer(varintBuffer.getUsed());
           break;
         case "boolean":
           this.writeKey(key, this.typeToWire(subProto.type));
@@ -405,6 +422,7 @@ export class ProtobufHandler {
       case "group":
       case "packed":
       case "string-repeat":
+      case "varint-repeat":
         return 2;
       case "float":
         return 5;
