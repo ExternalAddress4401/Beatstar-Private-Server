@@ -4,6 +4,7 @@ import { CosmeticGachaBoxRewardTemplate } from "../chunks/CosmeticGachaBoxReward
 import { CurrencyRewardTemplate } from "../chunks/CurrencyRewardTemplate";
 import { GachaBoxRewardTemplate } from "../chunks/GachaBoxRewardTemplate";
 import { HardGatePassRewardTemplate } from "../chunks/HardGatePassRewardTemplate";
+import { Rewards } from "../enums/Rewards";
 
 export const LiveOpsDeeplinkRewards: Map<number, CMSField> = new Map([
   [1, { name: "id", type: "string" }],
@@ -20,24 +21,9 @@ export const LiveOpsDeeplinkRewards: Map<number, CMSField> = new Map([
         [
           1,
           {
-            name: "test",
+            name: "Rewards",
             type: "packed",
-            fields: new Map([
-              [
-                1,
-                {
-                  name: "type",
-                  type: "enum",
-                  enums: {
-                    2: CurrencyRewardTemplate,
-                    6: BeatmapRewardTemplate,
-                    8: GachaBoxRewardTemplate,
-                    11: HardGatePassRewardTemplate,
-                    20: CosmeticGachaBoxRewardTemplate,
-                  },
-                },
-              ],
-            ]),
+            fields: Rewards,
           },
         ],
       ]),

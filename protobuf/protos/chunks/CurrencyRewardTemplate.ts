@@ -4,7 +4,7 @@ export const CurrencyRewardTemplate: Map<number, CMSField> = new Map([
   [
     2,
     {
-      name: "CurrencyReward",
+      name: "reward",
       type: "group",
       fields: new Map([
         [1, { name: "Currency_id", type: "varint" }],

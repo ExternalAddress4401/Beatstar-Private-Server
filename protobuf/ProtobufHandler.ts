@@ -156,9 +156,7 @@ export class ProtobufHandler {
             dict[cmsRow.name] = protoData[key];
             const enumRow = cmsRow.enums[dict.type];
             if (!enumRow) {
-              console.log("dict", dict);
-              console.log("protoData", protoData);
-              console.error(`Mising enum for ${dict.type}`);
+              console.error(`Missing enum for ${dict.type}`);
               continue;
             }
 
@@ -166,7 +164,14 @@ export class ProtobufHandler {
 
             Object.assign(dict, this.parseProto(enumRow, protoData));
 
-            delete protoData["2"]; // remove the data as we parsed it ^
+            for (const key in dict) {
+              if (Number.isInteger(parseInt(key))) {
+                delete dict[key];
+              }
+            }
+
+            delete protoData["2"];
+
             break;
         }
       }
@@ -263,7 +268,7 @@ export class ProtobufHandler {
         case "enum":
           const enumRow = subProto.enums[json.type];
           if (!enumRow) {
-            console.error(`Mising enum for ${json.type}`);
+            console.error(`Missing enum for ${json.type}`);
             continue;
           }
           this.writeKey(key, 0);
