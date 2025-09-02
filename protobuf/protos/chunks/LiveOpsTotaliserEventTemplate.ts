@@ -9,7 +9,16 @@ export const LiveOpsTotaliserEventTemplate: Map<number, CMSField> = new Map([
       name: "Event",
       type: "group",
       fields: new Map([
-        [3, { name: "refreshDurationMsecs", type: "varint" }],
+        [
+          10,
+          {
+            name: "requirement",
+            type: "group",
+            fields: new Map([
+              [3, { name: "requirements", type: "group", fields: new Map([]) }],
+            ]),
+          },
+        ],
         [
           5,
           {
@@ -22,16 +31,7 @@ export const LiveOpsTotaliserEventTemplate: Map<number, CMSField> = new Map([
             ]),
           },
         ],
-        [
-          10,
-          {
-            name: "requirement",
-            type: "group",
-            fields: new Map([
-              [3, { name: "requirements", type: "group", fields: new Map([]) }],
-            ]),
-          },
-        ],
+        [3, { name: "refreshDurationMsecs", type: "varint" }],
         [11, { name: "tileRimColour", type: "signed-varint" }],
         [13, { name: "boosterShopEnabled", type: "boolean" }],
         [14, { name: "boosterShopPricePoint_id", type: "varint" }],

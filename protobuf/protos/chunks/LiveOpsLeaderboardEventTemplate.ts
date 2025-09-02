@@ -1,12 +1,6 @@
 import { CMSField } from "../../interfaces/CMSField";
 import { Rewards } from "../enums/Rewards";
 import { Image } from "../reused/Image";
-import { BeatmapRewardTemplate } from "./BeatmapRewardTemplate";
-import { CallingCardRewardTemplate } from "./CallingCardRewardTemplate";
-import { CosmeticGachaBoxRewardTemplate } from "./CosmeticGachaBoxRewardTemplate";
-import { CurrencyRewardTemplate } from "./CurrencyRewardTemplate";
-import { GachaBoxRewardTemplate } from "./GachaBoxRewardTemplate";
-import { HardGatePassRewardTemplate } from "./HardGatePassRewardTemplate";
 
 export const LiveOpsLeaderboardEventTemplate: Map<number, CMSField> = new Map([
   [
@@ -37,7 +31,20 @@ export const LiveOpsLeaderboardEventTemplate: Map<number, CMSField> = new Map([
         ],
         [2, { name: "playActiveDurationMsecs", type: "varint" }],
         [3, { name: "numPlayers", type: "varint" }],
+        [12, { name: "numAiPlayers", type: "varint" }],
         [4, { name: "numAttempts", type: "varint" }],
+        [
+          15,
+          {
+            name: "spinTicketCost",
+            type: "group",
+            fields: new Map([
+              [1, { name: "currency_id", type: "varint" }],
+              [2, { name: "amount", type: "varint" }],
+            ]),
+          },
+        ],
+        [13, { name: "initialTickets", type: "varint" }],
         [
           6,
           {
@@ -82,20 +89,8 @@ export const LiveOpsLeaderboardEventTemplate: Map<number, CMSField> = new Map([
                       3,
                       {
                         name: "fallbackReward",
-                        type: "packed",
-                        fields: new Map([
-                          [
-                            0,
-                            {
-                              name: "reward",
-                              type: "packed",
-                              fields: new Map([
-                                [1, { name: "Currency_id", type: "varint" }],
-                                [2, { name: "Amount", type: "varint" }],
-                              ]),
-                            },
-                          ],
-                        ]),
+                        type: "group",
+                        fields: Rewards,
                       },
                     ],
                   ]),
@@ -118,19 +113,6 @@ export const LiveOpsLeaderboardEventTemplate: Map<number, CMSField> = new Map([
         ],
         [10, { name: "eventEndedCooloffDurationMsecs", type: "varint" }],
         [11, { name: "datesDetailsTxt", type: "string" }],
-        [12, { name: "numAiPlayers", type: "varint" }],
-        [13, { name: "initialTickets", type: "varint" }],
-        [
-          15,
-          {
-            name: "spinTicketCost",
-            type: "group",
-            fields: new Map([
-              [1, { name: "currency_id", type: "varint" }],
-              [2, { name: "amount", type: "varint" }],
-            ]),
-          },
-        ],
         [16, { name: "bannerImage", type: "group", fields: Image }],
         [
           17,
@@ -166,6 +148,7 @@ export const LiveOpsLeaderboardEventTemplate: Map<number, CMSField> = new Map([
         ],
         [19, { name: "eventFlavourTxt", type: "string" }],
         [21, { name: "localNoti_laterSegmentsMsgTxt", type: "string" }],
+        [27, { name: "shopEnabled", type: "boolean" }],
         [24, { name: "shopPricePoint_id", type: "varint" }],
         [25, { name: "shopMaxPurchases", type: "varint" }],
         [
@@ -176,7 +159,6 @@ export const LiveOpsLeaderboardEventTemplate: Map<number, CMSField> = new Map([
             fields: Rewards,
           },
         ],
-        [27, { name: "shopEnabled", type: "boolean" }],
         [28, { name: "playlistBundleGemCost", type: "varint" }],
       ]),
     },

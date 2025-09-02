@@ -7,6 +7,7 @@ import { EmojiRewardTemplate } from "../chunks/EmojiRewardTemplate";
 import { GachaBoxRewardTemplate } from "../chunks/GachaBoxRewardTemplate";
 import { HardGatePassRewardTemplate } from "../chunks/HardGatePassRewardTemplate";
 import { ProfileIconRewardTemplate } from "../chunks/ProfileIconRewardTemplate";
+import { SeasonSongRewardTemplate } from "../chunks/SeasonSongRewardTemplate";
 import { TrackSkinRewardTemplate } from "../chunks/TrackSkinRewardTemplate";
 
 export const Rewards: Map<number, CMSField> = new Map([
@@ -23,9 +24,11 @@ export const Rewards: Map<number, CMSField> = new Map([
         11: HardGatePassRewardTemplate,
         13: EmojiRewardTemplate,
         14: CallingCardRewardTemplate,
+        18: SeasonSongRewardTemplate,
         19: TrackSkinRewardTemplate,
         20: CosmeticGachaBoxRewardTemplate,
       },
     },
   ],
+  [3, { name: "Source", type: "varint" }],
 ]);

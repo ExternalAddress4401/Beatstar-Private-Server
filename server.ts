@@ -8,8 +8,8 @@ import { proto as AllInOneLoginReq } from "./protobuf/protos/AllInOneLoginReq";
 import { proto as AllInOneLoginResp } from "./protobuf/protos/AllInOneLoginResp";
 import { proto as CMSSyncReq } from "./protobuf/protos/CMSSyncReq";
 import { proto as CMSSyncResp } from "./protobuf/protos/CMSSyncResp";
-import { proto as StartSharplaSessionReq } from "./protobuf/protos/StartSharplaSessionReq";
-import { proto as StartSharplaSessionResp } from "./protobuf/protos/StartSharplaSessionResp";
+import { proto as StartSharplaSessionReq } from "./protobuf/protos/SyncReq";
+import { proto as StartSharplaSessionResp } from "./protobuf/protos/SyncResp";
 import { Client } from "./Client";
 
 const clients = new Map<net.Socket, Client>();
@@ -28,17 +28,21 @@ saClient.on("error", (err) => {
   console.error("TLS client error:", err.message);
 });
 
-let globalSocket;
+let globalSocket: net.Socket;
 
 saClient.on("data", async (data) => {
+  globalSocket.write(data);
+
   const client = clients.get(globalSocket);
   if (!client) {
+    console.log("no client");
     return;
   }
 
   const ready = client.handlePacket(data, ServerHeader);
 
   if (!ready) {
+    console.log("not rady", client);
     return;
   }
 
@@ -53,16 +57,14 @@ saClient.on("data", async (data) => {
   console.log("www", client);
   if (client.expectedByteCount >= 42192) {
     console.log("in");
-    await fs.writeFile("./profile", fullPayload.buffer);
+    //await fs.writeFile("./profile", fullPayload.buffer);
     const r = fullPayload.parseProto(StartSharplaSessionResp);
-    console.log(r);
-    process.exit();
+    console.log("RAWR", r);
   }
 
-  console.log(dict);
-
   if (globalSocket) {
-    globalSocket.write(data);
+    console.log("write some shit");
+    //globalSocket.write(data);
     client.reset();
   }
 });
@@ -78,6 +80,10 @@ net
       if (!client) {
         return;
       }
+
+      client.reset();
+      saClient.write(data);
+      return;
 
       console.log("here");
 
@@ -143,7 +149,6 @@ net
         //console.log(header.service);
         //console.log(header);
         //console.log(payload);
-        process.exit();
         //console.log("Data from local client:", data.toString());
         //client.write(data);
       }

@@ -1,9 +1,4 @@
 import { CMSField } from "../../interfaces/CMSField";
-import { BeatmapRewardTemplate } from "../chunks/BeatmapRewardTemplate";
-import { CosmeticGachaBoxRewardTemplate } from "../chunks/CosmeticGachaBoxRewardTemplate";
-import { CurrencyRewardTemplate } from "../chunks/CurrencyRewardTemplate";
-import { GachaBoxRewardTemplate } from "../chunks/GachaBoxRewardTemplate";
-import { HardGatePassRewardTemplate } from "../chunks/HardGatePassRewardTemplate";
 import { Rewards } from "../enums/Rewards";
 
 export const LiveOpsDeeplinkRewards: Map<number, CMSField> = new Map([

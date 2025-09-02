@@ -73,6 +73,7 @@ export class ProtobufHandler {
         switch (cmsRow.type) {
           case "varint":
           case "float":
+          case "double":
             // this could be a buffer if it was read from a group
             if (Array.isArray(protoData[key])) {
               dict[cmsRow.name] = new ProtobufHandler(
@@ -215,6 +216,10 @@ export class ProtobufHandler {
           this.writeVarint(varintBuffer.getUsed().length);
           this.writeBuffer(varintBuffer.getUsed());
           break;
+        case "double":
+          this.writeKey(key, this.typeToWire(subProto.type));
+          this.writeDouble(json[subProto.name]);
+          break;
         case "boolean":
           this.writeKey(key, this.typeToWire(subProto.type));
           this.writeVarint(json[subProto.name] === false ? 0 : 1);
@@ -277,6 +282,12 @@ export class ProtobufHandler {
             new ProtobufHandler("WRITE").writeProto(json, enumRow)
           );
           break;
+        case "hex-string":
+          const str = Buffer.from(json[subProto.name], "hex");
+          this.writeKey(key, this.typeToWire(subProto.type));
+          this.writeVarint(str.length);
+          this.writeBuffer(str);
+          break;
       }
     }
 
@@ -335,13 +346,13 @@ export class ProtobufHandler {
     this.index += 4;
   }
   readDouble() {
-    const d = this.buffer.readBigInt64LE(this.index);
+    const d = this.buffer.readDoubleLE(this.index);
     this.index += 8;
     return d;
   }
   writeDouble(d: bigint) {
     this.checkSize(8);
-    this.buffer.writeBigUint64LE(d, this.index);
+    this.buffer.writeDoubleLE(Number(d), this.index);
     this.index += 8;
   }
   writeString(s: string) {
@@ -423,11 +434,14 @@ export class ProtobufHandler {
       case "boolean":
       case "signed-varint":
         return 0;
+      case "double":
+        return 1;
       case "string":
       case "group":
       case "packed":
       case "string-repeat":
       case "varint-repeat":
+      case "hex-string":
         return 2;
       case "float":
         return 5;

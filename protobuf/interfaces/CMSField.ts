@@ -9,7 +9,8 @@ export type ProtoType =
   | "signed-varint"
   | "group"
   | "packed"
-  | "enums";
+  | "enums"
+  | "double";
 
 interface BaseCMSField {
   name: string;
@@ -19,6 +20,7 @@ interface PlainCMSField extends BaseCMSField {
   type:
     | "varint"
     | "varint-repeat"
+    | "double"
     | "boolean"
     | "string"
     | "string-repeat"

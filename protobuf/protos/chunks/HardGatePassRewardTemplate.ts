@@ -4,7 +4,7 @@ export const HardGatePassRewardTemplate: Map<number, CMSField> = new Map([
   [
     2,
     {
-      name: "Template",
+      name: "reward",
       type: "group",
       fields: new Map([[1, { name: "durationMsecs", type: "varint" }]]),
     },
