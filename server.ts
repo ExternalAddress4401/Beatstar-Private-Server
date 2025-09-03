@@ -2,15 +2,21 @@ import net from "net";
 import tls from "tls";
 import { promises as fs } from "fs";
 import { ProtobufHandler } from "./protobuf/ProtobufHandler";
-import { proto as ServerHeader } from "./protobuf/protos/ServerHeader";
-import { proto as Header } from "./protobuf/protos/Header";
-import { proto as AllInOneLoginReq } from "./protobuf/protos/AllInOneLoginReq";
-import { proto as AllInOneLoginResp } from "./protobuf/protos/AllInOneLoginResp";
-import { proto as CMSSyncReq } from "./protobuf/protos/CMSSyncReq";
-import { proto as CMSSyncResp } from "./protobuf/protos/CMSSyncResp";
-import { proto as StartSharplaSessionReq } from "./protobuf/protos/SyncReq";
-import { proto as StartSharplaSessionResp } from "./protobuf/protos/SyncResp";
+import { ServerHeader } from "./protobuf/protos/ServerHeader";
+import { Header } from "./protobuf/protos/Header";
+import { AllInOneLoginReq } from "./protobuf/protos/AllInOneLoginReq";
+import { AllInOneLoginResp } from "./protobuf/protos/AllInOneLoginResp";
+import { CMSSyncReq } from "./protobuf/protos/CMSSyncReq";
+import { CMSSyncResp } from "./protobuf/protos/CMSSyncResp";
+import { SyncReq } from "./protobuf/protos/SyncReq";
+import { SyncResp } from "./protobuf/protos/SyncResp";
 import { Client } from "./Client";
+
+let clientIndex = 0;
+let serverIndex = 0;
+
+// should we use the private server?
+const useCustomServer = true;
 
 const clients = new Map<net.Socket, Client>();
 
@@ -28,9 +34,15 @@ saClient.on("error", (err) => {
   console.error("TLS client error:", err.message);
 });
 
-let globalSocket: net.Socket;
+let globalSocket: net.Socket | null;
 
+// this will only run if useCustomServer is false
+// sa server isn't used otherwise
 saClient.on("data", async (data) => {
+  if (!globalSocket) {
+    return;
+  }
+
   globalSocket.write(data);
 
   const client = clients.get(globalSocket);
@@ -42,9 +54,10 @@ saClient.on("data", async (data) => {
   const ready = client.handlePacket(data, ServerHeader);
 
   if (!ready) {
-    console.log("not rady", client);
     return;
   }
+
+  await fs.writeFile(`./packets/server/${serverIndex++}`, client.raw);
 
   const fullPayload = new ProtobufHandler("READ", client.data);
 
@@ -52,21 +65,12 @@ saClient.on("data", async (data) => {
     await fullPayload.decompress();
   }
 
-  const { dict } = fullPayload.process();
+  fullPayload.process();
 
-  console.log("www", client);
-  if (client.expectedByteCount >= 42192) {
-    console.log("in");
-    //await fs.writeFile("./profile", fullPayload.buffer);
-    const r = fullPayload.parseProto(StartSharplaSessionResp);
-    console.log("RAWR", r);
-  }
+  console.log("Server", fullPayload.bytes);
 
-  if (globalSocket) {
-    console.log("write some shit");
-    //globalSocket.write(data);
-    client.reset();
-  }
+  // do something with the payload here
+  client.reset();
 });
 
 net
@@ -76,30 +80,41 @@ net
     clients.set(socket, new Client());
 
     socket.on("data", async (data) => {
-      const client = clients.get(globalSocket);
+      if (!useCustomServer) {
+        await fs.writeFile(`./packets/client/${clientIndex++}`, data);
+        // do some parsing here
+        // write the original response
+        saClient.write(data);
+        return;
+      }
+      const client = clients.get(globalSocket!);
       if (!client) {
         return;
       }
 
-      client.reset();
-      saClient.write(data);
-      return;
-
-      console.log("here");
-
       const ready = client.handlePacket(data, Header);
 
       if (!ready) {
-        console.log("not ready", client);
+        console.log("not ready");
         return;
       }
 
-      console.log(client);
+      if (!client.header) {
+        console.log("client header empty");
+        return;
+      }
+
+      console.log("READY!");
+
+      const payload = new ProtobufHandler("READ", client.data);
+      payload.process();
+
+      console.log(payload);
 
       if (client.header.service === "userservice") {
-        //const parsedPayload = payload.parseProto(AllInOneLoginReq);
+        const parsedPayload = payload.parseProto(AllInOneLoginReq);
 
-        /*socket.write(
+        socket.write(
           await buildPacket(
             "ServerHeader",
             "AllInOneLoginResp",
@@ -107,7 +122,7 @@ net
             {
               id: "1",
               timestamp: Date.now(),
-              tokenId: header.rpc,
+              tokenId: client.header.rpc,
             },
             {
               clide: crypto.randomUUID(),
@@ -117,14 +132,11 @@ net
                 "VCS1axRWJeq4jFJdpI3RFfnaIPjAV3ksi8W3cc3VYedwSiQFozfoIZpRN663Tmn4oswsBRTRcz6r8E+aDLuhDzh6xg/vB0e6SqjD2fpd/N1oY/4ulGb8qQ4qc2cGwuS4dPAPnGFW1WjP7SZ3MRJI0WRo2iHbz5Qlg21ssolAo0MTDWYPh0dtYg==",
             }
           )
-        );*/
+        );
 
         client.reset();
-        saClient.write(data);
       } else if (client.header.service === "cmsservice") {
-        client.reset();
-        saClient.write(data);
-        /*socket.write(
+        socket.write(
           await buildPacket(
             "ServerHeader",
             "CMSSyncResp",
@@ -132,22 +144,39 @@ net
             {
               id: "1",
               timestamp: Date.now(),
-              tokenId: header.rpc,
+              tokenId: client.header.rpc,
             },
             {
               serverTime: Date.now(),
             }
           )
-        );*/
-      } else if (client.header.service === "gameservice") {
+        );
         client.reset();
-        saClient.write(data);
-        //const processedPayload = payload.parseProto(StartSharplaSessionReq);
+      } else if (client.header.service === "gameservice") {
+        const processedPayload = payload.parseProto(SyncReq);
 
-        //process.exit();
+        socket.write(
+          await buildPacket(
+            "ServerHeader",
+            "SyncResp",
+            SyncResp,
+            {
+              id: "1",
+              timestamp: Date.now(),
+              tokenId: client.header.rpc,
+              compressed: true,
+            },
+            null,
+            true
+          )
+        );
+        client.reset();
+        console.log("GAME WROTE!");
+      } else if (client.header.service === "ping") {
+        console.log("ping");
       } else {
-        //console.log(header.service);
-        //console.log(header);
+        console.log(client.header.service);
+        //console.log(client.header);
         //console.log(payload);
         //console.log("Data from local client:", data.toString());
         //client.write(data);
@@ -167,15 +196,16 @@ net
     console.log("Local proxy server listening on port 3000");
   });
 
-function preparePacket<T extends Record<string, string | number>>(
+function preparePacket<T extends Record<string, any>>(
   body: T,
   replacements: { [K in keyof T]?: T[K] }
 ) {
+  for (const key in replacements) {
+    body[key] = replacements[key as keyof T] as T[typeof key];
+  }
+
   for (const key in body) {
-    if (key in replacements) {
-      body[key] = replacements[key as keyof T] as T[typeof key];
-    }
-    if (typeof body[key] === "object") {
+    if (typeof body[key] === "object" && body[key] !== null) {
       preparePacket(body[key], replacements);
     }
   }
@@ -185,8 +215,9 @@ async function buildPacket(
   headerFile: string,
   responseFile: string,
   payloadProto: any,
-  headerReplacements: Record<string, any>,
-  payloadReplacements: Record<string, any>
+  headerReplacements?: Record<string, any> | null,
+  payloadReplacements?: Record<string, any> | null,
+  compress: boolean = false
 ) {
   console.log("handling custom server packet");
 
@@ -194,23 +225,34 @@ async function buildPacket(
     (await fs.readFile(`./protobuf/responses/${headerFile}.json`)).toString()
   );
 
+  const numberRegex = /^-?\d+n$/;
+
   const responseJson = JSON.parse(
-    (await fs.readFile(`./protobuf/responses/${responseFile}.json`)).toString()
+    (await fs.readFile(`./protobuf/responses/${responseFile}.json`)).toString(),
+    (_, v) =>
+      typeof v === "string" && numberRegex.test(v) && v.endsWith("n")
+        ? BigInt(v.slice(0, -1))
+        : v
   );
 
-  preparePacket(headerJson, headerReplacements);
-  preparePacket(responseJson, payloadReplacements);
+  if (headerReplacements) {
+    preparePacket(headerJson, headerReplacements);
+  }
+  if (payloadReplacements) {
+    preparePacket(responseJson, payloadReplacements);
+  }
 
-  console.log("resp", responseJson);
-
-  const preparedHeader = new ProtobufHandler("WRITE").writeProto(
+  const preparedHeader = await new ProtobufHandler("WRITE").writeProto(
     headerJson,
     ServerHeader
   );
-  const preparedPayload = new ProtobufHandler("WRITE").writeProto(
+  const preparedPayload = await new ProtobufHandler("WRITE").writeProto(
     responseJson,
-    payloadProto
+    payloadProto,
+    compress
   );
+
+  console.log(preparedPayload, payloadProto);
 
   const packetHandler = new ProtobufHandler("WRITE");
   packetHandler.writeIntBE(preparedHeader.length + preparedPayload.length + 4);
@@ -218,7 +260,9 @@ async function buildPacket(
   packetHandler.writeBuffer(preparedHeader);
   packetHandler.writeBuffer(preparedPayload);
 
-  await fs.writeFile("./final.txt", packetHandler.getUsed());
+  if (compress) {
+    await fs.writeFile("./final.txt", packetHandler.getUsed());
+  }
 
   return packetHandler.getUsed();
 }

@@ -1,6 +1,6 @@
 import { CMSField } from "../interfaces/CMSField";
 
-export const proto: Map<number, CMSField> = new Map([
+export const CMSSyncResp: Map<number, CMSField> = new Map([
   [1, { name: "id", type: "varint" }],
   [2, { name: "serverTime", type: "varint" }],
   [4, { name: "batchHeader", type: "group", fields: new Map([]) }],

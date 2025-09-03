@@ -2,8 +2,9 @@ import crypto from "crypto";
 import { ProtobufHandler } from "./protobuf/ProtobufHandler";
 
 export class Client {
+  raw: Buffer = Buffer.alloc(0);
   expectedByteCount: number | null = null;
-  header: Record<string, any>;
+  header: Record<string, any> | null = null;
   data: Buffer = Buffer.alloc(0);
   clide: string;
 
@@ -11,6 +12,7 @@ export class Client {
     this.clide = crypto.randomUUID();
   }
   handlePacket(data: Buffer, headerProto: any) {
+    this.raw = Buffer.concat([this.raw, data]);
     if (!this.expectedByteCount) {
       const handler = new ProtobufHandler("READ", data);
       const packetLength = handler.readIntBE();
@@ -26,11 +28,11 @@ export class Client {
     } else {
       this.data = Buffer.concat([this.data, data]);
     }
-
     return this.expectedByteCount === this.data.length;
   }
   reset() {
     this.expectedByteCount = null;
+    this.header = null;
     this.data = Buffer.alloc(0);
   }
 }

@@ -3,32 +3,28 @@ import { ProtobufHandler } from "./ProtobufHandler";
 import { SyncResp } from "./protos/SyncResp";
 
 (async () => {
-  const b = fs.readFileSync("./profile");
-  const handler = new ProtobufHandler("READ", b);
-  handler.process();
+  const numberRegex = /^-?\d+n$/;
 
-  const r = handler.parseProto(SyncResp);
-  fs.writeFileSync(
-    "./a.txt",
-    JSON.stringify(
-      r.body.profile.test.liveOpsSeasonConfig,
-      (_, v) => (typeof v === "bigint" ? v.toString() : v),
-      2 // <-- pretty print with 2 spaces
-    )
+  const b = JSON.parse(
+    fs.readFileSync("./responses/SyncResp.json").toString(),
+    (_, v) =>
+      typeof v === "string" && numberRegex.test(v) && v.endsWith("n")
+        ? BigInt(v.slice(0, -1))
+        : v
   );
-})();
 
-function preparePacket<T extends Record<string, string | number>>(
-  body: T,
-  replacements: { [K in keyof T]?: T[K] }
-) {
-  for (const key in body) {
-    if (key in replacements) {
-      body[key] = replacements[key as keyof T] as T[typeof key];
-      console.log(key);
-    }
-    if (typeof body[key] === "object") {
-      preparePacket(body[key], replacements);
-    }
-  }
-}
+  const handler = await new ProtobufHandler("WRITE").writeProto(
+    b,
+    SyncResp,
+    true
+  );
+
+  console.log(handler);
+
+  console.log("len", handler.buffer.length);
+
+  const z = new ProtobufHandler("READ", handler);
+  console.log("z", z);
+  await z.decompress();
+  console.log(z);
+})();

@@ -17,9 +17,15 @@ export class ProtobufHandler {
       this.buffer = Buffer.alloc(100000);
     }
   }
+  async compress() {
+    const gzipAsync = promisify(zlib.gzip);
+    this.buffer = await gzipAsync(this.buffer);
+    this.index = this.buffer.length;
+  }
   async decompress() {
     const gunzipAsync = promisify(zlib.gunzip);
     this.buffer = await gunzipAsync(this.buffer);
+    this.index = this.buffer.length;
   }
   process() {
     const keysList: number[] = [];
@@ -28,6 +34,7 @@ export class ProtobufHandler {
       const v = Number(this.readVarint());
       const key = v >> 3;
       const wire = v & 7;
+
       if (!keysList.includes(key)) {
         keysList.push(key);
       }
@@ -180,7 +187,11 @@ export class ProtobufHandler {
 
     return dict;
   }
-  writeProto(json: any, proto: Map<number, CMSField>) {
+  async writeProto(
+    json: any,
+    proto: Map<number, CMSField>,
+    compress: boolean = false
+  ) {
     for (const [index] of proto.entries()) {
       const key = Number(index);
       const subProto = proto.get(key);
@@ -248,7 +259,7 @@ export class ProtobufHandler {
             }
             for (const group of json[subProto.name]) {
               const subHandler = new ProtobufHandler("WRITE");
-              const used = subHandler.writeProto(group, subProto.fields);
+              const used = await subHandler.writeProto(group, subProto.fields);
               this.writeKey(key, this.typeToWire(subProto.type));
               this.writeVarint(used.length);
               this.writeBuffer(used);
@@ -258,7 +269,7 @@ export class ProtobufHandler {
         case "packed":
           const packedBuffer = new ProtobufHandler("WRITE");
           for (const group of json[subProto.name]) {
-            const subBuffer = new ProtobufHandler("WRITE").writeProto(
+            const subBuffer = await new ProtobufHandler("WRITE").writeProto(
               group,
               subProto.fields
             );
@@ -279,7 +290,7 @@ export class ProtobufHandler {
           this.writeKey(key, 0);
           this.writeVarint(json.type);
           this.writeBuffer(
-            new ProtobufHandler("WRITE").writeProto(json, enumRow)
+            await new ProtobufHandler("WRITE").writeProto(json, enumRow)
           );
           break;
         case "hex-string":
@@ -291,6 +302,10 @@ export class ProtobufHandler {
       }
     }
 
+    if (compress) {
+      this.buffer = this.getUsed();
+      await this.compress();
+    }
     return this.getUsed();
   }
   slice(length: number) {
@@ -409,6 +424,9 @@ export class ProtobufHandler {
     buffer.copy(this.buffer, this.index);
     this.index += buffer.length;
   }
+  zigZag64(n: bigint) {
+    return (n << 1n) ^ (n >> 63n);
+  }
   toInt64(u64: bigint) {
     const MAX = 1n << 64n;
     const MAX_SIGNED = 1n << 63n;
@@ -419,7 +437,7 @@ export class ProtobufHandler {
     return i64 < 0n ? MAX + i64 : i64;
   }
   writeInt64Varint(value: bigint) {
-    let u = this.toUint64(value);
+    let u: bigint = this.toUint64(value);
     while (u >= 0x80n) {
       this.checkSize(1);
       this.buffer[this.index++] = Number((u & 0x7fn) | 0x80n);

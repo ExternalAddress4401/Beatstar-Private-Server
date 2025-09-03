@@ -1,6 +1,6 @@
 import { CMSField } from "../interfaces/CMSField";
 
-export const proto: Map<number, CMSField> = new Map([
+export const AllInOneLoginResp: Map<number, CMSField> = new Map([
   [1, { name: "id", type: "varint" }],
   [2, { name: "type", type: "varint" }],
   [3, { name: "status", type: "varint" }],

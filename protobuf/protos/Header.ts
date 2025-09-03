@@ -1,6 +1,6 @@
 import { CMSField } from "../interfaces/CMSField";
 
-export const proto: Map<number, CMSField> = new Map([
+export const Header: Map<number, CMSField> = new Map([
   [1, { name: "version", type: "string" }],
   [2, { name: "service", type: "string" }],
   [3, { name: "rpc", type: "string" }],
