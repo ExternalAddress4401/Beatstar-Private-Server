@@ -1,0 +1,87 @@
+{
+  "id": 2,
+  "serverTime": "",
+  "batchHeader": {},
+  "requests": [
+    {
+      "id": 1,
+      "rpcType": 1,
+      "body": {
+        "serverCmsMetaInfos": [
+          {
+            "type": "GameConfig",
+            "version": "36.1.0.37",
+            "checksum": "dbc5b395e0bc1715c223646d35e33285",
+            "contentUrl": "https://cms.flamingo.newbirds.net/prod/cms/GameConfig/active/36.1.0.37.gz?Expires=1841929517&Signature=pOoHgBK6hIaQdqmaRgM4aUccRkuKuQPWVAFkbyo6bm4zQGnGTm7Rd4ryK30WsFS~77CevLA1KE8ORC5PN5Q4GjF2t43-DOYJ8iTp51OSeeCbKDHYrWBMLXtxFZKXm7~25~sjyIFEpqh7OKIUEOO3z7s8~mtfsu6riY69arzPG0OhdLXGQgugsiEa1PlQ9YIKtTq0PqSpS0oSEB12PXevrkNpw4GPoq1~8~0VmRYf1I4kSrX4hEsolSRlFrD3gjInImm7LHZb4qXUa94Q3fYu5CSZChY0eJk01zhZJ5CMTST1muF0e5V0SpINBVsrvFxl5ma8n7MvmYnli6gAw8XvuA__&Key-Pair-Id=KEVQ470BMQ31S"
+          },
+          {
+            "type": "SongConfig",
+            "version": "36.1.0.37",
+            "checksum": "a7111127e871bbff9a891ee725994d94",
+            "contentUrl": "https://cms.flamingo.newbirds.net/prod/cms/SongConfig/active/36.1.0.37.gz?Expires=1841929522&Signature=ejqHO2o809xyjYm~3rCmrDYdiYu1QyhVa0yrj1hCSWIaAJPbUDURSaufJiRifeS~-6-sl8NscBZGW7AhCRDa9E2BBc8bukJ9vfB5LfuNj5H8cBlCPxHH57H-lVQqNQpKuKjaCe91UsyJ3b4wBgKDeuhPSTH-SNzUbafUc4KSvPq6jGNLo8FS5c3Pn41rpXwkZjTgFtoO3Twfi5gLuvnNKPhjjjkt9bR7Jn2bURAdBnsnreZ71yP2K6kJJ3roxtXNUDMPc2U6Yf5tFa3YJ7EMJVhXz5IHU9r3w6Ts3RFoGt21xV74Vzt0wjHjHy9PPNnf-Y~oUaMV5uZvq81DVX0dYw__&Key-Pair-Id=KEVQ470BMQ31S"
+          },
+          {
+            "type": "AssetsPatchConfig",
+            "version": "36.1.0.9484",
+            "checksum": "af708e8c903e9b3179907a166cee7677",
+            "contentUrl": "https://cms.flamingo.newbirds.net/prod/cms/AssetsPatchConfig/active/36.1.0.9484.gz?Expires=1841937514&Signature=ZTcDgAw6x-A1bdoz6BXvtUSTL55DExx8cEJuTeBDB9LtDvTvtI8tFHmAaikyO72dYzjVqa~XIu4wvIzROh78j-6aJ8FPeX~JVd-0oikPNlDWvfuxgYPG6GuwD0F7GFOpFj7bO6JJGcFYDeV7lANF1sLdL1RIX8orqJMnE6ixyqPmTePmXENb4rF~a8csoczYjlRImng43M56QgG8v0qTLsFyNCRBM0KBUGZVfAOiU3U89ezGOdgubPBXmVWccIFKt8Yj5dlSKEfAEnRz19I9iE3K0GiRS-creN069qiyxd-6PVJP-HVHnFwWkNCFKtPDhQki0BCB8JjuHjf731D1eA__&Key-Pair-Id=KEVQ470BMQ31S"
+          },
+          {
+            "type": "LangConfig",
+            "version": "36.1.0.37+en",
+            "checksum": "4b88a6df6aa104e7be21b66b12f48919",
+            "contentUrl": "https://cms.flamingo.newbirds.net/prod/cms/LangConfig/active/36.1.0.37%2Ben.gz?Expires=1841929522&Signature=MGzafEPn6cpJxHKFWhpLcWr8xok42RO42851mpKQ6duUm3clLSCCJlqH3-alrIiBYM-0WVecWKSF2YGqpObticQEgIuVu~S9B7CzwpXeR2uZXXP7ObVZulrTyXI5FnqpSFtFuYp9Zd3CruqfiAzhTmJKEhmfEKv3P4gqtG4zS0V3XZhYtBQf8BrZOJVzRRSXYpKwaQcxd854O4Eetqyo5wO7sSwXeZgORxwuqtFAkP4y~0aD~ibMQyz3HVlhFjVcs57qivUOJQ9QJY2MTE9YNye79zqJA5~Fx07f8JtO69bj-i9-~vrQelVQZCxsbZw23IDdqaiDANPiYcrCsWvAvw__&Key-Pair-Id=KEVQ470BMQ31S"
+          },
+          {
+            "type": "AudioConfig",
+            "version": "36.1.0.37",
+            "checksum": "0c067c9d485d53d4bd40f71307db7942",
+            "contentUrl": "https://cms.flamingo.newbirds.net/prod/cms/AudioConfig/active/36.1.0.37.gz?Expires=1841929513&Signature=p48AsVYg7dJ5Iuc~4inxLk0jmYMrLrPgwCR30r0SnMVpxyxQGQFqYxaChji~Im6~iE3adX~thNirV7zfrClcD5Q238Pa3w65QPaFeMsDtSMIxR3rFbRLRJLMb9xuCZaJAqBMwvZNm1dTXyYYuq~LleYnL4TdoPiNWjDP56RU1oaUTV~IMlnVKfpNAVP3xCPfL70Wtr-mpEHNNvsUL8-UdNFwluBT7GkrsQ8iLnSIT4JYERLkqJ9GYO4D0EVObGR10K01g8NiTLE-tOhEdpIZMiRLZ57dAbkpgynC~RaJy9Id9yJ2JKDkFS9HEchBzgNZ8aEDVmTh9d5gmSTAUYr43g__&Key-Pair-Id=KEVQ470BMQ31S"
+          },
+          {
+            "type": "NotificationConfig",
+            "version": "36.1.0.37",
+            "checksum": "78a7d2c746ec4e2c9c4f95f8f8de04a8",
+            "contentUrl": "https://cms.flamingo.newbirds.net/prod/cms/NotificationConfig/active/36.1.0.37.gz?Expires=1841929512&Signature=PVGEIWrjrszRKJu0L5Kfu9ru8~-bBpXTzD~gfX7QhpOwhfGwSQ5~~yZniGbhe0YlwVW74HcpodehHlUdecm0Cm6rA7dEHePiBWM92wDw30Y0CN22UWOh-frW1xmo5SiHl3NVeheAsi~RlneLUA1ZrkKrylWjMTx0uz0gA9BimAIn~wG-8udFJjMP7JHQNJKn9kganbUxs9d7h~O9awl4MvFcG4x3VFsCDEO-lsk4Zygh~sceN3tQH5f6Y78q16bJArBdWm3EJNCZqNQSFNCHhG5MemagDDg-4KqFT440KsQvkDra6oQ6icVAq4jFvhWsCzBZ4uK1-uIkaEWV-3H0QQ__&Key-Pair-Id=KEVQ470BMQ31S"
+          },
+          {
+            "type": "ScalingConfig",
+            "version": "36.1.0.37",
+            "checksum": "ce254c0f1d983a5fe064775d7cb77628",
+            "contentUrl": "https://cms.flamingo.newbirds.net/prod/cms/ScalingConfig/active/36.1.0.37.gz?Expires=1841929515&Signature=o7uxHhwmHPtXKlJK918BIqbItcMBpXq1rS8f~RgpGhakoTRlXtmULsLnGw795aTpKsQoam2CZp2Nqyz9eLSc0CmVCk7D6Vw4apryM7Vu4DqURCNCUr2yQhgS6wRt4AuKKI9irhs3vzfNDNtCGS2RAjfyApR5BZmryZoab8WjEXv2C0Xa28cAgSBo7dzYCDjF~qd21nUd8liJJ-gz6849wYfWqVy2grULIBOs~P7lMUOcCknYNgmmm6eBA68KHsgt7GFVECaxhUgI0byfwe-rst0yLI7Ex21EhCbcIskvXSojb1BP6i1vESRIrAXTnhnx5vpwaVAT7mm5wuaUP9nRug__&Key-Pair-Id=KEVQ470BMQ31S"
+          },
+          {
+            "type": "FontFallbackConfig",
+            "version": "36.1.0.37",
+            "checksum": "d2d397d25b820d894bdf4d6744e40d3d",
+            "contentUrl": "https://cms.flamingo.newbirds.net/prod/cms/FontFallbackConfig/active/36.1.0.37.gz?Expires=1841929518&Signature=G13QPui0qloCfbJG4V-NnUjBPP3clvmqq~X4JWQrI9mWHePe5GkaSTR-t1ZKgeKeQWkbPmxTXsT5wnK6cAnx~9s8rp7-nUe0rN7lLJGoq5t~u8EfHSWRR5Wf-fDYn80t~Wn1lZeud2Mt88xpPysD2slFXB6-DFDdZohQSwbmr-Hk4x2YSyQgqjcFZ7XW8~EM6gOPAXbs4RNkKW4XezG4tWN-DdWoaKjEavNru-bwo7TPYNV6i2ww3B8l~iNbaPCS4ICLEkVAcne1Kqfr0T5-1vgPWhbz9sf0uMOFGJix-mVDp5up2kgQsgWxAGKE2VMiQrGeX3~Pn~TCmt2weY4LTQ__&Key-Pair-Id=KEVQ470BMQ31S"
+          },
+          {
+            "type": "LiveOpsCallingCardsConfig",
+            "version": "28.0.0.1749644176-content",
+            "checksum": "ce582113096f2b2ec470e716e868a242",
+            "contentUrl": "https://cms.flamingo.newbirds.net/prod/cms/LiveOpsCallingCardsConfig/active/28.0.0.1749644176-content.gz?Expires=1839688981&Signature=Fd5Q24Lx1K~4SU1JXtB9DwoXBfVpadR1g-CUBcT9VcDPHnyX4POHGR4xXvSP7tSP0CyGOjikE~Vr5quAIeMOxOdcHC2vTw39Xe4HKu3nOSh4eUO5sKwaTWcHr7eBGV2EwhB~nzM~HzwMI1s7XFFq5Dirqjq41lCREgXomh2vT5B8H3TquOh1qp7DecAsrPrKrvnsK527xgehAyLnY~uQXmBgCapIu8CWDMJLemDvDI6EaMtB2928PkEajLiDSospW6~uAxMoJCD21vaQv88Ww2wTwjeSoMoL1zq0i~VD~Bqro1hY4U5RdEZKRFYxgMvI4FB~dKzw7PTcOp0VBWa6sg__&Key-Pair-Id=KEVQ470BMQ31S"
+          },
+          {
+            "type": "LiveOpsProfileIconConfig",
+            "version": "28.0.0.1749641140-content",
+            "checksum": "3d7809ee35cc458c1cf0d114f1d23093",
+            "contentUrl": "https://cms.flamingo.newbirds.net/prod/cms/LiveOpsProfileIconConfig/active/28.0.0.1749641140-content.gz?Expires=1839688981&Signature=rXJkip3BPbtm-0EbEXiFVUYM-GO28LZ5V35Ey3NJSDqLfkD0I3YE-gREYx7O-4uf-xLWlsoHDcP6FL0RRYq7qhiw6dah89yPKHmts2mPBUUGSJs2PKmudMwOuCnVhe5AqCTJtSQwiO99bCZxNfYHR33BpnvSymEq3LadqAV8u9b3lCJoKutsbngec5tNNlXXWTyLB0IrGjZvt9rs-~ODnTRomykOnbnbe4zGaUwtaTIgMFZR8ZFtZM4N0VUjJGKrnNk0JWfW7LFA-neV9nICDz6Dg7WmomJw-ZflpDadehM2-e00NR3Y3Lmz-fC4ephwXJCtfnu4N08w1YB1U9IziQ__&Key-Pair-Id=KEVQ470BMQ31S"
+          },
+          {
+            "type": "LiveOpsTrackSkinConfig",
+            "version": "28.0.0.1755680646-prod+en",
+            "checksum": "ee547105776f019c877c55fba9dea57f",
+            "contentUrl": "https://cms.flamingo.newbirds.net/prod/cms/LiveOpsTrackSkinConfig/active/28.0.0.1755680646-prod%2Ben.gz?Expires=1842080650&Signature=W01F-NOz7s-BwghGqFxWq2DwhZLuWZH5bBkjMJ3aFsQsOYXFH2Q~wB9nQTdBCJc1~OnEbpITFa5RwkBuqqCBDGRBlbkHdtT01SGK4q1n36iURLUEDhjGimjGCxEAT76POqnBCunIHtji3pbtWvIBKTXXdXSTISfmiK1~dWt2vCdiK5GhlzeMc9DqEmJfO81Tu6usqRgztnpYCiNRfCkxiWT8FJzaKDvo7FMUJlLWvm6P5dSVTGdsyylNTwrppYa29PET9aqRLhN8aM8ucXWvXJNeXmzgz3iCi4wuCCvWxC6eGJYyeikStRZ8pJN7gGjS9WCBfk4hSKqKj0hF3VLsOw__&Key-Pair-Id=KEVQ470BMQ31S"
+          },
+          {
+            "type": "LiveOpsEmojiConfig",
+            "version": "32.0.0.1747912023-content",
+            "checksum": "25657405e89eb3ca20fbe6a43f77b5ee",
+            "contentUrl": "https://cms.flamingo.newbirds.net/prod/cms/LiveOpsEmojiConfig/active/32.0.0.1747912023-content.gz?Expires=1839688981&Signature=Z3RZagUVzbJnqon~T~v4Grpl8-6lMShdFlLhfa6pmfyp~dysD8m565ggo0YIWt54QLeyRK3jLMPRnUbu2bv05laZ2Wltr~LPf2hqHyqMoi903UgYu4ZHzuBjVauxTXKIUP7tjtvpXBu09v7EPtk3PCCUKizE1jTVv~HWttxyMRLJiIXogcKyYw5yAfS1~oX4atYW3KAhmkge4QofQe5c5r3pQ9hkVIpxPvnw9MzoQPYSCMHafUBzdQ~yzFAUl6PX-tk7ApD~ACTgYd~0xG0RDnOZrdUllFdW9TPdX68SK111~kCRRv06Pus-MNIctuZ5F9PBjuUGpSXE6XkIuZ2RrQ__&Key-Pair-Id=KEVQ470BMQ31S"
+          }
+        ]
+      }
+    }
+  ]
+}

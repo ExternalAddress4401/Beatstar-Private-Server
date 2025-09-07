@@ -1,10 +1,11 @@
-import * as fs from "fs";
+import fs from "fs";
 import { ProtobufHandler } from "../ProtobufHandler";
 import { ScalingConfigProto } from "../protos/cms/ScalingConfigProto";
+import path from "path";
 
-test("it produces identical ScalingConfigs", () => {
+test("it produces identical ScalingConfigs", async () => {
   const original = fs.readFileSync(
-    "./protobuf/tests/files/ScalingConfig.bytes"
+    path.join(__dirname, "files", "ScalingConfig.bytes")
   );
 
   const handler = new ProtobufHandler("READ", original);
@@ -12,7 +13,7 @@ test("it produces identical ScalingConfigs", () => {
 
   const json = handler.parseProto(ScalingConfigProto);
 
-  const built = new ProtobufHandler("WRITE").writeProto(
+  const built = await new ProtobufHandler("WRITE").writeProto(
     json,
     ScalingConfigProto
   );

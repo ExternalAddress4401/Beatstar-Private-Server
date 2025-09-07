@@ -1,30 +1,35 @@
 import fs from "fs";
 import { ProtobufHandler } from "./ProtobufHandler";
-import { SyncResp } from "./protos/SyncResp";
+import { ClientServerMessageHeaderMap } from "./protos/ClientServerMessageHeader";
+import { BatchRequest } from "./protos/BatchRequest";
 
 (async () => {
-  const numberRegex = /^-?\d+n$/;
+  const handler = new ProtobufHandler("READ", fs.readFileSync("./7"));
 
-  const b = JSON.parse(
-    fs.readFileSync("./responses/SyncResp.json").toString(),
-    (_, v) =>
-      typeof v === "string" && numberRegex.test(v) && v.endsWith("n")
-        ? BigInt(v.slice(0, -1))
-        : v
-  );
+  const packetLength = handler.readIntBE();
+  const headerLength = handler.readIntBE();
+  const payloadLength = packetLength - 4 - headerLength;
+  const header = new ProtobufHandler("READ", handler.slice(headerLength));
+  const payload = new ProtobufHandler("READ", handler.slice(payloadLength));
 
-  const handler = await new ProtobufHandler("WRITE").writeProto(
-    b,
-    SyncResp,
-    true
-  );
+  header.process();
 
-  console.log(handler);
+  const h = header.parseProto(ClientServerMessageHeaderMap);
 
-  console.log("len", handler.buffer.length);
+  if (h.compressed) {
+    await payload.decompress();
+  }
 
-  const z = new ProtobufHandler("READ", handler);
-  console.log("z", z);
-  await z.decompress();
-  console.log(z);
+  payload.process();
+
+  const p = payload.parseProto(BatchRequest);
+
+  console.log(p.requests);
+  /*console.log(
+    JSON.stringify(
+      p.requests,
+      (_, v) => (typeof v === "bigint" ? v.toString() : v),
+      2
+    )
+  );*/
 })();

@@ -25,7 +25,6 @@ export class ProtobufHandler {
   async decompress() {
     const gunzipAsync = promisify(zlib.gunzip);
     this.buffer = await gunzipAsync(this.buffer);
-    this.index = this.buffer.length;
   }
   process() {
     const keysList: number[] = [];
@@ -136,10 +135,6 @@ export class ProtobufHandler {
                 groupHandler.parseProto(cmsRow.fields, subDict.dict)
               );
             }
-
-            if (dict[cmsRow.name].length === 1) {
-              dict[cmsRow.name] = dict[cmsRow.name][0];
-            }
             break;
           case "packed":
             dict[cmsRow.name] = [];
@@ -162,9 +157,13 @@ export class ProtobufHandler {
             break;
           case "enum":
             dict[cmsRow.name] = protoData[key];
-            const enumRow = cmsRow.enums[dict.type];
+            const enumRow =
+              cmsRow.enums[dict.type] ?? cmsRow.enums[dict.rpcType];
+
             if (!enumRow) {
-              console.error(`Missing enum for ${dict.type}`);
+              console.error(
+                `Missing enum for type="${dict.type}" rpcType="${dict.rpcType}"`
+              );
               continue;
             }
 
@@ -178,7 +177,8 @@ export class ProtobufHandler {
               }
             }
 
-            delete protoData["2"];
+            const deleteKey = cmsRow.key ?? "2";
+            delete protoData[deleteKey];
 
             break;
         }
@@ -253,10 +253,9 @@ export class ProtobufHandler {
           this.writeFloat(json[subProto.name]);
           break;
         case "group":
+          console.log("THIS", json[subProto.name]);
+          console.log(json);
           if (json[subProto.name]) {
-            if (!Array.isArray(json[subProto.name])) {
-              json[subProto.name] = [json[subProto.name]];
-            }
             for (const group of json[subProto.name]) {
               const subHandler = new ProtobufHandler("WRITE");
               const used = await subHandler.writeProto(group, subProto.fields);

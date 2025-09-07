@@ -36,6 +36,7 @@ export interface CMSFieldGroupOrPacked extends BaseCMSField {
 
 export interface EnumCMSField extends BaseCMSField {
   type: "enum";
+  key?: number;
   enums: Record<number, Map<number, CMSField>>;
 }
 

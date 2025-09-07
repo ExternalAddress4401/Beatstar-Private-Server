@@ -1,28 +1,16 @@
 import { CMSField } from "../interfaces/CMSField";
+import { ReqHeader } from "./reused/ReqHeader";
+import { ReqPayload } from "./reused/ReqPayload";
 
 export const SyncReq: Map<number, CMSField> = new Map([
-  [1, { name: "id", type: "varint" }],
-  [2, { name: "clientVersion", type: "string" }],
-  [3, { name: "timestamp", type: "varint" }],
-  [
-    4,
-    {
-      name: "batchHeader",
-      type: "group",
-      fields: new Map([
-        [7, { name: "lastResponseTimestampMsecs", type: "varint" }],
-      ]),
-    },
-  ],
+  ...ReqHeader,
   [
     5,
     {
       name: "requests",
       type: "group",
       fields: new Map([
-        [1, { name: "id", type: "varint" }],
-        [2, { name: "header", type: "group", fields: new Map([]) }],
-        [3, { name: "rpcType", type: "varint" }],
+        ...ReqPayload,
         [
           4,
           {

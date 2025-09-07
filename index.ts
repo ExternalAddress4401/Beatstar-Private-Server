@@ -8,6 +8,7 @@ Il2Cpp.perform(() => {
   const logger = Il2Cpp.domain
     .assembly("SpaceApe.Logger")
     .image.class("Logger");
+
   logger.method("Warn").implementation = function (message: Il2Cpp.Object) {
     console.log(message.toString());
   };

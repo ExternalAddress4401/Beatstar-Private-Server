@@ -4,7 +4,7 @@ export const FlamingoScalingModuleTemplate: Map<number, CMSField> = new Map([
   [
     2,
     {
-      name: "scaling",
+      name: "enum",
       type: "group",
       fields: new Map([
         [1, { name: "WhizzBangs", type: "varint" }],

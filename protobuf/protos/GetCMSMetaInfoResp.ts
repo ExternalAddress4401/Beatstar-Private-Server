@@ -1,9 +1,10 @@
 import { CMSField } from "../interfaces/CMSField";
+import { BatchHeader } from "./reused/BatchHeader";
 
-export const CMSSyncResp: Map<number, CMSField> = new Map([
+export const GetCMSMetaInfoResp: Map<number, CMSField> = new Map([
   [1, { name: "id", type: "varint" }],
   [2, { name: "serverTime", type: "varint" }],
-  [4, { name: "batchHeader", type: "group", fields: new Map([]) }],
+  [4, { name: "batchHeader", type: "group", fields: BatchHeader }],
   [
     5,
     {

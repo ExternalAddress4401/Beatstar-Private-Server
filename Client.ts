@@ -1,38 +1,28 @@
 import crypto from "crypto";
-import { ProtobufHandler } from "./protobuf/ProtobufHandler";
+import { Packet } from "./Packet";
 
 export class Client {
-  raw: Buffer = Buffer.alloc(0);
-  expectedByteCount: number | null = null;
-  header: Record<string, any> | null = null;
-  data: Buffer = Buffer.alloc(0);
+  packet: Packet | null = null;
   clide: string;
 
   constructor() {
     this.clide = crypto.randomUUID();
   }
-  handlePacket(data: Buffer, headerProto: any) {
-    this.raw = Buffer.concat([this.raw, data]);
-    if (!this.expectedByteCount) {
-      const handler = new ProtobufHandler("READ", data);
-      const packetLength = handler.readIntBE();
-      const headerLength = handler.readIntBE();
-      const header = new ProtobufHandler("READ", handler.slice(headerLength));
-
-      header.process();
-
-      this.header = header.parseProto(headerProto);
-      this.expectedByteCount = packetLength + 4 - 8 - headerLength;
-
-      this.data = Buffer.concat([this.data, handler.slice(packetLength)]);
-    } else {
-      this.data = Buffer.concat([this.data, data]);
+  handlePacket(data: Buffer) {
+    let ready = false;
+    if (!this.packet) {
+      this.packet = new Packet(data);
+      ready = this.packet.isReady();
     }
-    return this.expectedByteCount === this.data.length;
+
+    if (!ready) {
+      this.packet.process(data);
+      ready = this.packet.isReady();
+    }
+
+    return ready;
   }
   reset() {
-    this.expectedByteCount = null;
-    this.header = null;
-    this.data = Buffer.alloc(0);
+    this.packet = null;
   }
 }

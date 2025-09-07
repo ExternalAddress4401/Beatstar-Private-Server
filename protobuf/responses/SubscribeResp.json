@@ -1,0 +1,12 @@
+{
+  "id": "2n",
+  "serverTime": "1756950507139n",
+  "batchHeader": {},
+  "requests": [
+    {
+      "id": "1n",
+      "rpcType": "5n",
+      "body": { "historyUntilMsecs": "1756950507135n" }
+    }
+  ]
+}
