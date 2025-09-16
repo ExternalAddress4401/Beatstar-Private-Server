@@ -1,11 +1,14 @@
 import crypto from "crypto";
+import net from "net";
 import { Packet } from "./Packet";
 
 export class Client {
   packet: Packet | null = null;
+  socket: net.Socket;
   clide: string;
 
-  constructor() {
+  constructor(socket: net.Socket) {
+    this.socket = socket;
     this.clide = crypto.randomUUID();
   }
   handlePacket(data: Buffer) {
@@ -24,5 +27,8 @@ export class Client {
   }
   reset() {
     this.packet = null;
+  }
+  write(buffer: Buffer) {
+    this.socket.write(buffer);
   }
 }

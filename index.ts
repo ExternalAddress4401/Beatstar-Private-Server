@@ -32,7 +32,7 @@ Il2Cpp.perform(() => {
     secret
   ) {
     console.log(name, host, port);
-    host = Il2Cpp.string("192.168.0.93");
+    host = Il2Cpp.string("192.168.1.33");
     port = 3000;
     this.method(".ctor").invoke(host, port, name, secret);
     this.field("useSsl").value = false;

@@ -1,3 +1,4 @@
+import { Client } from "../Client";
 import { Packet } from "../Packet";
 import { ValueOf } from "../protobuf/interfaces/ValueOf";
 import { createBatchRequest } from "../protobuf/protos/BatchRequest";
@@ -5,7 +6,6 @@ import { GetUnclaimedPurchasesReq } from "../protobuf/protos/GetUnclaimedPurchas
 import { GetUnclaimedPurchasesResp } from "../protobuf/protos/GetUnclaimedPurchasesResp";
 import { PartialReq } from "../protobuf/protos/reused/PartialReq";
 import { BaseService } from "./BaseService";
-import net from "net";
 
 const RpcType = {
   0: "NA",
@@ -24,7 +24,7 @@ const BatchRequest = createBatchRequest({
 export class PaymentService extends BaseService {
   name = "paymentservice";
 
-  async handlePacket(packet: Packet, socket: net.Socket) {
+  async handlePacket(packet: Packet, client: Client) {
     const payload = packet.parsePayload(PartialReq);
     const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
       Number(payload.requests.rpcType)
@@ -39,7 +39,7 @@ export class PaymentService extends BaseService {
         null,
         true
       );
-      socket.write(response);
+      client.write(response);
     }
   }
 }

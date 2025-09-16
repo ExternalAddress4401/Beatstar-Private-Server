@@ -9,10 +9,7 @@ export const PartialReq: Map<number, CMSField> = new Map([
     {
       name: "requests",
       type: "group",
-      fields: new Map([
-        ...ReqPayload,
-        [3, { name: "rpcType", type: "varint" }],
-      ]),
+      fields: new Map([...ReqPayload]),
     },
   ],
 ]);

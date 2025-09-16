@@ -1,3 +1,4 @@
+import { Client } from "../Client";
 import { Packet } from "../Packet";
 import { ValueOf } from "../protobuf/interfaces/ValueOf";
 import { createBatchRequest } from "../protobuf/protos/BatchRequest";
@@ -5,7 +6,6 @@ import { Leaderboard_Req } from "../protobuf/protos/Leaderboard_Req";
 import { Leaderboard_Resp } from "../protobuf/protos/Leaderboard_Resp";
 import { PartialReq } from "../protobuf/protos/reused/PartialReq";
 import { BaseService } from "./BaseService";
-import net from "net";
 
 const RpcType = {
   16: "Leaderboard",
@@ -18,7 +18,7 @@ const BatchRequest = createBatchRequest({
 export class ReadOnlyGameService extends BaseService {
   name = "readonlygameservice";
 
-  async handlePacket(packet: Packet, socket: net.Socket) {
+  async handlePacket(packet: Packet, client: Client) {
     const payload = packet.parsePayload(PartialReq);
     const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
       Number(payload.requests.rpcType)
@@ -31,7 +31,7 @@ export class ReadOnlyGameService extends BaseService {
         "Leaderboard_Resp",
         Leaderboard_Resp
       );
-      socket.write(response);
+      client.write(response);
     }
   }
 }

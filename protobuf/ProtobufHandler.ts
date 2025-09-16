@@ -253,8 +253,9 @@ export class ProtobufHandler {
           this.writeFloat(json[subProto.name]);
           break;
         case "group":
-          console.log("THIS", json[subProto.name]);
-          console.log(json);
+          if (!Array.isArray(json[subProto.name])) {
+            json[subProto.name] = [json[subProto.name]];
+          }
           if (json[subProto.name]) {
             for (const group of json[subProto.name]) {
               const subHandler = new ProtobufHandler("WRITE");
@@ -278,7 +279,6 @@ export class ProtobufHandler {
           this.writeKey(key, this.typeToWire(subProto.type));
           this.writeVarint(packedBuffer.getUsed().length);
           this.writeBuffer(packedBuffer.getUsed());
-          // TODO: handle packed and ensure tests pass
           break;
         case "enum":
           const enumRow = subProto.enums[json.type];

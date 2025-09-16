@@ -1,10 +1,13 @@
 import fs from "fs";
 import { ProtobufHandler } from "./ProtobufHandler";
+import { SendAnalyticEventReq } from "./protos/SendAnalyticEventReq";
+import { ServerClientMessageHeaderMap } from "./protos/ServerClientMessageHeader";
+import { SendAnalyticEventResp } from "./protos/SendAnalyticEventResp";
 import { ClientServerMessageHeaderMap } from "./protos/ClientServerMessageHeader";
-import { BatchRequest } from "./protos/BatchRequest";
+import { SubscribeReq } from "./protos/SubscribeReq";
 
 (async () => {
-  const handler = new ProtobufHandler("READ", fs.readFileSync("./7"));
+  const handler = new ProtobufHandler("READ", fs.readFileSync("./8"));
 
   const packetLength = handler.readIntBE();
   const headerLength = handler.readIntBE();
@@ -14,7 +17,7 @@ import { BatchRequest } from "./protos/BatchRequest";
 
   header.process();
 
-  const h = header.parseProto(ClientServerMessageHeaderMap);
+  const h = header.parseProto(ServerClientMessageHeaderMap);
 
   if (h.compressed) {
     await payload.decompress();
@@ -22,14 +25,9 @@ import { BatchRequest } from "./protos/BatchRequest";
 
   payload.process();
 
-  const p = payload.parseProto(BatchRequest);
+  const p = payload.parseProto(SendAnalyticEventResp);
 
-  console.log(p.requests);
-  /*console.log(
-    JSON.stringify(
-      p.requests,
-      (_, v) => (typeof v === "bigint" ? v.toString() : v),
-      2
-    )
-  );*/
+  console.log(
+    JSON.stringify(p, (_, v) => (typeof v === "bigint" ? v.toString() : v), 2)
+  );
 })();

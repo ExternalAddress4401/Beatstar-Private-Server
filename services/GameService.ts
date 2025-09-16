@@ -1,3 +1,4 @@
+import { Client } from "../Client";
 import { Packet } from "../Packet";
 import { ValueOf } from "../protobuf/interfaces/ValueOf";
 import { createBatchRequest } from "../protobuf/protos/BatchRequest";
@@ -7,28 +8,28 @@ import { PartialReq } from "../protobuf/protos/reused/PartialReq";
 import { SyncReq } from "../protobuf/protos/SyncReq";
 import { SyncResp } from "../protobuf/protos/SyncResp";
 import { BaseService } from "./BaseService";
-import net from "net";
 
 const RpcType = {
-  2: "ProfileSync", // name wrong
   5: "Sync",
+  28: "ExecuteAudit",
 } as const;
 
 const BatchRequest = createBatchRequest({
-  2: SyncReq,
+  5: SyncReq,
+  28: ExecuteSharplaAuditReq,
 });
 
 export class GameService extends BaseService {
   name = "gameservice";
 
-  async handlePacket(packet: Packet, socket: net.Socket) {
+  async handlePacket(packet: Packet, client: Client) {
     const payload = packet.parsePayload(PartialReq);
     const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
-      Number(payload.requests.rpcType)
+      Number(payload.requests[0].rpcType)
     ];
     const parsedPayload = packet.parsePayload(BatchRequest);
 
-    if (rpcType === "ProfileSync") {
+    if (rpcType === "Sync") {
       const parsedPayload = packet.parsePayload(SyncReq);
       const response = await packet.buildResponse(
         "ServerClientMessageHeader",
@@ -37,18 +38,16 @@ export class GameService extends BaseService {
         null,
         true
       );
-      socket.write(response);
-    } else if (rpcType === "Sync") {
-      console.log("IM IN DANGER!");
+      client.write(response);
+    } /*else if (rpcType === "ExecuteAudit") {
       const parsedPayload = packet.parsePayload(ExecuteSharplaAuditReq);
-      console.log(parsedPayload);
       const response = await packet.buildResponse(
         "ServerClientMessageHeader",
         "ExecuteSharplaAuditResp",
         ExecuteSharplaAuditResp,
         null
       );
-      socket.write(response);
-    }
+      client.write(response);
+    }*/
   }
 }

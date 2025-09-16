@@ -83,7 +83,7 @@ export class Packet {
           : v
     );
 
-    headerJson.id = "1";
+    headerJson.version = "1";
     headerJson.timestamp = Date.now();
     headerJson.tokenId = this.header.rpc;
 
@@ -113,10 +113,6 @@ export class Packet {
     packetHandler.writeBuffer(preparedHeader);
     packetHandler.writeBuffer(preparedPayload);
 
-    if (compress) {
-      await fs.writeFile("./final.txt", packetHandler.getUsed());
-    }
-
     console.log(`wrote ${responseFile}`);
     return packetHandler.getUsed();
   }
@@ -128,11 +124,5 @@ function preparePacket<T extends Record<string, any>>(
 ) {
   for (const key in replacements) {
     body[key] = replacements[key as keyof T] as T[typeof key];
-  }
-
-  for (const key in body) {
-    if (typeof body[key] === "object" && body[key] !== null) {
-      preparePacket(body[key], replacements);
-    }
   }
 }

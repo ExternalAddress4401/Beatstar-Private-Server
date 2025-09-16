@@ -1,3 +1,4 @@
+import { Client } from "../Client";
 import { Packet } from "../Packet";
 import { ValueOf } from "../protobuf/interfaces/ValueOf";
 import { createBatchRequest } from "../protobuf/protos/BatchRequest";
@@ -5,7 +6,6 @@ import { GetCMSMetaInfoReq } from "../protobuf/protos/GetCMSMetaInfoReq";
 import { GetCMSMetaInfoResp } from "../protobuf/protos/GetCMSMetaInfoResp";
 import { PartialReq } from "../protobuf/protos/reused/PartialReq";
 import { BaseService } from "./BaseService";
-import net from "net";
 
 const CMSType = {
   0: "NA",
@@ -22,10 +22,10 @@ const BatchRequest = createBatchRequest({
 export class CMSService extends BaseService {
   name = "cmsservice";
 
-  async handlePacket(packet: Packet, socket: net.Socket) {
+  async handlePacket(packet: Packet, client: Client) {
     const payload = packet.parsePayload(PartialReq);
     const rpcType: ValueOf<typeof CMSType> = (CMSType as any)[
-      payload.requests.rpcType
+      payload.requests[0].rpcType
     ];
     const parsedPayload = packet.parsePayload(BatchRequest);
 
@@ -38,7 +38,9 @@ export class CMSService extends BaseService {
           serverTime: Date.now(),
         }
       );
-      socket.write(response);
+      client.write(response);
+    } else {
+      console.error(`Unhandled CMSService: ${rpcType}`);
     }
   }
 }

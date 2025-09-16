@@ -13,7 +13,7 @@ import { ReadOnlyGameService } from "./services/ReadOnlyGameService";
 import { PingService } from "./services/PingService";
 import { BaseService } from "./services/BaseService";
 import { Packet } from "./Packet";
-import { ServerClientMessageHeaderMap } from "./protobuf/protos/ServerClientMessageHeader";
+import { AnalyticsProxyService } from "./services/AnalyticsProxyService";
 
 let clientIndex = 0;
 let serverIndex = 0;
@@ -27,6 +27,7 @@ const servicesToRegister = [
   new PaymentService(),
   new ReadOnlyGameService(),
   new PingService(),
+  new AnalyticsProxyService(),
 ];
 
 for (const service of servicesToRegister) {
@@ -61,9 +62,10 @@ saClient.on("data", async (data) => {
     return;
   }
 
+  await fs.writeFile(`./packets/server/${serverIndex++}`, data);
   globalSocket.write(data);
 
-  const client = clients.get(globalSocket);
+  /*const client = clients.get(globalSocket);
   if (!client) {
     console.log("no client");
     return;
@@ -71,13 +73,11 @@ saClient.on("data", async (data) => {
 
   const ready = client.handlePacket(data);
 
-  console.log("is ready");
-
   if (!ready) {
     return;
   }
 
-  const fullPayload = new ProtobufHandler("READ", client.data);
+  const fullPayload = new ProtobufHandler("READ", client.packet?.payload);
 
   if (client.packet?.header.compressed) {
     await fullPayload.decompress();
@@ -88,14 +88,14 @@ saClient.on("data", async (data) => {
   console.log("Server", fullPayload.bytes);
 
   // do something with the payload here
-  client.reset();
+  client.reset();*/
 });
 
 net
   .createServer((socket) => {
     globalSocket = socket;
 
-    clients.set(socket, new Client());
+    clients.set(socket, new Client(socket));
 
     socket.on("data", async (data) => {
       const client = clients.get(globalSocket!);
@@ -110,6 +110,8 @@ net
         return;
       }
 
+      console.log("ready");
+
       const packet = new Packet(data);
       const header = packet.parseHeader(ClientServerMessageHeaderMap);
 
@@ -122,16 +124,19 @@ net
         // do some parsing here
         // write the original response
         saClient.write(data);
+        client.reset();
         return;
       }
 
       const service = services.get(header.service);
       if (!service) {
-        console.error(`Unknown service found: ${service}`);
+        console.error(`Unknown service found: ${header.service}`);
         return;
       }
 
-      service.handlePacket(packet, socket);
+      console.log(`Using service: ${service.name}`);
+
+      await service.handlePacket(packet, client);
       client.reset();
     });
 

@@ -1,0 +1,12 @@
+{
+  "id": "2n",
+  "serverTime": "1757705398318n",
+  "batchHeader": {},
+  "requests": [
+    {
+      "id": "1n",
+      "rpcType": "3n",
+      "body": {}
+    }
+  ]
+}

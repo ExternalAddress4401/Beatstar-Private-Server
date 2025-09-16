@@ -20,12 +20,10 @@ import { PurchasingProfileTO } from "./chunks/PurchasingProfileTO";
 import { GachaBoxRewardTO } from "./chunks/GachaBoxRewardTO";
 import { BeatmapTO } from "./TO/BeatmapTO";
 import { RewardsTO } from "./enums/RewardsTO";
-import { BatchHeader } from "./reused/BatchHeader";
+import { RespHeader } from "./reused/RespHeader";
 
 export const SyncResp: Map<number, CMSField> = new Map([
-  [1, { name: "id", type: "varint" }],
-  [2, { name: "serverTime", type: "varint" }],
-  [4, { name: "batchHeader", type: "group", fields: BatchHeader }],
+  ...RespHeader,
   [
     5,
     {
