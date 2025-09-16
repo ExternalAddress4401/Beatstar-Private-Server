@@ -7,6 +7,7 @@ import { RegisterPlatformToken } from "../protobuf/protos/chunks/RegisterPlatfor
 import { PartialReq } from "../protobuf/protos/reused/PartialReq";
 import { SubscribeReq } from "../protobuf/protos/SubscribeReq";
 import { SubscribeResp } from "../protobuf/protos/SubscribeResp";
+import { createEmptyResponses } from "../protobuf/utils";
 import { BaseService } from "./BaseService";
 
 const RpcType = {
@@ -33,7 +34,7 @@ export class NotificationService extends BaseService {
   async handlePacket(packet: Packet, client: Client) {
     const payload = packet.parsePayload(PartialReq);
     const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
-      Number(payload.requests.rpcType)
+      Number(payload.requests[0].rpcType)
     ];
     const parsedPayload = packet.parsePayload(BatchRequest);
 
@@ -45,6 +46,16 @@ export class NotificationService extends BaseService {
         SubscribeResp
       );
       client.write(response);
+    } else if (rpcType === "SetPlatformNotificationPrefs") {
+      const response = await packet.buildResponse(
+        "ServerClientMessageHeader",
+        "SubscribeResp",
+        SubscribeResp,
+        { requests: createEmptyResponses(parsedPayload.requests) }
+      );
+      client.write(response);
+    } else {
+      console.log(`Unknown rpcType: ${rpcType}`);
     }
   }
 }

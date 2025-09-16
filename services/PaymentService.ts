@@ -27,7 +27,7 @@ export class PaymentService extends BaseService {
   async handlePacket(packet: Packet, client: Client) {
     const payload = packet.parsePayload(PartialReq);
     const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
-      Number(payload.requests.rpcType)
+      Number(payload.requests[0].rpcType)
     ];
     const parsedPayload = packet.parsePayload(BatchRequest);
 
@@ -40,6 +40,8 @@ export class PaymentService extends BaseService {
         true
       );
       client.write(response);
+    } else {
+      console.log(`Unknown rpcType: ${rpcType}`);
     }
   }
 }

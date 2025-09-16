@@ -1,6 +1,7 @@
 import { CMSField } from "../interfaces/CMSField";
 import { RefreshBonusCardsSystem_SharplaAudit } from "./audits/RefreshBonusCardsSystem_SharplaAudit";
 import { SetFtueFlag_SharplaAudit } from "./audits/SetFtueFlag_SharplaAudit";
+import { SharplaGameCmdHeader } from "./audits/SharplaGameCmdHeader";
 import { ShopSystemRefresh_SharplaAudit } from "./audits/ShopSystemRefresh_SharplaAudit";
 import { ReqHeader } from "./reused/ReqHeader";
 import { ReqPayload } from "./reused/ReqPayload";
@@ -57,20 +58,7 @@ export const ExecuteSharplaAuditReq: Map<number, CMSField> = new Map([
                             {
                               name: "body",
                               type: "group",
-                              fields: new Map([
-                                [1, { name: "hardCurrency", type: "varint" }],
-                                [2, { name: "softCurrency", type: "varint" }],
-                                [6, { name: "randomSeeds", type: "varint" }],
-                                [7, { name: "numSongs", type: "varint" }],
-                                [
-                                  8,
-                                  {
-                                    name: "lastUnlockedSong_id",
-                                    type: "varint",
-                                  },
-                                ],
-                                [9, { name: "totalSongScore", type: "varint" }],
-                              ]),
+                              fields: SharplaGameCmdHeader,
                             },
                           ],
                           [3, { name: "saveCount", type: "varint" }],

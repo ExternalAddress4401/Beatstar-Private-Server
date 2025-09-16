@@ -87,7 +87,9 @@ export class ProtobufHandler {
                 protoData[key][0]
               ).readVarint();
             } else {
-              dict[cmsRow.name] = protoData[key];
+              dict[cmsRow.name] = cmsRow.map
+                ? cmsRow.map[protoData[key]]
+                : protoData[key];
             }
             break;
           case "signed-varint":

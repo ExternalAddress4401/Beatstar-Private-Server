@@ -62,10 +62,7 @@ saClient.on("data", async (data) => {
     return;
   }
 
-  await fs.writeFile(`./packets/server/${serverIndex++}`, data);
-  globalSocket.write(data);
-
-  /*const client = clients.get(globalSocket);
+  const client = clients.get(globalSocket);
   if (!client) {
     console.log("no client");
     return;
@@ -77,7 +74,12 @@ saClient.on("data", async (data) => {
     return;
   }
 
-  const fullPayload = new ProtobufHandler("READ", client.packet?.payload);
+  await fs.writeFile(`./packets/server/${serverIndex++}`, data);
+  globalSocket.write(client.packet?.buffer);
+
+  client.reset();
+
+  /*const fullPayload = new ProtobufHandler("READ", client.packet?.payload);
 
   if (client.packet?.header.compressed) {
     await fullPayload.decompress();

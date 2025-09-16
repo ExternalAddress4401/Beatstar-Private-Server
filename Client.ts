@@ -12,18 +12,13 @@ export class Client {
     this.clide = crypto.randomUUID();
   }
   handlePacket(data: Buffer) {
-    let ready = false;
     if (!this.packet) {
       this.packet = new Packet(data);
-      ready = this.packet.isReady();
-    }
-
-    if (!ready) {
+    } else {
       this.packet.process(data);
-      ready = this.packet.isReady();
     }
 
-    return ready;
+    return this.packet.isReady();
   }
   reset() {
     this.packet = null;

@@ -27,6 +27,7 @@ interface PlainCMSField extends BaseCMSField {
     | "hex-string"
     | "float"
     | "signed-varint";
+  map?: Record<number, string>;
 }
 
 export interface CMSFieldGroupOrPacked extends BaseCMSField {

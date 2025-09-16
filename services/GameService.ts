@@ -7,10 +7,13 @@ import { ExecuteSharplaAuditResp } from "../protobuf/protos/ExecuteSharplaAuditR
 import { PartialReq } from "../protobuf/protos/reused/PartialReq";
 import { SyncReq } from "../protobuf/protos/SyncReq";
 import { SyncResp } from "../protobuf/protos/SyncResp";
+import { createEmptyResponses } from "../protobuf/utils";
 import { BaseService } from "./BaseService";
+import fs from "fs";
 
 const RpcType = {
   5: "Sync",
+  12: "SetScore",
   28: "ExecuteAudit",
 } as const;
 
@@ -27,6 +30,13 @@ export class GameService extends BaseService {
     const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
       Number(payload.requests[0].rpcType)
     ];
+    console.log(
+      JSON.stringify(
+        payload,
+        (_, v) => (typeof v === "bigint" ? v.toString() : v),
+        2
+      )
+    );
     const parsedPayload = packet.parsePayload(BatchRequest);
 
     if (rpcType === "Sync") {
@@ -39,15 +49,16 @@ export class GameService extends BaseService {
         true
       );
       client.write(response);
-    } /*else if (rpcType === "ExecuteAudit") {
+    } else if (rpcType === "ExecuteAudit") {
       const parsedPayload = packet.parsePayload(ExecuteSharplaAuditReq);
+
       const response = await packet.buildResponse(
         "ServerClientMessageHeader",
         "ExecuteSharplaAuditResp",
         ExecuteSharplaAuditResp,
-        null
+        { requests: createEmptyResponses(parsedPayload.requests) }
       );
       client.write(response);
-    }*/
+    }
   }
 }

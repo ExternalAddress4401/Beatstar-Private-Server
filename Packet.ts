@@ -91,6 +91,8 @@ export class Packet {
       headerJson.compressed = true;
     }
 
+    responseJson.serverTime = Date.now();
+
     if (payloadReplacements) {
       preparePacket(responseJson, payloadReplacements);
     }

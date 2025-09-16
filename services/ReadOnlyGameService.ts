@@ -5,6 +5,7 @@ import { createBatchRequest } from "../protobuf/protos/BatchRequest";
 import { Leaderboard_Req } from "../protobuf/protos/Leaderboard_Req";
 import { Leaderboard_Resp } from "../protobuf/protos/Leaderboard_Resp";
 import { PartialReq } from "../protobuf/protos/reused/PartialReq";
+import { createEmptyResponses } from "../protobuf/utils";
 import { BaseService } from "./BaseService";
 
 const RpcType = {
@@ -21,7 +22,7 @@ export class ReadOnlyGameService extends BaseService {
   async handlePacket(packet: Packet, client: Client) {
     const payload = packet.parsePayload(PartialReq);
     const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
-      Number(payload.requests.rpcType)
+      Number(payload.requests[0].rpcType)
     ];
     const parsedPayload = packet.parsePayload(BatchRequest);
 
@@ -29,9 +30,12 @@ export class ReadOnlyGameService extends BaseService {
       const response = await packet.buildResponse(
         "ServerClientMessageHeader",
         "Leaderboard_Resp",
-        Leaderboard_Resp
+        Leaderboard_Resp,
+        { requests: createEmptyResponses(parsedPayload.requests) }
       );
       client.write(response);
+    } else {
+      console.log(`Unknown rpcType: ${rpcType}`);
     }
   }
 }

@@ -8,6 +8,47 @@ Il2Cpp.perform(() => {
   const logger = Il2Cpp.domain
     .assembly("SpaceApe.Logger")
     .image.class("Logger");
+  const rakshaClient = Il2Cpp.domain.assembly("raksha-client").image;
+
+  rakshaClient.class("raksha.ProtoItem").method("ToBytes").implementation =
+    function (estimated) {
+      console.log("--------------------");
+      console.log((this as any).class.name);
+
+      const json = Il2Cpp.domain.assembly("JsonFx.Json").image;
+      const rakshaClient = Il2Cpp.domain.assembly("raksha-client").image;
+
+      const o = json.class("JsonFx.Json.JsonWriterSettings").alloc();
+      o.method(".ctor").invoke();
+
+      const str = rakshaClient
+        .class("raksha.RakshaJson")
+        .method("Serialize")
+        .invoke(this as any, o) as Il2Cpp.String;
+
+      console.log(str);
+      return this.method("ToBytes").invoke(estimated);
+    };
+
+  rakshaClient.class("raksha.ProtoItem").method("Read").implementation =
+    function (input) {
+      this.method("Read").invoke(input);
+      console.log("--------------------");
+      console.log((this as any).class.name);
+
+      const json = Il2Cpp.domain.assembly("JsonFx.Json").image;
+      const rakshaClient = Il2Cpp.domain.assembly("raksha-client").image;
+
+      const o = json.class("JsonFx.Json.JsonWriterSettings").alloc();
+      o.method(".ctor").invoke();
+
+      const str = rakshaClient
+        .class("raksha.RakshaJson")
+        .method("Serialize")
+        .invoke(this as any, o) as Il2Cpp.String;
+
+      console.log(str);
+    };
 
   logger.method("Warn").implementation = function (message: Il2Cpp.Object) {
     console.log(message.toString());
