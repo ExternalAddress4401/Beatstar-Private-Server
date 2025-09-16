@@ -9,6 +9,7 @@ import { Leaderboard_Resp } from "./protos/Leaderboard_Resp";
 import { CMSField } from "./interfaces/CMSField";
 import { SharplaGameCmdHeader } from "./protos/audits/SharplaGameCmdHeader";
 import { RhythmGameEnded_SharplaAudit } from "./protos/audits/RhythmGameEnded_SharplaAudit";
+import { ExecuteSharplaAuditReq } from "./protos/ExecuteSharplaAuditReq";
 
 (async () => {
   const buf = Buffer.from([
@@ -82,12 +83,7 @@ import { RhythmGameEnded_SharplaAudit } from "./protos/audits/RhythmGameEnded_Sh
     ],
   ]);
 
-  const handler = new ProtobufHandler("READ", buf);
-  handler.process();
-
-  const q = handler.parseProto(proto);
-  console.log(q.audit[0].audit[0]);
-  process.exit();
+  const handler = new ProtobufHandler("READ", fs.readFileSync("./file"));
 
   const packetLength = handler.readIntBE();
   const headerLength = handler.readIntBE();
@@ -99,7 +95,7 @@ import { RhythmGameEnded_SharplaAudit } from "./protos/audits/RhythmGameEnded_Sh
 
   console.log(header);
 
-  const h = header.parseProto(ServerClientMessageHeaderMap);
+  const h = header.parseProto(ClientServerMessageHeaderMap);
 
   if (h.compressed) {
     await payload.decompress();
@@ -111,7 +107,7 @@ import { RhythmGameEnded_SharplaAudit } from "./protos/audits/RhythmGameEnded_Sh
 
   console.log("HUHA", payload);
 
-  const p = payload.parseProto(SendAnalyticEventResp);
+  const p = payload.parseProto(ExecuteSharplaAuditReq);
 
   console.log(
     JSON.stringify(p, (_, v) => (typeof v === "bigint" ? v.toString() : v), 2)

@@ -30,13 +30,6 @@ export class GameService extends BaseService {
     const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
       Number(payload.requests[0].rpcType)
     ];
-    console.log(
-      JSON.stringify(
-        payload,
-        (_, v) => (typeof v === "bigint" ? v.toString() : v),
-        2
-      )
-    );
     const parsedPayload = packet.parsePayload(BatchRequest);
 
     if (rpcType === "Sync") {

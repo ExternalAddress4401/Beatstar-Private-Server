@@ -50,15 +50,10 @@ export const ExecuteSharplaAuditReq: Map<number, CMSField> = new Map([
                             1,
                             {
                               name: "type",
-                              type: "varint",
-                            },
-                          ],
-                          [
-                            2,
-                            {
-                              name: "body",
-                              type: "group",
-                              fields: SharplaGameCmdHeader,
+                              type: "enum",
+                              enums: {
+                                4: SharplaGameCmdHeader,
+                              },
                             },
                           ],
                           [3, { name: "saveCount", type: "varint" }],
