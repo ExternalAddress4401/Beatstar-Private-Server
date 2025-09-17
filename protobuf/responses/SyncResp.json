@@ -10258,8 +10258,7 @@
           {
             "type": "4n",
             "requirements": {
-              "content": "It is with great sadness that we have made the tough decision to stop development on Beatstar as of October 31 2025.\n\nWe’d like to take a moment to thank you all for an amazing 4 years. Thank you for sharing your feedback, your fun ideas, song and artist suggestions and enthusiasm, your gripes and most importantly, thank you for being such an amazing community throughout our journey.\n\n<style=\"Link\"><link=\"https://bit.ly/471Ybfe\">[button]Read More</link></style> ",
-              "requirements": ["starMileStone-10"]
+              "content": "We're still here! There's no stopping the Beatstar train where we're going. This is only the beginning of a new era.\n\nKeep Beatstaring away friends.\n\n- ExternalAddress4401"
             },
             "viewType": "Text",
             "startTimeMsecs": "1755525600000n",
@@ -10268,7 +10267,7 @@
             "order": "17n",
             "image": {
               "id": "3cf7824c-d57d-4097-9953-4736f1956631",
-              "url": "https://assets.flamingo.newbirds.net/images/newsfeed/3cf7824c-d57d-4097-9953-4736f1956631",
+              "url": "https://i.ibb.co/BHRV7ZVc/unnamed.png",
               "width": "512n",
               "height": "256n",
               "rect": {
@@ -10276,7 +10275,7 @@
                 "height": "256n"
               }
             },
-            "title": "The future of Beatstar",
+            "title": "The future of Beatstar!",
             "status": "1n",
             "id": "fc4b647f602f42a3a51c9116913aa9f1"
           }
