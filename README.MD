@@ -1,5 +1,7 @@
 # Beatstar Private Server
 
+Discord: https://discord.gg/vxJAunMB
+
 A private server for Beatstar which is shutting down on October 31st 2025. This server aims to rebuild initial support for the login sequence as well as any heartbeats and vital packets such as scoring to keep the game playable.
 
 ## How the heck do I use this?
