@@ -1,7 +1,6 @@
 import net from "net";
 import tls from "tls";
 import { promises as fs } from "fs";
-import { ProtobufHandler } from "./protobuf/ProtobufHandler";
 import { ClientServerMessageHeaderMap } from "./protobuf/protos/ClientServerMessageHeader";
 import { Client } from "./Client";
 import { UserService } from "./services/UserService";
@@ -14,9 +13,13 @@ import { PingService } from "./services/PingService";
 import { BaseService } from "./services/BaseService";
 import { Packet } from "./Packet";
 import { AnalyticsProxyService } from "./services/AnalyticsProxyService";
+import Settings from "./Settings";
+import { HttpServer } from "./HttpServer";
 
 let clientIndex = 0;
 let serverIndex = 0;
+
+const expressServer = new HttpServer();
 
 const services = new Map<string, BaseService>();
 const servicesToRegister = [
@@ -33,9 +36,6 @@ const servicesToRegister = [
 for (const service of servicesToRegister) {
   services.set(service.name, service);
 }
-
-// should we use the private server?
-const useCustomServer = true;
 
 const clients = new Map<net.Socket, Client>();
 
@@ -117,7 +117,7 @@ net
       const packet = new Packet(data);
       const header = packet.parseHeader(ClientServerMessageHeaderMap);
 
-      if (!useCustomServer) {
+      if (!Settings.USE_PRIVATE_SERVER) {
         if (header.compressed) {
           await packet.payload.decompress();
         }
@@ -151,6 +151,6 @@ net
       console.error("Local socket error:", err.message);
     });
   })
-  .listen(3000, "0.0.0.0", () => {
+  .listen(Settings.SERVER_PORT, "0.0.0.0", () => {
     console.log("Local proxy server listening on port 3000");
   });

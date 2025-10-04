@@ -12,7 +12,7 @@
             "type": "GameConfig",
             "version": "36.1.0.37",
             "checksum": "dbc5b395e0bc1715c223646d35e33285",
-            "contentUrl": "https://cms.flamingo.newbirds.net/prod/cms/GameConfig/active/36.1.0.37.gz?Expires=1841929517&Signature=pOoHgBK6hIaQdqmaRgM4aUccRkuKuQPWVAFkbyo6bm4zQGnGTm7Rd4ryK30WsFS~77CevLA1KE8ORC5PN5Q4GjF2t43-DOYJ8iTp51OSeeCbKDHYrWBMLXtxFZKXm7~25~sjyIFEpqh7OKIUEOO3z7s8~mtfsu6riY69arzPG0OhdLXGQgugsiEa1PlQ9YIKtTq0PqSpS0oSEB12PXevrkNpw4GPoq1~8~0VmRYf1I4kSrX4hEsolSRlFrD3gjInImm7LHZb4qXUa94Q3fYu5CSZChY0eJk01zhZJ5CMTST1muF0e5V0SpINBVsrvFxl5ma8n7MvmYnli6gAw8XvuA__&Key-Pair-Id=KEVQ470BMQ31S"
+            "contentUrl": "http://localhost:4000/cms/GameConfig.gz"
           },
           {
             "type": "SongConfig",

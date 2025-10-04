@@ -26,6 +26,7 @@ export const GetCMSMetaInfoResp: Map<number, CMSField> = new Map([
                     [1, { name: "type", type: "string" }],
                     [2, { name: "version", type: "string" }],
                     [3, { name: "checksum", type: "string" }],
+                    [4, { name: "a", type: "string" }],
                     [5, { name: "contentUrl", type: "string" }],
                     [7, { name: "variant", type: "string" }],
                   ]),
