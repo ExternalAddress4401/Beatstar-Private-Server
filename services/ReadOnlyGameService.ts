@@ -31,7 +31,9 @@ export class ReadOnlyGameService extends BaseService {
         "ServerClientMessageHeader",
         "Leaderboard_Resp",
         Leaderboard_Resp,
-        { requests: createEmptyResponses(parsedPayload.requests) }
+        {
+          "{requests}": createEmptyResponses(parsedPayload.requests),
+        }
       );
       client.write(response);
     } else {

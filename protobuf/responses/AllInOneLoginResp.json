@@ -2,11 +2,11 @@
   "id": 1,
   "type": 7,
   "status": 200,
-  "clide": "",
+  "clide": "{clide}",
   "respAllInOneLogin": {
-    "authenticationTicket": "",
-    "clide": "",
-    "expiryTime": "",
-    "cinta": ""
+    "authenticationTicket": "{authenticationTicket}",
+    "clide": "{clide}",
+    "expiryTime": "{expiryTime}",
+    "cinta": "{cinta}"
   }
 }

@@ -49,7 +49,9 @@ export class GameService extends BaseService {
         "ServerClientMessageHeader",
         "ExecuteSharplaAuditResp",
         ExecuteSharplaAuditResp,
-        { requests: createEmptyResponses(parsedPayload.requests) }
+        {
+          "{requests}": createEmptyResponses(parsedPayload.requests),
+        }
       );
       client.write(response);
     }

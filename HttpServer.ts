@@ -8,10 +8,8 @@ export class HttpServer {
   constructor() {
     this.app.use("/cms", express.static(path.join(__dirname, "./express/cms")));
 
-    this.app.get("/", (req, res) => {
-      res.send("Hello world!");
+    this.app.listen(Settings.EXPRESS_PORT, () => {
+      console.log(`HTTP server running on port ${Settings.EXPRESS_PORT}`);
     });
-
-    this.app.listen(Settings.EXPRESS_PORT);
   }
 }

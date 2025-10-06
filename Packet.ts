@@ -2,6 +2,7 @@ import { ProtobufHandler } from "./protobuf/ProtobufHandler";
 import { ClientServerMessageHeaderMap } from "./protobuf/protos/ClientServerMessageHeader";
 import { ServerClientMessageHeaderMap } from "./protobuf/protos/ServerClientMessageHeader";
 import { promises as fs } from "fs";
+import { handlePlaceholders } from "./utilities/handlePlaceholders";
 
 interface PacketInfo {
   packetLength: number;
@@ -94,7 +95,7 @@ export class Packet {
     responseJson.serverTime = Date.now();
 
     if (payloadReplacements) {
-      preparePacket(responseJson, payloadReplacements);
+      handlePlaceholders(responseJson, payloadReplacements);
     }
 
     const preparedHeader = await new ProtobufHandler("WRITE").writeProto(
@@ -117,14 +118,5 @@ export class Packet {
 
     console.log(`wrote ${responseFile}`);
     return packetHandler.getUsed();
-  }
-}
-
-function preparePacket<T extends Record<string, any>>(
-  body: T,
-  replacements: { [K in keyof T]?: T[K] }
-) {
-  for (const key in replacements) {
-    body[key] = replacements[key as keyof T] as T[typeof key];
   }
 }

@@ -43,7 +43,10 @@ export class NotificationService extends BaseService {
       const response = await packet.buildResponse(
         "ServerClientMessageHeader",
         "SubscribeResp",
-        SubscribeResp
+        SubscribeResp,
+        {
+          "{requests}": createEmptyResponses(parsedPayload.requests),
+        }
       );
       client.write(response);
     } else if (rpcType === "SetPlatformNotificationPrefs") {
@@ -51,7 +54,9 @@ export class NotificationService extends BaseService {
         "ServerClientMessageHeader",
         "SubscribeResp",
         SubscribeResp,
-        { requests: createEmptyResponses(parsedPayload.requests) }
+        {
+          "{requests}": createEmptyResponses(parsedPayload.requests),
+        }
       );
       client.write(response);
     } else {

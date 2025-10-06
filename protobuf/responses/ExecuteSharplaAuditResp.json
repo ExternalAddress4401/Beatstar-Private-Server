@@ -2,8 +2,5 @@
   "id": "7n",
   "serverTime": "1756950507911n",
   "batchHeader": {},
-  "requests": [
-    { "id": "3n", "rpcType": "28n", "body": {} },
-    { "id": "4n", "rpcType": "28n", "body": {} }
-  ]
+  "requests": "{requests}"
 }

@@ -13,10 +13,7 @@ export class AnalyticsProxyService extends BaseService {
     const response = await packet.buildResponse(
       "ServerClientMessageHeader",
       "SendAnalyticEventResp",
-      SendAnalyticEventResp,
-      {
-        serverTime: Date.now(),
-      }
+      SendAnalyticEventResp
     );
     client.write(response);
   }
