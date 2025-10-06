@@ -8,6 +8,21 @@ import { PartialReq } from "../protobuf/protos/reused/PartialReq";
 import Settings from "../Settings";
 import { BaseService } from "./BaseService";
 
+const cmsFiles = [
+  "GameConfig",
+  "SongConfig",
+  "AssetsPatchConfig",
+  "LangConfig",
+  "AudioConfig",
+  "NotificationConfig",
+  "ScalingConfig",
+  "FontFallbackConfig",
+  "LiveOpsCallingCardsConfig",
+  "LiveOpsProfileIconConfig",
+  "LiveOpsTrackSkinConfig",
+  "LiveOpsEmojiConfig",
+];
+
 const CMSType = {
   0: "NA",
   1: "GetCMSMetaInfo",

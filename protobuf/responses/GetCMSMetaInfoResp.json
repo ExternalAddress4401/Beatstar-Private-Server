@@ -11,73 +11,73 @@
           {
             "type": "GameConfig",
             "version": "36.1.0.47",
-            "checksum": "bbd51c2bc08035755c794cd31f2baf50",
+            "checksum": "{GameConfigChecksum}",
             "contentUrl": "{GameConfig}"
           },
           {
             "type": "SongConfig",
             "version": "36.1.0.47",
-            "checksum": "fb18a855a15a467bbc0533d78ad06b09",
+            "checksum": "{SongConfigChecksum}",
             "contentUrl": "{SongConfig}"
           },
           {
             "type": "AssetsPatchConfig",
             "version": "36.1.0.9484",
-            "checksum": "af708e8c903e9b3179907a166cee7677",
+            "checksum": "{AssetsPatchConfigChecksum}",
             "contentUrl": "{AssetsPatchConfig}"
           },
           {
             "type": "LangConfig",
             "version": "36.1.0.47+en",
-            "checksum": "bff269e51bfa90b00abe7394c00f090a",
+            "checksum": "{LangConfigChecksum}",
             "contentUrl": "{LangConfig}"
           },
           {
             "type": "AudioConfig",
             "version": "36.1.0.47",
-            "checksum": "9eea9e45711609bfd6004505dbf67ab1",
+            "checksum": "{AudioConfigChecksum}",
             "contentUrl": "{AudioConfig}"
           },
           {
             "type": "NotificationConfig",
             "version": "36.1.0.47",
-            "checksum": "cd61d74dce585cc31cd73dad485266ff",
+            "checksum": "{NotificationConfigChecksum}",
             "contentUrl": "{NotificationConfig}"
           },
           {
             "type": "ScalingConfig",
             "version": "36.1.0.47",
-            "checksum": "a0c8734fe0cd29940cd36b692a6e39fa",
+            "checksum": "{ScalingConfigChecksum}",
             "contentUrl": "{ScalingConfig}"
           },
           {
             "type": "FontFallbackConfig",
             "version": "36.1.0.47",
-            "checksum": "b01b7c60f6002dd8071748768b209aa4",
+            "checksum": "{FontFallbackConfigChecksum}",
             "contentUrl": "{FontFallbackConfig}"
           },
           {
             "type": "LiveOpsCallingCardsConfig",
             "version": "28.0.0.1749644176-content",
-            "checksum": "ce582113096f2b2ec470e716e868a242",
+            "checksum": "{LiveOpsCallingCardsConfigChecksum}",
             "contentUrl": "{LiveOpsCallingCardsConfig}"
           },
           {
             "type": "LiveOpsProfileIconConfig",
             "version": "28.0.0.1749641140-content",
-            "checksum": "3d7809ee35cc458c1cf0d114f1d23093",
+            "checksum": "{LiveOpsProfileIconConfigChecksum}",
             "contentUrl": "{LiveOpsProfileIconConfig}"
           },
           {
             "type": "LiveOpsTrackSkinConfig",
             "version": "28.0.0.1759337083-prod+en",
-            "checksum": "f7d5ae52d004506f9cd8aa165a791616",
+            "checksum": "{LiveOpsTrackSkinConfigChecksum}",
             "contentUrl": "{LiveOpsTrackSkinConfig}"
           },
           {
             "type": "LiveOpsEmojiConfig",
             "version": "32.0.0.1747912023-content",
-            "checksum": "25657405e89eb3ca20fbe6a43f77b5ee",
+            "checksum": "{LiveOpsEmojiConfigChecksum}",
             "contentUrl": "{LiveOpsEmojiConfig}"
           }
         ]

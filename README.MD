@@ -8,6 +8,14 @@ A private server for Beatstar which is shutting down on October 31st 2025. This 
 
 In its current state you don't unless you're a power user. If you are keep reading...
 
+### I'm using Beatclone or Exterals builds of Beatstar
+
+1. Open (or create and open) your settings.json file in your beatstar folder
+2. Set `server_ip` to the IP of your machine hosting the server
+3. Set `server_port` to the port of your machine hosting the server
+4. Open your modded Beatstar
+5. See the notes below
+
 ### I'm rooted!
 
 1. Install the Frida CLI tools (frida-tools) and setup the server for Android following https://medium.com/@briskinfosec/getting-started-with-frida-de44d932ae7
@@ -16,6 +24,7 @@ In its current state you don't unless you're a power user. If you are keep readi
 4. Start `server.ts` with `tsx server.ts`
 5. Connect your phone to the host PC and run `frida -U -f com.spaceapegames.beatstar -l index.ts`
 6. If done correctly login packets will flow through the custom server. Currently only some of them are implemented
+7. See the notes below
 
 ### I'm not rooted :(
 
@@ -25,3 +34,12 @@ In its current state you don't unless you're a power user. If you are keep readi
 4. Start `server.ts` with `tsx server.ts`
 5. Start Frida with `frida -U Gadget -l index.ts`
 6. If done correctly login packets will flow through the custom server. Currently only some of them are implemented
+7. See the notes below
+
+### Notes
+
+Beatstar is not built to allow cleartext traffic. HTTP requests need to flow through a valid HTTPS server with a signed certificate. Self signed certificates will fail.
+
+The easiest way to get around this for local testing is with [ngrok](https://ngrok.com/)
+
+When the ENVIRONMENT variable is set to `dev` the `CMSService` will automatically look for any ngrok tunnels you have openand use the first one. The only requirement is that you have one running. For a server with a proper SSL certificate this behaviour will need to be removed and `HttpServer` will need to be edited to use your certificate.
