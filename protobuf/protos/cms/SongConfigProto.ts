@@ -24,7 +24,21 @@ export const SongConfigProto: Map<number, CMSField> = new Map([
         [21, { name: "Song_id", type: "varint" }],
         [37, { name: "idLabel", type: "string" }],
         [46, { name: "BeatmapVariantReference_id", type: "varint" }],
-        [5, { name: "availability", type: "varint" }],
+        [
+          5,
+          {
+            name: "availability",
+            type: "varint",
+            map: {
+              0: "NotAvailable",
+              1: "InCampaign",
+              2: "OutsideCampaign",
+              3: "Tutorial",
+              4: "Calibration",
+              5: "ComingSoon",
+            },
+          },
+        ],
       ]),
     },
   ],
@@ -58,7 +72,18 @@ export const SongConfigProto: Map<number, CMSField> = new Map([
       type: "group",
       fields: new Map([
         [68, { name: "ISRC", type: "string" }],
-        [69, { name: "LegalState", type: "varint" }],
+        [
+          69,
+          {
+            name: "LegalState",
+            type: "varint",
+            map: {
+              0: "Any",
+              1: "NotOwned",
+              2: "Owned",
+            },
+          },
+        ],
         [1, { name: "id", type: "varint" }],
         [67, { name: "idLabel", type: "string" }],
         [66, { name: "BibleId", type: "string" }],
@@ -103,7 +128,6 @@ export const SongConfigProto: Map<number, CMSField> = new Map([
           },
         ],
         [50, { name: "GenreTagsId", type: "varint-repeat" }],
-        //TODO: verify this name
         [71, { name: "SongContentState", type: "varint" }],
         [76, { name: "SongTitleLocId", type: "string" }],
         [77, { name: "SongArtistLocId", type: "string" }],

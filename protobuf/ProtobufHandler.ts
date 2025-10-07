@@ -213,8 +213,16 @@ export class ProtobufHandler {
 
       switch (subProto.type) {
         case "varint":
+          let value = json[subProto.name];
+          if (subProto.map) {
+            value = parseInt(
+              Object.keys(subProto.map).find(
+                (key) => subProto.map[key] === value
+              )
+            );
+          }
           this.writeKey(key, this.typeToWire(subProto.type));
-          this.writeVarint(json[subProto.name]);
+          this.writeVarint(value);
           break;
         case "signed-varint":
           this.writeKey(key, this.typeToWire(subProto.type));

@@ -8,21 +8,6 @@ import { PartialReq } from "../protobuf/protos/reused/PartialReq";
 import Settings from "../Settings";
 import { BaseService } from "./BaseService";
 
-const cmsFiles = [
-  "GameConfig",
-  "SongConfig",
-  "AssetsPatchConfig",
-  "LangConfig",
-  "AudioConfig",
-  "NotificationConfig",
-  "ScalingConfig",
-  "FontFallbackConfig",
-  "LiveOpsCallingCardsConfig",
-  "LiveOpsProfileIconConfig",
-  "LiveOpsTrackSkinConfig",
-  "LiveOpsEmojiConfig",
-];
-
 const CMSType = {
   0: "NA",
   1: "GetCMSMetaInfo",
@@ -60,29 +45,29 @@ export class CMSService extends BaseService {
     console.log("Server ip: " + serverIp);
 
     if (rpcType === "GetCMSMetaInfo") {
+      const hashesResponse = await fetch(
+        `http://localhost:${Settings.EXPRESS_PORT}/info`
+      );
+
+      const cmsFilesAndHashes = await hashesResponse.json();
+
+      const placeholders: Record<string, any> = {
+        "{serverTime}": Date.now(),
+      };
+
+      for (const [key, value] of Object.entries(cmsFilesAndHashes)) {
+        placeholders[`{${key}}`] = serverIp + `/cms/${key}.gz`;
+        placeholders[`{${key}Checksum}`] = value;
+      }
+
+      console.log(placeholders);
+
       // TODO: programatically add hashes so I can edit these
       const response = await packet.buildResponse(
         "ServerClientMessageHeader",
         "GetCMSMetaInfoResp",
         GetCMSMetaInfoResp,
-        {
-          "{serverTime}": Date.now(),
-          "{GameConfig}": serverIp + "/cms/GameConfig.gz",
-          "{SongConfig}": serverIp + "/cms/SongConfig.gz",
-          "{AssetsPatchConfig}": serverIp + "/cms/AssetsPatchConfig.gz",
-          "{LangConfig}": serverIp + "/cms/LangConfig.gz",
-          "{AudioConfig}": serverIp + "/cms/AudioConfig.gz",
-          "{NotificationConfig}": serverIp + "/cms/NotificationConfig.gz",
-          "{ScalingConfig}": serverIp + "/cms/ScalingConfig.gz",
-          "{FontFallbackConfig}": serverIp + "/cms/FontFallbackConfig.gz",
-          "{LiveOpsCallingCardsConfig}":
-            serverIp + "/cms/LiveOpsCallingCardsConfig.gz",
-          "{LiveOpsProfileIconConfig}":
-            serverIp + "/cms/LiveOpsProfileIconConfig.gz",
-          "{LiveOpsTrackSkinConfig}":
-            serverIp + "/cms/LiveOpsTrackSkinConfig.gz",
-          "{LiveOpsEmojiConfig}": serverIp + "/cms/LiveOpsEmojiConfig.gz",
-        }
+        placeholders
       );
       client.write(response);
     } else {
