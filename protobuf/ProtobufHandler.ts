@@ -322,6 +322,9 @@ export class ProtobufHandler {
     this.index += length;
     return s;
   }
+  subarray(start: number, end: number) {
+    return this.buffer.subarray(start, end);
+  }
   readByte() {
     return this.buffer.readUInt8(this.index++);
   }

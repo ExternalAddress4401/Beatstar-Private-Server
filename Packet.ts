@@ -11,7 +11,6 @@ interface PacketInfo {
 }
 
 export class Packet {
-  info: PacketInfo;
   buffer: Buffer;
   private _header: ProtobufHandler;
   private _payload: ProtobufHandler;
@@ -26,20 +25,11 @@ export class Packet {
     const headerLength = handler.readIntBE();
     const payloadLength = packetLength - 4 - headerLength;
 
-    this.info = {
-      packetLength,
-      headerLength,
-      payloadLength,
-    };
-
     this._header = new ProtobufHandler("READ", handler.slice(headerLength));
     this._payload = new ProtobufHandler("READ", handler.slice(payloadLength));
   }
   process(data: Buffer) {
     this.buffer = Buffer.concat([this.buffer, data]);
-  }
-  isReady() {
-    return this.buffer.length === this.info.packetLength + 4;
   }
   parseHeader(
     proto:

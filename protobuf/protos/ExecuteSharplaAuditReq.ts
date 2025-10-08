@@ -1,5 +1,6 @@
 import { CMSField } from "../interfaces/CMSField";
 import { RefreshBonusCardsSystem_SharplaAudit } from "./audits/RefreshBonusCardsSystem_SharplaAudit";
+import { RhythmGameEnded_SharplaAudit } from "./audits/RhythmGameEnded_SharplaAudit";
 import { SetFtueFlag_SharplaAudit } from "./audits/SetFtueFlag_SharplaAudit";
 import { SharplaGameCmdHeader } from "./audits/SharplaGameCmdHeader";
 import { ShopSystemRefresh_SharplaAudit } from "./audits/ShopSystemRefresh_SharplaAudit";
@@ -33,6 +34,7 @@ export const ExecuteSharplaAuditReq: Map<number, CMSField> = new Map([
                         name: "type",
                         type: "enum",
                         enums: {
+                          12: RhythmGameEnded_SharplaAudit,
                           30: ShopSystemRefresh_SharplaAudit,
                           33: SetFtueFlag_SharplaAudit,
                           58: RefreshBonusCardsSystem_SharplaAudit,

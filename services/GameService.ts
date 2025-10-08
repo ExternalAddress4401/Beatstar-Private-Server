@@ -9,11 +9,9 @@ import { SyncReq } from "../protobuf/protos/SyncReq";
 import { SyncResp } from "../protobuf/protos/SyncResp";
 import { createEmptyResponses } from "../protobuf/utils";
 import { BaseService } from "./BaseService";
-import fs from "fs";
 
 const RpcType = {
   5: "Sync",
-  12: "SetScore",
   28: "ExecuteAudit",
 } as const;
 

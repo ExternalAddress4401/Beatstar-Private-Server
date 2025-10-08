@@ -15,6 +15,7 @@
               "template_id": "1n",
               "BragState": {},
               "HighestScore": {},
+              "PlayedCount": "2n",
               "RewardSource": "1n",
               "Version": "1n"
             },
@@ -8885,7 +8886,7 @@
           },
           {
             "currency_id": "7n",
-            "amount": "215n"
+            "amount": "0n"
           },
           {
             "currency_id": "8n"
@@ -9226,32 +9227,7 @@
           ]
         },
         "campaignGachaBoxSlots": {
-          "slots": [
-            {
-              "template_id": "1n",
-              "gachaBox": {
-                "box_id": "53n"
-              },
-              "currentAmount": "350n",
-              "requiredAmount": "350n"
-            },
-            {
-              "template_id": "2n",
-              "gachaBox": {
-                "box_id": "53n"
-              },
-              "currentAmount": "350n",
-              "requiredAmount": "350n"
-            },
-            {
-              "template_id": "3n",
-              "gachaBox": {
-                "box_id": "77n"
-              },
-              "currentAmount": "350n",
-              "requiredAmount": "350n"
-            }
-          ],
+          "slots": [],
           "nextGachaBoxForSlot": {
             "box_id": "53n"
           },

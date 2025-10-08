@@ -11,6 +11,8 @@ import { SharplaGameCmdHeader } from "./protos/audits/SharplaGameCmdHeader";
 import { RhythmGameEnded_SharplaAudit } from "./protos/audits/RhythmGameEnded_SharplaAudit";
 import { ExecuteSharplaAuditReq } from "./protos/ExecuteSharplaAuditReq";
 import { GetCMSMetaInfoResp } from "./protos/GetCMSMetaInfoResp";
+import { GetUnclaimedPurchasesResp } from "./protos/GetUnclaimedPurchasesResp";
+import { ExecuteSharplaAuditResp } from "./protos/ExecuteSharplaAuditResp";
 
 (async () => {
   /*const buf = Buffer.from([
@@ -84,7 +86,7 @@ import { GetCMSMetaInfoResp } from "./protos/GetCMSMetaInfoResp";
     ],
   ]);*/
 
-  const handler = new ProtobufHandler("READ", fs.readFileSync("./1"));
+  const handler = new ProtobufHandler("READ", fs.readFileSync("./16"));
 
   const packetLength = handler.readIntBE();
   const headerLength = handler.readIntBE();
@@ -94,21 +96,15 @@ import { GetCMSMetaInfoResp } from "./protos/GetCMSMetaInfoResp";
 
   header.process();
 
-  console.log(header);
-
-  const h = header.parseProto(ServerClientMessageHeaderMap);
+  const h = header.parseProto(ClientServerMessageHeaderMap);
 
   if (h.compressed) {
     await payload.decompress();
   }
 
-  console.log(h);
-
   payload.process();
 
-  console.log("payload", payload);
-
-  const p = payload.parseProto(GetCMSMetaInfoResp);
+  const p = payload.parseProto(ExecuteSharplaAuditResp);
 
   console.log(
     JSON.stringify(p, (_, v) => (typeof v === "bigint" ? v.toString() : v), 2)
