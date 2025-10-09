@@ -1,4 +1,6 @@
 import { configDotenv } from "dotenv";
+import localtunnel from "localtunnel";
+import Logger from "./lib/Logger";
 
 configDotenv();
 
@@ -10,6 +12,7 @@ export class InternalSettings {
   SERVER_PORT: number;
   EXPRESS_PORT: number;
   ENVIRONMENT: Environment;
+  TUNNEL: string = "";
 
   constructor() {
     if (
@@ -18,7 +21,6 @@ export class InternalSettings {
       !process.env.EXPRESS_PORT ||
       !process.env.ENVIRONMENT
     ) {
-      console.log("nad!");
       process.exit("Environment variables are not set.");
     }
     this.USE_PRIVATE_SERVER = process.env.USE_PRIVATE_SERVER === "true";
@@ -26,6 +28,11 @@ export class InternalSettings {
     this.SERVER_PORT = parseInt(process.env.SERVER_PORT);
     this.EXPRESS_PORT = parseInt(process.env.EXPRESS_PORT);
     this.ENVIRONMENT = process.env.ENVIRONMENT as Environment;
+  }
+  async init() {
+    if (this.ENVIRONMENT === "dev") {
+      this.TUNNEL = (await localtunnel({ port: this.EXPRESS_PORT })).url;
+    }
   }
 }
 

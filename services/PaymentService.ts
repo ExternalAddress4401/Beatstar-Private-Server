@@ -1,4 +1,5 @@
 import { Client } from "../Client";
+import Logger from "../lib/Logger";
 import { Packet } from "../Packet";
 import { ValueOf } from "../protobuf/interfaces/ValueOf";
 import { createBatchRequest } from "../protobuf/protos/BatchRequest";
@@ -41,7 +42,7 @@ export class PaymentService extends BaseService {
       );
       client.write(response);
     } else {
-      console.log(`Unknown rpcType: ${rpcType}`);
+      Logger.warn(`Unknown rpcType: ${rpcType}`);
     }
   }
 }

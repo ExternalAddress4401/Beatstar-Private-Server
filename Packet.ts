@@ -3,6 +3,7 @@ import { ClientServerMessageHeaderMap } from "./protobuf/protos/ClientServerMess
 import { ServerClientMessageHeaderMap } from "./protobuf/protos/ServerClientMessageHeader";
 import { promises as fs } from "fs";
 import { handlePlaceholders } from "./utilities/handlePlaceholders";
+import Logger from "./lib/Logger";
 
 interface PacketInfo {
   packetLength: number;
@@ -56,7 +57,7 @@ export class Packet {
     payloadReplacements?: Record<string, any> | null,
     compress: boolean = false
   ) {
-    console.log("handling custom server packet", responseFile);
+    Logger.info(`Handling ${responseFile} packet.`);
 
     const headerJson = JSON.parse(
       (await fs.readFile(`./protobuf/responses/${headerFile}.json`)).toString()
@@ -106,7 +107,7 @@ export class Packet {
     packetHandler.writeBuffer(preparedHeader);
     packetHandler.writeBuffer(preparedPayload);
 
-    console.log(`wrote ${responseFile}`);
+    Logger.info(`Wrote ${responseFile} response.`);
     return packetHandler.getUsed();
   }
 }

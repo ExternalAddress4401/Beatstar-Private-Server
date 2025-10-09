@@ -17,21 +17,3 @@ test("it should replace placeholders", () => {
   const response = handlePlaceholders(data, replacements);
   expect(response).toEqual({ test: { nested: { placeholder: "Cool thing" } } });
 });
-
-test("it should handle arrays of objects", () => {
-  const data = {
-    test: {
-      nested: "{nested}",
-    },
-  };
-
-  const replacements = {
-    "{nested}": createEmptyResponses([
-      { id: 1, rpcType: 1 },
-      { id: 2, rpcType: 2 },
-    ]),
-  };
-
-  const response = handlePlaceholders(data, replacements);
-  console.log(response.test.nested);
-});

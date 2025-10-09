@@ -14,6 +14,9 @@ import { BaseService } from "./services/BaseService";
 import { AnalyticsProxyService } from "./services/AnalyticsProxyService";
 import Settings from "./Settings";
 import { HttpServer } from "./HttpServer";
+import Logger from "./lib/Logger";
+
+Settings.init();
 
 let clientIndex = 0;
 let serverIndex = 0;
@@ -63,7 +66,6 @@ saClient.on("data", async (data) => {
 
   const client = clients.get(globalSocket);
   if (!client) {
-    console.log("no client");
     return;
   }
 
@@ -105,10 +107,6 @@ net
       client.handlePacket(data);
 
       const packets = client.extractPackets();
-      console.log(packets.length);
-      if (packets.length > 1) {
-        console.log("Handling multiple packets!");
-      }
       for (const packet of packets) {
         const header = packet.parseHeader(ClientServerMessageHeaderMap);
 
@@ -118,8 +116,6 @@ net
           }
 
           await fs.writeFile(`./packets/client/${clientIndex++}`, data);
-          // do some parsing here
-          // write the original response
           saClient.write(data);
           client.reset();
           return;
@@ -127,11 +123,11 @@ net
 
         const service = services.get(header.service);
         if (!service) {
-          console.error(`Unknown service found: ${header.service}`);
+          Logger.warn(`${header.service} is an unknown service.`);
           return;
         }
 
-        console.log(`Using service: ${service.name}`);
+        Logger.info(`${service.name} received a packet.`);
 
         await service.handlePacket(packet, client);
       }
@@ -139,14 +135,14 @@ net
     });
 
     socket.on("end", () => {
-      console.log("Local client disconnected");
+      Logger.info("Client disconnected.");
       globalSocket = null;
     });
 
     socket.on("error", (err) => {
-      console.error("Local socket error:", err.message);
+      Logger.error(err.message);
     });
   })
   .listen(Settings.SERVER_PORT, "0.0.0.0", () => {
-    console.log("Local proxy server listening on port 3000");
+    Logger.info("Local proxy server listening on port 3000");
   });

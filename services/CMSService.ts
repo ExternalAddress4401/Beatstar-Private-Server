@@ -1,4 +1,5 @@
 import { Client } from "../Client";
+import Logger from "../lib/Logger";
 import { Packet } from "../Packet";
 import { ValueOf } from "../protobuf/interfaces/ValueOf";
 import { createBatchRequest } from "../protobuf/protos/BatchRequest";
@@ -7,6 +8,7 @@ import { GetCMSMetaInfoResp } from "../protobuf/protos/GetCMSMetaInfoResp";
 import { PartialReq } from "../protobuf/protos/reused/PartialReq";
 import Settings from "../Settings";
 import { BaseService } from "./BaseService";
+import localtunnel from "localtunnel";
 
 const CMSType = {
   0: "NA",
@@ -30,19 +32,13 @@ export class CMSService extends BaseService {
     ];
     const parsedPayload = packet.parsePayload(BatchRequest);
 
-    let serverIp;
+    let serverIp = Settings.SERVER_IP;
 
     if (Settings.ENVIRONMENT === "dev") {
-      const response = await fetch("http://127.0.0.1:4040/api/tunnels");
-      const { tunnels } = await response.json();
-      serverIp = tunnels[0].public_url;
+      serverIp = Settings.TUNNEL;
     }
 
-    if (!serverIp) {
-      serverIp = Settings.SERVER_IP;
-    }
-
-    console.log("Server ip: " + serverIp);
+    Logger.info(`Server IP: ${serverIp}`);
 
     if (rpcType === "GetCMSMetaInfo") {
       const hashesResponse = await fetch(
@@ -53,16 +49,17 @@ export class CMSService extends BaseService {
 
       const placeholders: Record<string, any> = {
         "{serverTime}": Date.now(),
+        "{kirbyUrl}":
+          serverIp + "/images/3cf7824c-d57d-4097-9953-4736f1956631.png",
       };
+
+      console.log(placeholders);
 
       for (const [key, value] of Object.entries(cmsFilesAndHashes)) {
         placeholders[`{${key}}`] = serverIp + `/cms/${key}.gz`;
         placeholders[`{${key}Checksum}`] = value;
       }
 
-      console.log(placeholders);
-
-      // TODO: programatically add hashes so I can edit these
       const response = await packet.buildResponse(
         "ServerClientMessageHeader",
         "GetCMSMetaInfoResp",

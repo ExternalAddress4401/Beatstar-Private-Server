@@ -8,6 +8,7 @@ import { PartialReq } from "../protobuf/protos/reused/PartialReq";
 import { SyncReq } from "../protobuf/protos/SyncReq";
 import { SyncResp } from "../protobuf/protos/SyncResp";
 import { createEmptyResponses } from "../protobuf/utils";
+import { stringify } from "../utilities/stringify";
 import { BaseService } from "./BaseService";
 
 const RpcType = {
@@ -42,6 +43,9 @@ export class GameService extends BaseService {
       client.write(response);
     } else if (rpcType === "ExecuteAudit") {
       const parsedPayload = packet.parsePayload(ExecuteSharplaAuditReq);
+
+      // print score response to do something with it for now
+      console.log(stringify(parsedPayload.requests[0].body[0].audit[0]));
 
       const response = await packet.buildResponse(
         "ServerClientMessageHeader",

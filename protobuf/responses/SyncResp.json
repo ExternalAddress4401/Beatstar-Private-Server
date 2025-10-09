@@ -7,7 +7,7 @@
     "rpcType": "5n",
     "profile": {
       "test": {
-        "name": "stop killing beatstar assholes",
+        "name": "save beatstar",
         "basicInfo": {},
         "beatmaps": {
           "beatmaps": [
@@ -8886,7 +8886,7 @@
           },
           {
             "currency_id": "7n",
-            "amount": "0n"
+            "amount": "6n"
           },
           {
             "currency_id": "8n"
@@ -10243,7 +10243,7 @@
             "order": "17n",
             "image": {
               "id": "3cf7824c-d57d-4097-9953-4736f1956631",
-              "url": "https://i.ibb.co/BHRV7ZVc/unnamed.png",
+              "url": "https://i.ibb.co/d0Ks1S1k/kirby.png",
               "width": "512n",
               "height": "256n",
               "rect": {

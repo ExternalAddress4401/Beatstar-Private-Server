@@ -27,8 +27,12 @@ export class HttpServer {
   constructor() {
     this.init();
     this.app.use("/cms", express.static(path.join(__dirname, "./express/cms")));
+    this.app.use(
+      "/images",
+      express.static(path.join(__dirname, "./express/images"))
+    );
 
-    this.app.get("/info", async (req, res) => {
+    this.app.all("/info", async (req, res) => {
       res.json(this.hashes);
     });
 
