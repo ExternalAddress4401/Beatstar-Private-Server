@@ -32,7 +32,7 @@ export const LiveOpsTotaliserEventTemplate: Map<number, CMSField> = new Map([
           },
         ],
         [3, { name: "refreshDurationMsecs", type: "varint" }],
-        [11, { name: "tileRimColour", type: "signed-varint" }],
+        [11, { name: "tileRimColour", type: "varint" }],
         [13, { name: "boosterShopEnabled", type: "boolean" }],
         [14, { name: "boosterShopPricePoint_id", type: "varint" }],
         [15, { name: "boosterShopRewards", type: "packed", fields: Rewards }],

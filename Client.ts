@@ -1,18 +1,18 @@
-import crypto from "crypto";
 import net from "net";
 import { Packet } from "./Packet";
 import { ProtobufHandler } from "./protobuf/ProtobufHandler";
-import fs from "fs";
 
 export class Client {
   buffer: Buffer = Buffer.alloc(0);
   packet: Packet | null = null;
   socket: net.Socket;
-  clide: string;
+  clide: string | null = null;
 
   constructor(socket: net.Socket) {
     this.socket = socket;
-    this.clide = crypto.randomUUID();
+  }
+  setClide(clide: string) {
+    this.clide = clide;
   }
   handlePacket(data: Buffer) {
     this.buffer = Buffer.concat([this.buffer, data]);

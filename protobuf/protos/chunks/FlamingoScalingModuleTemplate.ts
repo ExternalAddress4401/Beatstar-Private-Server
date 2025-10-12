@@ -13,7 +13,7 @@ export const FlamingoScalingModuleTemplate: Map<number, CMSField> = new Map([
         [4, { name: "GameTrackVfx", type: "boolean" }],
         [5, { name: "GameTileVfx", type: "boolean" }],
         [8, { name: "Fps", type: "varint" }],
-        [9, { name: "MaxWhizzBangsPerFrame", type: "signed-varint" }],
+        [9, { name: "MaxWhizzBangsPerFrame", type: "varint" }],
         [10, { name: "GameLowPolyWaves", type: "boolean" }],
         [12, { name: "TargetDPI", type: "float" }],
         [13, { name: "TextureQuality", type: "varint" }],

@@ -36,7 +36,7 @@ export const actions = {
 			return fail(400, { error: 'Username or password are incorrect.' });
 		}
 
-		if ((await argon2.hash(password)) !== user.password) {
+		if (!(await argon2.verify(user.password, password))) {
 			return fail(400, { error: 'Username or password are incorrect.' });
 		}
 

@@ -9,6 +9,7 @@ export const RhythmGameEnded_SharplaAudit: Map<number, CMSField> = new Map([
       fields: new Map([
         [1, { name: "song_id", type: "varint" }],
         [3, { name: "maxStreak", type: "varint" }],
+        [4, { name: "numContinues", type: "varint" }],
         [
           5,
           {
@@ -33,6 +34,7 @@ export const RhythmGameEnded_SharplaAudit: Map<number, CMSField> = new Map([
             ]),
           },
         ],
+        [6, { name: "checkpointReached", type: "varint" }],
         [
           8,
           {
@@ -92,9 +94,11 @@ export const RhythmGameEnded_SharplaAudit: Map<number, CMSField> = new Map([
                   ]),
                 },
               ],
+              [4, { name: "NumOfLateOkScoreTypes", type: "varint" }],
             ]),
           },
         ],
+        [10, { name: "maxStreakMultiplier", type: "varint" }],
         [11, { name: "previousBeatmapLeaderboardRank", type: "varint" }],
         [12, { name: "currentBeatmapLeaderboardRank", type: "varint" }],
         [
@@ -108,23 +112,24 @@ export const RhythmGameEnded_SharplaAudit: Map<number, CMSField> = new Map([
             ]),
           },
         ],
+        [14, { name: "numberOfLateOkScoreTypes", type: "varint" }],
         [15, { name: "currentBeatmapLeaderboardNumEntries", type: "varint" }],
+        [16, { name: "numberOfTooEarlyScores", type: "varint" }],
+        [17, { name: "numberOfMissTaps", type: "varint" }],
+        [19, { name: "showdownSongRank", type: "varint" }],
+        [20, { name: "showdownOverallRank", type: "varint" }],
+        [21, { name: "videoAdSystemActive", type: "varint" }],
+        // 22 touch bugs info
+        [23, { name: "associatedLiveOpsEvent_id", type: "varint" }],
         [
           24,
-          {
-            name: "associatedLiveOpsEvent_id",
-            type: "group",
-            fields: new Map([]),
-          },
-        ],
-        [
-          25,
           {
             name: "deluxeInteractionScores",
             type: "group",
             fields: new Map([]),
           },
         ],
+        [25, { name: "eventPoint", type: "varint" }],
       ]),
     },
   ],

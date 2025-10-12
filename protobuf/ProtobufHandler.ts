@@ -82,18 +82,14 @@ export class ProtobufHandler {
           case "double":
             // this could be a buffer if it was read from a group
             if (Array.isArray(protoData[key])) {
-              dict[cmsRow.name] = new ProtobufHandler(
-                "READ",
-                protoData[key][0]
-              ).readVarint();
+              dict[cmsRow.name] = Number(
+                new ProtobufHandler("READ", protoData[key][0]).readVarint()
+              );
             } else {
               dict[cmsRow.name] = cmsRow.map
                 ? cmsRow.map[protoData[key]]
-                : protoData[key];
+                : Number(protoData[key]);
             }
-            break;
-          case "signed-varint":
-            dict[cmsRow.name] = this.toInt64(protoData[key]);
             break;
           case "varint-repeat":
             const varints = [];
@@ -158,7 +154,7 @@ export class ProtobufHandler {
             dict[cmsRow.name] = Boolean(protoData[key]);
             break;
           case "enum":
-            dict[cmsRow.name] = protoData[key];
+            dict[cmsRow.name] = Number(protoData[key]);
             const enumRow =
               cmsRow.enums[dict.type] ?? cmsRow.enums[dict.rpcType];
 
@@ -222,11 +218,11 @@ export class ProtobufHandler {
             );
           }
           this.writeKey(key, this.typeToWire(subProto.type));
-          this.writeVarint(value);
-          break;
-        case "signed-varint":
-          this.writeKey(key, this.typeToWire(subProto.type));
-          this.writeInt64Varint(json[subProto.name]);
+          if (value < 0) {
+            this.writeInt64Varint(BigInt(json[subProto.name]));
+          } else {
+            this.writeVarint(value);
+          }
           break;
         case "varint-repeat":
           const varintBuffer = new ProtobufHandler("WRITE");
@@ -400,6 +396,10 @@ export class ProtobufHandler {
       shift += 7n;
     } while (b & 0x80);
 
+    if (result.valueOf() > Number.MAX_SAFE_INTEGER) {
+      result = this.toInt64(result);
+    }
+
     return result;
   }
   checkSize(size: number) {
@@ -436,9 +436,6 @@ export class ProtobufHandler {
     buffer.copy(this.buffer, this.index);
     this.index += buffer.length;
   }
-  zigZag64(n: bigint) {
-    return (n << 1n) ^ (n >> 63n);
-  }
   toInt64(u64: bigint) {
     const MAX = 1n << 64n;
     const MAX_SIGNED = 1n << 63n;
@@ -462,7 +459,6 @@ export class ProtobufHandler {
     switch (type) {
       case "varint":
       case "boolean":
-      case "signed-varint":
         return 0;
       case "double":
         return 1;

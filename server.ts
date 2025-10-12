@@ -110,6 +110,10 @@ net
       for (const packet of packets) {
         const header = packet.parseHeader(ClientServerMessageHeaderMap);
 
+        if (!client.clide) {
+          client.setClide(header.clide);
+        }
+
         if (!Settings.USE_PRIVATE_SERVER) {
           if (header.compressed) {
             await packet.payload.decompress();
@@ -140,6 +144,7 @@ net
     });
 
     socket.on("error", (err) => {
+      clients.delete(socket);
       Logger.error(err.message);
     });
   })

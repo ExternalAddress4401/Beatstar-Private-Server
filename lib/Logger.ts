@@ -7,7 +7,7 @@ class InternalLogger {
     console.log(`[?] ${str}`);
   }
   error(str: string) {
-    console.log(`[!] ${str}`);
+    console.log(`[X] ${str}`);
   }
 }
 

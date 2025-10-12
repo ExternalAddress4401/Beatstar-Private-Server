@@ -209,7 +209,7 @@ export const SyncResp: Map<number, CMSField> = new Map([
                             8,
                             {
                               name: "offsetFromUTCMsecs",
-                              type: "signed-varint",
+                              type: "varint",
                             },
                           ],
                           [9, { name: "platform", type: "varint" }],
@@ -877,7 +877,7 @@ export const SyncResp: Map<number, CMSField> = new Map([
                             9,
                             {
                               name: "lastAdViewTimeMsecs",
-                              type: "signed-varint",
+                              type: "varint",
                             },
                           ],
                         ]),

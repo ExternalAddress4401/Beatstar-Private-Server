@@ -6,7 +6,6 @@ export type ProtoType =
   | "string-repeat"
   | "hex-string"
   | "float"
-  | "signed-varint"
   | "group"
   | "packed"
   | "enums"
@@ -25,8 +24,7 @@ interface PlainCMSField extends BaseCMSField {
     | "string"
     | "string-repeat"
     | "hex-string"
-    | "float"
-    | "signed-varint";
+    | "float";
   map?: Record<number, string>;
 }
 

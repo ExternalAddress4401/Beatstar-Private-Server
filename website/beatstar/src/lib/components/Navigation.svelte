@@ -1,4 +1,11 @@
-<script>
+<script lang="ts">
+	interface Props {
+		user: {
+			username: string;
+			uuid: string;
+		} | null;
+	}
+	let { user }: Props = $props();
 </script>
 
 <div class="container">

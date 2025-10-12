@@ -106,7 +106,9 @@ import { ExecuteSharplaAuditResp } from "./protos/ExecuteSharplaAuditResp";
 
   const p = payload.parseProto(ExecuteSharplaAuditResp);
 
-  console.log(
-    JSON.stringify(p, (_, v) => (typeof v === "bigint" ? v.toString() : v), 2)
-  );
+  console.log("PAY", p);
+
+  //console.log(
+  //  JSON.stringify(p, (_, v) => (typeof v === "bigint" ? v.toString() : v), 2)
+  //);
 })();

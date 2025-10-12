@@ -5,12 +5,6 @@ import { promises as fs } from "fs";
 import { handlePlaceholders } from "./utilities/handlePlaceholders";
 import Logger from "./lib/Logger";
 
-interface PacketInfo {
-  packetLength: number;
-  headerLength: number;
-  payloadLength: number;
-}
-
 export class Packet {
   buffer: Buffer;
   private _header: ProtobufHandler;

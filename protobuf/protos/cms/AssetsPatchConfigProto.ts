@@ -3,7 +3,7 @@ import { CMSField } from "../../interfaces/CMSField";
 export const AssetsPatchConfigProto: Map<number, CMSField> = new Map([
   [1, { name: "version", type: "string" }],
   [6, { name: "downloadUrl", type: "string" }],
-  [7, { name: "downloadBucketVetsion", type: "string" }],
+  [7, { name: "downloadBucketVersion", type: "string" }],
   [
     4,
     {

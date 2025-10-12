@@ -13,17 +13,3 @@
 		</form>
 	</div>
 </div>
-
-<style>
-	.center {
-		height: 100%;
-		display: grid;
-		place-items: center;
-	}
-	.col {
-		display: flex;
-		flex-direction: column;
-		text-align: center;
-		gap: 0.25rem;
-	}
-</style>

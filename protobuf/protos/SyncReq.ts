@@ -112,7 +112,7 @@ export const SyncReq: Map<number, CMSField> = new Map([
                             8,
                             {
                               name: "offsetFromUTCMsecs",
-                              type: "signed-varint",
+                              type: "varint",
                             },
                           ],
                         ]),

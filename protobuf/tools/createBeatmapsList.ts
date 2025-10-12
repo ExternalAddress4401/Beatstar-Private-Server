@@ -11,19 +11,11 @@ handler.process();
 const songs = handler.parseProto(SongConfigProto);
 
 const syncReqBeatmaps = songs.Beatmaps.map((beatmap) => ({
-  template_id: beatmap.id.toString() + "n",
+  template_id: beatmap.id.toString(),
   BragState: {},
   HighestScore: {},
-  RewardSource: "1n",
-  Version: "1n",
+  RewardSource: 1,
+  Version: 1,
 }));
 
 fs.writeFileSync("./songsout", stringify(syncReqBeatmaps));
-
-/*{
-              "template_id": "57n",
-              "BragState": {},
-              "HighestScore": {},
-              "RewardSource": "1n",
-              "Version": "1n"
-            },*/
