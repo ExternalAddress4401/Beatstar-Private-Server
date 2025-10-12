@@ -1,5 +1,4 @@
 - PlayedCount doesn't increment properly. Probably want to use a different audit instead of the score one
-- Scores need to be importable from the website
 - Username changing on the website
 - Set the star currency properly for SyncResp
 - Deluxe medals aren't set properly in SyncResp
