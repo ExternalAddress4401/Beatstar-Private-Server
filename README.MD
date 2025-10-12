@@ -15,7 +15,7 @@ In its current state you don't unless you're a power user. If you are keep readi
 3. Start the site with `pnpm dev`
 4. Navigate to http://localhost:5173
 5. Create an account then login. You won't see any obvious signs of being logged in.
-6. Navigate to http://localhosy:5173/profile and download your profile file
+6. Navigate to http://localhost:5173/profile and download your profile file
 7. Place the downloaded file on your device in sdcard/beatstar
 
 ### I'm using Beatclone or Externals builds of Beatstar
