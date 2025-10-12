@@ -9,5 +9,16 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<Navigation user={data.user} />
-{@render children?.()}
+<div class="container">
+	<Navigation user={data.user} />
+	<div class="center">
+		{@render children?.()}
+	</div>
+</div>
+
+<style>
+	.container {
+		display: flex;
+		height: 100%;
+	}
+</style>

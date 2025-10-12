@@ -75,17 +75,20 @@ h6 {
 }
 
 :root {
-	--primary: #0ead69;
-	--secondar: #3bceac;
-	--tertiary: #ffd23f;
-	--error: #ee4266;
+	--sidebar: #222;
+	--text: #e6f9fc;
+	--background: #111;
+	--primary: #6e7dab;
+	--secondary: #5762d5;
+	--tertiary: #d1e3dd;
+	--accent: #f4f3ee;
 }
 
 html,
 body {
 	height: 100%;
-	background-color: #111;
-	color: white;
+	background-color: var(--background);
+	color: var(--text);
 	font-family: 'Roboto', sans-serif;
 	font-optical-sizing: auto;
 	font-weight: 400;
@@ -94,6 +97,7 @@ body {
 }
 
 .center {
+	width: 100%;
 	height: 100%;
 	display: grid;
 	place-items: center;

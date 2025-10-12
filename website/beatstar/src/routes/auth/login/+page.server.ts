@@ -2,7 +2,7 @@ import type { Actions } from './$types';
 import { zfd } from 'zod-form-data';
 import argon2 from '@node-rs/argon2';
 import prisma from '$lib/prisma';
-import { fail } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 
 const schema = zfd.formData({
 	username: zfd.text(),
@@ -49,6 +49,6 @@ export const actions = {
 			maxAge: ONE_DAY
 		});
 
-		return { success: true };
+		return redirect(303, '/profile');
 	}
 } satisfies Actions;

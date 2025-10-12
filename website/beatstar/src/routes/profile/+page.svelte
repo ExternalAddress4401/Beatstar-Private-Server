@@ -27,6 +27,7 @@
 		<h1>Profile</h1>
 
 		<input type="text" value={user?.username} />
+		<button>Update username</button>
 		<button onclick={downloadFile}>Download</button>
 		<form method="POST" action="?/upload" use:enhance enctype="multipart/form-data">
 			<input name="profile" type="file" />
