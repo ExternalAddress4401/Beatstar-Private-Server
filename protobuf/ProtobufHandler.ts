@@ -2,6 +2,7 @@ import { CMSField } from "./interfaces/CMSField";
 import { chunk, pad } from "./utils";
 import zlib from "zlib";
 import { promisify } from "util";
+import { SongConfigProto } from "./protos/cms/SongConfigProto";
 
 type ReadWrite = "READ" | "WRITE";
 
@@ -95,7 +96,26 @@ export class ProtobufHandler {
             const varints = [];
             const varintBuffer = new ProtobufHandler("READ", protoData[key][0]);
             while (varintBuffer.hasMore()) {
-              varints.push(varintBuffer.readVarint());
+              varints.push(Number(varintBuffer.readVarint()));
+            }
+            dict[cmsRow.name] = varints;
+            break;
+          case "float-repeat":
+            const floats = [];
+            const floatBuffer = new ProtobufHandler("READ", protoData[key][0]);
+            while (floatBuffer.hasMore()) {
+              floats.push(Number(floatBuffer.readFloat()));
+            }
+            dict[cmsRow.name] = floats;
+            break;
+          case "boolean-repeat":
+            const booleans = [];
+            const booleanBuffer = new ProtobufHandler(
+              "READ",
+              protoData[key][0]
+            );
+            while (booleanBuffer.hasMore()) {
+              booleans.push(Boolean(booleanBuffer.readByte()));
             }
             dict[cmsRow.name] = varints;
             break;
@@ -165,18 +185,17 @@ export class ProtobufHandler {
               continue;
             }
 
-            delete protoData["1"]; //remove the type
+            // assume the enum key is 2 unless told otherwise
 
-            Object.assign(dict, this.parseProto(enumRow, protoData));
+            const enumData = protoData[cmsRow.key ?? 2][0];
 
-            for (const key in dict) {
-              if (Number.isInteger(parseInt(key))) {
-                delete dict[key];
-              }
-            }
+            const enumDataHandler = new ProtobufHandler("READ", enumData);
+            enumDataHandler.process();
 
-            const deleteKey = cmsRow.key ?? "2";
-            delete protoData[deleteKey];
+            Object.assign(dict, enumDataHandler.parseProto(enumRow));
+
+            delete protoData[1];
+            delete protoData[cmsRow.key ?? 2];
 
             break;
         }
@@ -241,6 +260,15 @@ export class ProtobufHandler {
           this.writeKey(key, this.typeToWire(subProto.type));
           this.writeVarint(json[subProto.name] === false ? 0 : 1);
           break;
+        case "boolean-repeat":
+          const booleanBuffer = new ProtobufHandler("WRITE");
+          for (const boolean of json[subProto.name]) {
+            booleanBuffer.writeByte(Number(boolean));
+          }
+          this.writeKey(key, this.typeToWire(subProto.type));
+          this.writeVarint(booleanBuffer.getUsed().length);
+          this.writeBuffer(booleanBuffer.getUsed());
+          break;
         case "string":
           this.writeKey(key, this.typeToWire(subProto.type));
           this.writeString(json[subProto.name]);
@@ -257,6 +285,15 @@ export class ProtobufHandler {
         case "float":
           this.writeKey(key, this.typeToWire(subProto.type));
           this.writeFloat(json[subProto.name]);
+          break;
+        case "float-repeat":
+          const floatBuffer = new ProtobufHandler("WRITE");
+          for (const float of json[subProto.name]) {
+            floatBuffer.writeVarint(Number(float));
+          }
+          this.writeKey(key, this.typeToWire(subProto.type));
+          this.writeVarint(floatBuffer.getUsed().length);
+          this.writeBuffer(floatBuffer.getUsed());
           break;
         case "group":
           if (!Array.isArray(json[subProto.name])) {
@@ -294,9 +331,16 @@ export class ProtobufHandler {
           }
           this.writeKey(key, 0);
           this.writeVarint(json.type);
-          this.writeBuffer(
-            await new ProtobufHandler("WRITE").writeProto(json, enumRow)
+
+          // create a buffer with the enum key and write the data into it...
+          const enumData = await new ProtobufHandler("WRITE").writeProto(
+            json,
+            enumRow
           );
+
+          this.writeKey(subProto.key ?? 2, 2);
+          this.writeVarint(enumData.length);
+          this.writeBuffer(enumData);
           break;
         case "hex-string":
           const str = Buffer.from(json[subProto.name], "hex");
@@ -467,6 +511,7 @@ export class ProtobufHandler {
       case "packed":
       case "string-repeat":
       case "varint-repeat":
+      case "float-repeat":
       case "hex-string":
         return 2;
       case "float":

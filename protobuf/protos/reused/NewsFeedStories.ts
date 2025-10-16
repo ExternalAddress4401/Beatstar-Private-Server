@@ -1,5 +1,5 @@
 import { CMSField } from "../../interfaces/CMSField";
-import { Rect } from "./Rect";
+import { StreamableImage } from "../game/com/spaceape/imagestreaming/StreamableImage";
 
 export const NewsFeedStories: Map<number, CMSField> = new Map([
   [1, { name: "type", type: "varint" }],
@@ -31,13 +31,7 @@ export const NewsFeedStories: Map<number, CMSField> = new Map([
     {
       name: "image",
       type: "group",
-      fields: new Map([
-        [1, { name: "id", type: "string" }],
-        [2, { name: "url", type: "string" }],
-        [3, { name: "width", type: "varint" }],
-        [4, { name: "height", type: "varint" }],
-        [6, { name: "rect", type: "group", fields: Rect }],
-      ]),
+      fields: StreamableImage,
     },
   ],
   [11, { name: "title", type: "string" }],

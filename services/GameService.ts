@@ -7,10 +7,11 @@ import { createBatchRequest } from "../protobuf/protos/BatchRequest";
 import { ExecuteSharplaAuditReq } from "../protobuf/protos/ExecuteSharplaAuditReq";
 import { ExecuteSharplaAuditResp } from "../protobuf/protos/ExecuteSharplaAuditResp";
 import { PartialReq } from "../protobuf/protos/reused/PartialReq";
-import { SyncReq } from "../protobuf/protos/SyncReq";
+import { SyncReq, SyncReqEnum } from "../protobuf/protos/SyncReq";
 import { SyncResp } from "../protobuf/protos/SyncResp";
 import { createEmptyResponses } from "../protobuf/utils";
 import { greater } from "../utilities/greater";
+import { reqToEnum } from "../utilities/reqToEnum";
 import { scoreToMedal } from "../utilities/scoreToMedal";
 import prisma from "../website/beatstar/src/lib/prisma";
 import { BaseService } from "./BaseService";
@@ -21,7 +22,7 @@ const RpcType = {
 } as const;
 
 const BatchRequest = createBatchRequest({
-  5: SyncReq,
+  5: SyncReqEnum,
   28: ExecuteSharplaAuditReq,
 });
 
@@ -33,12 +34,30 @@ export class GameService extends BaseService {
     const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
       Number(payload.requests[0].rpcType)
     ];
+
     const parsedPayload = packet.parsePayload(BatchRequest);
 
     if (rpcType === "Sync") {
       const parsedPayload = packet.parsePayload(SyncReq);
 
       const clide = parsedPayload.requests[0].body[0].session[0].clide;
+      console.log(clide);
+
+      if (clide === "{clide}") {
+        // user has no profile file on their device to read from
+
+        console.log("send error!");
+        const response = await packet.buildErrorResponse({
+          "{error}": {
+            code: 9587,
+            message: "Hell",
+            tokenId: "",
+            name: "Hell",
+          },
+        });
+        client.write(response);
+        return;
+      }
 
       const user = await prisma.user.findFirst({
         select: {
@@ -52,7 +71,16 @@ export class GameService extends BaseService {
 
       if (!user) {
         // TODO: do something real here
-        throw new Error("No user found!");
+
+        // send status code 6?
+        console.log("send err9r!");
+        const response = await packet.buildErrorResponse(
+          "ServerClientMessageHeader",
+          "SyncResp",
+          SyncResp
+        );
+        client.write(response);
+        return;
       }
 
       const prismaBeatmaps = await prisma.beatmap.findMany();
@@ -123,8 +151,7 @@ export class GameService extends BaseService {
       for (const request of parsedPayload.requests) {
         const audit = request.body[0].audit[0];
         if (audit.type === 12) {
-          const score = audit.audit[0];
-
+          console.log("got a score!");
           const user = await prisma.user.findFirst({
             select: {
               id: true,
@@ -141,12 +168,12 @@ export class GameService extends BaseService {
 
           const beatmap = await prisma.beatmap.findFirst({
             where: {
-              id: parseInt(score.song_id),
+              id: parseInt(audit.song_id),
             },
           });
 
           if (beatmap === null) {
-            Logger.error(`Unknown beatmap provided: ${score.song_id}`);
+            Logger.error(`Unknown beatmap provided: ${audit.song_id}`);
             return;
           }
 
@@ -154,12 +181,12 @@ export class GameService extends BaseService {
           const oldScore = (await prisma.score.findFirst({
             where: {
               userId: user.id,
-              beatmapId: parseInt(score.song_id),
+              beatmapId: parseInt(audit.song_id),
             },
           }))!;
 
           const medal = scoreToMedal(
-            score.score[0].absoluteScore,
+            audit.score[0].absoluteScore,
             beatmap.difficulty,
             false
           );
@@ -169,38 +196,40 @@ export class GameService extends BaseService {
             return;
           }
 
+          console.log("wow a score!");
+
           if (
             !oldScore ||
-            oldScore.absoluteScore < score.score[0].absoluteScore
+            oldScore.absoluteScore < audit.score[0].absoluteScore
           ) {
             console.log("Score update!");
             await prisma.score.upsert({
               create: {
-                beatmapId: parseInt(score.song_id),
-                normalizedScore: score.score[0].normalizedScore,
-                absoluteScore: score.score[0].absoluteScore,
+                beatmapId: parseInt(audit.song_id),
+                normalizedScore: audit.score[0].normalizedScore,
+                absoluteScore: audit.score[0].absoluteScore,
                 highestGrade: medal,
-                highestCheckpoint: score.checkpointReached ?? 0,
-                highestStreak: score.maxStreak,
+                highestCheckpoint: audit.checkpointReached ?? 0,
+                highestStreak: audit.maxStreak,
                 playedCount: 1,
                 userId: user.id,
               },
               update: {
                 normalizedScore: greater(
-                  score.score[0].normalizedScore,
+                  audit.score[0].normalizedScore,
                   oldScore?.normalizedScore
                 ),
                 absoluteScore: greater(
-                  score.score[0].absoluteScore,
+                  audit.score[0].absoluteScore,
                   oldScore?.absoluteScore
                 ),
                 highestGrade: medal,
                 highestCheckpoint: greater(
-                  score.checkpointReached,
+                  audit.checkpointReached,
                   oldScore?.highestCheckpoint
                 ),
                 highestStreak: greater(
-                  score.highestStreak,
+                  audit.highestStreak,
                   oldScore?.highestStreak
                 ),
                 playedCount: oldScore?.playedCount + 1 || 1,
@@ -208,7 +237,7 @@ export class GameService extends BaseService {
               where: {
                 userId_beatmapId: {
                   userId: user.id,
-                  beatmapId: parseInt(score.song_id),
+                  beatmapId: parseInt(audit.song_id),
                 },
               },
             });

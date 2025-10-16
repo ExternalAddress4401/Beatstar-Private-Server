@@ -4,9 +4,9 @@ import { Packet } from "../Packet";
 import { ValueOf } from "../protobuf/interfaces/ValueOf";
 import { createBatchRequest } from "../protobuf/protos/BatchRequest";
 import { PlatformNotificationPref } from "../protobuf/protos/chunks/PlatformNotificationPref";
-import { RegisterPlatformToken } from "../protobuf/protos/chunks/RegisterPlatformToken";
+import { RegisterPlatformTokenEnums } from "../protobuf/protos/chunks/RegisterPlatformToken";
 import { PartialReq } from "../protobuf/protos/reused/PartialReq";
-import { SubscribeReq } from "../protobuf/protos/SubscribeReq";
+import { SubscribeReqEnums } from "../protobuf/protos/SubscribeReq";
 import { SubscribeResp } from "../protobuf/protos/SubscribeResp";
 import { createEmptyResponses } from "../protobuf/utils";
 import { BaseService } from "./BaseService";
@@ -24,8 +24,8 @@ const RpcType = {
 } as const;
 
 const BatchRequest = createBatchRequest({
-  5: SubscribeReq,
-  6: RegisterPlatformToken,
+  5: SubscribeReqEnums,
+  6: RegisterPlatformTokenEnums,
   9: PlatformNotificationPref,
 });
 

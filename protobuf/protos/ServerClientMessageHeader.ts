@@ -23,7 +23,7 @@ export const ServerClientMessageHeaderMap: Map<number, CMSField> = new Map([
       name: "messages",
       type: "group",
       fields: new Map([
-        [1, { name: "test", type: "string" }],
+        [1, { name: "text", type: "string" }],
         [2, { name: "expiry", type: "varint" }],
       ]),
     },

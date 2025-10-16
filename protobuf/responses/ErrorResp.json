@@ -1,0 +1,12 @@
+{
+  "id": 2,
+  "serverTime": 0,
+  "batchHeader": {},
+  "requests": [
+    {
+      "id": 1,
+      "rpcType": 5,
+      "error": "{error}"
+    }
+  ]
+}

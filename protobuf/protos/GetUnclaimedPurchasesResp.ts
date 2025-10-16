@@ -1,5 +1,6 @@
 import { CMSField } from "../interfaces/CMSField";
 import { RespHeader } from "./reused/RespHeader";
+import { RespPayload } from "./reused/RespPayload";
 
 export const GetUnclaimedPurchasesResp: Map<number, CMSField> = new Map([
   ...RespHeader,
@@ -9,8 +10,7 @@ export const GetUnclaimedPurchasesResp: Map<number, CMSField> = new Map([
       name: "requests",
       type: "group",
       fields: new Map([
-        [1, { name: "id", type: "varint" }],
-        [3, { name: "rpcType", type: "varint" }],
+        ...RespPayload,
         [
           5,
           {

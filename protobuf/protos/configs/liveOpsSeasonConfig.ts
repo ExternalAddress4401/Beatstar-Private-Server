@@ -1,6 +1,6 @@
 import { CMSField } from "../../interfaces/CMSField";
 import { Rewards } from "../enums/Rewards";
-import { Image } from "../reused/Image";
+import { StreamableImage } from "../game/com/spaceape/imagestreaming/StreamableImage";
 
 export const liveOpsSeasonConfig: Map<number, CMSField> = new Map([
   [1, { name: "version", type: "string" }],
@@ -29,7 +29,7 @@ export const liveOpsSeasonConfig: Map<number, CMSField> = new Map([
           {
             name: "headerImage",
             type: "group",
-            fields: Image,
+            fields: StreamableImage,
           },
         ],
         [
@@ -37,7 +37,7 @@ export const liveOpsSeasonConfig: Map<number, CMSField> = new Map([
           {
             name: "panelMotifImage",
             type: "group",
-            fields: Image,
+            fields: StreamableImage,
           },
         ],
         [

@@ -79,9 +79,10 @@ h6 {
 	--text: #e6f9fc;
 	--background: #111;
 	--primary: #6e7dab;
-	--secondary: #5762d5;
+	--secondary: rgb(196, 27, 108);
 	--tertiary: #d1e3dd;
 	--accent: #f4f3ee;
+	--error: #dc143c;
 }
 
 html,

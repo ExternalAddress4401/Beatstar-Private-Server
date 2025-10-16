@@ -1,7 +1,0 @@
-{
-  "type": "node",
-  "request": "launch",
-  "name": "Debug with ts-node",
-  "runtimeArgs": ["-r", "ts-node/register"],
-  "args": ["${workspaceFolder}/protobuf/ProtobufHandler.ts"]
-}

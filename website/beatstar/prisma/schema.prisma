@@ -15,21 +15,21 @@ datasource db {
 
 model User {
   id       Int     @id @default(autoincrement())
-  uuid     String  @db.Uuid
+  uuid     String  @unique @db.Uuid
   username String  @unique
   password String
   Score    Score[]
 }
 
 model Score {
-  beatmapId       Int
-  normalizedScore Float
-  absoluteScore   Int
-  highestGrade Int
+  beatmapId         Int
+  normalizedScore   Float
+  absoluteScore     Int
+  highestGrade      Int
   highestCheckpoint Int
-  highestStreak Int
+  highestStreak     Int
   //bragState
-  playedCount Int
+  playedCount       Int
 
   user    User    @relation(fields: [userId], references: [id])
   beatmap Beatmap @relation(fields: [beatmapId], references: [id])
@@ -39,10 +39,15 @@ model Score {
 }
 
 model Beatmap {
-  id           Int @id
-  idLabel String
+  id         Int     @id
+  idLabel    String
   difficulty Int
-  deluxe Boolean
+  deluxe     Boolean
 
   scores Score[]
+}
+
+model CMS {
+  name String @id
+  data Json
 }

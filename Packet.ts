@@ -4,6 +4,8 @@ import { ServerClientMessageHeaderMap } from "./protobuf/protos/ServerClientMess
 import { promises as fs } from "fs";
 import { handlePlaceholders } from "./utilities/handlePlaceholders";
 import Logger from "./lib/Logger";
+import { ErrorResp } from "./protobuf/protos/ErrorResp";
+import { stringify } from "./utilities/stringify";
 
 export class Packet {
   buffer: Buffer;
@@ -83,6 +85,8 @@ export class Packet {
       handlePlaceholders(responseJson, payloadReplacements);
     }
 
+    fs.writeFile("./ooo", stringify(responseJson));
+
     const preparedHeader = await new ProtobufHandler("WRITE").writeProto(
       headerJson,
       ServerClientMessageHeaderMap
@@ -102,6 +106,46 @@ export class Packet {
     packetHandler.writeBuffer(preparedPayload);
 
     Logger.info(`Wrote ${responseFile} response.`);
+    return packetHandler.getUsed();
+  }
+  async buildErrorResponse(payloadReplacements?: Record<string, any> | null) {
+    const headerJson = JSON.parse(
+      (
+        await fs.readFile(`./protobuf/responses/ServerClientMessageHeader.json`)
+      ).toString()
+    );
+
+    const responseJson = JSON.parse(
+      (await fs.readFile(`./protobuf/responses/ErrorResp.json`)).toString()
+    );
+
+    headerJson.version = "1";
+    headerJson.timestamp = Date.now();
+    headerJson.tokenId = this.header.rpc;
+
+    responseJson.serverTime = Date.now();
+
+    if (payloadReplacements) {
+      handlePlaceholders(responseJson, payloadReplacements);
+    }
+
+    const preparedHeader = await new ProtobufHandler("WRITE").writeProto(
+      headerJson,
+      ServerClientMessageHeaderMap
+    );
+    const preparedPayload = await new ProtobufHandler("WRITE").writeProto(
+      responseJson,
+      ErrorResp
+    );
+
+    const packetHandler = new ProtobufHandler("WRITE");
+    packetHandler.writeIntBE(
+      preparedHeader.length + preparedPayload.length + 4
+    );
+    packetHandler.writeIntBE(preparedHeader.length);
+    packetHandler.writeBuffer(preparedHeader);
+    packetHandler.writeBuffer(preparedPayload);
+
     return packetHandler.getUsed();
   }
 }

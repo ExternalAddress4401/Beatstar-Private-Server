@@ -2,10 +2,12 @@ export type ProtoType =
   | "varint"
   | "varint-repeat"
   | "boolean"
+  | "boolean-repeat"
   | "string"
   | "string-repeat"
   | "hex-string"
   | "float"
+  | "float-repeat"
   | "group"
   | "packed"
   | "enums"
@@ -21,10 +23,12 @@ interface PlainCMSField extends BaseCMSField {
     | "varint-repeat"
     | "double"
     | "boolean"
+    | "boolean-repeat"
     | "string"
     | "string-repeat"
     | "hex-string"
-    | "float";
+    | "float"
+    | "float-repeat";
   map?: Record<number, string>;
 }
 

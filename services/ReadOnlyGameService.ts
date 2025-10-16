@@ -3,7 +3,7 @@ import Logger from "../lib/Logger";
 import { Packet } from "../Packet";
 import { ValueOf } from "../protobuf/interfaces/ValueOf";
 import { createBatchRequest } from "../protobuf/protos/BatchRequest";
-import { Leaderboard_Req } from "../protobuf/protos/Leaderboard_Req";
+import { Leaderboard_ReqEnums } from "../protobuf/protos/Leaderboard_Req";
 import { Leaderboard_Resp } from "../protobuf/protos/Leaderboard_Resp";
 import { PartialReq } from "../protobuf/protos/reused/PartialReq";
 import { createEmptyResponses } from "../protobuf/utils";
@@ -14,7 +14,7 @@ const RpcType = {
 } as const;
 
 const BatchRequest = createBatchRequest({
-  16: Leaderboard_Req,
+  16: Leaderboard_ReqEnums,
 });
 
 export class ReadOnlyGameService extends BaseService {
