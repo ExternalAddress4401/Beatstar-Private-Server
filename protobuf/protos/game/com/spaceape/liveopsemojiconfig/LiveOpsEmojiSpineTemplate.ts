@@ -3,6 +3,8 @@ import { FileDetails } from "../config/FileDetails";
 
 export const LiveOpsEmojiSpineTemplate: Map<number, CMSField> = new Map([
   [1, { name: "id", type: "varint" }],
+  [5, { name: "idLabel", type: "string" }],
+  [6, { name: "Skins", type: "string-repeat" }],
   [
     2,
     {
@@ -27,6 +29,4 @@ export const LiveOpsEmojiSpineTemplate: Map<number, CMSField> = new Map([
       fields: FileDetails,
     },
   ],
-  [5, { name: "idLabel", type: "string" }],
-  [6, { name: "Skins", type: "string-repeat" }],
 ]);

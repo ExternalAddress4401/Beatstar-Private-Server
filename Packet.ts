@@ -85,8 +85,6 @@ export class Packet {
       handlePlaceholders(responseJson, payloadReplacements);
     }
 
-    fs.writeFile("./ooo", stringify(responseJson));
-
     const preparedHeader = await new ProtobufHandler("WRITE").writeProto(
       headerJson,
       ServerClientMessageHeaderMap

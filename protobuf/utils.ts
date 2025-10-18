@@ -13,10 +13,10 @@ export const chunk = (str: string) => {
   return result;
 };
 
-export const createEmptyResponses = (requests) => {
-  return requests.map(({ id, rpcType }) => ({
-    id,
-    rpcType,
+export const createEmptyResponse = (request) => {
+  return {
+    id: request.id,
+    rpcType: request.rpcType,
     body: {},
-  }));
+  };
 };

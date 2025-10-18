@@ -18,6 +18,7 @@ model User {
   uuid     String  @unique @db.Uuid
   username String  @unique
   password String
+  admin    Boolean
   Score    Score[]
 }
 
@@ -47,7 +48,9 @@ model Beatmap {
   scores Score[]
 }
 
-model CMS {
+model Cms {
   name String @id
   data Json
+  gzip Bytes
+  hash String @db.Char(32)
 }

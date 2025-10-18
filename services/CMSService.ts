@@ -28,7 +28,7 @@ export class CMSService extends BaseService {
   async handlePacket(packet: Packet, client: Client) {
     const payload = packet.parsePayload(PartialReq);
     const rpcType: ValueOf<typeof CMSType> = (CMSType as any)[
-      payload.requests[0].rpcType
+      payload.requests.rpcType
     ];
     const parsedPayload = packet.parsePayload(BatchRequest);
 
@@ -52,8 +52,6 @@ export class CMSService extends BaseService {
         "{kirbyUrl}":
           serverIp + "/images/3cf7824c-d57d-4097-9953-4736f1956631.png",
       };
-
-      console.log(placeholders);
 
       for (const [key, value] of Object.entries(cmsFilesAndHashes)) {
         placeholders[`{${key}}`] = serverIp + `/cms/${key}.gz`;

@@ -1,6 +1,7 @@
 import { AssetsPatchConfigProto } from "../protos/cms/AssetsPatchConfigProto";
 import { AudioConfigProto } from "../protos/cms/AudioConfigProto";
 import { FontFallbackConfigProto } from "../protos/cms/FontFallbackConfigProto";
+import { GameConfigProto } from "../protos/cms/GameConfigProto";
 import { LangConfigProto } from "../protos/cms/LangConfigProto";
 import { LiveOpsCallingCardsConfigProto } from "../protos/cms/LiveOpsCallingCardsConfigProto";
 import { LiveOpsEmojiConfigProto } from "../protos/cms/LiveOpsEmojiConfigProto";
@@ -24,4 +25,5 @@ export const CMSMap = {
   NotificationConfig: NotificationConfigProto,
   ScalingConfig: ScalingConfigProto,
   SongConfig: SongConfigProto,
+  GameConfig: GameConfigProto,
 };

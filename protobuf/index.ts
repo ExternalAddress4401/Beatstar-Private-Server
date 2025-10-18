@@ -1,33 +1,30 @@
 import fs from "fs";
 import { CMSMap } from "./tools/CMSMap";
 import { ProtobufHandler } from "./ProtobufHandler";
-import { stringify } from "../utilities/stringify";
-import { ScalingConfigProto } from "./protos/cms/ScalingConfigProto";
-import { SyncResp } from "./protos/SyncResp";
+import crypto from "crypto";
+import zlib from "zlib";
+import { LiveOpsTrackSkinConfigProto } from "./protos/cms/LiveOpsTrackSkinConfigProto";
 
-/*(async () => {
-  const cmsFiles = fs
-    .readdirSync("../express/raw")
-    .filter((el) => el === "NotificationConfig");
-  for (const file of cmsFiles) {
+(async () => {
+  const files = fs.readdirSync("../express/raw");
+  const out = [];
+  for (const file of files) {
+    const name = file.split(".")[0];
+    console.log(name);
     const data = fs.readFileSync(`../express/raw/${file}`);
-    const proto = CMSMap[file];
 
     const handler = new ProtobufHandler("READ", data);
     handler.process();
 
-    const json = handler.parseProto(proto);
-    console.log(json);
-    fs.writeFileSync(`../express/output/${file}`, stringify(json));
+    const json = handler.parseProto(CMSMap[name]);
+
+    out.push({
+      name,
+      data: json,
+      gzip: zlib.gzipSync(data),
+      hash: crypto.createHash("md5").update(data).digest().toString("hex"),
+    });
   }
-})();*/
 
-(async () => {
-  const scaling = fs.readFileSync("./protobuf/tests/files/Profile.bytes");
-  const handler = new ProtobufHandler("READ", scaling);
-  handler.process();
-
-  const json = handler.parseProto(SyncResp);
-
-  const a = await new ProtobufHandler("WRITE").writeProto(json, SyncResp);
+  fs.writeFileSync("../cms.json", JSON.stringify(out, null, 2));
 })();

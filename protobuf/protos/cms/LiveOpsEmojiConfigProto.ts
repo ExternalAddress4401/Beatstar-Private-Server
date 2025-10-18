@@ -4,6 +4,15 @@ import { LiveOpsEmojiSpineTemplate } from "../game/com/spaceape/liveopsemojiconf
 import { LiveOpsEmojiTemplate } from "../game/com/spaceape/liveopsemojiconfig/LiveOpsEmojiTemplate";
 
 export const LiveOpsEmojiConfigProto: Map<number, CMSField> = new Map([
+  [100, { name: "version", type: "string" }],
+  [
+    101,
+    {
+      name: "Settings",
+      type: "group",
+      fields: LiveOpsEmojiSettings,
+    },
+  ],
   [
     1,
     {
@@ -18,15 +27,6 @@ export const LiveOpsEmojiConfigProto: Map<number, CMSField> = new Map([
       name: "LiveOpsEmojiSpines",
       type: "packed",
       fields: LiveOpsEmojiSpineTemplate,
-    },
-  ],
-  [100, { name: "version", type: "string" }],
-  [
-    101,
-    {
-      name: "Settings",
-      type: "group",
-      fields: LiveOpsEmojiSettings,
     },
   ],
 ]);

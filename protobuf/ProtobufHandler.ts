@@ -153,6 +153,9 @@ export class ProtobufHandler {
                 groupHandler.parseProto(cmsRow.fields, subDict.dict)
               );
             }
+            if (dict[cmsRow.name].length === 1) {
+              dict[cmsRow.name] = dict[cmsRow.name][0];
+            }
             break;
           case "packed":
             dict[cmsRow.name] = [];
@@ -197,6 +200,9 @@ export class ProtobufHandler {
             delete protoData[1];
             delete protoData[cmsRow.key ?? 2];
 
+            break;
+          case "raw":
+            dict[cmsRow.name] = protoData[key];
             break;
         }
       }
@@ -347,6 +353,13 @@ export class ProtobufHandler {
           this.writeKey(key, this.typeToWire(subProto.type));
           this.writeVarint(str.length);
           this.writeBuffer(str);
+          break;
+        case "raw":
+          for (const group of json[subProto.name]) {
+            this.writeKey(key, this.typeToWire(subProto.type));
+            this.writeVarint(group.length);
+            this.writeBuffer(group);
+          }
           break;
       }
     }
@@ -513,6 +526,7 @@ export class ProtobufHandler {
       case "varint-repeat":
       case "float-repeat":
       case "hex-string":
+      case "raw":
         return 2;
       case "float":
         return 5;

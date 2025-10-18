@@ -10,7 +10,7 @@ export class UserService extends BaseService {
   async handlePacket(packet: Packet, client: Client) {
     const payload = packet.parsePayload(AllInOneLoginReq);
 
-    const cinta = payload.reqAllInOneLogin[0].cinta;
+    const cinta = payload.reqAllInOneLogin.cinta;
 
     // we'll just use this to auth database requests
     client.setClide(cinta);

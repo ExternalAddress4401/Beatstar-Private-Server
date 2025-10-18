@@ -1,8 +1,10 @@
 import prisma from '../src/lib/prisma.js';
 import { seed as beatmaps } from './seeds/beatmaps.js';
+import { seed as cms } from './seeds/cms.js';
 
 async function main() {
 	beatmaps();
+	cms();
 }
 
 main()

@@ -1,0 +1,3209 @@
+{
+  "LiveOpsEmojis": [
+    {
+      "id": 1,
+      "idLabel": "emoji_100",
+      "animation": "100",
+      "set_id": 1,
+      "emojiSpineTemplate_id": 615079590
+    },
+    {
+      "id": 3,
+      "idLabel": "emoji_crying",
+      "animation": "Cry",
+      "set_id": 1,
+      "emojiSpineTemplate_id": 1674210301
+    },
+    {
+      "id": 4,
+      "idLabel": "emoji_s05_doubletake",
+      "animation": "Doubletake",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1674210301,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 5,
+      "idLabel": "emoji_giggle",
+      "animation": "Giggle",
+      "set_id": 1,
+      "emojiSpineTemplate_id": 1674210301
+    },
+    {
+      "id": 6,
+      "idLabel": "emoji_s17_horns",
+      "animation": "Horns",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 776107144,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 7,
+      "idLabel": "emoji_s06_hypers",
+      "animation": "Hypers",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1674210301,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 8,
+      "idLabel": "emoji_lmao",
+      "animation": "LMAO",
+      "set_id": 1,
+      "emojiSpineTemplate_id": 1674210301
+    },
+    {
+      "id": 9,
+      "idLabel": "emoji_sleeping",
+      "animation": "Sleeping",
+      "set_id": 1,
+      "emojiSpineTemplate_id": 1674210301
+    },
+    {
+      "id": 10,
+      "idLabel": "emoji_s04_starryeyed",
+      "animation": "StarryEyed",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1674210301,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 12,
+      "idLabel": "emoji_tired",
+      "animation": "Tired",
+      "set_id": 1,
+      "emojiSpineTemplate_id": 1674210301
+    },
+    {
+      "id": 11950853,
+      "idLabel": "emoji_s27_GrooveLounge",
+      "animation": "Headphones",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1674210301,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 19173721,
+      "idLabel": "emoji_event_halloween-2022",
+      "animation": "Skull",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 1714274814,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 21944809,
+      "idLabel": "emoji_carnaval2024",
+      "animation": "Carnaval",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 1674210301,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 61373507,
+      "idLabel": "emoji_s08_summerDaze",
+      "animation": "TSunrise",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1779544534,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 81219452,
+      "idLabel": "emoji_s19_NeonNights",
+      "animation": "NeonNights",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1898249032,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 103246251,
+      "idLabel": "emoji_s10_GameTime",
+      "animation": "Ball",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 133353651,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 133314607,
+      "idLabel": "emoji_event_NY_2024",
+      "animation": "2024",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 189393903,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1240142456,
+      "idLabel": "Heartbeat",
+      "animation": "Heartbeat",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 658749441,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 166944083,
+      "idLabel": "emoji_event_artist-linkinPark",
+      "animation": "LinkinPark",
+      "set_id": 4,
+      "emojiSpineTemplate_id": 185958022,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 183204959,
+      "idLabel": "emoji_s16_LoveGames",
+      "animation": "Love Games",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1273309042,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 212546848,
+      "idLabel": "emoji_s18_sunface",
+      "animation": "Sunface",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1674210301,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 318760512,
+      "idLabel": "emoji_s24_IslandBreeze",
+      "animation": "Crab",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1581310839,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 361743438,
+      "idLabel": "emoji_s11_sweatGiggle",
+      "animation": "Sweatgiggle",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1674210301,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 404622663,
+      "idLabel": "emoji_s23_Heatwave",
+      "animation": "fire",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1711494259,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 418663413,
+      "idLabel": "emoji_s22_Astronaut",
+      "animation": "Astronaut",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1674210301,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 479367524,
+      "idLabel": "emoji_s14_MidnightGala",
+      "animation": "Midnight gala",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1674210301,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 488015726,
+      "idLabel": "emoji_event_WomensDay2024",
+      "animation": "IntWomensDay2024",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 1689985420,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 499851580,
+      "idLabel": "emoji_s29_AutumnLeaf",
+      "animation": "Leaf",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1314855090,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 520394035,
+      "idLabel": "emoji_s07_highVoltage",
+      "animation": "High Voltage",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 307712157,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 603924253,
+      "idLabel": "emoji_event_easter_2024",
+      "animation": "EasterEgg",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 1922370415,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 610295804,
+      "idLabel": "emoji_s35_Flower",
+      "animation": "Flower",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1167093139,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 629414340,
+      "idLabel": "emoji_event_artist-imagineDragons",
+      "animation": "ImagineDragons",
+      "set_id": 4,
+      "emojiSpineTemplate_id": 576623228,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 698059326,
+      "idLabel": "emoji_event_GGJ-2023-toad",
+      "animation": "GGJ_Toad",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 1235243152,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 744916650,
+      "idLabel": "emoji_event_xmas_2023",
+      "animation": "Rudolph",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 1674210301,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 753906469,
+      "idLabel": "emoji_s02_heartbreak",
+      "animation": "Heartbreak",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 554371209,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 800495833,
+      "idLabel": "emoji_s31_Sparkle",
+      "animation": "PartyHat",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1674210301,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 810381132,
+      "idLabel": "emoji_event_xmas-2022",
+      "animation": "Xmas",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 1339101729,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 864820070,
+      "idLabel": "emoji_event_artist-eminem",
+      "animation": "Eminem",
+      "set_id": 4,
+      "emojiSpineTemplate_id": 525456731,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 922254732,
+      "idLabel": "emoji_scared_halloween2023",
+      "animation": "Scared",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 1674210301,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 946205341,
+      "idLabel": "emoji_rage",
+      "animation": "Angry",
+      "set_id": 1,
+      "emojiSpineTemplate_id": 1674210301
+    },
+    {
+      "id": 969611661,
+      "idLabel": "emoji_event_BHM",
+      "animation": "BHM",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 1940406042,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 983194570,
+      "idLabel": "emoji_s03_sunglasses",
+      "animation": "Sunglasses",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1674210301,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1005981688,
+      "idLabel": "emoji_s30_XmasLights",
+      "animation": "XmasLights",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1674210301,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1006057217,
+      "idLabel": "emoji_event_artist-nickiMinaj",
+      "animation": "Token_Nikiminaj",
+      "set_id": 4,
+      "emojiSpineTemplate_id": 1368723467,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 439680225,
+      "idLabel": "LunarNewYear_LunarNewYear",
+      "animation": "LunarNewYear",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 40155828,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1038196379,
+      "idLabel": "emoji_s01_snowman",
+      "animation": "Snowman",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 208070939,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1051122616,
+      "idLabel": "emoji_s12_Country",
+      "animation": "B-country",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1979565482,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1066792607,
+      "idLabel": "emoji_yeehaw",
+      "animation": "yeehaw",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1343802745,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1073019607,
+      "idLabel": "emoji_s15_SuperSet",
+      "animation": "Gym",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1674210301,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1194959153,
+      "idLabel": "emoji_event_intWomensDay-2023",
+      "animation": "Emote_IntWomensDay",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 289375800,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1223595124,
+      "idLabel": "emoji_s26_RetroRush",
+      "animation": "P1",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 221042869,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1244670233,
+      "idLabel": "emoji_LNY_Dragon",
+      "animation": "Dragon",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 290597676,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1251959436,
+      "idLabel": "emoji_event_artist-shaniaTwain",
+      "animation": "ShaniaTwain",
+      "set_id": 4,
+      "emojiSpineTemplate_id": 895687783,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1256659132,
+      "idLabel": "emoji_s09_UKTakeover",
+      "animation": "Tea",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 124254472,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1260685548,
+      "idLabel": "emoji_event_LeadSingerEnergy",
+      "animation": "Leadsinger",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 1674210301,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1412324809,
+      "idLabel": "emoji_s25_WildHeart",
+      "animation": "FlamingHeart",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1136398510,
+      "rewardTags_id": [
+        5,
+        2
+      ]
+    },
+    {
+      "id": 1417418126,
+      "idLabel": "emoji_s13_HolidayParty",
+      "animation": "emoji_s13_HolidayParty",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 411564985,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1427165260,
+      "idLabel": "emoji_s28_MonsterBeats",
+      "animation": "Monstercat",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 606726792,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1565823363,
+      "idLabel": "emoji_s21_RainbowRhythms",
+      "animation": "Pride",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1674210301,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1643394089,
+      "idLabel": "emoji_s20_CenterStage",
+      "animation": "CenterStage",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 612399273,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1697031335,
+      "idLabel": "emoji_event_anniversary-2022",
+      "animation": "BeatstarBirthday",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 1074048118,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1697339010,
+      "idLabel": "emoji_event_artist-ThirtySecondsMars",
+      "animation": "30STM",
+      "set_id": 4,
+      "emojiSpineTemplate_id": 1235977897,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1843465520,
+      "idLabel": "emoji_trolls",
+      "animation": "Trolls",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 837912844,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1889587088,
+      "idLabel": "emoji_event_GGJ-2023-leopard",
+      "animation": "GGJ_SnowLeopard",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 190918056,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1913632708,
+      "idLabel": "emoji_s32_Winter",
+      "animation": "Cold",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1674210301,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1917042143,
+      "idLabel": "emoji_event_artist-morganWallen",
+      "animation": "MorganWallen",
+      "set_id": 4,
+      "emojiSpineTemplate_id": 268309482,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1937104617,
+      "idLabel": "emoji_s33_Dizzy",
+      "animation": "Dizzy",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1674210301,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 2053292945,
+      "idLabel": "emoji_event_StPatricksDay",
+      "animation": "CS_StPatricksDay",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 1509703003,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 2119028538,
+      "idLabel": "Emote_GGJ_MantaRay",
+      "animation": "Emote_GGJ_MantaRay",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 169650141,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 2130032046,
+      "idLabel": "emoji_s34_Wink",
+      "animation": "Wink",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 558340543,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 475654433,
+      "idLabel": "emoji_s36_Vinyl",
+      "animation": "Emote_Record",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 285488154,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1745149567,
+      "idLabel": "Emote_CherryBlossom",
+      "animation": "Emote_CherryBlossom",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 1800583042,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 816838694,
+      "idLabel": "emoji_event_newYear-2022",
+      "animation": "Confetti_Cannon",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 1886842822,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 861182454,
+      "idLabel": "emoji_s37_theKillers",
+      "animation": "TP37_TheKillers_Emote",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1457229284,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1433056702,
+      "idLabel": "emoji_event_artist_theKillers",
+      "animation": "Token_TheKillers",
+      "set_id": 4,
+      "emojiSpineTemplate_id": 441871402,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1436210535,
+      "idLabel": "emoji_event_Pride2024",
+      "animation": "heart emoji",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 1239214992,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1635416226,
+      "idLabel": "TP38_SunsetFestival_TP38_SunsetFestival",
+      "animation": "TP38_SunsetFestival",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1709330873,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1525048229,
+      "idLabel": "TP39_LoveSpectrum_Emoji_TP39_LoveSpectrumEmoji",
+      "animation": "TP39_LoveSpectrumEmoji",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 122817195,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 628784059,
+      "idLabel": "4thJuly_2024_Rocket",
+      "animation": "Rocket",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 547079588,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1332644887,
+      "idLabel": "emoji_TP40_Electric_Summer",
+      "animation": "Electric_Summr_Emoji",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1462862964,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 388657507,
+      "idLabel": "Pinata_Pinata",
+      "animation": "Pinata",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1436055335,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 492945409,
+      "idLabel": "emoji_PostMalone",
+      "animation": "Emote_Token_NAME",
+      "set_id": 4,
+      "emojiSpineTemplate_id": 455917392,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1462388815,
+      "idLabel": "emoji_S42_RumbleRhythms",
+      "animation": "Emote",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 887915206,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 713892496,
+      "idLabel": "Emote_BeatstarBirthday_03",
+      "animation": "BeatstarBirthday03",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 532191111,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 356241775,
+      "idLabel": "HispanicHeritageMonth_2024",
+      "animation": "HispanicHeritageMonth",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 1796037381
+    },
+    {
+      "id": 646396295,
+      "idLabel": "Emote_TP43",
+      "animation": "Emote_Token_CraigDavid",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 652454331,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1133588376,
+      "idLabel": "TP44_Coldplay",
+      "animation": "TP44_Coldplay",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1785568509,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1599339472,
+      "idLabel": "TP45_Emote",
+      "animation": "TP45_Emote",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 645013564,
+      "rewardTags_id": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": 1690754868,
+      "idLabel": "Emote_Ghost_Halloween2024",
+      "animation": "animation",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 979041196
+    },
+    {
+      "id": 985037977,
+      "idLabel": "tp46_snowflake",
+      "animation": "kingbee_snowflake-emoji",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1958935816,
+      "rewardTags_id": [
+        2
+      ]
+    },
+    {
+      "id": 1388455854,
+      "idLabel": "Emoji_Thanksgiving_2024",
+      "animation": "Emoli_Thanksgiving",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 507730800,
+      "rewardTags_id": [
+        2
+      ]
+    },
+    {
+      "id": 1322895954,
+      "idLabel": "gingerbread_emoji",
+      "animation": "Gingerbread_emoji",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 417904587
+    },
+    {
+      "id": 1849543984,
+      "idLabel": "Fireworkemoji_2024/2025",
+      "animation": "Fireworkemoji",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 2036955668
+    },
+    {
+      "id": 1523243275,
+      "idLabel": "Christmas_tree_emoji_2024",
+      "animation": "Christmas_tree_emoji",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 1946179182
+    },
+    {
+      "id": 481607435,
+      "idLabel": "TP47_Emote_TP47_Emote",
+      "animation": "TP47_Emote",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1964195852
+    },
+    {
+      "id": 1058534862,
+      "idLabel": "NewHorizons_Emote",
+      "animation": "NewHorizons_Emote",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 347993307
+    },
+    {
+      "id": 1138639694,
+      "idLabel": "TP49_Emote",
+      "animation": "TP49_Emote",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1434812995
+    },
+    {
+      "id": 1505152825,
+      "idLabel": "SB_Football_2025",
+      "animation": "Super_Bowl2025",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 1245078683
+    },
+    {
+      "id": 308569190,
+      "idLabel": "Emote_Token_TP50_JohnLennon",
+      "animation": "Emote_Token_JohnLennon",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1739931345
+    },
+    {
+      "id": 2052872055,
+      "idLabel": "BHM2025_Emote_BHM2025_Emote",
+      "animation": "BHM2025_Emote",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 2136740019
+    },
+    {
+      "id": 1983068751,
+      "idLabel": "emoji-token-BVZ",
+      "animation": "Emote_Token_BVZ",
+      "set_id": 4,
+      "emojiSpineTemplate_id": 1971222623
+    },
+    {
+      "id": 442119747,
+      "idLabel": "Emote_TP51",
+      "animation": "TP51_Emoji",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 712767365
+    },
+    {
+      "id": 476910199,
+      "idLabel": "Carnaval2025_Emoji_Carnaval2025_Emoji",
+      "animation": "Carnaval2025_Emoji",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 521701259
+    },
+    {
+      "id": 1411726129,
+      "idLabel": "IWD2025_Emote_IWD2025_Emote",
+      "animation": "IWD2025_Emote",
+      "set_id": 2,
+      "emojiSpineTemplate_id": 1352929477
+    },
+    {
+      "id": 681969627,
+      "idLabel": "TP52_Emote",
+      "animation": "TP52_Emote",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 899686446
+    },
+    {
+      "id": 240692104,
+      "idLabel": "TP53_Emote",
+      "animation": "TP53_Emote",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 753027222
+    },
+    {
+      "id": 1399249272,
+      "idLabel": "TP54_Emote",
+      "animation": "TP54_Emote",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1545475024
+    },
+    {
+      "id": 817536200,
+      "idLabel": "BS_EasterBunny_Emote_BS_EasterBunny_Emote",
+      "animation": "BS_EasterBunny_Emote",
+      "emojiSpineTemplate_id": 214297284
+    },
+    {
+      "id": 293085005,
+      "idLabel": "EarthDay2025_Emote_EarthDay2025_Emote",
+      "animation": "EarthDay2025_Emote",
+      "emojiSpineTemplate_id": 311069942
+    },
+    {
+      "id": 2093942697,
+      "idLabel": "TP55_Emote",
+      "animation": "TP55_Emote",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 439913557
+    },
+    {
+      "id": 985270914,
+      "idLabel": "TP56_Emote",
+      "animation": "TP56_Emote",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 799627868
+    },
+    {
+      "id": 1299965759,
+      "idLabel": "BS_MHA_Emote_BS_MHA_Emote",
+      "animation": "BS_MHA_Emote",
+      "emojiSpineTemplate_id": 1365271462
+    },
+    {
+      "id": 203389257,
+      "idLabel": "TP57_Emote",
+      "animation": "TP57_Emote",
+      "set_id": 3,
+      "emojiSpineTemplate_id": 1522023501
+    },
+    {
+      "id": 1968868364,
+      "idLabel": "TP58_Emoji_TP58_Emoji",
+      "animation": "TP58_Emoji",
+      "emojiSpineTemplate_id": 778507452
+    }
+  ],
+  "LiveOpsEmojiSpines": [
+    {
+      "id": 40155828,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/9ddaccfb-1dba-443d-b90e-bc396dc6a9e7/LunarNewYear.png",
+        "crc": 3012816969,
+        "id": "f6d841b1-0edd-4dd4-9394-c470a543c067"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/9ddaccfb-1dba-443d-b90e-bc396dc6a9e7/LunarNewYear.json",
+        "crc": 3477205450,
+        "id": "52190573-8d6c-4900-80b9-e45cbf6c45ad"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/9ddaccfb-1dba-443d-b90e-bc396dc6a9e7/LunarNewYear.atlas.txt",
+        "crc": 2843419498,
+        "id": "781f4c9b-7126-48d3-920a-edee965f3e45"
+      },
+      "idLabel": "LunarNewYear",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 124254472,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/47990866-d0b4-423a-85dd-5e3a84ef4e61/Tea.png",
+        "crc": 3056130131,
+        "id": "2ff0b490-fd2f-421c-aa67-3249f97103f6"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/47990866-d0b4-423a-85dd-5e3a84ef4e61/Tea.json",
+        "crc": 4183733478,
+        "id": "064053b8-686f-426b-92bc-45799c2cf148"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/47990866-d0b4-423a-85dd-5e3a84ef4e61/Tea.atlas.txt",
+        "crc": 2351537476,
+        "id": "4c4d90c2-d002-430a-8e15-b6b1e1a81d4a"
+      },
+      "idLabel": "Tea",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 133353651,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/4cf12510-7fb5-4fa3-922f-5b846b0ef2a5/Ball.png",
+        "crc": 1854194131,
+        "id": "2ea27e0b-ad22-4508-9284-97250523f63c"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/4cf12510-7fb5-4fa3-922f-5b846b0ef2a5/Ball.json",
+        "crc": 3320452583,
+        "id": "b44db692-e07e-4dd1-95cb-0213a31f7712"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/4cf12510-7fb5-4fa3-922f-5b846b0ef2a5/Ball.atlas.txt",
+        "crc": 178034950,
+        "id": "38fc8b1a-5b5a-4bc1-989e-1a4b96992a2c"
+      },
+      "idLabel": "Ball",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 169650141,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/a6a95f7a-a7b9-4aeb-b2c7-855460307245/Emote_GGJ_MantaRay.png",
+        "crc": 1987680154,
+        "id": "8131b571-6c61-4e6b-9d40-fbe52a3128e1"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/a6a95f7a-a7b9-4aeb-b2c7-855460307245/Emote_GGJ_MantaRay.json",
+        "crc": 867765005,
+        "id": "aa0868af-fcfe-4df3-a400-6661ffbbf6ba"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/a6a95f7a-a7b9-4aeb-b2c7-855460307245/Emote_GGJ_MantaRay.atlas",
+        "crc": 344137460,
+        "id": "057b1575-a347-4ab7-898f-08293ef73058"
+      },
+      "idLabel": "Emote_GGJ_MantaRay",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 185958022,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/23883729-fca4-4ef2-9136-f9e32a6a7579/Token_LinkinPark.png",
+        "crc": 1125389994,
+        "id": "314eaad1-9651-48c0-bf58-f8ebfbea8597"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/23883729-fca4-4ef2-9136-f9e32a6a7579/Emote_Token_LinkinPark.json",
+        "crc": 1954696601,
+        "id": "c57db880-10a2-48bd-8c22-ae5cd9ac9e44"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/23883729-fca4-4ef2-9136-f9e32a6a7579/Token_LinkinPark.atlas.txt",
+        "crc": 1108647369,
+        "id": "16a426bc-68f7-4c7e-ac82-3a2f96aa3cc0"
+      },
+      "idLabel": "Token_LinkinPark",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 189393903,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/7b1ee652-86d8-4663-bae2-b61d79cb4d84/Emote_2024.png",
+        "crc": 3168425010,
+        "id": "07026728-2991-454a-8e9c-039d63675f6a"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/7b1ee652-86d8-4663-bae2-b61d79cb4d84/Emote_2024.json",
+        "crc": 781459818,
+        "id": "045c9538-c805-4a90-9751-f859fc2fa284"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/7b1ee652-86d8-4663-bae2-b61d79cb4d84/Emote_2024.atlas.txt",
+        "crc": 2251162531,
+        "id": "283c8763-5705-40e9-b9bd-21bc17021a0c"
+      },
+      "idLabel": "Emote_2024",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 190918056,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/7cba0530-46f8-4148-b354-638ef90da170/GGJSnowLeopard.png",
+        "crc": 350727427,
+        "id": "ee5ba20a-f4df-4417-8ecf-c3b226634a92"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/7cba0530-46f8-4148-b354-638ef90da170/GGJ_SnowLeopard.json",
+        "crc": 696467853,
+        "id": "c1ee1cf7-11d3-49ff-b08d-0f40911c5d3b"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/7cba0530-46f8-4148-b354-638ef90da170/GGJSnowLeopard.atlas",
+        "crc": 1696033057,
+        "id": "f64c0035-0393-4f6e-b22b-5d6f1156bebe"
+      },
+      "idLabel": "GGJSnowLeopard",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 208070939,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/55e60596-d05c-4ff3-8dcb-4f269766c28c/Snowman.png",
+        "crc": 2301558888,
+        "id": "1c064833-09c6-413a-a3f4-13004cc85e01"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/55e60596-d05c-4ff3-8dcb-4f269766c28c/Snowman.json",
+        "crc": 603099127,
+        "id": "f111b3ca-555c-4c4d-a497-e9df1240062d"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/55e60596-d05c-4ff3-8dcb-4f269766c28c/Snowman.atlas.txt",
+        "crc": 2587767804,
+        "id": "f247f827-c978-4f8d-841a-eb13fb7dbf9b"
+      },
+      "idLabel": "Snowman",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 221042869,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/735326e9-d444-463c-99b3-6071746b3f53/P1.png",
+        "crc": 1650800725,
+        "id": "c3db0aba-b455-46c9-9ed6-c7a069604b85"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/735326e9-d444-463c-99b3-6071746b3f53/P1.json",
+        "crc": 2302314746,
+        "id": "5c552c75-bf48-4191-a941-02710b600253"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/735326e9-d444-463c-99b3-6071746b3f53/P1.atlas.txt",
+        "crc": 166749337,
+        "id": "5b180498-128e-46bb-9ca6-97e704f70d3f"
+      },
+      "idLabel": "P1",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 268309482,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d3233c5d-be49-4c61-90bd-31703e6acebe/Token_MorganWallen.png",
+        "crc": 1745323640,
+        "id": "532f95c3-c8a3-4a60-8e20-788a5e661f68"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d3233c5d-be49-4c61-90bd-31703e6acebe/Emote_Token_MorganWallen.json",
+        "crc": 849863064,
+        "id": "7f6abc6c-3c44-468f-acc8-e3e44e902cf4"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d3233c5d-be49-4c61-90bd-31703e6acebe/Token_MorganWallen.atlas.txt",
+        "crc": 3484213348,
+        "id": "4b20f26f-5dca-4cb2-a67c-4b742b669350"
+      },
+      "idLabel": "Token_MorganWallen",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 289375800,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/0d839727-bfea-4faf-bb23-4d8b85d38bda/Emote_IntWomensDay.png",
+        "crc": 4194475960,
+        "id": "4bd8b06d-1c82-4ca1-bc4f-f3fe0d8f1f16"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/0d839727-bfea-4faf-bb23-4d8b85d38bda/Emote_IntWomensDay.json",
+        "crc": 4142896456,
+        "id": "c433a6b6-ed2d-4523-a0ae-8b5c817384e7"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/0d839727-bfea-4faf-bb23-4d8b85d38bda/Emote_IntWomensDay.atlas",
+        "crc": 477498922,
+        "id": "5abd74ce-ed7a-4836-81dc-5fc52f85daf5"
+      },
+      "idLabel": "Emote_IntWomensDay",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 290597676,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/6555b770-7c07-4ba7-ad0e-ea34fec94c69/dragon.png",
+        "crc": 2102336318,
+        "id": "2138a9f7-69c6-47b4-a965-cf7ef72d8a2e"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/6555b770-7c07-4ba7-ad0e-ea34fec94c69/Dragon.json",
+        "crc": 2979624976,
+        "id": "73dc6f05-cecd-400d-b620-6e4423c72612"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/6555b770-7c07-4ba7-ad0e-ea34fec94c69/dragon.atlas.txt",
+        "crc": 951521086,
+        "id": "64799020-2cc4-46f4-bf81-e25cf82a442e"
+      },
+      "idLabel": "dragon",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 307712157,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/05bd3d67-0d52-4e53-926b-8828b495f3ea/HighVoltage.png",
+        "crc": 3303015803,
+        "id": "69b06600-599d-41cb-89d6-f6ebfdff6190"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/05bd3d67-0d52-4e53-926b-8828b495f3ea/HighVoltage.json",
+        "crc": 2209794902,
+        "id": "7d94eb23-6e8b-4ab6-8f06-d9674af8c621"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/05bd3d67-0d52-4e53-926b-8828b495f3ea/HighVoltage.atlas.txt",
+        "crc": 1743109386,
+        "id": "a8878b37-805d-431f-a327-a1ece56467cc"
+      },
+      "idLabel": "HighVoltage",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 411564985,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/2e1dde0b-0714-4771-9b93-4a2e7fb6154c/emoji_s13_HolidayParty.png",
+        "crc": 3471846186,
+        "id": "755a9d77-47dd-4512-8141-ef3fadbc5709"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/2e1dde0b-0714-4771-9b93-4a2e7fb6154c/emoji_s13_HolidayParty.json",
+        "crc": 2946069570,
+        "id": "0cb3e3cc-2ef2-486d-a61c-2bcb73b09bf0"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/2e1dde0b-0714-4771-9b93-4a2e7fb6154c/emoji_s13_HolidayParty.atlas",
+        "crc": 3549635241,
+        "id": "2e260c9e-bee7-4fe7-9ad1-0dfcf894b508"
+      },
+      "idLabel": "emoji_s13_HolidayParty",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 525456731,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/1cc84321-6403-4a30-b345-2f6c3e058cf5/Emote_Token_Eminem.png",
+        "crc": 2720674607,
+        "id": "d3e6631b-6aa6-4a67-a249-b8b8729da0a6"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/1cc84321-6403-4a30-b345-2f6c3e058cf5/Emote_Token_Eminem.json",
+        "crc": 1819806725,
+        "id": "316eff30-182f-41cb-8e5f-3d4192d85231"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/1cc84321-6403-4a30-b345-2f6c3e058cf5/Emote_Token_Eminem.atlas.txt",
+        "crc": 1410609474,
+        "id": "d92134c8-7c8d-4a61-b39d-36648046e6f1"
+      },
+      "idLabel": "Emote_Token_Eminem",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 554371209,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/99af346d-8a7e-4802-9dcf-f962aed06274/HeartBreak.png",
+        "crc": 650658586,
+        "id": "35f52c93-859c-4ff4-a203-81c0d14d5348"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/99af346d-8a7e-4802-9dcf-f962aed06274/HeartBreak.json",
+        "crc": 3240016956,
+        "id": "61fae7d2-08bf-4355-9006-e7f85cafc590"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/99af346d-8a7e-4802-9dcf-f962aed06274/HeartBreak.atlas.txt",
+        "crc": 2439442775,
+        "id": "1b034e08-2c3b-4faa-9a3a-3921ad5a7dfd"
+      },
+      "idLabel": "HeartBreak",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 558340543,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/82e44aff-1064-4cb4-8b6e-214f1268a473/S34_Wink.png",
+        "crc": 1870572196,
+        "id": "43e84221-3a32-4a9a-8b91-e0b1f60a9582"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/82e44aff-1064-4cb4-8b6e-214f1268a473/S34_Wink.json",
+        "crc": 2119496598,
+        "id": "00563d59-dbab-40a4-8b24-f38c78f41a72"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/82e44aff-1064-4cb4-8b6e-214f1268a473/S34_Wink.atlas.txt",
+        "crc": 4196811439,
+        "id": "cfa11290-a983-4c91-a665-424ab9b9d8da"
+      },
+      "idLabel": "S34_Wink",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 576623228,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/1aaf777c-f573-4b8b-89d9-fbbff7b3516c/Token_ImagineDragons_01.png",
+        "crc": 4268440780,
+        "id": "8d92e987-6951-404f-99a8-5a5e4eb0b4be"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/1aaf777c-f573-4b8b-89d9-fbbff7b3516c/Token_ImagineDragons_01.json",
+        "crc": 1031531472,
+        "id": "124cdf78-dc5e-419f-9b0d-a4f6aa79c708"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/1aaf777c-f573-4b8b-89d9-fbbff7b3516c/Token_ImagineDragons_01.atlas.txt",
+        "crc": 775093895,
+        "id": "f55fc361-ea94-4063-89fb-16efc4fe2797"
+      },
+      "idLabel": "Token_ImagineDragons_01",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 606726792,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/efacb46d-3d39-4cf1-a35d-18ab8e29cf86/Token_Monstercat.png",
+        "crc": 4143661771,
+        "id": "eeb74be0-d50a-44d0-ba8f-c5db3922b6b2"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/efacb46d-3d39-4cf1-a35d-18ab8e29cf86/Monstercat_Emote_Token.json",
+        "crc": 3113114142,
+        "id": "52271c87-231f-4194-8292-d759848b25cd"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/efacb46d-3d39-4cf1-a35d-18ab8e29cf86/Token_Monstercat.atlas.txt",
+        "crc": 2725939814,
+        "id": "925c3333-0e0e-400b-b322-fb7de2b957ad"
+      },
+      "idLabel": "Token_Monstercat",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 612399273,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/e2544e48-03d7-4862-9048-54802ebd550b/Emote_S20_CenterStage.png",
+        "crc": 2752670933,
+        "id": "e6c37af7-a296-4f5a-a33c-185b9dddbce2"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/e2544e48-03d7-4862-9048-54802ebd550b/Emote_S20_CenterStage.json",
+        "crc": 1165238025,
+        "id": "84d8f47b-49a3-4010-b3de-3248a82e501b"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/e2544e48-03d7-4862-9048-54802ebd550b/Emote_S20_CenterStage.atlas.txt",
+        "crc": 1131610353,
+        "id": "da90d602-cd26-45b6-bf59-bde178e997b7"
+      },
+      "idLabel": "Emote_S20_CenterStage",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 615079590,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/629fec66-7219-4596-be70-6b0dd4412a27/100.png",
+        "crc": 2783213350,
+        "id": "e89e2534-778e-44d6-9fb7-102964e0bede"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/629fec66-7219-4596-be70-6b0dd4412a27/100.json",
+        "crc": 3743388549,
+        "id": "c7e0cdf3-a696-412c-8fc3-f0e34cd87d43"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/629fec66-7219-4596-be70-6b0dd4412a27/100.atlas.txt",
+        "crc": 94544400,
+        "id": "312ddb02-e54f-41d2-8bb3-0f83c1cccf2b"
+      },
+      "idLabel": "100",
+      "Skins": [
+        "Emote_100_01"
+      ]
+    },
+    {
+      "id": 658749441,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/df8fcf22-b9e9-4500-a095-b185da216169/Heartbeat.png",
+        "crc": 3219413434,
+        "id": "2dbf97f6-2714-4d43-a4aa-2d8e2955f7f7"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/df8fcf22-b9e9-4500-a095-b185da216169/Heartbeat.json",
+        "crc": 941240777,
+        "id": "8305c210-3a96-4c43-a708-e82857b7ea09"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/df8fcf22-b9e9-4500-a095-b185da216169/Heartbeat.atlas",
+        "crc": 3022110932,
+        "id": "0f8b3cc7-40b2-4422-92de-f36947e86129"
+      },
+      "idLabel": "Heartbeat",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 776107144,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/9513bb70-3910-4c3a-8f99-82ea077fc37c/Emote_Horns_01.png",
+        "crc": 2035408721,
+        "id": "2f06ddb0-3f31-4238-8ed1-b39350b78836"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/9513bb70-3910-4c3a-8f99-82ea077fc37c/UI_emote_Horns.json",
+        "crc": 1908243203,
+        "id": "ddd862ec-319a-461b-a3b1-1e9122422965"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/9513bb70-3910-4c3a-8f99-82ea077fc37c/Emote_Horns_01.atlas.txt",
+        "crc": 3629352298,
+        "id": "4dbe55e6-8798-4254-aef3-dd636b1aa6b3"
+      },
+      "idLabel": "Emote_Horns_01",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 837912844,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/aa33c2e2-81ee-474c-a634-3108c771eace/Token_Trolls.png",
+        "crc": 2623186611,
+        "id": "2891844b-44f4-4f49-b981-9a9d912ddf84"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/aa33c2e2-81ee-474c-a634-3108c771eace/Emote_Token_Trolls.json",
+        "crc": 919176499,
+        "id": "a2c259d5-0e2b-48e0-9693-a34ad9af58ff"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/aa33c2e2-81ee-474c-a634-3108c771eace/Token_Trolls.atlas.txt",
+        "crc": 1275174308,
+        "id": "6ddec73e-1a58-498b-853c-2d5d0e27d590"
+      },
+      "idLabel": "Token_Trolls",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 895687783,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/b6ef63ff-0d4b-4813-aa99-8fe7fca71970/Token_ShaniaTwain.png",
+        "crc": 2226244416,
+        "id": "8521d5fd-d609-43b1-aad2-2bfe816fccb0"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/b6ef63ff-0d4b-4813-aa99-8fe7fca71970/Emote_Token_ShaniaTwain.json",
+        "crc": 835141922,
+        "id": "c7e9ad8d-3ded-419a-bec9-ea18b7d42ed9"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/b6ef63ff-0d4b-4813-aa99-8fe7fca71970/Token_ShaniaTwain.atlas.txt",
+        "crc": 3323030779,
+        "id": "be44149b-1cfd-4068-aaae-0212db8375a0"
+      },
+      "idLabel": "Token_ShaniaTwain",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1074048118,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/24b24bad-59db-4f8f-920f-940c029031a3/Emote_BeatstarBirthday_01.png",
+        "crc": 4035577136,
+        "id": "baff4b4a-049e-45fa-8710-cb2fe65393e8"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/24b24bad-59db-4f8f-920f-940c029031a3/Emote_BeatstarBirthday_01.json",
+        "crc": 1210481511,
+        "id": "6c03583d-e5e1-423f-9000-ae993f7eb7ee"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/24b24bad-59db-4f8f-920f-940c029031a3/Emote_BeatstarBirthday_01.atlas.txt",
+        "crc": 3102654544,
+        "id": "4f4a3e38-ec37-4266-a667-cc7a25d2c5aa"
+      },
+      "idLabel": "Emote_BeatstarBirthday_01",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1136398510,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/cf66607b-26d8-419c-80d6-07cbd32490c4/S25_FlamingHeart.png",
+        "crc": 2444341448,
+        "id": "3d3fd132-9784-45c6-89dd-8f5b3267264f"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/cf66607b-26d8-419c-80d6-07cbd32490c4/S25_FlamingHeart.json",
+        "crc": 2120324539,
+        "id": "394d1a8f-6f73-4ff1-b9c8-4b253a1d2105"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/cf66607b-26d8-419c-80d6-07cbd32490c4/S25_FlamingHeart.atlas.txt",
+        "crc": 3547581919,
+        "id": "049f7632-59e8-4d50-a426-a1991d298819"
+      },
+      "idLabel": "S25_FlamingHeart",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1139535797,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/45f656f7-6117-494c-ae66-c819fbcfa97e/Token_SamSmith.png",
+        "crc": 893050532,
+        "id": "cf04472c-1418-4275-bd57-6b498455ec6a"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/45f656f7-6117-494c-ae66-c819fbcfa97e/Emote_Token_SamSmith.json",
+        "crc": 2235787069,
+        "id": "54cebef6-7018-4e93-9726-cb6fbe2d3f75"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/45f656f7-6117-494c-ae66-c819fbcfa97e/Token_SamSmith.atlas.txt",
+        "crc": 1265213218,
+        "id": "d1e67249-cb82-4995-998c-e7d97c685ca4"
+      },
+      "idLabel": "Token_SamSmith",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1149498889,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/3db09863-f1b9-4afb-9328-07c00dd9ade9/Emote_Heartbeat_01.png",
+        "crc": 3991071136,
+        "id": "12a74443-f0c5-4140-ae5c-3a07b8ab8c99"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/3db09863-f1b9-4afb-9328-07c00dd9ade9/UI_emote_Heartleft.json",
+        "crc": 2701086818,
+        "id": "525913cb-9a24-4432-b27e-f02b933df1b2"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/3db09863-f1b9-4afb-9328-07c00dd9ade9/Emote_Heartbeat_01.atlas.txt",
+        "crc": 2549777306,
+        "id": "28f7ed15-d3ca-4dd7-98e7-4baf9de5e323"
+      },
+      "idLabel": "Emote_Heartbeat_01",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1167093139,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/ba1c1983-75e4-4087-bb23-89b76c82ce70/Flower.png",
+        "crc": 3800378427,
+        "id": "a24fc012-490a-49a2-8a34-4235d073cff3"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/ba1c1983-75e4-4087-bb23-89b76c82ce70/Flower.json",
+        "crc": 1419319207,
+        "id": "7a514475-d1ea-4954-aec7-056b9c95090d"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/ba1c1983-75e4-4087-bb23-89b76c82ce70/Flower.atlas.txt",
+        "crc": 1026833408,
+        "id": "d133cff3-93c2-452a-83cc-1b5caecafca5"
+      },
+      "idLabel": "Flower",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1235243152,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/7c169058-3e77-4321-8a77-5e0ea9e3e62b/ggj_toad.png",
+        "crc": 36215620,
+        "id": "a5f91d74-cc36-4d63-b869-b0caea819f41"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/7c169058-3e77-4321-8a77-5e0ea9e3e62b/GGJ_Toad.json",
+        "crc": 4064677372,
+        "id": "90e500c5-3be3-4d4c-8311-218b7b56c741"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/7c169058-3e77-4321-8a77-5e0ea9e3e62b/ggj_toad.atlas",
+        "crc": 1724588107,
+        "id": "ad26a0c5-c195-49bd-a165-5b5899bee11b"
+      },
+      "idLabel": "ggj_toad",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1235977897,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/957ca7ba-86ad-43d8-b0a7-efbccf7a1d42/Token_30STM.png",
+        "crc": 2088268831,
+        "id": "7f1968c6-7d86-47d2-9cdd-cad66ca9a6d9"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/957ca7ba-86ad-43d8-b0a7-efbccf7a1d42/30STM_Emote_Token.json",
+        "crc": 1719342627,
+        "id": "c4b68fc2-ba77-4204-b136-c830e724d49b"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/957ca7ba-86ad-43d8-b0a7-efbccf7a1d42/Token_30STM.atlas.txt",
+        "crc": 3161078421,
+        "id": "679b5bfb-fc2a-454b-b48c-ac9b1d371d4c"
+      },
+      "idLabel": "Token_30STM",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1273309042,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/27d31f2a-eb5c-4fca-9453-76d6ffa48abb/LoveGames.png",
+        "crc": 1593167436,
+        "id": "a655b273-c79b-4f34-bbc4-d452f960f045"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/27d31f2a-eb5c-4fca-9453-76d6ffa48abb/LoveGames.json",
+        "crc": 1975296285,
+        "id": "ca2db08a-7070-41ed-bcb9-cf09d79f1cdb"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/27d31f2a-eb5c-4fca-9453-76d6ffa48abb/LoveGames.atlas.txt",
+        "crc": 3098572480,
+        "id": "d1595974-24a2-450e-aa6d-8e433ed75f4d"
+      },
+      "idLabel": "LoveGames",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1314855090,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/4ecbf5b6-b011-4c35-82e1-f94a1b3d36aa/Autumn_Leaf.png",
+        "crc": 2519816557,
+        "id": "5b7380d8-d3b3-4376-99e6-8ce12ac8c745"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/4ecbf5b6-b011-4c35-82e1-f94a1b3d36aa/Autumn_Leaf.json",
+        "crc": 340419523,
+        "id": "3c1bb5a8-1a87-4e57-ae05-4226e8bc5d44"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/4ecbf5b6-b011-4c35-82e1-f94a1b3d36aa/Autumn_Leaf.atlas.txt",
+        "crc": 1534786486,
+        "id": "9f4cdddc-e989-4d11-8bf8-b6805a6b3aeb"
+      },
+      "idLabel": "Autumn_Leaf",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1339101729,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/829d21c4-4836-41f9-aa18-a4ea9dd5d562/Xmas.png",
+        "crc": 1616039449,
+        "id": "05471a80-5bcc-4b76-ab69-e0de3bfcc9f7"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/829d21c4-4836-41f9-aa18-a4ea9dd5d562/Xmas.json",
+        "crc": 605067732,
+        "id": "3a23186b-ff6d-41cb-8b3c-3db83879a92b"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/829d21c4-4836-41f9-aa18-a4ea9dd5d562/Xmas.atlas.txt",
+        "crc": 2249337807,
+        "id": "838540d4-36e6-4dd8-9ced-62e117af9e5a"
+      },
+      "idLabel": "Xmas",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1343802745,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/91f2c6cd-6fc5-4273-b806-121ad6da4c68/yeehaw.png",
+        "crc": 2351669910,
+        "id": "f6b22360-56f4-439f-bcb9-7c2bd15dcba8"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/91f2c6cd-6fc5-4273-b806-121ad6da4c68/skeleton.json",
+        "crc": 3800171125,
+        "id": "8ce3d39d-ab08-43da-a916-2b396e5fb28b"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/91f2c6cd-6fc5-4273-b806-121ad6da4c68/yeehaw.atlas.txt",
+        "crc": 1737679744,
+        "id": "45158fea-b21a-48a5-b060-df220db9da18"
+      },
+      "idLabel": "yeehaw",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1368723467,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/bc8ad144-2e7d-48a9-8762-8ee5b92209b0/Nickiminaj1.png",
+        "crc": 869497942,
+        "id": "e84a6dcb-479b-4a40-a4f8-4f95207037ab"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/bc8ad144-2e7d-48a9-8762-8ee5b92209b0/Emote_Token_NickiMinaj.json",
+        "crc": 3999193105,
+        "id": "eb0ce258-8e09-4441-a12c-3a4098c0314e"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/bc8ad144-2e7d-48a9-8762-8ee5b92209b0/Nickiminaj1.atlas.txt",
+        "crc": 3306807238,
+        "id": "26ceb1c3-477f-4acf-8cac-9bad5a903ca8"
+      },
+      "idLabel": "Nickiminaj1",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1509703003,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d54d278f-ce7f-488d-abdd-271ee949bbe0/StPatricksDay.png",
+        "crc": 3334071061,
+        "id": "ceae49bd-d3fb-4c75-9dcf-0d91d2cba364"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d54d278f-ce7f-488d-abdd-271ee949bbe0/StPatricksDay.json",
+        "crc": 3481969703,
+        "id": "4e316a06-7dee-475a-b491-273ed0dd12af"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d54d278f-ce7f-488d-abdd-271ee949bbe0/StPatricksDay.atlas.txt",
+        "crc": 666087226,
+        "id": "d2ba07e1-a2aa-4d2b-abdb-84496d5e7498"
+      },
+      "idLabel": "StPatricksDay",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1581310839,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/989278d7-eac5-4d56-89f3-de2046671550/S24_Crab.png",
+        "crc": 2676726246,
+        "id": "826a1ad9-0c73-413b-968d-dc2ddffc65bc"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/989278d7-eac5-4d56-89f3-de2046671550/S24_Crab.json",
+        "crc": 3246134498,
+        "id": "154dd7a8-5002-492e-b3a8-975472b082f7"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/989278d7-eac5-4d56-89f3-de2046671550/S24_Crab.atlas.txt",
+        "crc": 2869768801,
+        "id": "0f43f126-90ad-453e-89e0-cf6d54c5b7ee"
+      },
+      "idLabel": "S24_Crab",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1663995208,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/fb8148c4-5fea-4f0a-b089-e18a0d4a94de/GGJ_MantaRay.png",
+        "crc": 1993608402,
+        "id": "ba70794d-0995-46d0-916a-94d6eaa35afe"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/fb8148c4-5fea-4f0a-b089-e18a0d4a94de/Emote_GGJ_MantaRay.json",
+        "crc": 1459664007,
+        "id": "02390fd6-c061-42b7-a293-927c41c768bb"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/fb8148c4-5fea-4f0a-b089-e18a0d4a94de/GGJ_MantaRay.atlas.txt",
+        "crc": 781341762,
+        "id": "c1e82419-f2f4-488a-ac32-eeacb659b4bf"
+      },
+      "idLabel": "GGJ_MantaRay",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1674210301,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/fb1978c2-a78b-4767-80c0-0b23c65701e5/all.png",
+        "crc": 3549026476,
+        "id": "41c910b2-ad24-453f-ac34-3a76a70dcc9e"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/fb1978c2-a78b-4767-80c0-0b23c65701e5/Yellowface.json",
+        "crc": 1876330616,
+        "id": "17328a8b-2207-4618-bbf4-7c6dbfb2dd9d"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/fb1978c2-a78b-4767-80c0-0b23c65701e5/all.atlas.txt",
+        "crc": 2685209391,
+        "id": "3e0064bf-f97f-45ff-a04e-244b680ac729"
+      },
+      "idLabel": "all",
+      "Skins": [
+        "Angry",
+        "Astronaut",
+        "Carnaval",
+        "Cold",
+        "Cry",
+        "Dizzy",
+        "Doubletake",
+        "Emote-2024",
+        "Evil",
+        "Giggle",
+        "Grimace",
+        "Gym",
+        "Headphones",
+        "Hypers",
+        "Leadsinger",
+        "LMAO",
+        "Midnight gala",
+        "PartyHat",
+        "Pride",
+        "Rudolph",
+        "Scared",
+        "Sleeping",
+        "StarryEyed",
+        "Sunface",
+        "Sunglasses",
+        "Sweatgiggle",
+        "Tired",
+        "XmasLights",
+        "Zanyface"
+      ]
+    },
+    {
+      "id": 1689985420,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/472158ee-f6ae-4dbd-bd56-b1c55d345698/IntWomensDay2024.png",
+        "crc": 2679847226,
+        "id": "aba631ab-69fa-4fb5-8e0a-e5e1c60f0e4e"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/472158ee-f6ae-4dbd-bd56-b1c55d345698/IntWomensDay2024.json",
+        "crc": 2596351365,
+        "id": "52f3141e-b7e7-4dc1-b5eb-589b699c36f4"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/472158ee-f6ae-4dbd-bd56-b1c55d345698/IntWomensDay2024.atlas.txt",
+        "crc": 401976797,
+        "id": "9a216d14-101a-4a4d-a7ae-3c26d1c69945"
+      },
+      "idLabel": "IntWomensDay2024",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1711494259,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/c9679c91-261c-45be-86ff-1fd01a29de43/Fire.png",
+        "crc": 2208591548,
+        "id": "cf9ca200-97c9-458b-928c-412712427f65"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/c9679c91-261c-45be-86ff-1fd01a29de43/Fire.json",
+        "crc": 3315144605,
+        "id": "b875c239-72f9-498a-ad96-142fd89619de"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/c9679c91-261c-45be-86ff-1fd01a29de43/Fire.atlas.txt",
+        "crc": 2453977889,
+        "id": "30960c1a-0d3a-4ace-804d-6edf2fc75013"
+      },
+      "idLabel": "Fire",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1714274814,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/7683f0c3-8e5b-47a9-89e5-64a98fc413ad/Skull_01.png",
+        "crc": 3338701671,
+        "id": "de4012ae-4504-4323-99fe-639ff5535abd"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/7683f0c3-8e5b-47a9-89e5-64a98fc413ad/Skull_01.json",
+        "crc": 737293210,
+        "id": "50453024-f657-4b95-b7cb-720ccd8cc8a3"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/7683f0c3-8e5b-47a9-89e5-64a98fc413ad/Skull_01.atlas.txt",
+        "crc": 3672069941,
+        "id": "5aedfc3a-f760-4be5-9191-f0e78a03c663"
+      },
+      "idLabel": "Skull_01",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1779544534,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/9fbf0b5c-7cc1-4693-b368-615c85a30808/S8_TSunrise.png",
+        "crc": 311320424,
+        "id": "34260d98-0b13-46f8-8762-70544d68d493"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/9fbf0b5c-7cc1-4693-b368-615c85a30808/S8_TSunrise.json",
+        "crc": 4186952746,
+        "id": "8c4f6768-282d-4744-8b63-ab3c6412ef60"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/9fbf0b5c-7cc1-4693-b368-615c85a30808/S8_TSunrise.atlas.txt",
+        "crc": 2326522792,
+        "id": "3ad526af-9257-4505-88b9-3e988d10e18e"
+      },
+      "idLabel": "S8_TSunrise",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1886842822,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/ee672c10-4ab6-4cbd-90d3-bf5aa796e445/Confetti_Cannon.png",
+        "crc": 751708657,
+        "id": "c40c9f24-50fd-44f7-af74-245edf3d74f9"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/ee672c10-4ab6-4cbd-90d3-bf5aa796e445/ConfettiConnon.json",
+        "crc": 1309603932,
+        "id": "cfb520e5-156f-4de5-8834-4e8087d33fe2"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/ee672c10-4ab6-4cbd-90d3-bf5aa796e445/Confetti_Cannon.atlas.txt",
+        "crc": 1219721640,
+        "id": "65295e4f-db72-426c-8099-0eec618f8371"
+      },
+      "idLabel": "Confetti_Cannon",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1898249032,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/fbc735ab-1311-4f91-ba25-a374eb722b84/NeonNights.png",
+        "crc": 224665218,
+        "id": "8562159a-b56f-42e4-a451-880d4da09745"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/fbc735ab-1311-4f91-ba25-a374eb722b84/NeonNights.json",
+        "crc": 2250221725,
+        "id": "f84a0e93-c15e-428c-ba97-c9c6b74b4380"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/fbc735ab-1311-4f91-ba25-a374eb722b84/NeonNights.atlas.txt",
+        "crc": 957467160,
+        "id": "9d016ca1-b481-4795-ae4d-5f077838f564"
+      },
+      "idLabel": "NeonNights",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1922370415,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/2177c829-dfd7-48cd-b6de-6530e9b218a1/EasterEgg.png",
+        "crc": 1970439774,
+        "id": "e016a99f-520d-4a6f-84ab-4189930a9023"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/2177c829-dfd7-48cd-b6de-6530e9b218a1/EasterEgg.json",
+        "crc": 4098948673,
+        "id": "2ac0e676-5a3c-41d8-98b2-47122b188ae9"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/2177c829-dfd7-48cd-b6de-6530e9b218a1/EasterEgg.atlas.txt",
+        "crc": 2531793365,
+        "id": "6f0136be-70a0-4473-9c06-9dc4934fce7c"
+      },
+      "idLabel": "EasterEgg",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1940406042,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/9677b38f-73df-48f2-8f25-f4122dea0959/Emote_BHM.png",
+        "crc": 3180220071,
+        "id": "fca8929b-b534-4bd7-b6cf-a6d768bea300"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/9677b38f-73df-48f2-8f25-f4122dea0959/Emote_BHM.json",
+        "crc": 4247945366,
+        "id": "a3d40b93-fc92-48b7-805c-fadf70edf3e3"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/9677b38f-73df-48f2-8f25-f4122dea0959/Emote_BHM.atlas.txt",
+        "crc": 408006362,
+        "id": "6f6c3787-4bda-4c0d-84ba-bbf881cd427d"
+      },
+      "idLabel": "Emote_BHM",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1979565482,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/98b23773-ae14-4c28-a9b0-8fa744016279/B-country.png",
+        "crc": 2362278647,
+        "id": "85faa928-c0f6-4238-b77b-cb0d15eea043"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/98b23773-ae14-4c28-a9b0-8fa744016279/b_country.json",
+        "crc": 39984729,
+        "id": "ae27c17b-f895-42e4-b392-40bbf760a14f"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/98b23773-ae14-4c28-a9b0-8fa744016279/B-country.atlas.txt",
+        "crc": 2978701553,
+        "id": "e112f8c4-a81a-4174-8e66-a5e33de1af0b"
+      },
+      "idLabel": "B-country",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 285488154,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/ba47f49f-fac4-4bcd-a758-544b35e4a52d/Emote_Record.png",
+        "crc": 1771272504,
+        "id": "2b9ae79a-cf83-4e22-a2df-527183449fc5"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/ba47f49f-fac4-4bcd-a758-544b35e4a52d/Emote_Record.json",
+        "crc": 3823262479,
+        "id": "bf4a7a95-5c0d-48f6-b3c3-f2c8b8f4eb47"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/ba47f49f-fac4-4bcd-a758-544b35e4a52d/Emote_Record.atlas",
+        "crc": 3530455339,
+        "id": "a1edf00a-d2bf-429d-b42f-8d7f50e7d455"
+      },
+      "idLabel": "Emote_Record",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1800583042,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/cd2d60de-2341-4e31-9dbc-617bd7d801b2/Emote_CherryBlossom.png",
+        "crc": 1616765660,
+        "id": "02f31236-b74f-4b10-8f37-d7d66d060356"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/cd2d60de-2341-4e31-9dbc-617bd7d801b2/Emote_CherryBlossom.json",
+        "crc": 2412510586,
+        "id": "aa7ee191-ddb4-4f2c-93e6-7f2fb2524449"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/cd2d60de-2341-4e31-9dbc-617bd7d801b2/Emote_CherryBlossom.atlas",
+        "crc": 3330658677,
+        "id": "15fe42da-664f-4e5f-9cce-30ec7b9ea9d9"
+      },
+      "idLabel": "Emote_CherryBlossom",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1457229284,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/4046ade2-8cc2-4ec7-bbc3-7ba914d6b85c/TP37_TheKillers_Emote.png",
+        "crc": 2302456102,
+        "id": "f4de3fe2-d329-4e54-bd48-5a48bf2c0b33"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/4046ade2-8cc2-4ec7-bbc3-7ba914d6b85c/TP37_TheKillers_Emote.json",
+        "crc": 2641824505,
+        "id": "fc81b05b-bf25-4ebf-b388-83b5886701e1"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/4046ade2-8cc2-4ec7-bbc3-7ba914d6b85c/TP37_TheKillers_Emote.atlas",
+        "crc": 4243376723,
+        "id": "07856fc8-4279-4934-8a77-4cd072da48a0"
+      },
+      "idLabel": "TP37_TheKillers_Emote",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 441871402,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/18613558-a3d6-4a9b-ad44-050fb64ae752/Token_TheKillers.png",
+        "crc": 2998208774,
+        "id": "dc9f2f78-4a12-4261-af23-6e7c7f064f22"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/18613558-a3d6-4a9b-ad44-050fb64ae752/Token_TheKillers.json",
+        "crc": 1841747233,
+        "id": "0824f377-7d8e-441b-a921-285c23ebcf13"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/18613558-a3d6-4a9b-ad44-050fb64ae752/Token_TheKillers.atlas",
+        "crc": 598500932,
+        "id": "e9ac5777-c432-402f-9cdc-333e2168b39c"
+      },
+      "idLabel": "Token_TheKillers",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1239214992,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/0fcaa76d-e82d-407d-87da-b41e478d6be1/Heart_emoji.png",
+        "crc": 4143199671,
+        "id": "e9d9e35c-a934-4728-b334-f0a91df11077"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/0fcaa76d-e82d-407d-87da-b41e478d6be1/heart_emoji.json",
+        "crc": 414819141,
+        "id": "5e64f9b3-d185-4b86-bcdf-c13a4d8924b2"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/0fcaa76d-e82d-407d-87da-b41e478d6be1/Heart_emoji.atlas.txt",
+        "crc": 1813643770,
+        "id": "cdd70689-d1c6-409d-8699-82af401a98e9"
+      },
+      "idLabel": "Heart_emoji",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1709330873,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/8bc13b8c-b99b-4d62-a8b4-2ea1b1e5836e/TP38_SunsetFestival.png",
+        "crc": 202780966,
+        "id": "4dd60ef7-580b-46ae-8968-6d074f5dd488"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/8bc13b8c-b99b-4d62-a8b4-2ea1b1e5836e/TP38_SunsetFestival.json",
+        "crc": 1887471891,
+        "id": "79c18f58-dba3-45ba-9558-04be52eccdf0"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/8bc13b8c-b99b-4d62-a8b4-2ea1b1e5836e/TP38_SunsetFestival.atlas",
+        "crc": 1807524042,
+        "id": "607206ed-5c9a-4768-80d3-0698062ae0ec"
+      },
+      "idLabel": "TP38_SunsetFestival",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 122817195,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/5a122182-1b8b-41cf-881d-b0434f032a2a/TP39_LoveSpectrum_Emoji.png",
+        "crc": 2851065805,
+        "id": "b9c60fa8-693e-476b-8619-56d9ce89fcfe"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/5a122182-1b8b-41cf-881d-b0434f032a2a/TP39_LoveSpectrumEmoji.json",
+        "crc": 4188361650,
+        "id": "eb1cd212-d5b7-4297-a6f3-2358bbf8bdad"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/5a122182-1b8b-41cf-881d-b0434f032a2a/TP39_LoveSpectrum_Emoji.atlas",
+        "crc": 1894841282,
+        "id": "a8fe97e2-7a5e-47b9-90c0-ee3150a06866"
+      },
+      "idLabel": "TP39_LoveSpectrum_Emoji",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 547079588,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/4785b3cc-8855-4391-a551-7837d72f634a/Rocket.png",
+        "crc": 2470750629,
+        "id": "73f671d2-4f37-4a8b-91a5-dc08514de627"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/4785b3cc-8855-4391-a551-7837d72f634a/Rocket.json",
+        "crc": 398630966,
+        "id": "2512e5b8-9a73-42e7-bc9c-06195b0705ab"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/4785b3cc-8855-4391-a551-7837d72f634a/Rocket.atlas.txt",
+        "crc": 2750846728,
+        "id": "d494553a-3eb0-4d0c-9e33-a3e556b92214"
+      },
+      "idLabel": "Rocket",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1462862964,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/c08e195d-c6f7-4f59-bbd9-35a333887aaf/Electric_Summer_Emoji.png",
+        "crc": 1830897967,
+        "id": "a9ebc2a2-6203-415b-a37c-c6257fd9b583"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/c08e195d-c6f7-4f59-bbd9-35a333887aaf/Electric_Summer_Emoji.json",
+        "crc": 242841184,
+        "id": "2540c8d0-b297-44cb-b502-f0595c7624de"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/c08e195d-c6f7-4f59-bbd9-35a333887aaf/Electric_Summer_Emoji.atlas.txt",
+        "crc": 2409246261,
+        "id": "dfd4ddde-1d68-4472-bfbd-ec071f4989c9"
+      },
+      "idLabel": "Electric_Summer_Emoji",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1436055335,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/72870ea6-3ae9-4649-93be-4e7184b5b6ff/Pinata.png",
+        "crc": 3336467557,
+        "id": "5aff0d5a-e94c-4959-9436-c4aaa201b7d0"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/72870ea6-3ae9-4649-93be-4e7184b5b6ff/Pinata.json",
+        "crc": 3673029150,
+        "id": "6fe552c4-6ec8-49de-b91d-ed9ca6d08706"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/72870ea6-3ae9-4649-93be-4e7184b5b6ff/Pinata.atlas.txt",
+        "crc": 4273469157,
+        "id": "39915b6a-b91c-41ca-ab25-c6030f4b787a"
+      },
+      "idLabel": "Pinata",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 455917392,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/1338202e-5615-4298-926c-8f892edecd67/Emote_Token_NAME.png",
+        "crc": 2890094026,
+        "id": "ece2fcba-78b4-432c-8675-bc6c2a5bf957"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/1338202e-5615-4298-926c-8f892edecd67/Emote_Token_NAME.json",
+        "crc": 962485718,
+        "id": "f9730f36-8dfc-4795-90cf-27a0eb9ec6ea"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/1338202e-5615-4298-926c-8f892edecd67/Emote_Token_NAME.atlas",
+        "crc": 1410096768,
+        "id": "6a6025c3-31db-4459-8f70-c54cc385917b"
+      },
+      "idLabel": "Emote_Token_NAME",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 887915206,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d4048dc3-03f5-4d43-b220-68e59d35477d/Emote.png",
+        "crc": 3647270889,
+        "id": "3d0711c7-a547-4880-aea3-b17a380fe20d"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d4048dc3-03f5-4d43-b220-68e59d35477d/Emote.json",
+        "crc": 2846653355,
+        "id": "69c026ec-1ebb-4e5b-9a95-c80a45b6a44e"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d4048dc3-03f5-4d43-b220-68e59d35477d/Emote.atlas.txt",
+        "crc": 1186704858,
+        "id": "eaa795e9-6918-443f-9137-625653eea29a"
+      },
+      "idLabel": "Emote",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 532191111,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/c94f83f7-3f7e-473b-b86d-199d77f74614/Emote_BeatstarBirthday_03.png",
+        "crc": 3160561194,
+        "id": "69212d34-04ef-46e9-bb97-cdea44db7dce"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/c94f83f7-3f7e-473b-b86d-199d77f74614/Emote_BeatstarBirthday_03.json",
+        "crc": 1676196263,
+        "id": "bc3abace-6c70-42b8-97a6-7b4124483fee"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/c94f83f7-3f7e-473b-b86d-199d77f74614/Emote_BeatstarBirthday_03.atlas.txt",
+        "crc": 1459069637,
+        "id": "0d5f6553-13a0-4b07-b4a7-56e99ac4e791"
+      },
+      "idLabel": "Emote_BeatstarBirthday_03",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1796037381,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/fbd96f57-c3c5-4be7-a67d-f4562445ea3e/HispanicHeritageMonth.png",
+        "crc": 1450884228,
+        "id": "e712b0e7-b160-4086-a133-fac027af1a7b"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/fbd96f57-c3c5-4be7-a67d-f4562445ea3e/HispanicHeritageMonth.json",
+        "crc": 3216349265,
+        "id": "3e002376-fe07-4331-96f6-725a39175d17"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/fbd96f57-c3c5-4be7-a67d-f4562445ea3e/HispanicHeritageMonth.atlas.txt",
+        "crc": 2911594460,
+        "id": "cddac488-ca0f-4431-80cf-77bca6b0ad96"
+      },
+      "idLabel": "HispanicHeritageMonth",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 652454331,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/b2f37e6a-bc9a-40ad-b5f1-c1da9856fab1/Emote_Token_CraigDavid.png",
+        "crc": 3849871968,
+        "id": "5fba27a2-7031-42ae-a5a6-c232fc5b63f8"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/b2f37e6a-bc9a-40ad-b5f1-c1da9856fab1/Emote_Token_CraigDavid.json",
+        "crc": 2454116831,
+        "id": "6e7a82c8-013e-4bf3-bdd5-53ffdfe19609"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/b2f37e6a-bc9a-40ad-b5f1-c1da9856fab1/Emote_Token_CraigDavid.atlas",
+        "crc": 3856601319,
+        "id": "35dd75cb-0a10-40be-8630-95e2b8dd884b"
+      },
+      "idLabel": "Emote_Token_CraigDavid",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1785568509,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/9e301b23-26c0-4c18-b1e2-1895db36b4e4/TP44_Coldplay.png",
+        "crc": 30184413,
+        "id": "0a3e9026-d9c5-400f-a235-6205c680e2fa"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/9e301b23-26c0-4c18-b1e2-1895db36b4e4/TP44_Coldplay.json",
+        "crc": 2384959356,
+        "id": "11c0b25c-d923-4c58-8272-d1ffcb891253"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/9e301b23-26c0-4c18-b1e2-1895db36b4e4/TP44_Coldplay.atlas",
+        "crc": 2053852980,
+        "id": "cf0bc728-6621-4443-abb8-6dce0bb49d84"
+      },
+      "idLabel": "TP44_Coldplay",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 645013564,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/6f3d6269-ffe0-48eb-a6f2-98713fe1d8ec/TP45_Emote.png",
+        "crc": 2746398590,
+        "id": "14c1f535-7137-4403-a079-eaf8eb6f2c30"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/6f3d6269-ffe0-48eb-a6f2-98713fe1d8ec/TP45_Emote.json",
+        "crc": 1736895331,
+        "id": "35640126-3f5e-4e8f-b160-b23a5ceb1406"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/6f3d6269-ffe0-48eb-a6f2-98713fe1d8ec/TP45_Emote.atlas",
+        "crc": 327531244,
+        "id": "08819506-0f9d-463e-aa3b-1eff88227490"
+      },
+      "idLabel": "TP45_Emote",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 979041196,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/28681dae-bc73-44b6-aeb2-b4c90f00bda3/Emote_Ghost.png",
+        "crc": 1292621683,
+        "id": "e6f86e53-bcd7-47e2-8077-db6cbf0b3b6d"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/28681dae-bc73-44b6-aeb2-b4c90f00bda3/Emote_Ghost.json",
+        "crc": 2869802052,
+        "id": "dad7c89c-b339-41ed-8dc9-720379d78823"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/28681dae-bc73-44b6-aeb2-b4c90f00bda3/Emote_Ghost.atlas.txt",
+        "crc": 2448603587,
+        "id": "8003789d-d93e-4c83-a39b-56272b41b219"
+      },
+      "idLabel": "Emote_Ghost",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1958935816,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/f3d2c426-48fd-4d0a-90ba-32c185ff8959/kingbee_snowflake-emoji.png",
+        "crc": 1737630331,
+        "id": "34b1e537-8b89-4f87-adc9-d96d5a2e7ec8"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/f3d2c426-48fd-4d0a-90ba-32c185ff8959/Snowflake_emoji.json",
+        "crc": 1494048801,
+        "id": "41d6805f-a5c4-4ae1-9cf3-b2f25360a004"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/f3d2c426-48fd-4d0a-90ba-32c185ff8959/kingbee_snowflake-emoji.atlas.txt",
+        "crc": 2895053418,
+        "id": "dc697d36-1dfd-40f9-9e93-68805b8ffbfb"
+      },
+      "idLabel": "kingbee_snowflake-emoji",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 507730800,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/06280cbd-0ad4-4050-a3ff-ffb5e794a234/Emoli_Thanksgiving.png",
+        "crc": 497846992,
+        "id": "a79b34de-689e-45aa-bfc4-e0c49245aeed"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/06280cbd-0ad4-4050-a3ff-ffb5e794a234/Emoli_Thanksgiving.json",
+        "crc": 3539981474,
+        "id": "a67b62f5-dad7-4d51-8594-93a12ae9b24d"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/06280cbd-0ad4-4050-a3ff-ffb5e794a234/Emoli_Thanksgiving.atlas.txt",
+        "crc": 1081357075,
+        "id": "0d258dfd-b349-4891-8396-cf696fa932b0"
+      },
+      "idLabel": "Emoli_Thanksgiving",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 417904587,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/4b81f522-084b-4a02-af49-ea08fb31a33e/Gingerbread_emoji.png",
+        "crc": 3921950552,
+        "id": "b0a78985-d346-48dc-b52a-2db9d437524c"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/4b81f522-084b-4a02-af49-ea08fb31a33e/Gingerbread_emoji.json",
+        "crc": 2312112109,
+        "id": "cd9a6335-68e9-4907-9bd3-d45b0edbf5d6"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/4b81f522-084b-4a02-af49-ea08fb31a33e/Gingerbread_emoji.atlas.txt",
+        "crc": 1653222654,
+        "id": "c01b76c6-d133-4eb0-8b9c-42beed7016ef"
+      },
+      "idLabel": "Gingerbread_emoji",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 2036955668,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/7bc98428-5609-40b2-8ba8-e5743a2a40fb/Fireworkemoji.png",
+        "crc": 2299432178,
+        "id": "b5406d4d-cff4-49d1-a325-19631547f429"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/7bc98428-5609-40b2-8ba8-e5743a2a40fb/Fireworkemoji.json",
+        "crc": 3433538153,
+        "id": "0f30e3cb-d4b1-42db-9f0d-ebb97da5b5d8"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/7bc98428-5609-40b2-8ba8-e5743a2a40fb/Fireworkemoji.atlas.txt",
+        "crc": 3344771725,
+        "id": "aff1c98d-fb6c-4ecc-873c-ed2929a11acb"
+      },
+      "idLabel": "Fireworkemoji",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1946179182,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d1f1a54d-1c0d-4653-a2cc-a2e022d0f128/Christmas_tree_emoji.png",
+        "crc": 307856070,
+        "id": "60f3688e-4865-47ac-929c-ccd4449d1d89"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d1f1a54d-1c0d-4653-a2cc-a2e022d0f128/Christmas_tree_emoji.json",
+        "crc": 745197924,
+        "id": "6f7abb49-e991-4580-b5ed-226d150ba620"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d1f1a54d-1c0d-4653-a2cc-a2e022d0f128/Christmas_tree_emoji.atlas.txt",
+        "crc": 4254578567,
+        "id": "8780ac66-0963-4060-a1cc-1ef09cf3375f"
+      },
+      "idLabel": "Christmas_tree_emoji",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1964195852,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/c9d0c276-a3e0-4fb2-92f6-267a7c29156e/TP47_Emote.png",
+        "crc": 397379994,
+        "id": "ee0ae2e2-c7ce-4b84-8b3f-3bc7cfd87c48"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/c9d0c276-a3e0-4fb2-92f6-267a7c29156e/TP47_Emote.json",
+        "crc": 2857552781,
+        "id": "3468bc29-6c73-48e5-a19f-2d895e525a9f"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/c9d0c276-a3e0-4fb2-92f6-267a7c29156e/TP47_Emote.atlas",
+        "crc": 2906180427,
+        "id": "e9f629fc-13d0-4b9e-b283-6e518963e000"
+      },
+      "idLabel": "TP47_Emote",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 347993307,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/df064cb5-6489-48b6-a68b-c6ac7d2c672e/NewHorizons_Emote.png",
+        "crc": 3241920864,
+        "id": "0b679399-8001-435a-bb73-015d7063da59"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/df064cb5-6489-48b6-a68b-c6ac7d2c672e/NewHorizons_Emote.json",
+        "crc": 2668692599,
+        "id": "3f1d5146-765e-4f97-a2c0-e3f735400659"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/df064cb5-6489-48b6-a68b-c6ac7d2c672e/NewHorizons_Emote.atlas",
+        "crc": 582636013,
+        "id": "cc27ef27-9582-4d14-8997-d7abd0552447"
+      },
+      "idLabel": "NewHorizons_Emote",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1434812995,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/7efde3c7-151c-495c-b9fb-22a69c2c4fe6/TP49_Emote.png",
+        "crc": 1408018108,
+        "id": "070aa104-fe2e-4079-84f7-3762cceca3d4"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/7efde3c7-151c-495c-b9fb-22a69c2c4fe6/TP49_Emote.json",
+        "crc": 2783936753,
+        "id": "bab75f3a-2040-416c-b279-62a5cca2092a"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/7efde3c7-151c-495c-b9fb-22a69c2c4fe6/TP49_Emote.atlas",
+        "crc": 3107561029,
+        "id": "b8746961-59b7-4472-964d-33b35c859f12"
+      },
+      "idLabel": "TP49_Emote",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1245078683,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/1051f7f9-a800-4cd6-af22-7bb3cfc7181b/Super_Bowl2025.png",
+        "crc": 1420573151,
+        "id": "d1f83ec4-7074-4299-91f1-c9ad77593202"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/1051f7f9-a800-4cd6-af22-7bb3cfc7181b/Super_Bowl2025.json",
+        "crc": 2141137261,
+        "id": "9419b0cd-aa61-4461-ac2e-075450df3498"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/1051f7f9-a800-4cd6-af22-7bb3cfc7181b/Super_Bowl2025.atlas",
+        "crc": 3975996933,
+        "id": "5d5cb328-511e-497d-82f1-76618623d1ce"
+      },
+      "idLabel": "Super_Bowl2025",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1739931345,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/40534a95-780b-4b3a-b06f-146033baf0bb/Emote_Token_JohnLennon.png",
+        "crc": 4200533415,
+        "id": "fafcbefb-4062-48e9-8c35-0f6057eafa97"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/40534a95-780b-4b3a-b06f-146033baf0bb/Emote_Token_JohnLennon.json",
+        "crc": 1519956891,
+        "id": "507dbc4c-ec91-4cac-b42a-59db565dc428"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/40534a95-780b-4b3a-b06f-146033baf0bb/Emote_Token_JohnLennon.atlas",
+        "crc": 2532048689,
+        "id": "658aea1c-4ddb-472c-8cc7-91ac92f98bec"
+      },
+      "idLabel": "Emote_Token_JohnLennon",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 2136740019,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/feb3dfa5-6b6b-44e7-82c1-8d240c82f457/BHM2025_Emote.png",
+        "crc": 1327463072,
+        "id": "298723b7-3cfd-4df8-b071-13e4e9e3ab4f"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/feb3dfa5-6b6b-44e7-82c1-8d240c82f457/BHM2025_Emote.json",
+        "crc": 891374975,
+        "id": "f0c0cb01-4dcd-4b23-bbd2-c8e20c589d54"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/feb3dfa5-6b6b-44e7-82c1-8d240c82f457/BHM2025_Emote.atlas",
+        "crc": 576859283,
+        "id": "8eb76a46-12d8-41de-9b3d-ca9d9ac4925c"
+      },
+      "idLabel": "BHM2025_Emote",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1971222623,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/e7981558-2672-444c-9e77-85b19bd87291/Emote_Token_BVZ.png",
+        "crc": 1960671791,
+        "id": "1eb4dba5-d003-4f07-bb54-86849016ef5f"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/e7981558-2672-444c-9e77-85b19bd87291/Emote_Token_BVZ.json",
+        "crc": 846081227,
+        "id": "67f82ca8-78d3-4715-8bd6-a310af945596"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/e7981558-2672-444c-9e77-85b19bd87291/Emote_Token_BVZ.atlas",
+        "crc": 189478876,
+        "id": "a9d2faec-91b5-425b-bf81-c3d92b77cad3"
+      },
+      "idLabel": "Emote_Token_BVZ",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 712767365,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/1d5ecb10-1140-4558-9831-c665f7e1477b/TP51_Emoji.png",
+        "crc": 769703440,
+        "id": "cb4fdee2-68a3-4884-af62-57ae42e0c330"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/1d5ecb10-1140-4558-9831-c665f7e1477b/TP51_Emoji.json",
+        "crc": 1118602197,
+        "id": "2ae273fb-1f36-41fe-8c5c-dc3009b54a0e"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/1d5ecb10-1140-4558-9831-c665f7e1477b/TP51_Emoji.atlas",
+        "crc": 168501317,
+        "id": "e22e9db0-4ae8-4898-80f0-ec0b0cb9a724"
+      },
+      "idLabel": "TP51_Emoji",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 521701259,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/201f881f-3a67-4c2c-b02d-becb5ebb14e2/Carnaval2025_Emoji.png",
+        "crc": 3688852122,
+        "id": "0011e59e-1125-46be-8e51-161eea3aafcf"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/201f881f-3a67-4c2c-b02d-becb5ebb14e2/Carnaval2025_Emoji.json",
+        "crc": 2036876658,
+        "id": "b1c3153e-a780-483f-9791-ebb0b700b266"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/201f881f-3a67-4c2c-b02d-becb5ebb14e2/Carnaval2025_Emoji.atlas",
+        "crc": 4017154075,
+        "id": "f67030cf-4dee-424c-acf4-5c65310fff3f"
+      },
+      "idLabel": "Carnaval2025_Emoji",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1352929477,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/46619980-f3dd-4b23-beec-e3b3f8b1a2bd/IWD2025_Emote.png",
+        "crc": 2255033998,
+        "id": "8cd7a9d2-5c1e-4f2a-8136-bfd4aebc29eb"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/46619980-f3dd-4b23-beec-e3b3f8b1a2bd/IWD2025_Emote.json",
+        "crc": 3952608322,
+        "id": "a34798ad-dcfc-48bb-9995-29f79c77b720"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/46619980-f3dd-4b23-beec-e3b3f8b1a2bd/IWD2025_Emote.atlas",
+        "crc": 874035903,
+        "id": "1709ec4d-3291-4f78-9e22-340fc02e04ae"
+      },
+      "idLabel": "IWD2025_Emote",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 899686446,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/936557de-b673-4eee-803a-ac38919b7cec/TP52_Emote.png",
+        "crc": 100390355,
+        "id": "998ac520-3634-44ec-8ccb-609120692e14"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/936557de-b673-4eee-803a-ac38919b7cec/TP52_Emote.json",
+        "crc": 3691276464,
+        "id": "e6eb8acb-2178-4a90-b3eb-7ca22a6b1580"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/936557de-b673-4eee-803a-ac38919b7cec/TP52_Emote.atlas",
+        "crc": 1553093719,
+        "id": "bcacf9fa-e27c-4b38-8dc9-156207f3e40f"
+      },
+      "idLabel": "TP52_Emote",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 753027222,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/0f3b0b67-4bdf-4a15-8df6-254eb65928a0/TP53_Emote.png",
+        "crc": 48897927,
+        "id": "f5d60aaa-d5de-4059-9cea-e71aadd7f3c1"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/0f3b0b67-4bdf-4a15-8df6-254eb65928a0/TP53_Emote.json",
+        "crc": 672241089,
+        "id": "1adb688b-21ac-4932-82ed-6dc43a314e0d"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/0f3b0b67-4bdf-4a15-8df6-254eb65928a0/TP53_Emote.atlas",
+        "crc": 2114393967,
+        "id": "3a4c7b41-4bd2-41fb-859c-add001fcee68"
+      },
+      "idLabel": "TP53_Emote",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1545475024,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/a9896d9f-a076-4e9b-85ed-0be253fc3dcc/TP54_Emote.png",
+        "crc": 98897644,
+        "id": "77f724b6-4af6-44fb-b3fd-ded329512601"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/a9896d9f-a076-4e9b-85ed-0be253fc3dcc/TP54_Emote.json",
+        "crc": 3717809973,
+        "id": "6b1aeaf7-8971-423e-b85f-ff76d349874a"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/a9896d9f-a076-4e9b-85ed-0be253fc3dcc/TP54_Emote.atlas",
+        "crc": 1820105354,
+        "id": "638d8a0f-82de-41aa-85f9-2a1aa721532f"
+      },
+      "idLabel": "TP54_Emote",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 214297284,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d87c5e1b-ca50-47cb-a907-552c87e64256/BS_EasterBunny_Emote.png",
+        "crc": 1239127055,
+        "id": "872de704-3333-41c2-872c-bfd03d69b5aa"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d87c5e1b-ca50-47cb-a907-552c87e64256/BS_EasterBunny_Emote.json",
+        "crc": 3052950729,
+        "id": "cb2fdd78-a868-4e09-af6a-f68cf956188a"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d87c5e1b-ca50-47cb-a907-552c87e64256/BS_EasterBunny_Emote.atlas",
+        "crc": 1091390822,
+        "id": "255a462b-c6f4-483f-985d-17d5f164a8de"
+      },
+      "idLabel": "BS_EasterBunny_Emote",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 311069942,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/03acce81-8582-4eb7-88bb-d8edabf7adf8/EarthDay2025_Emote.png",
+        "crc": 2818328162,
+        "id": "4efe3e3b-7535-4740-96ef-2dca84b9b2de"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/03acce81-8582-4eb7-88bb-d8edabf7adf8/EarthDay2025_Emote.json",
+        "crc": 3156324778,
+        "id": "58dbf80f-31a4-4390-9b07-91982f452e48"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/03acce81-8582-4eb7-88bb-d8edabf7adf8/EarthDay2025_Emote.atlas",
+        "crc": 3215785781,
+        "id": "fb216fa4-473f-441b-8f03-19e1845b7d01"
+      },
+      "idLabel": "EarthDay2025_Emote",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 439913557,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/cd9fc4e9-2fd5-4c0a-a941-1b04d19e6aa1/TP55_Emote.png",
+        "crc": 1238346701,
+        "id": "207d1524-fea9-4a15-8199-f5338322efba"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/cd9fc4e9-2fd5-4c0a-a941-1b04d19e6aa1/TP55_Emote.json",
+        "crc": 4257147562,
+        "id": "b149b96d-8f1a-427b-a6fc-92dee575a7fa"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/cd9fc4e9-2fd5-4c0a-a941-1b04d19e6aa1/TP55_Emote.atlas",
+        "crc": 1888069478,
+        "id": "4bff67ef-2761-4e92-a647-903f61fbd2ae"
+      },
+      "idLabel": "TP55_Emote",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 799627868,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d5c65ad3-8429-4ba5-b1b4-aece33c9fd41/TP56_Emote.png",
+        "crc": 2470820231,
+        "id": "34a4dd2d-161a-4614-b20b-9b13bfb5905a"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d5c65ad3-8429-4ba5-b1b4-aece33c9fd41/TP56_Emote.json",
+        "crc": 1870163887,
+        "id": "6f301026-87d3-4c03-8c9b-1fa389b6be02"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d5c65ad3-8429-4ba5-b1b4-aece33c9fd41/TP56_Emote.atlas",
+        "crc": 3207685976,
+        "id": "d748b815-2006-44e8-87f4-f7ff3fc6e963"
+      },
+      "idLabel": "TP56_Emote",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1365271462,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/932ffb39-7c66-4d4e-adab-50fa693a96bc/BS_MHA_Emote.png",
+        "crc": 3604431758,
+        "id": "4ee36499-59ca-42de-aa94-9e5532523b7c"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/932ffb39-7c66-4d4e-adab-50fa693a96bc/BS_MHA_Emote.json",
+        "crc": 2296614823,
+        "id": "12a68146-5fc0-4b45-95c5-38b7b5181882"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/932ffb39-7c66-4d4e-adab-50fa693a96bc/BS_MHA_Emote.atlas",
+        "crc": 36455644,
+        "id": "09356926-9fad-4e9f-ae84-497b1d1149c6"
+      },
+      "idLabel": "BS_MHA_Emote",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 1522023501,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d279f689-2c0e-4e97-9781-a985c79db8c3/TP57_Emote.png",
+        "crc": 1704447226,
+        "id": "5416d5fa-8535-4ea6-978c-f2ef58b260b0"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d279f689-2c0e-4e97-9781-a985c79db8c3/TP57_Emote.json",
+        "crc": 1652840626,
+        "id": "1117c3c5-4b39-496f-8387-36b277a447f0"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/d279f689-2c0e-4e97-9781-a985c79db8c3/TP57_Emote.atlas",
+        "crc": 1464526319,
+        "id": "5638f09a-61bb-46cf-a49d-9987c9c227ce"
+      },
+      "idLabel": "TP57_Emote",
+      "Skins": [
+        "default"
+      ]
+    },
+    {
+      "id": 778507452,
+      "SpriteAtlas": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/722e8345-565b-46f3-9a3c-129b3d0f576f/TP58_Emoji.png",
+        "crc": 2579997851,
+        "id": "56e973c4-0828-4d12-8f63-eea68b6fc824"
+      },
+      "Json": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/722e8345-565b-46f3-9a3c-129b3d0f576f/TP58_Emoji.json",
+        "crc": 3637840862,
+        "id": "49bcea3a-d6ec-4087-b179-37f311c43f4f"
+      },
+      "SpriteAtlasTxt": {
+        "url": "https://assets.flamingo.newbirds.net/images/emoji/722e8345-565b-46f3-9a3c-129b3d0f576f/TP58_Emoji.atlas",
+        "crc": 1188182397,
+        "id": "53bde552-9c3f-4c01-8c9a-a0664b4c4c72"
+      },
+      "idLabel": "TP58_Emoji",
+      "Skins": [
+        "default"
+      ]
+    }
+  ],
+  "version": "32.0.0.1747912023-content",
+  "Settings": {
+    "startingEmojis_id": [
+      5,
+      9,
+      1,
+      12
+    ]
+  }
+}

@@ -11,7 +11,8 @@ export type ProtoType =
   | "group"
   | "packed"
   | "enums"
-  | "double";
+  | "double"
+  | "raw";
 
 interface BaseCMSField {
   name: string;
@@ -28,7 +29,8 @@ interface PlainCMSField extends BaseCMSField {
     | "string-repeat"
     | "hex-string"
     | "float"
-    | "float-repeat";
+    | "float-repeat"
+    | "raw";
   map?: Record<number, string>;
 }
 

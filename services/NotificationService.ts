@@ -8,7 +8,7 @@ import { RegisterPlatformTokenEnums } from "../protobuf/protos/chunks/RegisterPl
 import { PartialReq } from "../protobuf/protos/reused/PartialReq";
 import { SubscribeReqEnums } from "../protobuf/protos/SubscribeReq";
 import { SubscribeResp } from "../protobuf/protos/SubscribeResp";
-import { createEmptyResponses } from "../protobuf/utils";
+import { createEmptyResponse } from "../protobuf/utils";
 import { BaseService } from "./BaseService";
 
 const RpcType = {
@@ -33,35 +33,36 @@ export class NotificationService extends BaseService {
   name = "notificationservice";
 
   async handlePacket(packet: Packet, client: Client) {
-    const payload = packet.parsePayload(PartialReq);
-    const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
-      Number(payload.requests[0].rpcType)
-    ];
     const parsedPayload = packet.parsePayload(BatchRequest);
 
-    if (rpcType === "SendNotification") {
-    } else if (rpcType === "Subscribe") {
-      const response = await packet.buildResponse(
-        "ServerClientMessageHeader",
-        "SubscribeResp",
-        SubscribeResp,
-        {
-          "{requests}": createEmptyResponses(parsedPayload.requests),
-        }
-      );
-      client.write(response);
-    } else if (rpcType === "SetPlatformNotificationPrefs") {
-      const response = await packet.buildResponse(
-        "ServerClientMessageHeader",
-        "SubscribeResp",
-        SubscribeResp,
-        {
-          "{requests}": createEmptyResponses(parsedPayload.requests),
-        }
-      );
-      client.write(response);
-    } else {
-      Logger.warn(`Unknown rpcType: ${rpcType}`);
+    if (!Array.isArray(parsedPayload.requests)) {
+      console.log("notification", parsedPayload);
     }
+
+    const responses = [];
+
+    for (const request of parsedPayload.requests) {
+      const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
+        Number(parsedPayload.requests.rpcType)
+      ];
+      if (rpcType === "SendNotification") {
+      } else if (rpcType === "Subscribe") {
+        responses.push(createEmptyResponse(request));
+      } else if (rpcType === "SetPlatformNotificationPrefs") {
+        responses.push(createEmptyResponse(request));
+      } else {
+        Logger.warn(`${this.name}: Unknown rpcType: ${rpcType}`);
+      }
+    }
+
+    const response = await packet.buildResponse(
+      "ServerClientMessageHeader",
+      "SubscribeResp",
+      SubscribeResp,
+      {
+        "{requests}": responses,
+      }
+    );
+    client.write(response);
   }
 }

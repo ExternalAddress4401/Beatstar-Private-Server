@@ -3,14 +3,7 @@ import { LiveOpsProfileIconSettings } from "../game/com/spaceape/liveopsprofilei
 import { LiveOpsProfileIconTemplate } from "../game/com/spaceape/liveopsprofileiconconfig/LiveOpsProfileIconTemplate";
 
 export const LiveOpsProfileIconConfigProto: Map<number, CMSField> = new Map([
-  [
-    1,
-    {
-      name: "LiveOpsProfileIcons",
-      type: "packed",
-      fields: LiveOpsProfileIconTemplate,
-    },
-  ],
+  [100, { name: "version", type: "string" }],
   [
     5,
     {
@@ -19,5 +12,12 @@ export const LiveOpsProfileIconConfigProto: Map<number, CMSField> = new Map([
       fields: LiveOpsProfileIconSettings,
     },
   ],
-  [100, { name: "version", type: "string" }],
+  [
+    1,
+    {
+      name: "LiveOpsProfileIcons",
+      type: "packed",
+      fields: LiveOpsProfileIconTemplate,
+    },
+  ],
 ]);

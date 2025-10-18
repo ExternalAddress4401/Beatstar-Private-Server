@@ -5,19 +5,19 @@ import { LiveOpsCallingCardSettings } from "../game/com/spaceape/flamingo/liveop
 export const LiveOpsCallingCardsConfigProto: Map<number, CMSField> = new Map([
   [1, { name: "version", type: "string" }],
   [
-    4,
-    {
-      name: "CallingCards",
-      type: "packed",
-      fields: CallingCardTemplate,
-    },
-  ],
-  [
     5,
     {
       name: "CallingCardSettings",
       type: "group",
       fields: LiveOpsCallingCardSettings,
+    },
+  ],
+  [
+    4,
+    {
+      name: "CallingCards",
+      type: "packed",
+      fields: CallingCardTemplate,
     },
   ],
 ]);

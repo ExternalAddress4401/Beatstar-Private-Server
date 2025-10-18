@@ -1,0 +1,3466 @@
+{
+  "loadingScreens": [
+    {
+      "id": 1,
+      "idLabel": "beatstar-country-cactus",
+      "mainImage": {
+        "id": "82ba85ec-b73c-4ed8-823f-ba7ba10dbc6c",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/82ba85ec-b73c-4ed8-823f-ba7ba10dbc6c",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1667296800000,
+      "endTimeMsecs": 1669888800000
+    },
+    {
+      "id": 10,
+      "idLabel": "beatstar-tourPass-HolidayParty-4",
+      "mainImage": {
+        "id": "377d655a-2a24-49c3-9c84-462f7b5322c1",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/377d655a-2a24-49c3-9c84-462f7b5322c1",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1669888800000,
+      "endTimeMsecs": 1671616800000
+    },
+    {
+      "id": 100,
+      "idLabel": "beatstar-Halloween-2023",
+      "mainImage": {
+        "id": "e8f223b6-04a3-453c-8b13-9ebc85551b55",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/e8f223b6-04a3-453c-8b13-9ebc85551b55",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1729872000000,
+      "endTimeMsecs": 1730476800000
+    },
+    {
+      "id": 101,
+      "idLabel": "beatstar-TP29-01",
+      "mainImage": {
+        "id": "bcfb6992-0fc3-407f-bf6a-80c8c48c326b",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/bcfb6992-0fc3-407f-bf6a-80c8c48c326b",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1699610400000,
+      "endTimeMsecs": 1701424800000
+    },
+    {
+      "id": 102,
+      "idLabel": "beatstar-TP29-02",
+      "mainImage": {
+        "id": "7619028a-f995-4519-a22b-8111212e31a3",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/7619028a-f995-4519-a22b-8111212e31a3",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1699610400000,
+      "endTimeMsecs": 1701424800000
+    },
+    {
+      "id": 103,
+      "idLabel": "beatstar-TP29-03",
+      "mainImage": {
+        "id": "8a427bbf-4a10-4c36-ae49-32e1b1ea9b8c",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/8a427bbf-4a10-4c36-ae49-32e1b1ea9b8c",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1699610400000,
+      "endTimeMsecs": 1701424800000
+    },
+    {
+      "id": 104,
+      "idLabel": "beatstar-crabRave-01",
+      "mainImage": {
+        "id": "e3be9116-5a46-45ab-898c-a2c7eb078049",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/e3be9116-5a46-45ab-898c-a2c7eb078049",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1700215200000,
+      "endTimeMsecs": 1700820000000
+    },
+    {
+      "id": 105,
+      "idLabel": "beatstar-crabRave-02",
+      "mainImage": {
+        "id": "32e519e2-4040-4159-a5b8-d8377439cc0e",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/32e519e2-4040-4159-a5b8-d8377439cc0e",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1700215200000,
+      "endTimeMsecs": 1700820000000
+    },
+    {
+      "id": 106,
+      "idLabel": "beatstar-trolls-1",
+      "mainImage": {
+        "id": "388108f4-6d85-4840-baab-f903702c5591",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/388108f4-6d85-4840-baab-f903702c5591",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1699264800000,
+      "endTimeMsecs": 1700215200000
+    },
+    {
+      "id": 11,
+      "idLabel": "beatstar-tourPass-HolidayParty-1",
+      "mainImage": {
+        "id": "cfc2c516-3c42-4f1d-87b6-2cc5b7951603",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/cfc2c516-3c42-4f1d-87b6-2cc5b7951603",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1669888800000,
+      "endTimeMsecs": 1671616800000
+    },
+    {
+      "id": 12,
+      "idLabel": "beatstar-tourPass-HolidayParty-2",
+      "mainImage": {
+        "id": "cbc40bf8-eed8-4acd-a7d5-0cdfd8b8800f",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/cbc40bf8-eed8-4acd-a7d5-0cdfd8b8800f",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1669888800000,
+      "endTimeMsecs": 1642759200000
+    },
+    {
+      "id": 13,
+      "idLabel": "beatstar-deluxe-01",
+      "mainImage": {
+        "id": "ab3a8124-852a-43e6-b6e9-e9d9966d509d",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/ab3a8124-852a-43e6-b6e9-e9d9966d509d",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1668787200000,
+      "endTimeMsecs": 1669046400000
+    },
+    {
+      "id": 14,
+      "idLabel": "beatstar-deluxe-02",
+      "mainImage": {
+        "id": "d3d7b46d-61fb-4cb9-bcee-a304c01e3002",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/d3d7b46d-61fb-4cb9-bcee-a304c01e3002",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1668787200000,
+      "endTimeMsecs": 1669046400000
+    },
+    {
+      "id": 15,
+      "idLabel": "beatstar-TP14-01",
+      "mainImage": {
+        "id": "12083fa9-7377-4403-bfde-98fe32a3cc4c",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/12083fa9-7377-4403-bfde-98fe32a3cc4c",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1671616800000,
+      "endTimeMsecs": 1674036000000
+    },
+    {
+      "id": 16,
+      "idLabel": "beatstar-TP14-02",
+      "mainImage": {
+        "id": "d573d3d1-8615-4f2c-9123-be91a900b00b",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/d573d3d1-8615-4f2c-9123-be91a900b00b",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1671616800000,
+      "endTimeMsecs": 1674036000000
+    },
+    {
+      "id": 17,
+      "idLabel": "beatstar-TP14-03",
+      "mainImage": {
+        "id": "953918ee-1a60-4aa9-b2af-8453e150fd44",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/953918ee-1a60-4aa9-b2af-8453e150fd44",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1671616800000,
+      "endTimeMsecs": 1674036000000
+    },
+    {
+      "id": 18,
+      "idLabel": "beatstar-TP15-01",
+      "mainImage": {
+        "id": "afddff22-ee01-4c01-9586-1a5ef0e4ca82",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/afddff22-ee01-4c01-9586-1a5ef0e4ca82",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1674036000000,
+      "endTimeMsecs": 1674835200000
+    },
+    {
+      "id": 19,
+      "idLabel": "beatstar-TP15-02",
+      "mainImage": {
+        "id": "c3f59cca-a51c-496e-989b-abb0276409fa",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/c3f59cca-a51c-496e-989b-abb0276409fa",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1674036000000,
+      "endTimeMsecs": 1674835200000
+    },
+    {
+      "id": 2,
+      "idLabel": "beatstar-country-guitar",
+      "mainImage": {
+        "id": "b7f00027-a7da-46c0-af7e-5804946d99d6",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/b7f00027-a7da-46c0-af7e-5804946d99d6",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1667296800000,
+      "endTimeMsecs": 1669888800000
+    },
+    {
+      "id": 20,
+      "idLabel": "beatstar-TP15-03",
+      "mainImage": {
+        "id": "5c595870-92fe-4c39-b7e2-5f4d4bc12dd7",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/5c595870-92fe-4c39-b7e2-5f4d4bc12dd7",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1674036000000,
+      "endTimeMsecs": 1674835200000
+    },
+    {
+      "id": 21,
+      "idLabel": "beatstar-event-QueenRadio",
+      "mainImage": {
+        "id": "0e777aae-949b-40bd-8290-71b6ee6bddea",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/0e777aae-949b-40bd-8290-71b6ee6bddea",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "x": 52,
+          "width": 406,
+          "height": 812
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1674835200000,
+      "endTimeMsecs": 1675094400000
+    },
+    {
+      "id": 22,
+      "idLabel": "beatstar-event-QueenRadio2",
+      "mainImage": {
+        "id": "bb260101-4b8b-4200-a04c-bf87617a8870",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/bb260101-4b8b-4200-a04c-bf87617a8870",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "x": 60,
+          "width": 445,
+          "height": 889
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1674835200000,
+      "endTimeMsecs": 1675094400000
+    },
+    {
+      "id": 23,
+      "idLabel": "beatstar-event-QueenRadio3",
+      "mainImage": {
+        "id": "a700b899-7f80-4093-a7af-60987f7fea60",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/a700b899-7f80-4093-a7af-60987f7fea60",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "x": 54,
+          "width": 458,
+          "height": 917
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1674835200000,
+      "endTimeMsecs": 1675094400000
+    },
+    {
+      "id": 24,
+      "idLabel": "beatstar-TP15-01-postNicki",
+      "mainImage": {
+        "id": "afddff22-ee01-4c01-9586-1a5ef0e4ca82",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/afddff22-ee01-4c01-9586-1a5ef0e4ca82",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1675094400000,
+      "endTimeMsecs": 1675850400000
+    },
+    {
+      "id": 25,
+      "idLabel": "beatstar-TP15-02-postNicki",
+      "mainImage": {
+        "id": "c3f59cca-a51c-496e-989b-abb0276409fa",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/c3f59cca-a51c-496e-989b-abb0276409fa",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1675094400000,
+      "endTimeMsecs": 1675850400000
+    },
+    {
+      "id": 26,
+      "idLabel": "beatstar-TP15-03-postNicki",
+      "mainImage": {
+        "id": "5c595870-92fe-4c39-b7e2-5f4d4bc12dd7",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/5c595870-92fe-4c39-b7e2-5f4d4bc12dd7",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1675094400000,
+      "endTimeMsecs": 1675850400000
+    },
+    {
+      "id": 27,
+      "idLabel": "beatstar-TP16-01",
+      "mainImage": {
+        "id": "8cc84327-17d8-4439-919a-78d4dfa61318",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/8cc84327-17d8-4439-919a-78d4dfa61318",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1675936800000,
+      "endTimeMsecs": 1677837600000
+    },
+    {
+      "id": 28,
+      "idLabel": "beatstar-TP16-02",
+      "mainImage": {
+        "id": "00aa5258-4ed1-41fa-a0f8-5aaf9b2924b3",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/00aa5258-4ed1-41fa-a0f8-5aaf9b2924b3",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1675936800000,
+      "endTimeMsecs": 1677837600000
+    },
+    {
+      "id": 29,
+      "idLabel": "beatstar-TP16-03",
+      "mainImage": {
+        "id": "b81181d3-073d-4a24-ae90-4951960e2068",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/b81181d3-073d-4a24-ae90-4951960e2068",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1675936800000,
+      "endTimeMsecs": 1677837600000
+    },
+    {
+      "id": 3,
+      "idLabel": "beatstar-country-sunset",
+      "mainImage": {
+        "id": "884155e0-298a-4a95-bd26-b43037a4c2b1",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/884155e0-298a-4a95-bd26-b43037a4c2b1",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1667296800000,
+      "endTimeMsecs": 1669888800000
+    },
+    {
+      "id": 30,
+      "idLabel": "beatstar-Heartbeatstar",
+      "mainImage": {
+        "id": "90cb2ce1-0cf7-4155-a9ae-f1d5ce0a22be",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/90cb2ce1-0cf7-4155-a9ae-f1d5ce0a22be",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1676368800000,
+      "endTimeMsecs": 1676541600000
+    },
+    {
+      "id": 31,
+      "idLabel": "beatstar-BHM",
+      "mainImage": {
+        "id": "e59e1117-70d8-4c6a-8c94-aff0fff55fa5",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/e59e1117-70d8-4c6a-8c94-aff0fff55fa5",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1708099200000,
+      "endTimeMsecs": 1708358400000
+    },
+    {
+      "id": 32,
+      "idLabel": "beatstar-TP17-01",
+      "mainImage": {
+        "id": "4b146f9a-8a0a-49f8-960f-fa806122768b",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/4b146f9a-8a0a-49f8-960f-fa806122768b",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1677837600000,
+      "endTimeMsecs": 1679652000000
+    },
+    {
+      "id": 33,
+      "idLabel": "beatstar-TP17-02",
+      "mainImage": {
+        "id": "03cfc69d-dc5e-4c65-9d79-457db4a066b6",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/03cfc69d-dc5e-4c65-9d79-457db4a066b6",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1677837600000,
+      "endTimeMsecs": 1679652000000
+    },
+    {
+      "id": 34,
+      "idLabel": "beatstar-TP17-03",
+      "mainImage": {
+        "id": "f90cd572-0b7a-49c4-9814-003f07dedbe7",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/f90cd572-0b7a-49c4-9814-003f07dedbe7",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1677837600000,
+      "endTimeMsecs": 1679652000000
+    },
+    {
+      "id": 35,
+      "idLabel": "beatstar-TP17-04",
+      "mainImage": {
+        "id": "ce623e05-0b8c-4ffc-8dab-7dd47d71b619",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/ce623e05-0b8c-4ffc-8dab-7dd47d71b619",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1677837600000,
+      "endTimeMsecs": 1679652000000
+    },
+    {
+      "id": 36,
+      "idLabel": "beatstar-event-intlWomensDay2023",
+      "mainImage": {
+        "id": "e60108d9-6fb2-465e-8e76-76b4f0e82597",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/e60108d9-6fb2-465e-8e76-76b4f0e82597",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1709654400000,
+      "endTimeMsecs": 1710172800000
+    },
+    {
+      "id": 37,
+      "idLabel": "beatstar-TP18-01",
+      "mainImage": {
+        "id": "ffae0822-1d90-47f3-9129-1a87b57dc0a0",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/ffae0822-1d90-47f3-9129-1a87b57dc0a0",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1679652000000,
+      "endTimeMsecs": 1681466400000
+    },
+    {
+      "id": 38,
+      "idLabel": "beatstar-TP18-02",
+      "mainImage": {
+        "id": "7b2d6008-66fa-465f-ab4b-4cd432c6afb6",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/7b2d6008-66fa-465f-ab4b-4cd432c6afb6",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1679652000000,
+      "endTimeMsecs": 1681466400000
+    },
+    {
+      "id": 39,
+      "idLabel": "beatstar-TP18-03",
+      "mainImage": {
+        "id": "4d72cb03-8e87-4efd-ab48-5926245bdec1",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/4d72cb03-8e87-4efd-ab48-5926245bdec1",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1679652000000,
+      "endTimeMsecs": 1681466400000
+    },
+    {
+      "id": 4,
+      "idLabel": "beatstar-country-shania-01",
+      "mainImage": {
+        "id": "f18c99d1-79dc-4a3c-af2b-645e9acdbb28",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/f18c99d1-79dc-4a3c-af2b-645e9acdbb28",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1668182400000,
+      "endTimeMsecs": 1668441600000
+    },
+    {
+      "id": 40,
+      "idLabel": "beatstar-TP18-04",
+      "mainImage": {
+        "id": "064c907f-5825-4610-912b-8283d696ec7e",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/064c907f-5825-4610-912b-8283d696ec7e",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1679652000000,
+      "endTimeMsecs": 1681466400000
+    },
+    {
+      "id": 41,
+      "idLabel": "beatstar-TP19-01",
+      "mainImage": {
+        "id": "2a947221-88c7-4c93-80d9-3858c3c8b9df",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/2a947221-88c7-4c93-80d9-3858c3c8b9df",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1681466400000,
+      "endTimeMsecs": 1682092800000
+    },
+    {
+      "id": 42,
+      "idLabel": "beatstar-TP19-02",
+      "mainImage": {
+        "id": "b18228b5-5eb0-4ecf-8d12-96b3ce26c371",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/b18228b5-5eb0-4ecf-8d12-96b3ce26c371",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1681466400000,
+      "endTimeMsecs": 1682092800000
+    },
+    {
+      "id": 43,
+      "idLabel": "beatstar-TP19-03",
+      "mainImage": {
+        "id": "d92d8c41-d52b-4b8f-a194-80b93a24cd66",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/d92d8c41-d52b-4b8f-a194-80b93a24cd66",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1681466400000,
+      "endTimeMsecs": 1682092800000
+    },
+    {
+      "id": 44,
+      "idLabel": "beatstar-TP19-04",
+      "mainImage": {
+        "id": "ee8e14ce-f91a-4434-9b4f-b345755b65dc",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/ee8e14ce-f91a-4434-9b4f-b345755b65dc",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1681466400000,
+      "endTimeMsecs": 1682092800000
+    },
+    {
+      "id": 45,
+      "idLabel": "MorganWallen-01",
+      "mainImage": {
+        "id": "4d9ed160-419a-482b-a557-b68343bcee04",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/4d9ed160-419a-482b-a557-b68343bcee04",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1682092800000,
+      "endTimeMsecs": 1682352000000
+    },
+    {
+      "id": 46,
+      "idLabel": "beatstar-TP19-05",
+      "mainImage": {
+        "id": "2a947221-88c7-4c93-80d9-3858c3c8b9df",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/2a947221-88c7-4c93-80d9-3858c3c8b9df",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1682352000000,
+      "endTimeMsecs": 1683280800000
+    },
+    {
+      "id": 47,
+      "idLabel": "beatstar-TP19-06",
+      "mainImage": {
+        "id": "b18228b5-5eb0-4ecf-8d12-96b3ce26c371",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/b18228b5-5eb0-4ecf-8d12-96b3ce26c371",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1682352000000,
+      "endTimeMsecs": 1683280800000
+    },
+    {
+      "id": 48,
+      "idLabel": "beatstar-TP19-07",
+      "mainImage": {
+        "id": "d92d8c41-d52b-4b8f-a194-80b93a24cd66",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/d92d8c41-d52b-4b8f-a194-80b93a24cd66",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1682352000000,
+      "endTimeMsecs": 1683280800000
+    },
+    {
+      "id": 49,
+      "idLabel": "beatstar-TP19-08",
+      "mainImage": {
+        "id": "ee8e14ce-f91a-4434-9b4f-b345755b65dc",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/ee8e14ce-f91a-4434-9b4f-b345755b65dc",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1682352000000,
+      "endTimeMsecs": 1683280800000
+    },
+    {
+      "id": 5,
+      "idLabel": "beatstar-country-shania-02",
+      "mainImage": {
+        "id": "bf79a313-8e06-4c61-b156-a197caa3982f",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/bf79a313-8e06-4c61-b156-a197caa3982f",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1668182400000,
+      "endTimeMsecs": 1668441600000
+    },
+    {
+      "id": 50,
+      "idLabel": "beatstar-TP20-01",
+      "mainImage": {
+        "id": "e4a92ae0-8ecc-40c9-87bc-2107fdd91673",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/e4a92ae0-8ecc-40c9-87bc-2107fdd91673",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1683280800000,
+      "endTimeMsecs": 1683907200000
+    },
+    {
+      "id": 51,
+      "idLabel": "beatstar-TP20-04",
+      "mainImage": {
+        "id": "e4a92ae0-8ecc-40c9-87bc-2107fdd91673",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/e4a92ae0-8ecc-40c9-87bc-2107fdd91673",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1684166400000,
+      "endTimeMsecs": 1685095200000
+    },
+    {
+      "id": 52,
+      "idLabel": "beatstar-TP20-02",
+      "mainImage": {
+        "id": "f69413a6-fe5f-4d1a-ae5d-fc7bd7ab2cf4",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/f69413a6-fe5f-4d1a-ae5d-fc7bd7ab2cf4",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1683280800000,
+      "endTimeMsecs": 1683907200000
+    },
+    {
+      "id": 53,
+      "idLabel": "beatstar-TP20-05",
+      "mainImage": {
+        "id": "f69413a6-fe5f-4d1a-ae5d-fc7bd7ab2cf4",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/f69413a6-fe5f-4d1a-ae5d-fc7bd7ab2cf4",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1684166400000,
+      "endTimeMsecs": 1685095200000
+    },
+    {
+      "id": 54,
+      "idLabel": "beatstar-TP20-03",
+      "mainImage": {
+        "id": "38498ac3-540a-488a-b1ba-09453e1640ce",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/38498ac3-540a-488a-b1ba-09453e1640ce",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1683280800000,
+      "endTimeMsecs": 1683907200000
+    },
+    {
+      "id": 55,
+      "idLabel": "beatstar-TP20-06",
+      "mainImage": {
+        "id": "38498ac3-540a-488a-b1ba-09453e1640ce",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/38498ac3-540a-488a-b1ba-09453e1640ce",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1684166400000,
+      "endTimeMsecs": 1685095200000
+    },
+    {
+      "id": 56,
+      "idLabel": "beatstar-TP20-07",
+      "mainImage": {
+        "id": "bbf67c4d-c4ca-464b-9ab7-cb008a28bf12",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/bbf67c4d-c4ca-464b-9ab7-cb008a28bf12",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1683280800000,
+      "endTimeMsecs": 1683907200000
+    },
+    {
+      "id": 57,
+      "idLabel": "beatstar-TP20-08",
+      "mainImage": {
+        "id": "bbf67c4d-c4ca-464b-9ab7-cb008a28bf12",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/bbf67c4d-c4ca-464b-9ab7-cb008a28bf12",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1684166400000,
+      "endTimeMsecs": 1685095200000
+    },
+    {
+      "id": 58,
+      "idLabel": "beatstar-Meteora20-01",
+      "mainImage": {
+        "id": "05296892-e60b-4ea3-8bf0-e7b5b8bd3a32",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/05296892-e60b-4ea3-8bf0-e7b5b8bd3a32",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1683907200000,
+      "endTimeMsecs": 1684166400000
+    },
+    {
+      "id": 59,
+      "idLabel": "beatstar-Meteora20-02",
+      "mainImage": {
+        "id": "fab0057a-ad84-4212-93a3-c010f56630e9",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/fab0057a-ad84-4212-93a3-c010f56630e9",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1683907200000,
+      "endTimeMsecs": 1684166400000
+    },
+    {
+      "id": 6,
+      "idLabel": "beatstar-country-shania-03",
+      "mainImage": {
+        "id": "cff4ecfa-8567-4b19-9fad-2341a2929bbf",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/cff4ecfa-8567-4b19-9fad-2341a2929bbf",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1668182400000,
+      "endTimeMsecs": 1668441600000
+    },
+    {
+      "id": 60,
+      "idLabel": "beatstar-TP21-01",
+      "mainImage": {
+        "id": "c7d8f697-77e1-40af-845d-728b1f63e8b3",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/c7d8f697-77e1-40af-845d-728b1f63e8b3",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1685095200000,
+      "endTimeMsecs": 1686326400000
+    },
+    {
+      "id": 61,
+      "idLabel": "beatstar-TP21-02",
+      "mainImage": {
+        "id": "40a57e1d-1ef4-469d-86ec-8e5fbe9dbc94",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/40a57e1d-1ef4-469d-86ec-8e5fbe9dbc94",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1685095200000,
+      "endTimeMsecs": 1686326400000
+    },
+    {
+      "id": 62,
+      "idLabel": "beatstar-TP21-03",
+      "mainImage": {
+        "id": "2a19e7f6-ce1b-4786-8254-809fd60768b4",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/2a19e7f6-ce1b-4786-8254-809fd60768b4",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1685095200000,
+      "endTimeMsecs": 1686326400000
+    },
+    {
+      "id": 63,
+      "idLabel": "beatstar-TP21-04",
+      "mainImage": {
+        "id": "7bc38319-f507-4a52-9e96-c8dbc2357855",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/7bc38319-f507-4a52-9e96-c8dbc2357855",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1685095200000,
+      "endTimeMsecs": 1686326400000
+    },
+    {
+      "id": 64,
+      "idLabel": "beatstar-TP21-05",
+      "mainImage": {
+        "id": "c7d8f697-77e1-40af-845d-728b1f63e8b3",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/c7d8f697-77e1-40af-845d-728b1f63e8b3",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1686585600000,
+      "endTimeMsecs": 1686909600000
+    },
+    {
+      "id": 65,
+      "idLabel": "beatstar-TP21-06",
+      "mainImage": {
+        "id": "40a57e1d-1ef4-469d-86ec-8e5fbe9dbc94",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/40a57e1d-1ef4-469d-86ec-8e5fbe9dbc94",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1686585600000,
+      "endTimeMsecs": 1686909600000
+    },
+    {
+      "id": 66,
+      "idLabel": "beatstar-TP21-07",
+      "mainImage": {
+        "id": "2a19e7f6-ce1b-4786-8254-809fd60768b4",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/2a19e7f6-ce1b-4786-8254-809fd60768b4",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1686585600000,
+      "endTimeMsecs": 1686909600000
+    },
+    {
+      "id": 67,
+      "idLabel": "beatstar-TP21-08",
+      "mainImage": {
+        "id": "7bc38319-f507-4a52-9e96-c8dbc2357855",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/7bc38319-f507-4a52-9e96-c8dbc2357855",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1686585600000,
+      "endTimeMsecs": 1686909600000
+    },
+    {
+      "id": 68,
+      "idLabel": "beatstar-event-GGJ2023-1",
+      "mainImage": {
+        "id": "7b263cc4-c276-49d6-864d-2bf5f9037b9e",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/7b263cc4-c276-49d6-864d-2bf5f9037b9e",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1685721600000,
+      "endTimeMsecs": 1685980800000
+    },
+    {
+      "id": 69,
+      "idLabel": "beatstar-event-GGJ2023-2",
+      "mainImage": {
+        "id": "633bb299-66b9-4815-843d-520792bf57ec",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/633bb299-66b9-4815-843d-520792bf57ec",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1685721600000,
+      "endTimeMsecs": 1685980800000
+    },
+    {
+      "id": 7,
+      "idLabel": "beatstar-country-eminem-01",
+      "mainImage": {
+        "id": "ac44ada2-03d2-4b33-ba68-f04c36b104c5",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/ac44ada2-03d2-4b33-ba68-f04c36b104c5",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1668787200000,
+      "endTimeMsecs": 1669046400000
+    },
+    {
+      "id": 70,
+      "idLabel": "beatstar-event-GGJ2023-3",
+      "mainImage": {
+        "id": "317f03b8-b69a-4e47-96f5-af89032272da",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/317f03b8-b69a-4e47-96f5-af89032272da",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1685721600000,
+      "endTimeMsecs": 1685980800000
+    },
+    {
+      "id": 71,
+      "idLabel": "beatstar-TP22-01",
+      "mainImage": {
+        "id": "92dbde25-a3cf-4190-935b-353c88c07451",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/92dbde25-a3cf-4190-935b-353c88c07451",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1686909600000,
+      "endTimeMsecs": 1688724000000
+    },
+    {
+      "id": 72,
+      "idLabel": "beatstar-TP22-02",
+      "mainImage": {
+        "id": "9e43356c-bf5f-4213-9ad5-38cc55c0eb52",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/9e43356c-bf5f-4213-9ad5-38cc55c0eb52",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1686909600000,
+      "endTimeMsecs": 1688724000000
+    },
+    {
+      "id": 73,
+      "idLabel": "beatstar-TP22-03",
+      "mainImage": {
+        "id": "3dbd0b38-2a1e-4109-99c1-0892395e01ef",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/3dbd0b38-2a1e-4109-99c1-0892395e01ef",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1686909600000,
+      "endTimeMsecs": 1688724000000
+    },
+    {
+      "id": 74,
+      "idLabel": "beatstar-TP22-04",
+      "mainImage": {
+        "id": "b8185aa3-214e-4d27-b22e-da87ece79a09",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/b8185aa3-214e-4d27-b22e-da87ece79a09",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1686909600000,
+      "endTimeMsecs": 1688724000000
+    },
+    {
+      "id": 75,
+      "idLabel": "beatstar-TP23-01",
+      "mainImage": {
+        "id": "11c6af18-cbcb-4c02-a1bc-f96d04db6652",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/11c6af18-cbcb-4c02-a1bc-f96d04db6652",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1688724000000,
+      "endTimeMsecs": 1690538400000
+    },
+    {
+      "id": 76,
+      "idLabel": "beatstar-TP23-02",
+      "mainImage": {
+        "id": "d73d714f-caf0-422a-9f08-d6e533e2726f",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/d73d714f-caf0-422a-9f08-d6e533e2726f",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1688724000000,
+      "endTimeMsecs": 1690538400000
+    },
+    {
+      "id": 77,
+      "idLabel": "beatstar-TP23-03",
+      "mainImage": {
+        "id": "a8fd5246-fd8e-4ff7-8895-908e258cdd5b",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/a8fd5246-fd8e-4ff7-8895-908e258cdd5b",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1688724000000,
+      "endTimeMsecs": 1690538400000
+    },
+    {
+      "id": 78,
+      "idLabel": "beatstar-TP24-01",
+      "mainImage": {
+        "id": "dbcfd1f8-4af7-46a0-82a9-2a3ac764860a",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/dbcfd1f8-4af7-46a0-82a9-2a3ac764860a",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1690538400000,
+      "endTimeMsecs": 1692352800000
+    },
+    {
+      "id": 79,
+      "idLabel": "beatstar-TP24-02",
+      "mainImage": {
+        "id": "74d40130-7ce0-4231-a603-8ac647a6fa27",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/74d40130-7ce0-4231-a603-8ac647a6fa27",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1690538400000,
+      "endTimeMsecs": 1692352800000
+    },
+    {
+      "id": 8,
+      "idLabel": "beatstar-country-eminem-02",
+      "mainImage": {
+        "id": "57eecf7a-dd54-4506-b7cc-b3ead7a4fc73",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/57eecf7a-dd54-4506-b7cc-b3ead7a4fc73",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1668787200000,
+      "endTimeMsecs": 1669046400000
+    },
+    {
+      "id": 80,
+      "idLabel": "beatstar-TP24-03",
+      "mainImage": {
+        "id": "084702cc-3772-4469-bca8-76859299d441",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/084702cc-3772-4469-bca8-76859299d441",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1690538400000,
+      "endTimeMsecs": 1692352800000
+    },
+    {
+      "id": 81,
+      "idLabel": "beatstar-CSXPROMO-01",
+      "mainImage": {
+        "id": "5de8fc60-c6cb-423f-8744-26d4a0a8c19c",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/5de8fc60-c6cb-423f-8744-26d4a0a8c19c",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1690884000000,
+      "endTimeMsecs": 1695376800000
+    },
+    {
+      "id": 82,
+      "idLabel": "beatstar-CSXPROMO-02",
+      "mainImage": {
+        "id": "0d4169ff-c408-4e13-bf23-93792ab41919",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/0d4169ff-c408-4e13-bf23-93792ab41919",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1690884000000,
+      "endTimeMsecs": 1695376800000
+    },
+    {
+      "id": 83,
+      "idLabel": "beatstar-CSXPROMO-03",
+      "mainImage": {
+        "id": "5f034892-ab0c-42ae-8825-ceb1f7fda31c",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/5f034892-ab0c-42ae-8825-ceb1f7fda31c",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1690884000000,
+      "endTimeMsecs": 1695376800000
+    },
+    {
+      "id": 84,
+      "idLabel": "beatstar-TP25-03",
+      "mainImage": {
+        "id": "1db7772d-fae0-49fc-afbb-382c904ae899",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/1db7772d-fae0-49fc-afbb-382c904ae899",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1692352800000,
+      "endTimeMsecs": 1694167200000
+    },
+    {
+      "id": 85,
+      "idLabel": "beatstar-TP25-02",
+      "mainImage": {
+        "id": "9448c78e-7a68-4787-bab6-7105eacf085b",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/9448c78e-7a68-4787-bab6-7105eacf085b",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1692352800000,
+      "endTimeMsecs": 1694167200000
+    },
+    {
+      "id": 86,
+      "idLabel": "beatstar-TP25-01",
+      "mainImage": {
+        "id": "6322bf3e-e0e8-4939-a181-035be4438c0f",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/6322bf3e-e0e8-4939-a181-035be4438c0f",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1692352800000,
+      "endTimeMsecs": 1694167200000
+    },
+    {
+      "id": 87,
+      "idLabel": "beatstar-TP26-01",
+      "mainImage": {
+        "id": "7e47cd29-43f0-4d1a-80cb-3046a85067ca",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/7e47cd29-43f0-4d1a-80cb-3046a85067ca",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1694167200000,
+      "endTimeMsecs": 1695981600000
+    },
+    {
+      "id": 88,
+      "idLabel": "beatstar-TP26-02",
+      "mainImage": {
+        "id": "835820bc-efe2-4913-b739-9ae66ef4c543",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/835820bc-efe2-4913-b739-9ae66ef4c543",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1694167200000,
+      "endTimeMsecs": 1695981600000
+    },
+    {
+      "id": 89,
+      "idLabel": "beatstar-TP26-03",
+      "mainImage": {
+        "id": "b4928ad3-4f01-4863-9b3d-f8ad90d9dcff",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/b4928ad3-4f01-4863-9b3d-f8ad90d9dcff",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1694167200000,
+      "endTimeMsecs": 1695981600000
+    },
+    {
+      "id": 9,
+      "idLabel": "beatstar-tourPass-HolidayParty-3",
+      "mainImage": {
+        "id": "cc76e4c1-a7cd-4391-88ff-7b4096874bba",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/cc76e4c1-a7cd-4391-88ff-7b4096874bba",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1669888800000,
+      "endTimeMsecs": 1671616800000
+    },
+    {
+      "id": 90,
+      "idLabel": "ThirtySecondsMars-01",
+      "mainImage": {
+        "id": "32d30035-a4d9-43a6-be7b-55713b78fc7a",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/32d30035-a4d9-43a6-be7b-55713b78fc7a",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1694793600000,
+      "endTimeMsecs": 1695052800000
+    },
+    {
+      "id": 91,
+      "idLabel": "beatstar-TP27-01",
+      "mainImage": {
+        "id": "c124258d-54bb-47ea-a458-4959883b0ef7",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/c124258d-54bb-47ea-a458-4959883b0ef7",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1695981600000,
+      "endTimeMsecs": 1697796000000
+    },
+    {
+      "id": 92,
+      "idLabel": "beatstar-TP27-02",
+      "mainImage": {
+        "id": "f5a82ddd-87ca-4635-a72e-8c2a274161a4",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/f5a82ddd-87ca-4635-a72e-8c2a274161a4",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1695981600000,
+      "endTimeMsecs": 1697796000000
+    },
+    {
+      "id": 93,
+      "idLabel": "beatstar-TP27-03",
+      "mainImage": {
+        "id": "fe3b96e1-64d1-4527-b3e0-c96c0acca659",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/fe3b96e1-64d1-4527-b3e0-c96c0acca659",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1695981600000,
+      "endTimeMsecs": 1697796000000
+    },
+    {
+      "id": 94,
+      "idLabel": "beatstar-CSlive-01",
+      "mainImage": {
+        "id": "e6a48d33-3a8b-4d65-a887-32ae37c182e1",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/e6a48d33-3a8b-4d65-a887-32ae37c182e1",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1695290400000,
+      "endTimeMsecs": 1697882400000
+    },
+    {
+      "id": 95,
+      "idLabel": "beatstar-CSlive-02",
+      "mainImage": {
+        "id": "3a8c6b24-e54a-45b2-9cf4-9bac7d4e7537",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/3a8c6b24-e54a-45b2-9cf4-9bac7d4e7537",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1695290400000,
+      "endTimeMsecs": 1697882400000
+    },
+    {
+      "id": 96,
+      "idLabel": "beatstar-CSlive-03",
+      "mainImage": {
+        "id": "5eb925b8-9ff8-4be4-bb5d-6e5524843681",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/5eb925b8-9ff8-4be4-bb5d-6e5524843681",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1695290400000,
+      "endTimeMsecs": 1697882400000
+    },
+    {
+      "id": 97,
+      "idLabel": "beatstar-TP28-01",
+      "mainImage": {
+        "id": "67d53d33-a9e0-4c63-a448-e848cabb4356",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/67d53d33-a9e0-4c63-a448-e848cabb4356",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1697796000000,
+      "endTimeMsecs": 1699610400000
+    },
+    {
+      "id": 98,
+      "idLabel": "beatstar-TP28-02",
+      "mainImage": {
+        "id": "66ce8c19-8089-4827-948c-f535f2f9f153",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/66ce8c19-8089-4827-948c-f535f2f9f153",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1697796000000,
+      "endTimeMsecs": 1699610400000
+    },
+    {
+      "id": 99,
+      "idLabel": "beatstar-TP28-03",
+      "mainImage": {
+        "id": "00b9a492-d54a-48b9-b2b0-6beea7bd5509",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/00b9a492-d54a-48b9-b2b0-6beea7bd5509",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1697796000000,
+      "endTimeMsecs": 1699610400000
+    },
+    {
+      "id": 2069185680,
+      "idLabel": "TP30-1",
+      "mainImage": {
+        "id": "2ecb0aa8-0428-4325-bd01-2b9dd9fa6b8e",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/2ecb0aa8-0428-4325-bd01-2b9dd9fa6b8e",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1701424800000,
+      "endTimeMsecs": 1703152800000
+    },
+    {
+      "id": 468661761,
+      "idLabel": "TP30-2",
+      "mainImage": {
+        "id": "4ebbecd9-b828-4a55-abb4-2e427c907a94",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/4ebbecd9-b828-4a55-abb4-2e427c907a94",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1701424800000,
+      "endTimeMsecs": 1703152800000
+    },
+    {
+      "id": 1906986008,
+      "idLabel": "TP30-3",
+      "mainImage": {
+        "id": "223e05fc-36f2-4a0e-945b-f5c2a74b5c5e",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/223e05fc-36f2-4a0e-945b-f5c2a74b5c5e",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1701424800000,
+      "endTimeMsecs": 1703152800000
+    },
+    {
+      "id": 1822017294,
+      "idLabel": "s31-01",
+      "mainImage": {
+        "id": "0f8b7126-82e8-4f50-a4c5-d17eafe9cf0a",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/0f8b7126-82e8-4f50-a4c5-d17eafe9cf0a",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1703239200000,
+      "endTimeMsecs": 1705658400000
+    },
+    {
+      "id": 101828832,
+      "idLabel": "s31-02",
+      "mainImage": {
+        "id": "36c160cb-1436-4e56-88fc-88e1e63c94f2",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/36c160cb-1436-4e56-88fc-88e1e63c94f2",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1703239200000,
+      "endTimeMsecs": 1705658400000
+    },
+    {
+      "id": 1294671134,
+      "idLabel": "s31-03",
+      "mainImage": {
+        "id": "297f32dc-eaf1-48bd-bbb7-250988c5a820",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/297f32dc-eaf1-48bd-bbb7-250988c5a820",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1703239200000,
+      "endTimeMsecs": 1705658400000
+    },
+    {
+      "id": 180161036,
+      "idLabel": "s32-01",
+      "mainImage": {
+        "id": "bbfa279a-d909-4fec-9d46-acaa90ab5f45",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/bbfa279a-d909-4fec-9d46-acaa90ab5f45",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1707127200000,
+      "endTimeMsecs": 1707472800000
+    },
+    {
+      "id": 717169589,
+      "idLabel": "s32-02",
+      "mainImage": {
+        "id": "f5dc5bf9-2c3d-4318-b087-12c9253b7966",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/f5dc5bf9-2c3d-4318-b087-12c9253b7966",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1707127200000,
+      "endTimeMsecs": 1707472800000
+    },
+    {
+      "id": 1937115191,
+      "idLabel": "s32-03",
+      "mainImage": {
+        "id": "db401e1a-4a8d-46b9-a300-cd78f827155b",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/db401e1a-4a8d-46b9-a300-cd78f827155b",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1707127200000,
+      "endTimeMsecs": 1707472800000
+    },
+    {
+      "id": 1454554217,
+      "idLabel": "beatstar-carnaval-2024",
+      "mainImage": {
+        "id": "1d186ee9-9d2b-4eb9-80d6-00b2bce68657",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/1d186ee9-9d2b-4eb9-80d6-00b2bce68657",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1706544000000,
+      "endTimeMsecs": 1707148800000
+    },
+    {
+      "id": 1575573643,
+      "idLabel": "beatstar-LunarNewYear-2024",
+      "mainImage": {
+        "id": "d2931582-47b7-4543-a515-0c77fb01fb1c",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/d2931582-47b7-4543-a515-0c77fb01fb1c",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1707235200000,
+      "endTimeMsecs": 1707753600000
+    },
+    {
+      "id": 1710202605,
+      "idLabel": "beatstar-TP33-01",
+      "mainImage": {
+        "id": "116af44b-1d1c-4a2e-9d99-ca98a2ca59dc",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/116af44b-1d1c-4a2e-9d99-ca98a2ca59dc",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1707472800000,
+      "endTimeMsecs": 1709287200000
+    },
+    {
+      "id": 1869288566,
+      "idLabel": "beatstar-TP33-02",
+      "mainImage": {
+        "id": "e527171e-948c-4e43-8d87-f4d24d8eabc8",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/e527171e-948c-4e43-8d87-f4d24d8eabc8",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1707472800000,
+      "endTimeMsecs": 1709287200000
+    },
+    {
+      "id": 2025412763,
+      "idLabel": "beatstar-TP33-03",
+      "mainImage": {
+        "id": "1bf4cfd2-2b68-4dae-a214-922640eecd12",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/1bf4cfd2-2b68-4dae-a214-922640eecd12",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1707472800000,
+      "endTimeMsecs": 1709287200000
+    },
+    {
+      "id": 197816464,
+      "idLabel": "beatstar-TP33-03",
+      "mainImage": {
+        "id": "1bf4cfd2-2b68-4dae-a214-922640eecd12",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/1bf4cfd2-2b68-4dae-a214-922640eecd12",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1707472800000,
+      "endTimeMsecs": 1709287200000
+    },
+    {
+      "id": 1209866378,
+      "idLabel": "beatstar-WomensDay-2024",
+      "mainImage": {
+        "id": "1584fa4f-5c2b-4f66-afb8-a86b0ac6f20d",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/1584fa4f-5c2b-4f66-afb8-a86b0ac6f20d",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1709654400000,
+      "endTimeMsecs": 1710172800000
+    },
+    {
+      "id": 447828323,
+      "idLabel": "beatstar-TP34-01",
+      "mainImage": {
+        "id": "39921c47-687e-4aa8-b461-c9fc57bd840c",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/39921c47-687e-4aa8-b461-c9fc57bd840c",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1709287200000,
+      "endTimeMsecs": 1711101600000
+    },
+    {
+      "id": 511088945,
+      "idLabel": "beatstar-TP34-02",
+      "mainImage": {
+        "id": "2a2299ce-66a5-45c2-8298-8975966304c3",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/2a2299ce-66a5-45c2-8298-8975966304c3",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1709287200000,
+      "endTimeMsecs": 1711101600000
+    },
+    {
+      "id": 972828535,
+      "idLabel": "beatstar-TP34-03",
+      "mainImage": {
+        "id": "cf1e6bc8-f158-49ff-b1dd-164bfcd92ea2",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/cf1e6bc8-f158-49ff-b1dd-164bfcd92ea2",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1709287200000,
+      "endTimeMsecs": 1711101600000
+    },
+    {
+      "id": 1500501996,
+      "idLabel": "beatstar-StPatricksDay",
+      "mainImage": {
+        "id": "873207bc-f37a-4aab-98a4-f8ef74f0c4d4",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/873207bc-f37a-4aab-98a4-f8ef74f0c4d4",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1710259200000,
+      "endTimeMsecs": 1710777600000
+    },
+    {
+      "id": 1798329031,
+      "idLabel": "beatstar-TP35-01",
+      "mainImage": {
+        "id": "4d69324e-ff45-4f5b-a050-526f5175609d",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/4d69324e-ff45-4f5b-a050-526f5175609d",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1711101600000,
+      "endTimeMsecs": 1712916000000
+    },
+    {
+      "id": 1627954915,
+      "idLabel": "beatstar-TP35-02",
+      "mainImage": {
+        "id": "b77ca8af-a4c0-4bcd-9d90-d611d3ebe176",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/b77ca8af-a4c0-4bcd-9d90-d611d3ebe176",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1711101600000,
+      "endTimeMsecs": 1712916000000
+    },
+    {
+      "id": 1100072563,
+      "idLabel": "beatstar-TP35-03",
+      "mainImage": {
+        "id": "dc38731d-7cae-4a81-bdb1-b27fadfd14c8",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/dc38731d-7cae-4a81-bdb1-b27fadfd14c8",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1711101600000,
+      "endTimeMsecs": 1712916000000
+    },
+    {
+      "id": 1537978912,
+      "idLabel": "beatstar-easter-2024",
+      "mainImage": {
+        "id": "0ecebc93-e717-496c-a183-4b73b54e9ac2",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/0ecebc93-e717-496c-a183-4b73b54e9ac2",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1711468800000,
+      "endTimeMsecs": 1711987200000
+    },
+    {
+      "id": 455153578,
+      "idLabel": "beatstar-EarthDay-2024",
+      "mainImage": {
+        "id": "1dd273b7-6f33-4797-9b14-ad2192331341",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/1dd273b7-6f33-4797-9b14-ad2192331341",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1713283200000,
+      "endTimeMsecs": 1713801600000
+    },
+    {
+      "id": 54042223,
+      "idLabel": "beatstar-EarthDay-2024-2",
+      "mainImage": {
+        "id": "317f03b8-b69a-4e47-96f5-af89032272da",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/317f03b8-b69a-4e47-96f5-af89032272da",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1713283200000,
+      "endTimeMsecs": 1713801600000
+    },
+    {
+      "id": 1109799309,
+      "idLabel": "beatstar-TP36",
+      "mainImage": {
+        "id": "04b22e18-6ae0-4492-9744-5e24a6d831f1",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/04b22e18-6ae0-4492-9744-5e24a6d831f1",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1712916000000,
+      "endTimeMsecs": 1714730400000
+    },
+    {
+      "id": 1692880766,
+      "idLabel": "beatstar-CherryBlossom-01",
+      "mainImage": {
+        "id": "ffae0822-1d90-47f3-9129-1a87b57dc0a0",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/ffae0822-1d90-47f3-9129-1a87b57dc0a0",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1713888000000,
+      "endTimeMsecs": 1714406400000
+    },
+    {
+      "id": 798523242,
+      "idLabel": "beatstar-CherryBlossom-02",
+      "mainImage": {
+        "id": "7b2d6008-66fa-465f-ab4b-4cd432c6afb6",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/7b2d6008-66fa-465f-ab4b-4cd432c6afb6",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1713888000000,
+      "endTimeMsecs": 1714406400000
+    },
+    {
+      "id": 774541862,
+      "idLabel": "beatstar-SpringSale",
+      "mainImage": {
+        "id": "1556f36b-7ea0-4c46-b37b-efb7d2cf7094",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/1556f36b-7ea0-4c46-b37b-efb7d2cf7094",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1713888000000,
+      "endTimeMsecs": 1714406400000
+    },
+    {
+      "id": 904541956,
+      "idLabel": "beatstar-theKillers",
+      "mainImage": {
+        "id": "e0547e22-1ff4-4adc-8ec9-f54d47677749",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/e0547e22-1ff4-4adc-8ec9-f54d47677749",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1714730400000,
+      "endTimeMsecs": 1716397200000
+    },
+    {
+      "id": 1266408337,
+      "idLabel": "beatstar-pride-2024",
+      "mainImage": {
+        "id": "1d0b07fc-122a-418e-b0d0-536f8274bfd4",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/1d0b07fc-122a-418e-b0d0-536f8274bfd4",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1717171200000,
+      "endTimeMsecs": 1719763200000
+    },
+    {
+      "id": 1929882867,
+      "idLabel": "BS_AppleTop100",
+      "mainImage": {
+        "id": "eceb2e71-0669-4dbd-8827-b2b4cf9a3990",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/eceb2e71-0669-4dbd-8827-b2b4cf9a3990",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1716397200000,
+      "endTimeMsecs": 1716829200000
+    },
+    {
+      "id": 59513505,
+      "idLabel": "TourPass-38",
+      "mainImage": {
+        "id": "35654a82-ecac-493e-8829-612fd0e790aa",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/35654a82-ecac-493e-8829-612fd0e790aa",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1716890400000,
+      "endTimeMsecs": 1718380800000
+    },
+    {
+      "id": 128929639,
+      "idLabel": "BS_TP39_LoadingScreen",
+      "mainImage": {
+        "id": "302478e7-3785-403d-85a7-8706e0d52f57",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/302478e7-3785-403d-85a7-8706e0d52f57",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1718359200000,
+      "endTimeMsecs": 1720173600000
+    },
+    {
+      "id": 2071457170,
+      "idLabel": "beatstar-TP40-2024",
+      "mainImage": {
+        "id": "62d91749-5dc0-45ee-9efb-550139d572aa",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/62d91749-5dc0-45ee-9efb-550139d572aa",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1720195200000,
+      "endTimeMsecs": 1722009600000
+    },
+    {
+      "id": 1439398173,
+      "idLabel": "BS_TP41_LoadingScreen",
+      "mainImage": {
+        "id": "f20b1424-1b31-424f-badd-748962b42097",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/f20b1424-1b31-424f-badd-748962b42097",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1722009600000,
+      "endTimeMsecs": 1723824000000
+    },
+    {
+      "id": 1819203828,
+      "idLabel": "beatstar-PostMalone",
+      "mainImage": {
+        "id": "ef40c333-5497-4127-ac2d-bb35f2b6d54f",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/ef40c333-5497-4127-ac2d-bb35f2b6d54f",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1723219200000,
+      "endTimeMsecs": 1723471200000
+    },
+    {
+      "id": 1298303818,
+      "idLabel": "beatstar-TP42-2024",
+      "mainImage": {
+        "id": "01cf9141-335b-4b00-9e89-708b8e44a192",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/01cf9141-335b-4b00-9e89-708b8e44a192",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1723824000000,
+      "endTimeMsecs": 1725638400000
+    },
+    {
+      "id": 1861576807,
+      "idLabel": "beatstar-birthday3-2024",
+      "mainImage": {
+        "id": "837e0e9d-32ab-499c-96c5-b051e90b4c1c",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/837e0e9d-32ab-499c-96c5-b051e90b4c1c",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1725033600000,
+      "endTimeMsecs": 1725292800000
+    },
+    {
+      "id": 1612982083,
+      "idLabel": "Beatstar-HispanicHeritage-2",
+      "mainImage": {
+        "id": "44c789a3-7a7e-442a-82db-fea3e3020ba0",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/44c789a3-7a7e-442a-82db-fea3e3020ba0",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1728662400000,
+      "endTimeMsecs": 1728921600000
+    },
+    {
+      "id": 1497157757,
+      "idLabel": "Beatstar-HispanicHeritage-1",
+      "mainImage": {
+        "id": "781393c5-09a9-4097-8e56-ec2d353f0382",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/781393c5-09a9-4097-8e56-ec2d353f0382",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1726588800000,
+      "endTimeMsecs": 1726761600000
+    },
+    {
+      "id": 194028931,
+      "idLabel": "GreenGameJam-2024",
+      "mainImage": {
+        "id": "bad69f8a-bb4b-40d7-85d2-68ea3a519534",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/bad69f8a-bb4b-40d7-85d2-68ea3a519534",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1726243200000,
+      "endTimeMsecs": 1726502400000
+    },
+    {
+      "id": 1061978005,
+      "idLabel": "beatstar-TP43-1",
+      "mainImage": {
+        "id": "5e865769-7825-45cb-98f4-4ebe37191531",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/5e865769-7825-45cb-98f4-4ebe37191531",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1725638400000,
+      "endTimeMsecs": 1727452800000
+    },
+    {
+      "id": 1814664488,
+      "idLabel": "beatstar-TP43-2",
+      "mainImage": {
+        "id": "31d98569-dae8-4497-a24a-be659eaa35bc",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/31d98569-dae8-4497-a24a-be659eaa35bc",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1725638400000,
+      "endTimeMsecs": 1727452800000
+    },
+    {
+      "id": 1390302361,
+      "idLabel": "beatstar-DayoftheDead",
+      "mainImage": {
+        "id": "f7a76104-44c0-4e4a-8231-2d7bbbb8a844",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/f7a76104-44c0-4e4a-8231-2d7bbbb8a844",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1730476800000,
+      "endTimeMsecs": 1730736000000
+    },
+    {
+      "id": 783419096,
+      "idLabel": "beatstar-Halloween-2024",
+      "mainImage": {
+        "id": "a870f4f5-c0ca-4b90-8851-4c66ea4a7687",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/a870f4f5-c0ca-4b90-8851-4c66ea4a7687",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1729872000000,
+      "endTimeMsecs": 1730476800000
+    },
+    {
+      "id": 1049550029,
+      "idLabel": "beatstar-TP44-1",
+      "mainImage": {
+        "id": "1be5f071-b140-49ef-acec-a293db478952",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/1be5f071-b140-49ef-acec-a293db478952",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1728057600000,
+      "endTimeMsecs": 1729872000000
+    },
+    {
+      "id": 653479341,
+      "idLabel": "beatstar-TP45",
+      "mainImage": {
+        "id": "f6f951a6-d20d-4ac4-a18e-25e8871b4d7f",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/f6f951a6-d20d-4ac4-a18e-25e8871b4d7f",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1729872000000,
+      "endTimeMsecs": 1731686400000
+    },
+    {
+      "id": 1007013621,
+      "idLabel": "beatstar-TP46-2024",
+      "mainImage": {
+        "id": "dc0ed257-a38b-4759-ab30-cdcc38ac16bc",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/dc0ed257-a38b-4759-ab30-cdcc38ac16bc",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1731686400000,
+      "endTimeMsecs": 1732896000000
+    },
+    {
+      "id": 1982813349,
+      "idLabel": "beatstar-tp47",
+      "mainImage": {
+        "id": "b1066c97-ed35-4cc5-8395-382c4060d3e8",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/b1066c97-ed35-4cc5-8395-382c4060d3e8",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1733500800000,
+      "endTimeMsecs": 1735920000000
+    },
+    {
+      "id": 795875087,
+      "idLabel": "xmas1-2024",
+      "mainImage": {
+        "id": "2ecb0aa8-0428-4325-bd01-2b9dd9fa6b8e",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/2ecb0aa8-0428-4325-bd01-2b9dd9fa6b8e",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1734969600000,
+      "endTimeMsecs": 1735574400000
+    },
+    {
+      "id": 840954527,
+      "idLabel": "xmas2-2024",
+      "mainImage": {
+        "id": "4ebbecd9-b828-4a55-abb4-2e427c907a94",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/4ebbecd9-b828-4a55-abb4-2e427c907a94",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1734969600000,
+      "endTimeMsecs": 1735574400000
+    },
+    {
+      "id": 717377659,
+      "idLabel": "xmas3-2024",
+      "mainImage": {
+        "id": "f5dc5bf9-2c3d-4318-b087-12c9253b7966",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/f5dc5bf9-2c3d-4318-b087-12c9253b7966",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1734969600000,
+      "endTimeMsecs": 1735574400000
+    },
+    {
+      "id": 1958450837,
+      "idLabel": "xmas4-2024",
+      "mainImage": {
+        "id": "db401e1a-4a8d-46b9-a300-cd78f827155b",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/db401e1a-4a8d-46b9-a300-cd78f827155b",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1734969600000,
+      "endTimeMsecs": 1735574400000
+    },
+    {
+      "id": 584516105,
+      "idLabel": "xmas5-2024",
+      "mainImage": {
+        "id": "48e5110a-cfbb-46ed-bb00-aacfce70f4c0",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/48e5110a-cfbb-46ed-bb00-aacfce70f4c0",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1734969600000,
+      "endTimeMsecs": 1735574400000
+    },
+    {
+      "id": 2111172193,
+      "idLabel": "xmas6-2024",
+      "mainImage": {
+        "id": "b177e87c-0233-453f-9171-dcdabd82b908",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/b177e87c-0233-453f-9171-dcdabd82b908",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1734969600000,
+      "endTimeMsecs": 1735574400000
+    },
+    {
+      "id": 1090045241,
+      "idLabel": "beatstar-ny24/25",
+      "mainImage": {
+        "id": "99fe1a1f-82cd-4951-acac-1d7868208db6",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/99fe1a1f-82cd-4951-acac-1d7868208db6",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1735574400000,
+      "endTimeMsecs": 1735920000000
+    },
+    {
+      "id": 934365873,
+      "idLabel": "beatstar-tp48",
+      "mainImage": {
+        "id": "a5c98244-a79f-4410-9abc-27b154ef6ae0",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/a5c98244-a79f-4410-9abc-27b154ef6ae0",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1706976000000,
+      "endTimeMsecs": 1708790400000
+    },
+    {
+      "id": 1561925305,
+      "idLabel": "beatstar-TP49",
+      "mainImage": {
+        "id": "14a17537-1380-4d15-a88e-a8ccb7c4d4bb",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/14a17537-1380-4d15-a88e-a8ccb7c4d4bb",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1737734400000,
+      "endTimeMsecs": 1738944000000
+    },
+    {
+      "id": 470128737,
+      "idLabel": "beatstar-football-2025",
+      "mainImage": {
+        "id": "7a0a5402-48fd-4641-9b21-8621b45b002a",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/7a0a5402-48fd-4641-9b21-8621b45b002a",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1738598400000,
+      "endTimeMsecs": 1739203200000
+    },
+    {
+      "id": 667612662,
+      "idLabel": "beatstar-TP50-2025",
+      "mainImage": {
+        "id": "2f4eb71d-9f01-4aef-97a0-4fc93155c98b",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/2f4eb71d-9f01-4aef-97a0-4fc93155c98b",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1738944000000,
+      "endTimeMsecs": 1740153600000
+    },
+    {
+      "id": 98688926,
+      "idLabel": "beatstar-TP51",
+      "mainImage": {
+        "id": "003ee6d6-84e9-4c5d-bd01-30e873e24dde",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/003ee6d6-84e9-4c5d-bd01-30e873e24dde",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1740153600000,
+      "endTimeMsecs": 1741363200000
+    },
+    {
+      "id": 998929792,
+      "idLabel": "beatstar-TP52-2025",
+      "mainImage": {
+        "id": "c87a6c44-79b5-4cf6-8b5f-ca155fa55143",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/c87a6c44-79b5-4cf6-8b5f-ca155fa55143",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1741363200000,
+      "endTimeMsecs": 1742572800000
+    },
+    {
+      "id": 1027482910,
+      "idLabel": "beatstar-womensday2025",
+      "mainImage": {
+        "id": "ef246a13-eb76-4e46-973f-24aa2147c259",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/ef246a13-eb76-4e46-973f-24aa2147c259",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1741363200000,
+      "endTimeMsecs": 1741622400000
+    },
+    {
+      "id": 2091970163,
+      "idLabel": "beatstar-carnaval-2025",
+      "mainImage": {
+        "id": "1d186ee9-9d2b-4eb9-80d6-00b2bce68657",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/1d186ee9-9d2b-4eb9-80d6-00b2bce68657",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1740758400000,
+      "endTimeMsecs": 1741017600000
+    },
+    {
+      "id": 1801911206,
+      "idLabel": "beatstar-WomensDay-2025-2",
+      "mainImage": {
+        "id": "1584fa4f-5c2b-4f66-afb8-a86b0ac6f20d",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/1584fa4f-5c2b-4f66-afb8-a86b0ac6f20d",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1741363200000,
+      "endTimeMsecs": 1741622400000
+    },
+    {
+      "id": 831553446,
+      "idLabel": "beatstar-event-intlWomensDay2025-3",
+      "mainImage": {
+        "id": "e60108d9-6fb2-465e-8e76-76b4f0e82597",
+        "url": "https://assets.flamingo.apelabs.net/images/loadingScreens/e60108d9-6fb2-465e-8e76-76b4f0e82597",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1741363200000,
+      "endTimeMsecs": 1741622400000
+    },
+    {
+      "id": 783857647,
+      "idLabel": "TP53-2025",
+      "mainImage": {
+        "id": "a955a75b-856e-451c-af32-af55cf11142e",
+        "url": "https://assets.flamingo.newbirds.net/images/loadingScreens/a955a75b-856e-451c-af32-af55cf11142e",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1742572800000,
+      "endTimeMsecs": 1743782400000
+    },
+    {
+      "id": 790777484,
+      "idLabel": "TP53-2025",
+      "mainImage": {
+        "id": "a955a75b-856e-451c-af32-af55cf11142e",
+        "url": "https://assets.flamingo.newbirds.net/images/loadingScreens/a955a75b-856e-451c-af32-af55cf11142e",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1742572800000,
+      "endTimeMsecs": 1743782400000
+    },
+    {
+      "id": 133817801,
+      "idLabel": "beatstar-TP54",
+      "mainImage": {
+        "id": "40744d9a-66b0-446c-bc37-333525828cdb",
+        "url": "https://assets.flamingo.newbirds.net/images/loadingScreens/40744d9a-66b0-446c-bc37-333525828cdb",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1743782400000,
+      "endTimeMsecs": 1744992000000
+    },
+    {
+      "id": 1621782883,
+      "idLabel": "beatstar-TP54-2",
+      "mainImage": {
+        "id": "c87a6c44-79b5-4cf6-8b5f-ca155fa55143",
+        "url": "https://assets.flamingo.newbirds.net/images/loadingScreens/c87a6c44-79b5-4cf6-8b5f-ca155fa55143",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1743782400000,
+      "endTimeMsecs": 1744992000000
+    },
+    {
+      "id": 434350574,
+      "idLabel": "beatstar-TP55",
+      "mainImage": {
+        "id": "c799fa1a-c923-4f78-99d3-421e82ca30b9",
+        "url": "https://assets.flamingo.newbirds.net/images/loadingScreens/c799fa1a-c923-4f78-99d3-421e82ca30b9",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1744992000000,
+      "endTimeMsecs": 1746201600000
+    },
+    {
+      "id": 452495688,
+      "idLabel": "Community Challenge 1",
+      "mainImage": {
+        "id": "5b7beb31-0cb4-41be-b3a2-c1831877c12b",
+        "url": "https://assets.flamingo.newbirds.net/images/loadingScreens/5b7beb31-0cb4-41be-b3a2-c1831877c12b",
+        "width": 416,
+        "height": 842,
+        "rect": {
+          "width": 416,
+          "height": 832
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1746100800000,
+      "endTimeMsecs": 1748779200000
+    },
+    {
+      "id": 1087960150,
+      "idLabel": "beatstar-TP56",
+      "mainImage": {
+        "id": "e893d079-07d8-42ac-8f02-d2e627b5ea21",
+        "url": "https://assets.flamingo.newbirds.net/images/loadingScreens/e893d079-07d8-42ac-8f02-d2e627b5ea21",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1746201600000,
+      "endTimeMsecs": 1747411200000
+    },
+    {
+      "id": 596317516,
+      "idLabel": "beatstar-TP56",
+      "mainImage": {
+        "id": "fbda431e-3e96-4d2a-be1f-4a56665a86fb",
+        "url": "https://assets.flamingo.newbirds.net/images/loadingScreens/fbda431e-3e96-4d2a-be1f-4a56665a86fb",
+        "width": 512,
+        "height": 1024,
+        "rect": {
+          "width": 512,
+          "height": 1024
+        }
+      },
+      "logoTintColor": -1,
+      "textTintColor": -1,
+      "timeLimited": true,
+      "startTimeMsecs": 1747411200000,
+      "endTimeMsecs": 1748361600000
+    }
+  ],
+  "version": "31.0.0.1747235343-content"
+}

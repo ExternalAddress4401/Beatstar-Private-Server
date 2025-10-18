@@ -6,13 +6,11 @@ import { ValueOf } from "../protobuf/interfaces/ValueOf";
 import { createBatchRequest } from "../protobuf/protos/BatchRequest";
 import { ExecuteSharplaAuditReq } from "../protobuf/protos/ExecuteSharplaAuditReq";
 import { ExecuteSharplaAuditResp } from "../protobuf/protos/ExecuteSharplaAuditResp";
-import { PartialReq } from "../protobuf/protos/reused/PartialReq";
 import { SyncReq, SyncReqEnum } from "../protobuf/protos/SyncReq";
 import { SyncResp } from "../protobuf/protos/SyncResp";
-import { createEmptyResponses } from "../protobuf/utils";
 import { greater } from "../utilities/greater";
-import { reqToEnum } from "../utilities/reqToEnum";
 import { scoreToMedal } from "../utilities/scoreToMedal";
+import { toArray } from "../utilities/toArray";
 import prisma from "../website/beatstar/src/lib/prisma";
 import { BaseService } from "./BaseService";
 
@@ -30,126 +28,136 @@ export class GameService extends BaseService {
   name = "gameservice";
 
   async handlePacket(packet: Packet, client: Client) {
-    const payload = packet.parsePayload(PartialReq);
-    const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
-      Number(payload.requests[0].rpcType)
-    ];
-
     const parsedPayload = packet.parsePayload(BatchRequest);
 
-    if (rpcType === "Sync") {
-      const parsedPayload = packet.parsePayload(SyncReq);
+    const requests = toArray(parsedPayload.requests);
+    if (requests.length === 1) {
+      const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
+        Number(requests[0].rpcType)
+      ];
+      if (rpcType === "Sync") {
+        const parsedPayload = packet.parsePayload(SyncReq);
 
-      const clide = parsedPayload.requests[0].body[0].session[0].clide;
-      console.log(clide);
+        const clide = parsedPayload.requests.body.session.clide;
 
-      if (clide === "{clide}") {
-        // user has no profile file on their device to read from
+        console.log(clide);
 
-        console.log("send error!");
-        const response = await packet.buildErrorResponse({
-          "{error}": {
-            code: 9587,
-            message: "Hell",
-            tokenId: "",
-            name: "Hell",
+        if (clide === "{clide}") {
+          const response = await packet.buildErrorResponse({
+            "{error}": {
+              code: 9587,
+              message: "NO_PROFILE",
+              tokenId: "",
+              name: "NO_PROFILE",
+            },
+          });
+          client.write(response);
+          return;
+        }
+
+        const user = await prisma.user.findFirst({
+          select: {
+            username: true,
+            Score: true,
+          },
+          where: {
+            uuid: clide,
           },
         });
-        client.write(response);
-        return;
-      }
 
-      const user = await prisma.user.findFirst({
-        select: {
-          username: true,
-          Score: true,
-        },
-        where: {
-          uuid: clide,
-        },
-      });
+        console.log(user);
 
-      if (!user) {
-        // TODO: do something real here
+        if (!user) {
+          // TODO: do something real here
+          const response = await packet.buildErrorResponse(
+            "ServerClientMessageHeader",
+            "SyncResp",
+            SyncResp
+          );
+          client.write(response);
+          return;
+        }
 
-        // send status code 6?
-        console.log("send err9r!");
-        const response = await packet.buildErrorResponse(
+        const prismaBeatmaps = await prisma.beatmap.findMany();
+        const scores: Score[] = prismaBeatmaps.map(({ id }) => ({
+          template_id: id,
+          BragState: {},
+          HighestScore: {},
+          RewardSource: 1,
+          Version: 1,
+          PlayedCount: 0,
+        }));
+
+        // force play count for 9999 so we can quit songs...
+        scores.find(
+          (beatmap) => beatmap.template_id === 99999
+        )!.PlayedCount = 2;
+
+        if (user.Score) {
+          for (const score of user?.Score) {
+            // TODO: remove !
+            const difficulty = prismaBeatmaps.find(
+              (beatmap) => beatmap.id === score.beatmapId
+            )?.difficulty!;
+            const beatmap = scores.find(
+              (beatmap) => beatmap.template_id === score.beatmapId
+            );
+            if (!beatmap) {
+              // this shouldn't happen...
+              break;
+            }
+
+            beatmap.HighestScore = {
+              normalizedScore: score.normalizedScore,
+              absoluteScore: score.absoluteScore,
+            };
+
+            const medal = scoreToMedal(score.absoluteScore, difficulty, false);
+            if (medal === undefined || medal === null) {
+              continue;
+            }
+
+            beatmap.HighestCheckpoint = score.highestCheckpoint;
+            beatmap.HighestStreak = score.highestStreak;
+            beatmap.HighestGrade_id = medal;
+            beatmap.PlayedCount = score.playedCount;
+            beatmap.absoluteScore = score.absoluteScore;
+          }
+        }
+
+        const response = await packet.buildResponse(
           "ServerClientMessageHeader",
           "SyncResp",
-          SyncResp
+          SyncResp,
+          {
+            "{username}": user?.username,
+            "{beatmaps}": scores,
+          },
+          true
         );
         client.write(response);
         return;
       }
+    }
 
-      const prismaBeatmaps = await prisma.beatmap.findMany();
-      const scores: Score[] = prismaBeatmaps.map(({ id }) => ({
-        template_id: id,
-        BragState: {},
-        HighestScore: {},
-        RewardSource: 1,
-        Version: 1,
-        PlayedCount: 0,
-      }));
+    const responses = [];
 
-      // force play count for 9999 so we can quit songs...
-      scores.find((beatmap) => beatmap.template_id === 99999)!.PlayedCount = 2;
+    for (const request of requests) {
+      const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
+        Number(request.rpcType)
+      ];
 
-      if (user.Score) {
-        for (const score of user?.Score) {
-          // TODO: remove !
-          const difficulty = prismaBeatmaps.find(
-            (beatmap) => beatmap.id === score.beatmapId
-          )?.difficulty!;
-          const beatmap = scores.find(
-            (beatmap) => beatmap.template_id === score.beatmapId
-          );
-          if (!beatmap) {
-            // this shouldn't happen...
-            break;
-          }
+      if (rpcType === "ExecuteAudit") {
+        const parsedPayload = packet.parsePayload(ExecuteSharplaAuditReq);
 
-          beatmap.HighestScore = {
-            normalizedScore: score.normalizedScore,
-            absoluteScore: score.absoluteScore,
-          };
-
-          const medal = scoreToMedal(score.absoluteScore, difficulty, false);
-          if (medal === undefined || medal === null) {
-            continue;
-          }
-
-          beatmap.HighestCheckpoint = score.highestCheckpoint;
-          beatmap.HighestStreak = score.highestStreak;
-          beatmap.HighestGrade_id = medal;
-          beatmap.PlayedCount = score.playedCount;
-          beatmap.absoluteScore = score.absoluteScore;
+        if (!client.clide) {
+          // this should be set before getting here...
+          Logger.error("Got gameservice request for client without a clide.");
+          return;
         }
-      }
 
-      const response = await packet.buildResponse(
-        "ServerClientMessageHeader",
-        "SyncResp",
-        SyncResp,
-        {
-          "{username}": user?.username,
-          "{beatmaps}": scores,
-        },
-        true
-      );
-      client.write(response);
-    } else if (rpcType === "ExecuteAudit") {
-      const parsedPayload = packet.parsePayload(ExecuteSharplaAuditReq);
+        const audit = request.audit;
 
-      if (!client.clide) {
-        // this should be set before getting here...
-        Logger.error("Got gameservice request for client without a clide.");
-        return;
-      }
-
-      for (const request of parsedPayload.requests) {
-        const audit = request.body[0].audit[0];
         if (audit.type === 12) {
           console.log("got a score!");
           const user = await prisma.user.findFirst({
@@ -244,16 +252,18 @@ export class GameService extends BaseService {
           }
         }
       }
-
-      const response = await packet.buildResponse(
-        "ServerClientMessageHeader",
-        "ExecuteSharplaAuditResp",
-        ExecuteSharplaAuditResp,
-        {
-          "{requests}": createEmptyResponses(parsedPayload.requests),
-        }
-      );
-      client.write(response);
     }
+
+    console.log(responses);
+
+    const response = await packet.buildResponse(
+      "ServerClientMessageHeader",
+      "ExecuteSharplaAuditResp",
+      ExecuteSharplaAuditResp,
+      {
+        "{requests}": responses,
+      }
+    );
+    client.write(response);
   }
 }
