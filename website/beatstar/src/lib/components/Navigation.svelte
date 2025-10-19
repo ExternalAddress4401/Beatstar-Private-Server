@@ -7,6 +7,7 @@
 		user: {
 			username: string;
 			uuid: string;
+			admin: boolean;
 		} | null;
 	}
 	let { user }: Props = $props();
@@ -40,6 +41,12 @@
 			<Logout size="32" color="#f4f3ee" />
 			<p>Logout</p>
 		</div>
+		{#if user.admin}
+			<div class="row">
+				<User size="32" color="#f4f3ee" />
+				<a class="link" href="/admin">Admin</a>
+			</div>
+		{/if}
 	{/if}
 </div>
 

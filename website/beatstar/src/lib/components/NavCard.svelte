@@ -1,28 +1,28 @@
 <script lang="ts">
 	interface Props {
 		title: string;
-		children?: any;
+		href: string;
 	}
 
-	let { title, children }: Props = $props();
+	let { title, href }: Props = $props();
 </script>
 
 <div class="card">
-	<h2>{title}</h2>
-	{@render children?.()}
+	<a {href} class="link"><h3>{title}</h3></a>
 </div>
 
 <style>
 	.card {
-		width: 16rem;
-		height: 16rem;
 		background-color: var(--primary);
 		border-radius: 3rem;
 		padding: 0.5rem;
+		text-align: center;
 
-		h2 {
-			text-align: center;
-			border-bottom: 3px solid black;
+		&:hover {
+			cursor: pointer;
 		}
+	}
+	.link {
+		all: unset;
 	}
 </style>

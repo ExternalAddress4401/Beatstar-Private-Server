@@ -14,7 +14,6 @@ const schema = zfd.formData({
 export const actions = {
 	register: async ({ request }) => {
 		const data = await request.formData();
-		console.log(data);
 		const response = await schema.safeParseAsync(data);
 		if (response.error) {
 			console.error(response.error);

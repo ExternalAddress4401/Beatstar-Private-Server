@@ -1,12 +1,13 @@
 <script lang="ts">
 	interface Props {
 		text: string;
-		onclick: () => void;
+		type: HTMLButtonElement['type'];
+		onclick?: () => void;
 	}
-	let { text, onclick }: Props = $props();
+	let { text, type, onclick }: Props = $props();
 </script>
 
-<button class="button" {onclick}>{text}</button>
+<button {type} class="button" {onclick}>{text}</button>
 
 <style>
 	.button {

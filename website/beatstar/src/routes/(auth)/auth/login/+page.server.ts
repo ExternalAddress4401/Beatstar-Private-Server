@@ -25,7 +25,8 @@ export const actions = {
 			select: {
 				username: true,
 				password: true,
-				uuid: true
+				uuid: true,
+				admin: true
 			},
 			where: {
 				username
@@ -41,7 +42,7 @@ export const actions = {
 		}
 
 		// user is authenticated
-		cookies.set('session', JSON.stringify({ username, uuid: user.uuid }), {
+		cookies.set('session', JSON.stringify({ username, uuid: user.uuid, admin: user.admin }), {
 			path: '/',
 			httpOnly: true,
 			sameSite: 'strict',
