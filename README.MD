@@ -8,6 +8,12 @@ A private server for Beatstar which is shutting down on October 31st 2025. This 
 
 In its current state you don't unless you're a power user. If you are keep reading...
 
+## Setup steps
+
+1. Clone this repo
+2. Create a file called `token` and paste in your Github PAT with the read packages permission
+3. Run `npm install` followed by `npm setup` to install the necessary packages for the server
+
 ## Creating an account
 
 1. Start the docker database in website/beatstar with `docker compose up -d`

@@ -16,5 +16,8 @@
     "jest": "^30.0.5",
     "prisma": "^6.17.0",
     "ts-jest": "^29.4.1"
+  },
+  "scripts": {
+    "setup": "export TOKEN=$(cat token) && npm install"
   }
 }
