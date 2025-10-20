@@ -18,7 +18,7 @@ model User {
   uuid      String  @unique @db.Uuid
   username  String  @unique
   password  String
-  admin     Boolean
+  admin     Boolean @default(false)
   starCount Int @default(0)
   Score     Score[]
 }
