@@ -1,12 +1,16 @@
+import { GetUnclaimedPurchasesReq } from "@externaladdress4401/protobuf/protos/GetUnclaimedPurchasesReq";
 import { Client } from "../Client";
 import Logger from "../lib/Logger";
 import { Packet } from "../Packet";
-import { ValueOf } from "../protobuf/interfaces/ValueOf";
-import { createBatchRequest } from "../protobuf/protos/BatchRequest";
-import { GetUnclaimedPurchasesReq } from "../protobuf/protos/GetUnclaimedPurchasesReq";
-import { GetUnclaimedPurchasesResp } from "../protobuf/protos/GetUnclaimedPurchasesResp";
-import { PartialReq } from "../protobuf/protos/reused/PartialReq";
 import { BaseService } from "./BaseService";
+import { createBatchRequest } from "@externaladdress4401/protobuf/protos/BatchRequest";
+import { ValueOf } from "@externaladdress4401/protobuf/interfaces/ValueOf";
+import { PartialReq } from "@externaladdress4401/protobuf/protos/reused/PartialReq";
+import { GetUnclaimedPurchasesResp } from "@externaladdress4401/protobuf/protos/GetUnclaimedPurchasesResp";
+import {
+  createGetUnclaimedPurchasesResp,
+  createServerClientMessageHeader,
+} from "@externaladdress4401/protobuf/responses";
 
 const RpcType = {
   0: "NA",
@@ -34,10 +38,9 @@ export class PaymentService extends BaseService {
 
     if (rpcType === "GetUnclaimedPurchases") {
       const response = await packet.buildResponse(
-        "ServerClientMessageHeader",
-        "GetUnclaimedPurchasesResp",
+        createServerClientMessageHeader({}),
+        createGetUnclaimedPurchasesResp({}),
         GetUnclaimedPurchasesResp,
-        null,
         true
       );
       client.write(response);

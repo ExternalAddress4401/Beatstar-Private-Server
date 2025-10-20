@@ -1,45 +1,51 @@
 import { Client } from "../Client";
 import Logger from "../lib/Logger";
 import { Packet } from "../Packet";
-import { ValueOf } from "../protobuf/interfaces/ValueOf";
-import { createBatchRequest } from "../protobuf/protos/BatchRequest";
-import { Leaderboard_ReqEnums } from "../protobuf/protos/Leaderboard_Req";
-import { Leaderboard_Resp } from "../protobuf/protos/Leaderboard_Resp";
-import { PartialReq } from "../protobuf/protos/reused/PartialReq";
-import { createEmptyResponses } from "../protobuf/utils";
 import { BaseService } from "./BaseService";
+import { createBatchRequest } from "@externaladdress4401/protobuf/protos/BatchRequest";
+import { ValueOf } from "@externaladdress4401/protobuf/interfaces/ValueOf";
+import { Leaderboard_Resp } from "@externaladdress4401/protobuf/protos/Leaderboard_Resp";
+import { createEmptyResponse } from "@externaladdress4401/protobuf/utils";
+import { toArray } from "../utilities/toArray";
+import {
+  createGetUnclaimedPurchasesResp,
+  createServerClientMessageHeader,
+} from "@externaladdress4401/protobuf/responses";
 
 const RpcType = {
   16: "Leaderboard",
 } as const;
 
-const BatchRequest = createBatchRequest({
-  16: Leaderboard_ReqEnums,
-});
+const BatchRequest = createBatchRequest({});
 
 export class ReadOnlyGameService extends BaseService {
   name = "readonlygameservice";
 
   async handlePacket(packet: Packet, client: Client) {
-    const payload = packet.parsePayload(PartialReq);
-    const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
-      Number(payload.requests.rpcType)
-    ];
-
     const parsedPayload = packet.parsePayload(BatchRequest);
 
-    if (rpcType === "Leaderboard") {
-      const response = await packet.buildResponse(
-        "ServerClientMessageHeader",
-        "Leaderboard_Resp",
-        Leaderboard_Resp,
-        {
-          "{requests}": createEmptyResponses(parsedPayload.requests),
-        }
-      );
-      client.write(response);
-    } else {
-      Logger.warn(`${this.name}: Unknown rpcType: ${rpcType}`);
+    const requests = toArray(parsedPayload.requests);
+    const responses = [];
+
+    for (const request of requests) {
+      const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
+        Number(request.rpcType)
+      ];
+      if (rpcType === "Leaderboard") {
+        responses.push(createEmptyResponse(request));
+      } else {
+        Logger.warn(`${this.name}: Unknown rpcType: ${rpcType}`);
+      }
     }
+
+    const response = await packet.buildResponse(
+      createServerClientMessageHeader({}),
+      createGetUnclaimedPurchasesResp({
+        "{requests}": responses,
+      }),
+      Leaderboard_Resp
+    );
+
+    client.write(response);
   }
 }

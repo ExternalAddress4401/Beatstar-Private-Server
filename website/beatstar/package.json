@@ -42,6 +42,7 @@
 		]
 	},
 	"dependencies": {
+		"@externaladdress4401/protobuf": "^0.0.3",
 		"@node-rs/argon2": "^2.0.2",
 		"@prisma/client": "6.17.0",
 		"zod-form-data": "^3.0.1"

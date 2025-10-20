@@ -1,14 +1,17 @@
+import { createBatchRequest } from "@externaladdress4401/protobuf/protos/BatchRequest";
 import { Client } from "../Client";
 import Logger from "../lib/Logger";
 import { Packet } from "../Packet";
-import { ValueOf } from "../protobuf/interfaces/ValueOf";
-import { createBatchRequest } from "../protobuf/protos/BatchRequest";
-import { GetCMSMetaInfoReq } from "../protobuf/protos/GetCMSMetaInfoReq";
-import { GetCMSMetaInfoResp } from "../protobuf/protos/GetCMSMetaInfoResp";
-import { PartialReq } from "../protobuf/protos/reused/PartialReq";
 import Settings from "../Settings";
 import { BaseService } from "./BaseService";
-import localtunnel from "localtunnel";
+import { GetCMSMetaInfoReq } from "@externaladdress4401/protobuf/protos/GetCMSMetaInfoReq";
+import { PartialReq } from "@externaladdress4401/protobuf/protos/reused/PartialReq";
+import { ValueOf } from "@externaladdress4401/protobuf/interfaces/ValueOf";
+import { GetCMSMetaInfoResp } from "@externaladdress4401/protobuf/protos/GetCMSMetaInfoResp";
+import {
+  createGetCMSMetaInfoResp,
+  createServerClientMessageHeader,
+} from "@externaladdress4401/protobuf/responses";
 
 const CMSType = {
   0: "NA",
@@ -59,11 +62,11 @@ export class CMSService extends BaseService {
       }
 
       const response = await packet.buildResponse(
-        "ServerClientMessageHeader",
-        "GetCMSMetaInfoResp",
-        GetCMSMetaInfoResp,
-        placeholders
+        createServerClientMessageHeader({}),
+        createGetCMSMetaInfoResp(placeholders),
+        GetCMSMetaInfoResp
       );
+
       client.write(response);
     } else {
       console.error(`Unhandled CMSService: ${rpcType}`);

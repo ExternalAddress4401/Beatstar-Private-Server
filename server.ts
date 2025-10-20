@@ -1,7 +1,6 @@
 import net from "net";
 import tls from "tls";
 import { promises as fs } from "fs";
-import { ClientServerMessageHeaderMap } from "./protobuf/protos/ClientServerMessageHeader";
 import { Client } from "./Client";
 import { UserService } from "./services/UserService";
 import { CMSService } from "./services/CMSService";
@@ -15,6 +14,7 @@ import { AnalyticsProxyService } from "./services/AnalyticsProxyService";
 import Settings from "./Settings";
 import { HttpServer } from "./HttpServer";
 import Logger from "./lib/Logger";
+import { ClientServerMessageHeaderMap } from "@externaladdress4401/protobuf/protos/ClientServerMessageHeader";
 
 Settings.init();
 

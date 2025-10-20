@@ -1,21 +1,21 @@
+import { ProtobufHandler } from "@externaladdress4401/protobuf/ProtobufHandler";
 import { Client } from "../Client";
 import { Packet } from "../Packet";
-import { ProtobufHandler } from "../protobuf/ProtobufHandler";
-import { ServerClientMessageHeaderMap } from "../protobuf/protos/ServerClientMessageHeader";
 import { BaseService } from "./BaseService";
-import { promises as fs } from "fs";
+import { ServerClientMessageHeaderMap } from "@externaladdress4401/protobuf/protos/ServerClientMessageHeader";
+import { createServerClientMessageHeader } from "@externaladdress4401/protobuf/responses";
 
 export class PingService extends BaseService {
   name = "ping";
 
   async handlePacket(packet: Packet, client: Client) {
-    const response = await this.buildResponse("ServerClientMessageHeader");
+    const response = await this.buildResponse(
+      createServerClientMessageHeader({})
+    );
     client.write(response);
   }
-  async buildResponse(headerFile: string) {
-    const headerJson = JSON.parse(
-      (await fs.readFile(`./protobuf/responses/${headerFile}.json`)).toString()
-    );
+  async buildResponse(headerFile: any) {
+    const headerJson = headerFile;
 
     headerJson.version = "1";
     headerJson.timestamp = Date.now();

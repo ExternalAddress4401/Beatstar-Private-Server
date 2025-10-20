@@ -1,6 +1,6 @@
 import net from "net";
 import { Packet } from "./Packet";
-import { ProtobufHandler } from "./protobuf/ProtobufHandler";
+import { ProtobufHandler } from "@externaladdress4401/protobuf/ProtobufHandler";
 
 export class Client {
   buffer: Buffer = Buffer.alloc(0);

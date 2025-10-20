@@ -1,15 +1,19 @@
+import { SubscribeReqEnums } from "@externaladdress4401/protobuf/protos/SubscribeReq";
 import { Client } from "../Client";
 import Logger from "../lib/Logger";
 import { Packet } from "../Packet";
-import { ValueOf } from "../protobuf/interfaces/ValueOf";
-import { createBatchRequest } from "../protobuf/protos/BatchRequest";
-import { PlatformNotificationPref } from "../protobuf/protos/chunks/PlatformNotificationPref";
-import { RegisterPlatformTokenEnums } from "../protobuf/protos/chunks/RegisterPlatformToken";
-import { PartialReq } from "../protobuf/protos/reused/PartialReq";
-import { SubscribeReqEnums } from "../protobuf/protos/SubscribeReq";
-import { SubscribeResp } from "../protobuf/protos/SubscribeResp";
-import { createEmptyResponse } from "../protobuf/utils";
 import { BaseService } from "./BaseService";
+import { RegisterPlatformTokenEnums } from "@externaladdress4401/protobuf/protos/chunks/RegisterPlatformToken";
+import { PlatformNotificationPref } from "@externaladdress4401/protobuf/protos/chunks/PlatformNotificationPref";
+import { createBatchRequest } from "@externaladdress4401/protobuf/protos/BatchRequest";
+import { createEmptyResponse } from "@externaladdress4401/protobuf/utils";
+import { ValueOf } from "@externaladdress4401/protobuf/interfaces/ValueOf";
+import { SubscribeResp } from "@externaladdress4401/protobuf/protos/SubscribeResp";
+import { toArray } from "../utilities/toArray";
+import {
+  createServerClientMessageHeader,
+  createSubscribeResp,
+} from "@externaladdress4401/protobuf/responses";
 
 const RpcType = {
   0: "NA",
@@ -35,13 +39,10 @@ export class NotificationService extends BaseService {
   async handlePacket(packet: Packet, client: Client) {
     const parsedPayload = packet.parsePayload(BatchRequest);
 
-    if (!Array.isArray(parsedPayload.requests)) {
-      console.log("notification", parsedPayload);
-    }
-
+    const requests = toArray(parsedPayload.requests);
     const responses = [];
 
-    for (const request of parsedPayload.requests) {
+    for (const request of requests) {
       const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
         Number(parsedPayload.requests.rpcType)
       ];
@@ -56,12 +57,11 @@ export class NotificationService extends BaseService {
     }
 
     const response = await packet.buildResponse(
-      "ServerClientMessageHeader",
-      "SubscribeResp",
-      SubscribeResp,
-      {
+      createServerClientMessageHeader({}),
+      createSubscribeResp({
         "{requests}": responses,
-      }
+      }),
+      SubscribeResp
     );
     client.write(response);
   }

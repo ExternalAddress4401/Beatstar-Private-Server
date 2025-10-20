@@ -5,6 +5,8 @@ import { isAuthenticated } from '$lib/wrapper/isAuthenticated';
 import { zfd } from 'zod-form-data';
 import zlib from 'zlib';
 import crypto from 'crypto';
+import { CMSMap } from '@externaladdress4401/protobuf/tools/CMSMap';
+import { ProtobufHandler } from '@externaladdress4401/protobuf/ProtobufHandler';
 
 const schema = zfd.formData({
 	name: zfd.text(),
@@ -50,23 +52,24 @@ export const actions = {
 		}
 
 		// is this a valid CMS?
-		const proto = 
+		const proto = CMSMap[name];
+		if (!proto) {
+			return fail(400, { message: 'Invalid name.' });
+		}
 
-		const json = JSON.stringify(JSON.parse(data));
+		const json = JSON.parse(data);
 
-		console.log(json);
+		const built = await new ProtobufHandler('WRITE').writeProto(json, proto);
 
-		console.log(crypto.createHash('md5').update(Buffer.from(json)).digest('hex'));
-
-		/*await prisma.cms.update({
+		await prisma.cms.update({
 			data: {
 				data: json,
-				gzip: zlib.gzipSync(json),
-				hash: crypto.createHash('md5').update(json).digest('hex')
+				gzip: zlib.gzipSync(built),
+				hash: crypto.createHash('md5').update(built).digest('hex')
 			},
 			where: {
 				name
 			}
-		});*/
+		});
 	})
 };

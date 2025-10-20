@@ -1,18 +1,29 @@
+import { createBatchRequest } from "@externaladdress4401/protobuf/protos/BatchRequest";
 import { Client } from "../Client";
 import { Score } from "../interfaces/Score";
 import Logger from "../lib/Logger";
 import { Packet } from "../Packet";
-import { ValueOf } from "../protobuf/interfaces/ValueOf";
-import { createBatchRequest } from "../protobuf/protos/BatchRequest";
-import { ExecuteSharplaAuditReq } from "../protobuf/protos/ExecuteSharplaAuditReq";
-import { ExecuteSharplaAuditResp } from "../protobuf/protos/ExecuteSharplaAuditResp";
-import { SyncReq, SyncReqEnum } from "../protobuf/protos/SyncReq";
-import { SyncResp } from "../protobuf/protos/SyncResp";
 import { greater } from "../utilities/greater";
 import { scoreToMedal } from "../utilities/scoreToMedal";
 import { toArray } from "../utilities/toArray";
 import prisma from "../website/beatstar/src/lib/prisma";
 import { BaseService } from "./BaseService";
+import {
+  SyncReq,
+  SyncReqEnum,
+} from "@externaladdress4401/protobuf/protos/SyncReq";
+import {
+  ExecuteSharplaAuditReq,
+  ExecuteSharplaAuditReqEnums,
+} from "@externaladdress4401/protobuf/protos/ExecuteSharplaAuditReq";
+import { ValueOf } from "@externaladdress4401/protobuf/interfaces/ValueOf";
+import { SyncResp } from "@externaladdress4401/protobuf/protos/SyncResp";
+import { ExecuteSharplaAuditResp } from "@externaladdress4401/protobuf/protos/ExecuteSharplaAuditResp";
+import {
+  createExecuteSharplaAuditResp,
+  createServerClientMessageHeader,
+  createSyncResp,
+} from "@externaladdress4401/protobuf/responses";
 
 const RpcType = {
   5: "Sync",
@@ -21,7 +32,7 @@ const RpcType = {
 
 const BatchRequest = createBatchRequest({
   5: SyncReqEnum,
-  28: ExecuteSharplaAuditReq,
+  28: ExecuteSharplaAuditReqEnums,
 });
 
 export class GameService extends BaseService {
@@ -31,16 +42,18 @@ export class GameService extends BaseService {
     const parsedPayload = packet.parsePayload(BatchRequest);
 
     const requests = toArray(parsedPayload.requests);
-    if (requests.length === 1) {
+
+    const responses = [];
+
+    for (const request of requests) {
       const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
-        Number(requests[0].rpcType)
+        Number(request.rpcType)
       ];
+
       if (rpcType === "Sync") {
         const parsedPayload = packet.parsePayload(SyncReq);
 
         const clide = parsedPayload.requests.body.session.clide;
-
-        console.log(clide);
 
         if (clide === "{clide}") {
           const response = await packet.buildErrorResponse({
@@ -65,15 +78,15 @@ export class GameService extends BaseService {
           },
         });
 
-        console.log(user);
-
         if (!user) {
-          // TODO: do something real here
-          const response = await packet.buildErrorResponse(
-            "ServerClientMessageHeader",
-            "SyncResp",
-            SyncResp
-          );
+          const response = await packet.buildErrorResponse({
+            "{error}": {
+              code: 9588,
+              message: "NO_ACCOUNT",
+              tokenId: "",
+              name: "NO_ACCOUNT",
+            },
+          });
           client.write(response);
           return;
         }
@@ -126,29 +139,22 @@ export class GameService extends BaseService {
         }
 
         const response = await packet.buildResponse(
-          "ServerClientMessageHeader",
-          "SyncResp",
-          SyncResp,
-          {
+          createServerClientMessageHeader({}),
+          createSyncResp({
             "{username}": user?.username,
             "{beatmaps}": scores,
-          },
+          }),
+          SyncResp,
           true
         );
         client.write(response);
         return;
       }
-    }
-
-    const responses = [];
-
-    for (const request of requests) {
-      const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
-        Number(request.rpcType)
-      ];
 
       if (rpcType === "ExecuteAudit") {
         const parsedPayload = packet.parsePayload(ExecuteSharplaAuditReq);
+
+        const audit = request.audit;
 
         if (!client.clide) {
           // this should be set before getting here...
@@ -156,10 +162,7 @@ export class GameService extends BaseService {
           return;
         }
 
-        const audit = request.audit;
-
         if (audit.type === 12) {
-          console.log("got a score!");
           const user = await prisma.user.findFirst({
             select: {
               id: true,
@@ -194,7 +197,7 @@ export class GameService extends BaseService {
           }))!;
 
           const medal = scoreToMedal(
-            audit.score[0].absoluteScore,
+            audit.score.absoluteScore,
             beatmap.difficulty,
             false
           );
@@ -206,16 +209,13 @@ export class GameService extends BaseService {
 
           console.log("wow a score!");
 
-          if (
-            !oldScore ||
-            oldScore.absoluteScore < audit.score[0].absoluteScore
-          ) {
+          if (!oldScore || oldScore.absoluteScore < audit.score.absoluteScore) {
             console.log("Score update!");
             await prisma.score.upsert({
               create: {
                 beatmapId: parseInt(audit.song_id),
-                normalizedScore: audit.score[0].normalizedScore,
-                absoluteScore: audit.score[0].absoluteScore,
+                normalizedScore: audit.score.normalizedScore,
+                absoluteScore: audit.score.absoluteScore,
                 highestGrade: medal,
                 highestCheckpoint: audit.checkpointReached ?? 0,
                 highestStreak: audit.maxStreak,
@@ -224,11 +224,11 @@ export class GameService extends BaseService {
               },
               update: {
                 normalizedScore: greater(
-                  audit.score[0].normalizedScore,
+                  audit.score.normalizedScore,
                   oldScore?.normalizedScore
                 ),
                 absoluteScore: greater(
-                  audit.score[0].absoluteScore,
+                  audit.score.absoluteScore,
                   oldScore?.absoluteScore
                 ),
                 highestGrade: medal,
@@ -254,15 +254,12 @@ export class GameService extends BaseService {
       }
     }
 
-    console.log(responses);
-
     const response = await packet.buildResponse(
-      "ServerClientMessageHeader",
-      "ExecuteSharplaAuditResp",
-      ExecuteSharplaAuditResp,
-      {
+      createServerClientMessageHeader({}),
+      createExecuteSharplaAuditResp({
         "{requests}": responses,
-      }
+      }),
+      ExecuteSharplaAuditResp
     );
     client.write(response);
   }

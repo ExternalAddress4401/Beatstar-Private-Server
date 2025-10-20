@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@externaladdress4401/protobuf':
+        specifier: ^1.0.0
+        version: 1.0.0
       '@node-rs/argon2':
         specifier: ^2.0.2
         version: 2.0.2
@@ -286,6 +289,9 @@ packages:
   '@eslint/plugin-kit@0.4.0':
     resolution: {integrity: sha512-sB5uyeq+dwCWyPi31B2gQlVlo+j5brPlWx4yZBrEaRo/nhdDE8Xke1gsGgtiBdaBTxuTkceLVuVt/pclrasb0A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@externaladdress4401/protobuf@1.0.0':
+    resolution: {integrity: sha512-Jzt2YemgYbHMgqqgzkimP2/o6F3vz7dlyGdadkbK16f0D9cEdYd7LSbG8wff/GXN7FivEpjY35wC5ozGDK6SzQ==, tarball: https://npm.pkg.github.com/download/@externaladdress4401/protobuf/1.0.0/14d90d08a84f39b035983243d315ae3aea3142eb}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -1337,6 +1343,9 @@ packages:
   undici-types@6.21.0:
     resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
+  undici-types@7.16.0:
+    resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
+
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
@@ -1566,6 +1575,10 @@ snapshots:
     dependencies:
       '@eslint/core': 0.16.0
       levn: 0.4.1
+
+  '@externaladdress4401/protobuf@1.0.0':
+    dependencies:
+      undici-types: 7.16.0
 
   '@humanfs/core@0.19.1': {}
 
@@ -2602,6 +2615,8 @@ snapshots:
   typescript@5.9.3: {}
 
   undici-types@6.21.0: {}
+
+  undici-types@7.16.0: {}
 
   uri-js@4.4.1:
     dependencies:

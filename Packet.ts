@@ -1,11 +1,12 @@
-import { ProtobufHandler } from "./protobuf/ProtobufHandler";
-import { ClientServerMessageHeaderMap } from "./protobuf/protos/ClientServerMessageHeader";
-import { ServerClientMessageHeaderMap } from "./protobuf/protos/ServerClientMessageHeader";
-import { promises as fs } from "fs";
 import { handlePlaceholders } from "./utilities/handlePlaceholders";
-import Logger from "./lib/Logger";
-import { ErrorResp } from "./protobuf/protos/ErrorResp";
-import { stringify } from "./utilities/stringify";
+import { ProtobufHandler } from "@externaladdress4401/protobuf/ProtobufHandler";
+import { ClientServerMessageHeaderMap } from "@externaladdress4401/protobuf/protos/ClientServerMessageHeader";
+import { ServerClientMessageHeaderMap } from "@externaladdress4401/protobuf/protos/ServerClientMessageHeader";
+import { ErrorResp } from "@externaladdress4401/protobuf/protos/ErrorResp";
+import {
+  createErrorResp,
+  createServerClientMessageHeader,
+} from "@externaladdress4401/protobuf/responses";
 
 export class Packet {
   buffer: Buffer;
@@ -47,30 +48,11 @@ export class Packet {
     return this.payload;
   }
   async buildResponse(
-    headerFile: string,
-    responseFile: string,
+    headerJson: any,
+    responseJson: any,
     payloadProto: any,
-    payloadReplacements?: Record<string, any> | null,
     compress: boolean = false
   ) {
-    Logger.info(`Handling ${responseFile} packet.`);
-
-    const headerJson = JSON.parse(
-      (await fs.readFile(`./protobuf/responses/${headerFile}.json`)).toString()
-    );
-
-    const numberRegex = /^-?\d+n$/;
-
-    const responseJson = JSON.parse(
-      (
-        await fs.readFile(`./protobuf/responses/${responseFile}.json`)
-      ).toString(),
-      (_, v) =>
-        typeof v === "string" && numberRegex.test(v) && v.endsWith("n")
-          ? BigInt(v.slice(0, -1))
-          : v
-    );
-
     headerJson.version = "1";
     headerJson.timestamp = Date.now();
     headerJson.tokenId = this.header.rpc;
@@ -81,14 +63,11 @@ export class Packet {
 
     responseJson.serverTime = Date.now();
 
-    if (payloadReplacements) {
-      handlePlaceholders(responseJson, payloadReplacements);
-    }
-
     const preparedHeader = await new ProtobufHandler("WRITE").writeProto(
       headerJson,
       ServerClientMessageHeaderMap
     );
+
     const preparedPayload = await new ProtobufHandler("WRITE").writeProto(
       responseJson,
       payloadProto,
@@ -103,19 +82,12 @@ export class Packet {
     packetHandler.writeBuffer(preparedHeader);
     packetHandler.writeBuffer(preparedPayload);
 
-    Logger.info(`Wrote ${responseFile} response.`);
     return packetHandler.getUsed();
   }
   async buildErrorResponse(payloadReplacements?: Record<string, any> | null) {
-    const headerJson = JSON.parse(
-      (
-        await fs.readFile(`./protobuf/responses/ServerClientMessageHeader.json`)
-      ).toString()
-    );
+    const headerJson: any = createServerClientMessageHeader({});
 
-    const responseJson = JSON.parse(
-      (await fs.readFile(`./protobuf/responses/ErrorResp.json`)).toString()
-    );
+    const responseJson = createErrorResp({});
 
     headerJson.version = "1";
     headerJson.timestamp = Date.now();
