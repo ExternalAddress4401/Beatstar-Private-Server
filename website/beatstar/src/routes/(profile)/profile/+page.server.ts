@@ -80,6 +80,16 @@ export const actions = {
 
 		const { username } = response.data;
 
+		const existingUser = await prisma.user.findFirst({
+			where: {
+				username
+			}
+		});
+
+		if (existingUser) {
+			return fail(409, { error: 'Username already exists.' });
+		}
+
 		await prisma.user.update({
 			data: {
 				username

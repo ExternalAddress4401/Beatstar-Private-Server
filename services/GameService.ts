@@ -4,7 +4,7 @@ import { Score } from "../interfaces/Score";
 import Logger from "../lib/Logger";
 import { Packet } from "../Packet";
 import { greater } from "../utilities/greater";
-import { scoreToMedal } from "../utilities/scoreToMedal";
+import { medalToNormalStar, scoreToMedal } from "../utilities/scoreToMedal";
 import { toArray } from "../utilities/toArray";
 import prisma from "../website/beatstar/src/lib/prisma";
 import { BaseService } from "./BaseService";
@@ -196,13 +196,18 @@ export class GameService extends BaseService {
             },
           }))!;
 
-          const medal = scoreToMedal(
+          // TODO: handle deluxe here
+          const oldMedal =
+            scoreToMedal(oldScore.absoluteScore, beatmap.difficulty, false) ??
+            0;
+
+          const newMedal = scoreToMedal(
             audit.score.absoluteScore,
             beatmap.difficulty,
             false
           );
 
-          if (medal === null || medal === undefined) {
+          if (newMedal === null || newMedal === undefined) {
             Logger.error(`Invalid difficulty provided: ${beatmap.difficulty}`);
             return;
           }
@@ -216,7 +221,7 @@ export class GameService extends BaseService {
                 beatmapId: parseInt(audit.song_id),
                 normalizedScore: audit.score.normalizedScore,
                 absoluteScore: audit.score.absoluteScore,
-                highestGrade: medal,
+                highestGrade: newMedal,
                 highestCheckpoint: audit.checkpointReached ?? 0,
                 highestStreak: audit.maxStreak,
                 playedCount: 1,
@@ -231,7 +236,7 @@ export class GameService extends BaseService {
                   audit.score.absoluteScore,
                   oldScore?.absoluteScore
                 ),
-                highestGrade: medal,
+                highestGrade: newMedal,
                 highestCheckpoint: greater(
                   audit.checkpointReached,
                   oldScore?.highestCheckpoint
@@ -249,6 +254,23 @@ export class GameService extends BaseService {
                 },
               },
             });
+
+            // do we need to update the starCount?
+            if (oldMedal !== newMedal && newMedal < 6) {
+              const oldStarCount = medalToNormalStar(oldMedal);
+              const newStarCount = medalToNormalStar(newMedal);
+
+              await prisma.user.update({
+                data: {
+                  starCount: {
+                    increment: newStarCount - oldStarCount,
+                  },
+                },
+                where: {
+                  uuid: client.clide,
+                },
+              });
+            }
           }
         }
       }

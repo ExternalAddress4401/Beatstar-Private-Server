@@ -1,7 +1,5 @@
 - PlayedCount doesn't increment properly. Probably want to use a different audit instead of the score one
-- Username changing on the website
 - Set the star currency properly for SyncResp
 - Deluxe medals aren't set properly in SyncResp
 - Archive emojis, track skins, etc
 - Archive countrystar data, songs, emojis, track skins, etc
-- Generate default admin user for local testing

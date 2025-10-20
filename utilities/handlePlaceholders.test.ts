@@ -1,4 +1,3 @@
-import { createEmptyResponses } from "../protobuf/utils";
 import { handlePlaceholders } from "./handlePlaceholders";
 
 test("it should replace placeholders", () => {

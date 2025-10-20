@@ -8,7 +8,8 @@ export const seed = async () => {
 		uuid: crypto.randomUUID(),
 		username: 'test',
 		password: await argon2.hash('test'),
-		admin: true
+		admin: true,
+		starCount: 0
 	};
 	await prisma.user.create({
 		data: user

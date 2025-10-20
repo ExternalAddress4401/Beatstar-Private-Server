@@ -10,6 +10,14 @@ DELUXE_GOLD = 9
 DELUXE_PLATINUM = 10
 DELUXE_DIAMOND = 11*/
 
+/**
+ * Given a goofy Beatstar medal index convert it to normal
+ * @param medal Goofy Beatstar medal index from the above table
+ */
+export const medalToNormalStar = (medal: number) => {
+  return [1, 2, 5, 3, 4].indexOf(medal) + 1;
+};
+
 export const scoreToMedal = (
   score: number,
   difficulty: number,

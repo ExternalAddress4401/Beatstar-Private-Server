@@ -14,12 +14,13 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  uuid     String  @unique @db.Uuid
-  username String  @unique
-  password String
-  admin    Boolean
-  Score    Score[]
+  id        Int     @id @default(autoincrement())
+  uuid      String  @unique @db.Uuid
+  username  String  @unique
+  password  String
+  admin     Boolean
+  starCount Int @default(0)
+  Score     Score[]
 }
 
 model Score {
