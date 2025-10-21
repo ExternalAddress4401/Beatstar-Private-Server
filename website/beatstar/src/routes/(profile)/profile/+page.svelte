@@ -28,18 +28,19 @@
 <div class="container">
 	<Card title="Profile">
 		<form method="POST" action="?/changeUsername" use:enhance class="center">
-			<TextInput name="username" value={user?.username} />
-			<Button text="Update username" />
+			<TextInput name="username" value={user?.username} placeholder="Username" />
+			<Button type="submit" text="Update username" />
 		</form>
 	</Card>
 	<Card title="Restore">
 		<form method="POST" action="?/upload" use:enhance enctype="multipart/form-data" class="center">
 			<input name="profile" type="file" />
-			<Button text="Upload scores" />
+			<Button type="submit" text="Upload scores" />
 		</form>
 	</Card>
 	<Card title="Download">
-		<Button text="Download" onclick={downloadFile} />
+		<p>Place this downloaded file in /sdcard/beatstar</p>
+		<Button type="button" text="Download" onclick={downloadFile} />
 	</Card>
 </div>
 

@@ -13,7 +13,7 @@
 			<TextInput name="username" placeholder="Username" />
 			<TextInput type="password" name="password" placeholder="Password" />
 			<TextInput type="password" name="verifyPassword" placeholder="Verify Password" />
-			<Button text="Submit" />
+			<Button type="submit" text="Submit" />
 		</form>
 		{#if form?.error}
 			<p class="error">{form.error}</p>
