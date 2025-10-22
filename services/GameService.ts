@@ -24,6 +24,7 @@ import {
   createServerClientMessageHeader,
   createSyncResp,
 } from "@externaladdress4401/protobuf/responses";
+import { capitalize } from "../utilities/capitalize";
 
 const RpcType = {
   5: "Sync",
@@ -53,8 +54,9 @@ export class GameService extends BaseService {
       if (rpcType === "Sync") {
         const parsedPayload = packet.parsePayload(SyncReq);
 
-        const clide = parsedPayload.requests.body.session.clide;
+        const clide = parsedPayload.requests.body.session.clide.trim();
 
+        // the user has no profile file on their device
         if (clide === "{clide}") {
           const response = await packet.buildErrorResponse({
             "{error}": {
@@ -91,58 +93,15 @@ export class GameService extends BaseService {
           return;
         }
 
-        const prismaBeatmaps = await prisma.beatmap.findMany();
-        const scores: Score[] = prismaBeatmaps.map(({ id }) => ({
-          template_id: id,
-          BragState: {},
-          HighestScore: {},
-          RewardSource: 1,
-          Version: 1,
-          PlayedCount: 0,
-        }));
-
-        // force play count for 9999 so we can quit songs...
-        scores.find(
-          (beatmap) => beatmap.template_id === 99999
-        )!.PlayedCount = 2;
-
-        if (user.Score) {
-          for (const score of user?.Score) {
-            // TODO: remove !
-            const difficulty = prismaBeatmaps.find(
-              (beatmap) => beatmap.id === score.beatmapId
-            )?.difficulty!;
-            const beatmap = scores.find(
-              (beatmap) => beatmap.template_id === score.beatmapId
-            );
-            if (!beatmap) {
-              // this shouldn't happen...
-              break;
-            }
-
-            beatmap.HighestScore = {
-              normalizedScore: score.normalizedScore,
-              absoluteScore: score.absoluteScore,
-            };
-
-            const medal = scoreToMedal(score.absoluteScore, difficulty, false);
-            if (medal === undefined || medal === null) {
-              continue;
-            }
-
-            beatmap.HighestCheckpoint = score.highestCheckpoint;
-            beatmap.HighestStreak = score.highestStreak;
-            beatmap.HighestGrade_id = medal;
-            beatmap.PlayedCount = score.playedCount;
-            beatmap.absoluteScore = score.absoluteScore;
-          }
-        }
+        const newsArticles = await fetchNewsArticles();
+        const scores = await fetchScores(user);
 
         const response = await packet.buildResponse(
           createServerClientMessageHeader({}),
           createSyncResp({
             "{username}": user?.username,
             "{beatmaps}": scores,
+            "{NewsFeedStories}": newsArticles,
           }),
           SyncResp,
           true
@@ -285,4 +244,98 @@ export class GameService extends BaseService {
     );
     client.write(response);
   }
+}
+
+async function fetchScores(user: any) {
+  const prismaBeatmaps = await prisma.beatmap.findMany();
+  const scores: Score[] = prismaBeatmaps.map(({ id }) => ({
+    template_id: id,
+    BragState: {},
+    HighestScore: {},
+    RewardSource: 1,
+    Version: 1,
+    PlayedCount: 0,
+  }));
+
+  // force play count for 9999 so we can quit songs...
+  scores.find((beatmap) => beatmap.template_id === 99999)!.PlayedCount = 2;
+
+  if (user.Score) {
+    for (const score of user?.Score) {
+      // TODO: remove !
+      const difficulty = prismaBeatmaps.find(
+        (beatmap) => beatmap.id === score.beatmapId
+      )?.difficulty!;
+      const beatmap = scores.find(
+        (beatmap) => beatmap.template_id === score.beatmapId
+      );
+      if (!beatmap) {
+        // this shouldn't happen...
+        break;
+      }
+
+      beatmap.HighestScore = {
+        normalizedScore: score.normalizedScore,
+        absoluteScore: score.absoluteScore,
+      };
+
+      const medal = scoreToMedal(score.absoluteScore, difficulty, false);
+      if (medal === undefined || medal === null) {
+        continue;
+      }
+
+      beatmap.HighestCheckpoint = score.highestCheckpoint;
+      beatmap.HighestStreak = score.highestStreak;
+      beatmap.HighestGrade_id = medal;
+      beatmap.PlayedCount = score.playedCount;
+      beatmap.absoluteScore = score.absoluteScore;
+    }
+  }
+
+  return scores;
+}
+
+async function fetchNewsArticles() {
+  const articles = [];
+  const news = await prisma.news.findMany({
+    include: {
+      image: true,
+    },
+  });
+
+  for (const article of news) {
+    articles.push({
+      type: article.type,
+      requirements: [
+        {
+          content: article.content,
+          requirements: [article.requirements],
+        },
+      ],
+      legacyId: article.legacyId,
+      viewType: capitalize(article.viewType),
+      startTimeMsecs: article.startTimeMsecs.getTime(),
+      endTimeMsecs: article.endTimeMsecs.getTime(),
+      order: article.order,
+      image: [
+        {
+          id: article.image.id,
+          url: article.image.url,
+          width: article.image.width,
+          height: article.image.height,
+          rect: [
+            {
+              width: article.image.rectWidth,
+              height: article.image.rectHeight,
+            },
+          ],
+        },
+      ],
+      title: article.title,
+      status: article.status,
+      id: article.id,
+    });
+  }
+
+  return articles;
 }

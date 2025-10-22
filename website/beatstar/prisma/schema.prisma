@@ -19,7 +19,7 @@ model User {
   username  String  @unique
   password  String
   admin     Boolean @default(false)
-  starCount Int @default(0)
+  starCount Int     @default(0)
   Score     Score[]
 }
 
@@ -54,4 +54,34 @@ model Cms {
   data Json
   gzip Bytes
   hash String @db.Char(32)
+}
+
+model News {
+  type           Int
+  legacyId       Int
+  viewType       NewsType
+  startTimeMsecs DateTime
+  endTimeMsecs   DateTime
+  order          Int
+  image          Image    @relation(fields: [imageId], references: [id])
+  title          String
+  status         Int
+  id             String   @id @db.Char(32)
+  content        String
+  requirements   String
+  imageId        String   @db.Uuid
+}
+
+model Image {
+  id         String @unique @db.Uuid
+  url        String
+  width      Int
+  height     Int
+  rectWidth  Int
+  rectHeight Int
+  News       News[]
+}
+
+enum NewsType {
+  TEXT
 }
