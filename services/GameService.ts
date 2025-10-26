@@ -22,6 +22,8 @@ import {
   createSyncResp,
 } from "@externaladdress4401/protobuf/responses";
 import { capitalize } from "../utilities/capitalize";
+import { handlePlaceholders } from "../utilities/handlePlaceholders";
+import Settings from "../Settings";
 
 const RpcType = {
   5: "Sync",
@@ -346,7 +348,10 @@ async function fetchNewsArticles() {
     });
   }
 
-  return articles;
+  return handlePlaceholders(articles, {
+    "{kirbyUrl}":
+      Settings.SERVER_IP + "/images/3cf7824c-d57d-4097-9953-4736f1956631.png",
+  });
 }
 
 async function updatePlayCount(clide: string, beatmapId: number) {

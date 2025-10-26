@@ -39,6 +39,7 @@ export class CMSService extends BaseService {
 
     if (Settings.ENVIRONMENT === "dev") {
       serverIp = Settings.TUNNEL;
+      Settings.SERVER_IP = serverIp;
     }
 
     Logger.info(`Server IP: ${serverIp}`);
@@ -52,8 +53,6 @@ export class CMSService extends BaseService {
 
       const placeholders: Record<string, any> = {
         "{serverTime}": Date.now(),
-        "{kirbyUrl}":
-          serverIp + "/images/3cf7824c-d57d-4097-9953-4736f1956631.png",
       };
 
       for (const [key, value] of Object.entries(cmsFilesAndHashes)) {
