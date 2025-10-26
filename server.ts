@@ -69,6 +69,9 @@ saClient.on("data", async (data) => {
     return;
   }
 
+  client.write(data);
+  return;
+
   client.handlePacket(data);
 
   const packets = client.extractPackets();

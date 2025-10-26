@@ -11,12 +11,15 @@ import {
   createGetUnclaimedPurchasesResp,
   createServerClientMessageHeader,
 } from "@externaladdress4401/protobuf/responses";
+import { Leaderboard_ReqEnums } from "@externaladdress4401/protobuf/protos/Leaderboard_Req";
 
 const RpcType = {
   16: "Leaderboard",
 } as const;
 
-const BatchRequest = createBatchRequest({});
+const BatchRequest = createBatchRequest({
+  16: Leaderboard_ReqEnums,
+});
 
 export class ReadOnlyGameService extends BaseService {
   name = "readonlygameservice";

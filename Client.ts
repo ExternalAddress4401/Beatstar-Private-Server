@@ -12,7 +12,9 @@ export class Client {
     this.socket = socket;
   }
   setClide(clide: string) {
-    this.clide = clide;
+    if (clide) {
+      this.clide = clide.trim();
+    }
   }
   handlePacket(data: Buffer) {
     this.buffer = Buffer.concat([this.buffer, data]);

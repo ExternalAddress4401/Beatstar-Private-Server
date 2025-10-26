@@ -1,6 +1,5 @@
 import { configDotenv } from "dotenv";
 import localtunnel from "localtunnel";
-import Logger from "./lib/Logger";
 
 configDotenv();
 

@@ -11,6 +11,8 @@ import {
   createGetUnclaimedPurchasesResp,
   createServerClientMessageHeader,
 } from "@externaladdress4401/protobuf/responses";
+import { toArray } from "../utilities/toArray";
+import { createEmptyResponse } from "@externaladdress4401/protobuf/utils";
 
 const RpcType = {
   0: "NA",
@@ -30,22 +32,26 @@ export class PaymentService extends BaseService {
   name = "paymentservice";
 
   async handlePacket(packet: Packet, client: Client) {
-    const payload = packet.parsePayload(PartialReq);
-    const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
-      Number(payload.requests.rpcType)
-    ];
     const parsedPayload = packet.parsePayload(BatchRequest);
 
-    if (rpcType === "GetUnclaimedPurchases") {
-      const response = await packet.buildResponse(
-        createServerClientMessageHeader({}),
-        createGetUnclaimedPurchasesResp({}),
-        GetUnclaimedPurchasesResp,
-        true
-      );
-      client.write(response);
-    } else {
-      Logger.warn(`${this.name}: Unknown rpcType: ${rpcType}`);
+    const requests = toArray(parsedPayload.requests);
+    const responses = [];
+
+    for (const request of requests) {
+      const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
+        Number(request.rpcType)
+      ];
+      responses.push(createEmptyResponse(request));
     }
+
+    const response = await packet.buildResponse(
+      createServerClientMessageHeader({}),
+      createGetUnclaimedPurchasesResp({
+        "{requests}": responses,
+      }),
+      GetUnclaimedPurchasesResp,
+      true
+    );
+    client.write(response);
   }
 }

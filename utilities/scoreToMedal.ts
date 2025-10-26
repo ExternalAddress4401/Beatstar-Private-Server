@@ -14,15 +14,21 @@ DELUXE_DIAMOND = 11*/
  * Given a goofy Beatstar medal index convert it to normal
  * @param medal Goofy Beatstar medal index from the above table
  */
-export const medalToNormalStar = (medal: number) => {
+export const medalToNormalStar = (medal: number | undefined) => {
+  if (!medal) {
+    return 0;
+  }
   return [1, 2, 5, 3, 4].indexOf(medal) + 1;
 };
 
 export const scoreToMedal = (
-  score: number,
+  score: number | undefined,
   difficulty: number,
   isDeluxe: boolean
 ) => {
+  if (score === undefined) {
+    return 0;
+  }
   const table: Record<number, number[]> = {
     1: [0, 20000, 50000, 80000, 95000, 97000, 98000, 99000], // extreme
     2: [0, 10000, 17500, 35000, 47500, 48500, 49000, 49500], // tutoral
@@ -43,7 +49,7 @@ export const scoreToMedal = (
 
   const scoreRow = useTable[difficulty];
   if (scoreRow === undefined) {
-    return null;
+    return 0;
   }
 
   const thresholdIndex = scoreRow.findLastIndex(

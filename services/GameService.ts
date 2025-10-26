@@ -36,6 +36,11 @@ const BatchRequest = createBatchRequest({
   28: ExecuteSharplaAuditReqEnums,
 });
 
+const RequestType = {
+  RhythmGameStarted: 11,
+  RhythmGameEnded: 12,
+} as const;
+
 export class GameService extends BaseService {
   name = "gameservice";
 
@@ -74,6 +79,7 @@ export class GameService extends BaseService {
           select: {
             username: true,
             Score: true,
+            starCount: true,
           },
           where: {
             uuid: clide,
@@ -99,9 +105,10 @@ export class GameService extends BaseService {
         const response = await packet.buildResponse(
           createServerClientMessageHeader({}),
           createSyncResp({
-            "{username}": user?.username,
+            "{username}": user.username,
             "{beatmaps}": scores,
             "{NewsFeedStories}": newsArticles,
+            "{starCount}": user.starCount || 1,
           }),
           SyncResp,
           true
@@ -111,8 +118,6 @@ export class GameService extends BaseService {
       }
 
       if (rpcType === "ExecuteAudit") {
-        const parsedPayload = packet.parsePayload(ExecuteSharplaAuditReq);
-
         const audit = request.audit;
 
         if (!client.clide) {
@@ -121,7 +126,9 @@ export class GameService extends BaseService {
           return;
         }
 
-        if (audit.type === 12) {
+        if (audit.type === RequestType.RhythmGameStarted) {
+          await updatePlayCount(client.clide, audit.song_id);
+        } else if (audit.type === RequestType.RhythmGameStarted) {
           const user = await prisma.user.findFirst({
             select: {
               id: true,
@@ -148,22 +155,24 @@ export class GameService extends BaseService {
           }
 
           // this is only used in the update so a score definitely exists
-          const oldScore = (await prisma.score.findFirst({
+          const oldScore = await prisma.score.findFirst({
             where: {
               userId: user.id,
               beatmapId: parseInt(audit.song_id),
             },
-          }))!;
+          });
 
           // TODO: handle deluxe here
-          const oldMedal =
-            scoreToMedal(oldScore.absoluteScore, beatmap.difficulty, false) ??
-            0;
+          const oldMedal = scoreToMedal(
+            oldScore?.absoluteScore,
+            beatmap.difficulty,
+            beatmap.deluxe
+          );
 
           const newMedal = scoreToMedal(
             audit.score.absoluteScore,
             beatmap.difficulty,
-            false
+            beatmap.deluxe
           );
 
           if (newMedal === null || newMedal === undefined) {
@@ -189,22 +198,21 @@ export class GameService extends BaseService {
               update: {
                 normalizedScore: greater(
                   audit.score.normalizedScore,
-                  oldScore?.normalizedScore
+                  oldScore?.normalizedScore ?? 0
                 ),
                 absoluteScore: greater(
                   audit.score.absoluteScore,
-                  oldScore?.absoluteScore
+                  oldScore?.absoluteScore ?? 0
                 ),
                 highestGrade: newMedal,
                 highestCheckpoint: greater(
                   audit.checkpointReached,
-                  oldScore?.highestCheckpoint
+                  oldScore?.highestCheckpoint ?? 0
                 ),
                 highestStreak: greater(
                   audit.highestStreak,
-                  oldScore?.highestStreak
+                  oldScore?.highestStreak ?? 0
                 ),
-                playedCount: oldScore?.playedCount + 1 || 1,
               },
               where: {
                 userId_beatmapId: {
@@ -215,14 +223,19 @@ export class GameService extends BaseService {
             });
 
             // do we need to update the starCount?
-            if (oldMedal !== newMedal && newMedal < 6) {
+            if (oldMedal !== newMedal) {
               const oldStarCount = medalToNormalStar(oldMedal);
               const newStarCount = medalToNormalStar(newMedal);
+
+              let incrementCount = newStarCount - oldStarCount;
+              if (incrementCount > 5) {
+                incrementCount = 5;
+              }
 
               await prisma.user.update({
                 data: {
                   starCount: {
-                    increment: newStarCount - oldStarCount,
+                    increment: incrementCount,
                   },
                 },
                 where: {
@@ -257,8 +270,8 @@ async function fetchScores(user: any) {
     PlayedCount: 0,
   }));
 
-  // force play count for 9999 so we can quit songs...
-  scores.find((beatmap) => beatmap.template_id === 99999)!.PlayedCount = 2;
+  // force play count for 99999 so we can quit songs and have swipes unlocked?
+  scores.find((beatmap) => beatmap.template_id === 99999)!.PlayedCount = 10;
 
   if (user.Score) {
     for (const score of user?.Score) {
@@ -286,8 +299,7 @@ async function fetchScores(user: any) {
 
       beatmap.HighestCheckpoint = score.highestCheckpoint;
       beatmap.HighestStreak = score.highestStreak;
-      beatmap.HighestGrade_id = medal;
-      beatmap.PlayedCount = score.playedCount;
+      beatmap.HighestGrade_id = beatmap.PlayedCount = score.playedCount;
       beatmap.absoluteScore = score.absoluteScore;
     }
   }
@@ -338,4 +350,30 @@ async function fetchNewsArticles() {
   }
 
   return articles;
+}
+
+async function updatePlayCount(clide: string, beatmapId: number) {
+  const user = await prisma.user.findFirst({
+    where: {
+      uuid: clide,
+    },
+  });
+
+  if (!user) {
+    return null;
+  }
+
+  await prisma.score.update({
+    data: {
+      playedCount: {
+        increment: 1,
+      },
+    },
+    where: {
+      userId_beatmapId: {
+        userId: user.id,
+        beatmapId: beatmapId,
+      },
+    },
+  });
 }
