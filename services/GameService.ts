@@ -126,7 +126,7 @@ export class GameService extends BaseService {
 
         if (audit.type === RequestType.RhythmGameStarted) {
           await updatePlayCount(client.clide, audit.song_id);
-        } else if (audit.type === RequestType.RhythmGameStarted) {
+        } else if (audit.type === RequestType.RhythmGameEnded) {
           const user = await prisma.user.findFirst({
             select: {
               id: true,
