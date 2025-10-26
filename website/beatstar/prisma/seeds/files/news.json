@@ -14,7 +14,7 @@
 	"image": [
 		{
 			"id": "4f05bfed-9e20-4480-8181-a9c9194f2760",
-			"url": "{kirby}",
+			"url": "{kirbyUrl}",
 			"width": 512,
 			"height": 256,
 			"rect": [
@@ -27,5 +27,5 @@
 	],
 	"title": "You Made It!",
 	"status": 1,
-	"id": "a6e34651d0284ba4a5f2ab64328b4c79"
+	"id": "f7b129c4e2d94a1f9c0b37e4a8d65f12"
 }
