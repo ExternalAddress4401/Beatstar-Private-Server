@@ -68,7 +68,7 @@ model News {
   status         Int
   id             String   @id @db.Char(32)
   content        String
-  requirements   String
+  requirements   String?
   imageId        String   @db.Uuid
 }
 

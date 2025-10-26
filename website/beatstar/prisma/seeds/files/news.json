@@ -2,19 +2,19 @@
 	"type": 4,
 	"requirements": [
 		{
-			"content": "Check out our socials for all the latest Beatstar news, giveaways, exclusive music content and more.\n\nYou'll get <style=\"Bold\">5 Wishlist Cards</style> [sprite=21] when you follow us or join our Discord!\n\n<style=\"Bold\">Follow and join us now</style>:\n• <style=\"Bold\"><color=#dd2a7b><style=\"Link\"><link=\"deeplinkreward:911051c1-19e2-4b2a-84c1-6ab805dd0c27\">Instagram</style></color></link></style>\n• <style=\"Bold\"><color=#046de3><style=\"Link\"><link=\"deeplinkreward:2962a5a8-02ba-4fb6-a794-20310478aff9\">Facebook</style></color></link></style>\n• <style=\"Bold\"><color=#1c91da><style=\"Link\"><link=\"deeplinkreward:57b7e7e7-cd35-4bb3-bb48-4624839b4c4a\">Twitter</style></color></link></style>\n• <style=\"Bold\"><color=#e71d4f><style=\"Link\"><link=\"deeplinkreward:c6eef4c1-f772-40da-89da-64ddc239682d\">TikTok</style></color></link></style>\n• <style=\"Bold\"><color=#5865f2><style=\"Link\"><link=\"deeplinkreward:c19321cc-6496-4561-bca7-6d06280cb0b8\">Discord</style></color></link></style>",
-			"requirements": ["starMileStone-10"]
+			"content": "Welcome to the private server where Beatstar will continue on. Keep racking up those scores and continue playing on.\n\n- ExternalAddress4401",
+			"requirements": ["starMileStone-1"]
 		}
 	],
 	"legacyId": 261,
 	"viewType": "Text",
-	"startTimeMsecs": 1678874400000,
+	"startTimeMsecs": 1761497511000,
 	"endTimeMsecs": 1893456000000,
-	"order": 3,
+	"order": 1,
 	"image": [
 		{
-			"id": "2039995c-32c2-4dc9-9056-e539f99cae30",
-			"url": "https://assets.flamingo.newbirds.net/images/newsfeed/2039995c-32c2-4dc9-9056-e539f99cae30",
+			"id": "4f05bfed-9e20-4480-8181-a9c9194f2760",
+			"url": "{kirby}",
 			"width": 512,
 			"height": 256,
 			"rect": [
@@ -25,7 +25,7 @@
 			]
 		}
 	],
-	"title": "Follow Beatstar!",
+	"title": "You Made It!",
 	"status": 1,
 	"id": "a6e34651d0284ba4a5f2ab64328b4c79"
 }

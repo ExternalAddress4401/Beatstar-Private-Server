@@ -12,10 +12,7 @@ import {
   SyncReq,
   SyncReqEnum,
 } from "@externaladdress4401/protobuf/protos/SyncReq";
-import {
-  ExecuteSharplaAuditReq,
-  ExecuteSharplaAuditReqEnums,
-} from "@externaladdress4401/protobuf/protos/ExecuteSharplaAuditReq";
+import { ExecuteSharplaAuditReqEnums } from "@externaladdress4401/protobuf/protos/ExecuteSharplaAuditReq";
 import { ValueOf } from "@externaladdress4401/protobuf/interfaces/ValueOf";
 import { SyncResp } from "@externaladdress4401/protobuf/protos/SyncResp";
 import { ExecuteSharplaAuditResp } from "@externaladdress4401/protobuf/protos/ExecuteSharplaAuditResp";
