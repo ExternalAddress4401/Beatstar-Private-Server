@@ -331,7 +331,7 @@ async function fetchNewsArticles() {
       image: [
         {
           id: article.image.id,
-          url: article.image.url,
+          url: `${Settings.SERVER_IP}/images/${article.image.id}`,
           width: article.image.width,
           height: article.image.height,
           rect: [
@@ -348,10 +348,7 @@ async function fetchNewsArticles() {
     });
   }
 
-  return handlePlaceholders(articles, {
-    "{kirbyUrl}":
-      Settings.SERVER_IP + "/images/3cf7824c-d57d-4097-9953-4736f1956631.png",
-  });
+  return articles;
 }
 
 async function updatePlayCount(clide: string, beatmapId: number) {
