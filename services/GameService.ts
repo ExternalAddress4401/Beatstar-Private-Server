@@ -22,7 +22,6 @@ import {
   createSyncResp,
 } from "@externaladdress4401/protobuf/responses";
 import { capitalize } from "../utilities/capitalize";
-import { handlePlaceholders } from "../utilities/handlePlaceholders";
 import Settings from "../Settings";
 
 const RpcType = {
@@ -362,17 +361,19 @@ async function updatePlayCount(clide: string, beatmapId: number) {
     return null;
   }
 
-  await prisma.score.update({
-    data: {
-      playedCount: {
-        increment: 1,
+  try {
+    await prisma.score.update({
+      data: {
+        playedCount: { increment: 1 },
       },
-    },
-    where: {
-      userId_beatmapId: {
-        userId: user.id,
-        beatmapId: beatmapId,
+      where: {
+        userId_beatmapId: {
+          userId: user.id,
+          beatmapId,
+        },
       },
-    },
-  });
+    });
+  } catch (err) {
+    if (err.code !== "P2025") throw err;
+  }
 }
