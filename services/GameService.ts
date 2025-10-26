@@ -331,7 +331,7 @@ async function fetchNewsArticles() {
       image: [
         {
           id: article.image.id,
-          url: `${Settings.SERVER_IP}/images/${article.image.id}`,
+          url: `${Settings.SERVER_IP}/images/${article.image.id}.png`,
           width: article.image.width,
           height: article.image.height,
           rect: [
