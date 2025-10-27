@@ -11,7 +11,8 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
-		"lint": "prettier --check . && eslint ."
+		"lint": "prettier --check . && eslint .",
+		"setup": "export TOKEN=$(cat token) && pnpm install"
 	},
 	"prisma": {
 		"seed": "tsx prisma/seed.ts"
@@ -45,6 +46,7 @@
 		"@externaladdress4401/protobuf": "^0.0.3",
 		"@node-rs/argon2": "^2.0.2",
 		"@prisma/client": "6.17.0",
+		"@sveltejs/adapter-node": "^5.4.0",
 		"zod-form-data": "^3.0.1"
 	}
 }
