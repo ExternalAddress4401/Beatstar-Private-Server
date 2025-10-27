@@ -6,7 +6,7 @@
 
 <div class="container">
 	<div class="col1">
-		<img src="/images/background.png" alt="background" />
+		<img src="/assets/images/background.png" alt="background" />
 	</div>
 	{@render children?.()}
 </div>
