@@ -5,10 +5,10 @@ import { seed as news } from './seeds/news.js';
 import { seed as user } from './seeds/user.js';
 
 async function main() {
-	beatmaps();
-	cms();
-	user();
-	news();
+	await beatmaps();
+	await cms();
+	await user();
+	await news();
 }
 
 main()

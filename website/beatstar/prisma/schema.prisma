@@ -14,13 +14,15 @@ datasource db {
 }
 
 model User {
-  id        Int     @id @default(autoincrement())
-  uuid      String  @unique @db.Uuid
-  username  String  @unique
-  password  String
-  admin     Boolean @default(false)
-  starCount Int     @default(0)
-  Score     Score[]
+  id                Int     @id @default(autoincrement())
+  uuid              String  @unique @db.Uuid
+  username          String  @unique
+  password          String
+  admin             Boolean @default(false)
+  starCount         Int     @default(0)
+  selectedBeatmapId Int     @default(3006)
+  selectedBeatmap   Beatmap @relation(fields: [selectedBeatmapId], references: [id])
+  Score             Score[]
 }
 
 model Score {
@@ -47,6 +49,7 @@ model Beatmap {
   deluxe     Boolean
 
   scores Score[]
+  User   User[]
 }
 
 model Cms {

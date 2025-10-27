@@ -23,6 +23,7 @@ import {
 } from "@externaladdress4401/protobuf/responses";
 import { capitalize } from "../utilities/capitalize";
 import Settings from "../Settings";
+import { getUser } from "../model-services/PrismaUserService";
 
 const RpcType = {
   5: "Sync",
@@ -35,6 +36,7 @@ const BatchRequest = createBatchRequest({
 });
 
 const RequestType = {
+  SetSelectedSong: 8,
   RhythmGameStarted: 11,
   RhythmGameEnded: 12,
 } as const;
@@ -78,6 +80,7 @@ export class GameService extends BaseService {
             username: true,
             Score: true,
             starCount: true,
+            selectedBeatmapId: true,
           },
           where: {
             uuid: clide,
@@ -107,6 +110,7 @@ export class GameService extends BaseService {
             "{beatmaps}": scores,
             "{NewsFeedStories}": newsArticles,
             "{starCount}": user.starCount || 1,
+            "{selectedBeatmap}": user.selectedBeatmapId,
           }),
           SyncResp,
           true
@@ -124,20 +128,26 @@ export class GameService extends BaseService {
           return;
         }
 
+        if (audit.type === RequestType.SetSelectedSong) {
+          const user = await getUser(prisma, client.clide);
+          if (user === null) {
+            return;
+          }
+
+          await prisma.user.update({
+            data: {
+              selectedBeatmapId: audit.song_id,
+            },
+            where: {
+              id: user.id,
+            },
+          });
+        }
         if (audit.type === RequestType.RhythmGameStarted) {
           await updatePlayCount(client.clide, audit.song_id);
         } else if (audit.type === RequestType.RhythmGameEnded) {
-          const user = await prisma.user.findFirst({
-            select: {
-              id: true,
-            },
-            where: {
-              uuid: client.clide,
-            },
-          });
-
+          const user = await getUser(prisma, client.clide);
           if (user === null) {
-            Logger.error(`Failed to find user for clide: ${client.clide}`);
             return;
           }
 
@@ -351,14 +361,9 @@ async function fetchNewsArticles() {
 }
 
 async function updatePlayCount(clide: string, beatmapId: number) {
-  const user = await prisma.user.findFirst({
-    where: {
-      uuid: clide,
-    },
-  });
-
-  if (!user) {
-    return null;
+  const user = await getUser(prisma, clide);
+  if (user === null) {
+    return;
   }
 
   try {

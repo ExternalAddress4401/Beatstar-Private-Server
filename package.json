@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@externaladdress4401/protobuf": "0.0.7",
+    "@externaladdress4401/protobuf": "0.0.9",
     "@prisma/client": "^6.17.0",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
