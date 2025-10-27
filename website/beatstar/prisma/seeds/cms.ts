@@ -9,14 +9,12 @@ const __dirname = path.dirname(__filename);
 export const seed = async () => {
 	const files = JSON.parse((await fs.readFile(path.join(__dirname, 'files/cms.json'))).toString());
 
-	for (const file of files) {
-		await prisma.cms.create({
-			data: {
-				name: file.name,
-				data: file.data,
-				gzip: Buffer.from(file.gzip),
-				hash: file.hash
-			}
-		});
-	}
+	await prisma.cms.createMany({
+		data: files.map((file) => ({
+			name: file.name,
+			data: file.data,
+			gzip: Buffer.from(file.gzip),
+			hash: file.hash
+		}))
+	});
 };

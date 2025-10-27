@@ -24,6 +24,7 @@ import {
 import { capitalize } from "../utilities/capitalize";
 import Settings from "../Settings";
 import { getUser } from "../model-services/PrismaUserService";
+import { getBeatmap } from "../model-services/PrismaBeatmapService";
 
 const RpcType = {
   5: "Sync",
@@ -131,6 +132,11 @@ export class GameService extends BaseService {
         if (audit.type === RequestType.SetSelectedSong) {
           const user = await getUser(prisma, client.clide);
           if (user === null) {
+            return;
+          }
+
+          const beatmap = await getBeatmap(prisma, audit.song_id);
+          if (beatmap === null) {
             return;
           }
 

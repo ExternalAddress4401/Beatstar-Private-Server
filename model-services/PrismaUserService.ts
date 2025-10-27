@@ -11,7 +11,7 @@ export const getUser = async (prisma: PrismaInstance, clide: string) => {
     },
   });
 
-  if (!user) {
+  if (user === null) {
     Logger.error(`Failed to find user for clide: ${clide}`);
     return null;
   }
