@@ -55,7 +55,7 @@ export const actions = {
 				normalizedScore: score.HighestScore.normalizedScore,
 				absoluteScore: score.HighestScore.absoluteScore,
 				highestGrade: score.HighestGrade_id,
-				highestCheckpoint: score.HighestCheckPoint ?? 0,
+				highestCheckpoint: score.HighestCheckpoint,
 				highestStreak: score.HighestStreak,
 				playedCount: score.PlayedCount,
 				userId: user.id
