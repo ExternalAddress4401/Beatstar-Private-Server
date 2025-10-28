@@ -25,6 +25,7 @@ import { capitalize } from "../utilities/capitalize";
 import Settings from "../Settings";
 import { getUser } from "../model-services/PrismaUserService";
 import { getBeatmap } from "../model-services/PrismaBeatmapService";
+import { stringify } from "../utilities/stringify";
 
 const RpcType = {
   5: "Sync",
@@ -129,7 +130,7 @@ export class GameService extends BaseService {
 
       if (rpcType === "ExecuteAudit") {
         const audit = request.audit;
-        console.log("GOT AN AUDIT", rpcType, JSON.stringify(audit));
+        console.log("GOT AN AUDIT", rpcType, stringify(audit));
 
         if (!client.clide) {
           // this should be set before getting here...
