@@ -12,7 +12,7 @@
 			return;
 		}
 
-		const blob = new Blob([user?.uuid], { type: 'text/plain' });
+		const blob = new Blob([user?.uuid], { type: 'application/octet-stream' });
 		const a = document.createElement('a');
 		a.href = URL.createObjectURL(blob);
 		a.download = 'user';
