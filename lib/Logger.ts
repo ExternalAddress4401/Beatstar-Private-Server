@@ -2,17 +2,18 @@ import fs from "fs";
 
 class InternalLogger {
   constructor() {}
-  info(str: string, clide?: string) {
+  info(str: string, clide?: string | null) {
     console.log(`[- : ${clide ?? "?"}] ${str}`);
   }
-  warn(str: string, clide?: string) {
+  warn(str: string, clide?: string | null) {
     console.log(`[? : ${clide ?? "?"}] ${str}`);
   }
-  error(str: string, clide?: string) {
+  error(str: string, clide?: string | null) {
     console.log(`[X : ${clide ?? "?"}] ${str}`);
-    if (clide) {
-      fs.appendFileSync("../log.txt", str + "\n");
-    }
+  }
+  saveError(str: string, clide?: string | null) {
+    console.log(`[X : ${clide ?? "?"}] ${str}`);
+    fs.appendFileSync("../log.txt", str + "\n");
   }
 }
 

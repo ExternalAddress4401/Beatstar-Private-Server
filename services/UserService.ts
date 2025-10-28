@@ -15,9 +15,9 @@ export class UserService extends BaseService {
   async handlePacket(packet: Packet, client: Client) {
     const payload = packet.parsePayload(AllInOneLoginReq);
     if (payload.reqAllInOneLogin === undefined) {
-      Logger.error("Undefined reqAllInOneLogin", client.clide ?? undefined);
-      Logger.error(packet.buffer.toString("hex"));
-      Logger.error(JSON.stringify(payload));
+      Logger.error("Undefined reqAllInOneLogin", client.clide);
+      Logger.error(packet.buffer.toString("hex"), client.clide);
+      Logger.error(JSON.stringify(payload), client.clide);
       return;
     }
 

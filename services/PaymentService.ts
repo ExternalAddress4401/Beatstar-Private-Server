@@ -5,7 +5,6 @@ import { Packet } from "../Packet";
 import { BaseService } from "./BaseService";
 import { createBatchRequest } from "@externaladdress4401/protobuf/protos/BatchRequest";
 import { ValueOf } from "@externaladdress4401/protobuf/interfaces/ValueOf";
-import { PartialReq } from "@externaladdress4401/protobuf/protos/reused/PartialReq";
 import { GetUnclaimedPurchasesResp } from "@externaladdress4401/protobuf/protos/GetUnclaimedPurchasesResp";
 import {
   createGetUnclaimedPurchasesResp,
@@ -33,6 +32,12 @@ export class PaymentService extends BaseService {
 
   async handlePacket(packet: Packet, client: Client) {
     const parsedPayload = packet.parsePayload(BatchRequest);
+    if (parsedPayload.requests === undefined) {
+      Logger.saveError("Undefined requests in PAymentService", client.clide);
+      Logger.saveError(packet.buffer.toString("hex"), client.clide);
+      Logger.saveError(JSON.stringify(parsedPayload), client.clide);
+      return;
+    }
 
     const requests = toArray(parsedPayload.requests);
     const responses = [];

@@ -39,9 +39,12 @@ export class NotificationService extends BaseService {
   async handlePacket(packet: Packet, client: Client) {
     const parsedPayload = packet.parsePayload(BatchRequest);
     if (parsedPayload.requests === undefined) {
-      Logger.error("Undefined requests", client.clide ?? undefined);
-      Logger.error(packet.buffer.toString("hex"));
-      Logger.error(JSON.stringify(parsedPayload));
+      Logger.saveError(
+        "Undefined requests in NotificationService",
+        client.clide
+      );
+      Logger.saveError(packet.buffer.toString("hex"), client.clide);
+      Logger.saveError(JSON.stringify(parsedPayload), client.clide);
       return;
     }
 

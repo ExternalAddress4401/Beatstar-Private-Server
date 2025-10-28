@@ -15,9 +15,9 @@ export class AnalyticsProxyService extends BaseService {
   async handlePacket(packet: Packet, client: Client) {
     const parsedPayload = packet.parsePayload(SendAnalyticEventReq);
     if (parsedPayload.requests === undefined) {
-      Logger.error("Undefined requests", client.clide ?? undefined);
-      Logger.error(packet.buffer.toString("hex"));
-      Logger.error(JSON.stringify(parsedPayload));
+      Logger.saveError("Undefined requests", client.clide);
+      Logger.saveError(packet.buffer.toString("hex"), client.clide);
+      Logger.saveError(JSON.stringify(parsedPayload), client.clide);
       return;
     }
 
