@@ -102,7 +102,7 @@ net
     clients.set(socket, new Client(socket));
 
     socket.on("data", async (data) => {
-      const client = clients.get(globalSocket!);
+      const client = clients.get(socket!);
       if (!client) {
         return;
       }
