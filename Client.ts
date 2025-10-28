@@ -24,7 +24,7 @@ export class Client {
     const handler = new ProtobufHandler("READ", this.buffer);
     while (handler.hasMore()) {
       const length = handler.readIntBE() + 4;
-      if (handler.buffer.length >= length) {
+      if (handler.buffer.length - handler.index >= length) {
         handler.index -= 4;
         packets.push(new Packet(handler.slice(length)));
         this.buffer = this.buffer.subarray(length);
