@@ -13,7 +13,7 @@ class InternalLogger {
   }
   saveError(str: string, clide?: string | null) {
     console.log(`[X : ${clide ?? "?"}] ${str}`);
-    fs.appendFileSync("../log.txt", str + "\n");
+    fs.appendFileSync("./log.txt", str + "\n");
   }
 }
 
