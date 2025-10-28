@@ -51,7 +51,7 @@ export class NotificationService extends BaseService {
 
     for (const request of requests) {
       const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
-        Number(parsedPayload.requests.rpcType)
+        Number(request.rpcType)
       ];
       if (rpcType === "SendNotification") {
       } else if (rpcType === "Subscribe") {
