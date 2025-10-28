@@ -7,12 +7,19 @@ import {
   createAllInOneLoginResp,
   createServerClientMessageHeader,
 } from "@externaladdress4401/protobuf/responses";
+import Logger from "../lib/Logger";
 
 export class UserService extends BaseService {
   name = "userservice";
 
   async handlePacket(packet: Packet, client: Client) {
     const payload = packet.parsePayload(AllInOneLoginReq);
+    if (payload.reqAllInOneLogin === undefined) {
+      Logger.error("Undefined reqAllInOneLogin", client.clide ?? undefined);
+      Logger.error(packet.buffer.toString("hex"));
+      Logger.error(JSON.stringify(payload));
+      return;
+    }
 
     const cinta = payload.reqAllInOneLogin.cinta;
 
