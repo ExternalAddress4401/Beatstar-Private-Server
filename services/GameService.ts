@@ -129,6 +129,7 @@ export class GameService extends BaseService {
 
       if (rpcType === "ExecuteAudit") {
         const audit = request.audit;
+        console.log("GOT AN AUDIT", rpcType, JSON.stringify(audit));
 
         if (!client.clide) {
           // this should be set before getting here...
@@ -139,11 +140,13 @@ export class GameService extends BaseService {
         if (audit.type === RequestType.SetSelectedSong) {
           const user = await getUser(prisma, client.clide);
           if (user === null) {
+            Logger.error("User is null.", client.clide);
             return;
           }
 
           const beatmap = await getBeatmap(prisma, audit.song_id);
           if (beatmap === null) {
+            Logger.error("Beatmap is null.", client.clide);
             return;
           }
 
@@ -161,6 +164,7 @@ export class GameService extends BaseService {
         } else if (audit.type === RequestType.RhythmGameEnded) {
           const user = await getUser(prisma, client.clide);
           if (user === null) {
+            Logger.error("User is null.", client.clide);
             return;
           }
 
@@ -265,6 +269,8 @@ export class GameService extends BaseService {
               });
             }
           }
+        } else {
+          Logger.error("I don't know what this is: " + audit.type);
         }
       }
     }
