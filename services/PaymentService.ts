@@ -32,12 +32,6 @@ export class PaymentService extends BaseService {
 
   async handlePacket(packet: Packet, client: Client) {
     const parsedPayload = packet.parsePayload(BatchRequest);
-    if (parsedPayload.requests === undefined) {
-      Logger.saveError("Undefined requests in PAymentService", client.clide);
-      Logger.saveError(packet.buffer.toString("hex"), client.clide);
-      Logger.saveError(JSON.stringify(parsedPayload), client.clide);
-      return;
-    }
 
     const requests = toArray(parsedPayload.requests);
     const responses = [];

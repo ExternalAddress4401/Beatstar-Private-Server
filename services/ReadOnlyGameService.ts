@@ -25,11 +25,12 @@ export class ReadOnlyGameService extends BaseService {
   name = "readonlygameservice";
 
   async handlePacket(packet: Packet, client: Client) {
-    const parsedPayload = packet.parsePayload(BatchRequest);
-    if (parsedPayload.requests === undefined) {
-      Logger.error("Undefined requests in ReadOnlyGameService", client.clide);
-      Logger.error(packet.buffer.toString("hex"), client.clide);
-      Logger.error(JSON.stringify(parsedPayload), client.clide);
+    let parsedPayload;
+    try {
+      parsedPayload = packet.parsePayload(BatchRequest);
+    } catch (e) {
+      Logger.saveError("Failed to parse payload");
+      Logger.saveError(packet.buffer.toString("hex"));
       return;
     }
 
@@ -43,7 +44,7 @@ export class ReadOnlyGameService extends BaseService {
       if (rpcType === "Leaderboard") {
         responses.push(createEmptyResponse(request));
       } else {
-        Logger.warn(`${this.name}: Unknown rpcType: ${rpcType}`);
+        Logger.warn(`${this.name}: Unknown rpcType: ${request.rpcType}`);
       }
     }
 

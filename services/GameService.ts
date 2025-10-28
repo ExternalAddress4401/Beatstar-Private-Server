@@ -55,13 +55,6 @@ export class GameService extends BaseService {
       return;
     }
 
-    if (parsedPayload.requests === undefined) {
-      Logger.saveError("Undefined requests in GameService", client.clide);
-      Logger.saveError(packet.buffer.toString("hex"), client.clide);
-      Logger.saveError(JSON.stringify(parsedPayload), client.clide);
-      return;
-    }
-
     const requests = toArray(parsedPayload.requests);
 
     const responses = [];

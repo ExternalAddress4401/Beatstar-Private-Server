@@ -38,15 +38,6 @@ export class NotificationService extends BaseService {
 
   async handlePacket(packet: Packet, client: Client) {
     const parsedPayload = packet.parsePayload(BatchRequest);
-    if (parsedPayload.requests === undefined) {
-      Logger.saveError(
-        "Undefined requests in NotificationService",
-        client.clide
-      );
-      Logger.saveError(packet.buffer.toString("hex"), client.clide);
-      Logger.saveError(JSON.stringify(parsedPayload), client.clide);
-      return;
-    }
 
     const requests = toArray(parsedPayload.requests);
     const responses = [];
@@ -61,7 +52,7 @@ export class NotificationService extends BaseService {
       } else if (rpcType === "SetPlatformNotificationPrefs") {
         responses.push(createEmptyResponse(request));
       } else {
-        Logger.warn(`${this.name}: Unknown rpcType: ${rpcType}`);
+        Logger.warn(`${this.name}: Unknown rpcType: ${request.rpcType}`);
       }
     }
 
