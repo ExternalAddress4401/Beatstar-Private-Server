@@ -46,7 +46,15 @@ export class GameService extends BaseService {
   name = "gameservice";
 
   async handlePacket(packet: Packet, client: Client) {
-    const parsedPayload = packet.parsePayload(BatchRequest);
+    let parsedPayload;
+    try {
+      parsedPayload = packet.parsePayload(BatchRequest);
+    } catch (e) {
+      Logger.saveError("Unparsable GameService request", client.clide);
+      Logger.saveError(packet.buffer.toString("hex"), client.clide);
+      return;
+    }
+
     if (parsedPayload.requests === undefined) {
       Logger.saveError("Undefined requests in GameService", client.clide);
       Logger.saveError(packet.buffer.toString("hex"), client.clide);
