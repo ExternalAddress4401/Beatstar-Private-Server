@@ -142,13 +142,13 @@ export class GameService extends BaseService {
           const user = await getUser(prisma, client.clide);
           if (user === null) {
             Logger.error("User is null.", client.clide);
-            return;
+            break;
           }
 
           const beatmap = await getBeatmap(prisma, audit.song_id);
           if (beatmap === null) {
             Logger.error("Beatmap is null.", client.clide);
-            return;
+            break;
           }
 
           await prisma.user.update({
@@ -166,7 +166,7 @@ export class GameService extends BaseService {
           const user = await getUser(prisma, client.clide);
           if (user === null) {
             Logger.error("User is null.", client.clide);
-            return;
+            break;
           }
 
           const beatmap = await prisma.beatmap.findFirst({
@@ -177,7 +177,7 @@ export class GameService extends BaseService {
 
           if (beatmap === null) {
             Logger.error(`Unknown beatmap provided: ${audit.song_id}`);
-            return;
+            break;
           }
 
           // this is only used in the update so a score definitely exists
@@ -203,10 +203,8 @@ export class GameService extends BaseService {
 
           if (newMedal === null || newMedal === undefined) {
             Logger.error(`Invalid difficulty provided: ${beatmap.difficulty}`);
-            return;
+            break;
           }
-
-          console.log("wow a score!");
 
           if (!oldScore || oldScore.absoluteScore < audit.score.absoluteScore) {
             console.log("Score update!");
@@ -270,8 +268,6 @@ export class GameService extends BaseService {
               });
             }
           }
-        } else {
-          Logger.error("I don't know what this is: " + audit.type);
         }
       }
     }
