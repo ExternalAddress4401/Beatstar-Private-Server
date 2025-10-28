@@ -31,8 +31,14 @@ export class PaymentService extends BaseService {
   name = "paymentservice";
 
   async handlePacket(packet: Packet, client: Client) {
-    const parsedPayload = packet.parsePayload(BatchRequest);
-
+    let parsedPayload;
+    try {
+      parsedPayload = packet.parsePayload(BatchRequest);
+    } catch (e) {
+      Logger.saveError("Unparsable PaymentService request", client.clide);
+      Logger.saveError(packet.buffer.toString("hex"), client.clide);
+      return;
+    }
     const requests = toArray(parsedPayload.requests);
     const responses = [];
 

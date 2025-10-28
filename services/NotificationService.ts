@@ -37,7 +37,14 @@ export class NotificationService extends BaseService {
   name = "notificationservice";
 
   async handlePacket(packet: Packet, client: Client) {
-    const parsedPayload = packet.parsePayload(BatchRequest);
+    let parsedPayload;
+    try {
+      parsedPayload = packet.parsePayload(BatchRequest);
+    } catch (e) {
+      Logger.saveError("Unparsable NotificationService request", client.clide);
+      Logger.saveError(packet.buffer.toString("hex"), client.clide);
+      return;
+    }
 
     const requests = toArray(parsedPayload.requests);
     const responses = [];

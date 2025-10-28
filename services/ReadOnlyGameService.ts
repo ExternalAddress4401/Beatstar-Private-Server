@@ -29,7 +29,7 @@ export class ReadOnlyGameService extends BaseService {
     try {
       parsedPayload = packet.parsePayload(BatchRequest);
     } catch (e) {
-      Logger.saveError("Failed to parse payload");
+      Logger.saveError("Failed to parse ReadOnlyGameService request");
       Logger.saveError(packet.buffer.toString("hex"));
       return;
     }
