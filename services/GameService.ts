@@ -169,6 +169,11 @@ export class GameService extends BaseService {
             break;
           }
 
+          // ID is too big for prisma
+          if (audit.song_id > 2147483647) {
+            break;
+          }
+
           const beatmap = await prisma.beatmap.findFirst({
             where: {
               id: parseInt(audit.song_id),
