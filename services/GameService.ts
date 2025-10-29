@@ -211,11 +211,11 @@ export class GameService extends BaseService {
             await prisma.score.upsert({
               create: {
                 beatmapId: parseInt(audit.song_id),
-                normalizedScore: audit.score.normalizedScore,
-                absoluteScore: audit.score.absoluteScore,
+                normalizedScore: audit.score.normalizedScore ?? 0,
+                absoluteScore: audit.score.absoluteScore ?? 0,
                 highestGrade: newMedal,
                 highestCheckpoint: audit.checkpointReached ?? 0,
-                highestStreak: audit.maxStreak,
+                highestStreak: audit.maxStreak ?? 0,
                 playedCount: 1,
                 userId: user.id,
               },
