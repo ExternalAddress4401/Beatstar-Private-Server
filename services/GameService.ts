@@ -316,14 +316,20 @@ async function fetchScores(user: any) {
         absoluteScore: score.absoluteScore,
       };
 
-      const medal = scoreToMedal(score.absoluteScore, difficulty, false);
+      const medal = scoreToMedal(
+        score.absoluteScore,
+        difficulty,
+        prismaBeatmaps.find((beatmap) => beatmap.id === score.beatmapId)?.deluxe
+      );
+
       if (medal === undefined || medal === null) {
         continue;
       }
 
       beatmap.HighestCheckpoint = score.highestCheckpoint;
       beatmap.HighestStreak = score.highestStreak;
-      beatmap.HighestGrade_id = beatmap.PlayedCount = score.playedCount;
+      beatmap.HighestGrade_id = medal;
+      beatmap.PlayedCount = score.playedCount;
       beatmap.absoluteScore = score.absoluteScore;
     }
   }

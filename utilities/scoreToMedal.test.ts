@@ -20,6 +20,10 @@ test("it should return proper middle scores for deluxe", () => {
   expect(scoreToMedal(98700, 1, true)).toBe(7);
 });
 
+test("it should return proper middle scores for deluxe", () => {
+  expect(scoreToMedal(67490, 3, true)).toBe(3);
+});
+
 test("it should return a normal 1 star", () => {
   expect(medalToNormalStar(1)).toBe(1);
 });

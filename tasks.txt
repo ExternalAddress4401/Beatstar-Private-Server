@@ -1,16 +1,18 @@
 - Archive countrystar data, songs, emojis, track skins, etc
 - Missing some track skins?
 
-[-] {"id":5,"clientVersion":"36.1.3.9530","timestamp":1761602785608,"batchHeader":{},"requests":[{"1":[{"type":"Buffer","data":[10,2,101,110,18,45,10,10,6,69,118,101,110,116,115,16,1,11,10,7,71,101,110,101,114,97,108,16,1,10,10,6,83,111,99,105,97,108,16,1,10,10,6,86,101,110,117,101,115,16,1]}],"id":3,"header":{},"rpcType":9},{"id":4,"header":{},"rpcType":6,"deviceToken":"eN1aiG65Qt-zWhosK1MF7R:APA91bFnaC8R-_yxPdGBaJ_lqONaXUXOfIteO5xCLIodg5GAVPA0hABiZc96GCsa-WfKgNef6RmJe331DXqSi6jKj0JdAIw2PTtALuRld0pYiKvtDettvzI","messageType":2,"cinta":"edad7339-048b-4133-938d-747395825f98"}],"authenticationTicket":"VCS1axRWJeq4jFJdpI3RFfnaIPjAV3ksi8W3cc3VYedwSiQFozfoIZpRN663Tmn4oswsBRTRcz6r8E+aDLuhDzh6xg/vB0e6SqjD2fpd/N1oY/4ulGb8qQ4qc2cGwuS4dPAPnGFW1WjP7SZ3MRJI0WRo2iHbz5Qlg21ssolAo0MTDWYPh0dtYg=="}
-[?] notificationservice: Unknown rpcType: undefined
-[?] notificationservice: Unknown rpcType: undefined
-[-] gameservice received a packet.
-/root/beatstar/Beatstar-Private-Server/node_modules/@externaladdress4401/protobuf/dist/ProtobufHandler.js:163
-                        const enumData = protoData[cmsRow.key ?? 2][0];
+RangeError [ERR_BUFFER_OUT_OF_BOUNDS]: Attempt to access memory outside buffer bounds
+    at boundsError (node:internal/buffer:86:11)
+    at Buffer.readUInt32BE (node:internal/buffer:311:5)
+    at ProtobufHandler.readIntBE (/root/beatstar/Beatstar-Private-Server/node_modules/@externaladdress4401/protobuf/dist/ProtobufHandler.js:364:31)
+    at Client.extractPackets (/root/beatstar/Beatstar-Private-Server/Client.ts:29:30)
+    at Socket.<anonymous> (/root/beatstar/Beatstar-Private-Server/server.ts:112:30)
+    at Socket.emit (node:events:519:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:189:23) {
+  code: 'ERR_BUFFER_OUT_OF_BOUNDS'
+}
 
-[-] gameservice received a packet.
-node:internal/buffer:88
-  throw new ERR_OUT_OF_RANGE(type || 'offset',
-        ^
-
-RangeError [ERR_OUT_OF_RANGE]: The value of "offset" is out of range. It must be >= 0 and <= 0. Received 1
+Node.js v22.21.0

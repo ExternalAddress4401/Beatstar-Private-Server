@@ -1,6 +1,7 @@
 import net from "net";
 import { Packet } from "./Packet";
 import { ProtobufHandler } from "@externaladdress4401/protobuf/ProtobufHandler";
+import Logger from "./lib/Logger";
 
 export class Client {
   buffer: Buffer = Buffer.alloc(0);
@@ -25,6 +26,10 @@ export class Client {
       const handler = new ProtobufHandler("READ", this.buffer);
       if (!handler.hasMore()) {
         break;
+      }
+      if (handler.buffer.length < 4) {
+        Logger.saveError("Tried to read int from buffer that was too small!");
+        return packets;
       }
       const length = handler.readIntBE() + 4;
       if (handler.buffer.length >= length) {
