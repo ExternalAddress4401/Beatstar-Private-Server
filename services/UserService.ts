@@ -22,9 +22,9 @@ export class UserService extends BaseService {
       return;
     }
 
-    console.log(packet.buffer.toString("hex"));
     const cinta = payload.reqAllInOneLogin.cinta;
     if (!isUUID(cinta)) {
+      // move no account found error here
       Logger.error("Found non UUID.");
       Logger.error(cinta);
       return;

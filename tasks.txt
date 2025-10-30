@@ -19,3 +19,5 @@ Node.js v22.21.0
 
 Unknown wire: 3
 <Buffer 40 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ... 52 more bytes>
+
+Move no account found error to UserService
