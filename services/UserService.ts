@@ -26,6 +26,7 @@ export class UserService extends BaseService {
     const cinta = payload.reqAllInOneLogin.cinta;
     if (!isUUID(cinta)) {
       Logger.error("Found non UUID.");
+      Logger.error(cinta);
       return;
     }
 
