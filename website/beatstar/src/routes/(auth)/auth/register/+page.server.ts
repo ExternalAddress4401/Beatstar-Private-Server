@@ -20,7 +20,12 @@ export const actions = {
 			return fail(400);
 		}
 
-		const { username, password, verifyPassword } = response.data;
+		const username = response.data.username.trim();
+		const { password, verifyPassword } = response.data;
+
+		if (username.length < 3) {
+			return fail(400, { error: 'Username must be at least 3 characters.' });
+		}
 
 		const existingUser = await prisma.user.findFirst({
 			where: {
