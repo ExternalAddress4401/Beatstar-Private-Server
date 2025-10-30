@@ -8,6 +8,7 @@ import {
   createServerClientMessageHeader,
 } from "@externaladdress4401/protobuf/responses";
 import Logger from "../lib/Logger";
+import { isUUID } from "../utilities/isUuid";
 
 export class UserService extends BaseService {
   name = "userservice";
@@ -21,7 +22,12 @@ export class UserService extends BaseService {
       return;
     }
 
+    console.log(packet.buffer.toString("hex"));
     const cinta = payload.reqAllInOneLogin.cinta;
+    if (!isUUID(cinta)) {
+      Logger.error("Found non UUID.");
+      return;
+    }
 
     // we'll just use this to auth database requests
     client.setClide(cinta);

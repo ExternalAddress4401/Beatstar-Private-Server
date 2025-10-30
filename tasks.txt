@@ -16,3 +16,6 @@ RangeError [ERR_BUFFER_OUT_OF_BOUNDS]: Attempt to access memory outside buffer b
 }
 
 Node.js v22.21.0
+
+Unknown wire: 3
+<Buffer 40 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ... 52 more bytes>
