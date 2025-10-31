@@ -394,6 +394,11 @@ async function updatePlayCount(clide: string, beatmapId: number) {
     return;
   }
 
+  const beatmap = await getBeatmap(prisma, beatmapId);
+  if (beatmap === null) {
+    return;
+  }
+
   try {
     await prisma.score.update({
       data: {
