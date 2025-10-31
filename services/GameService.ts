@@ -130,7 +130,6 @@ export class GameService extends BaseService {
 
       if (rpcType === "ExecuteAudit") {
         const audit = request.audit;
-        console.log("GOT AN AUDIT", rpcType, stringify(audit));
 
         if (!client.clide) {
           // this should be set before getting here...
@@ -161,6 +160,9 @@ export class GameService extends BaseService {
           });
         }
         if (audit.type === RequestType.RhythmGameStarted) {
+          if (audit.song_id > 2147483647) {
+            break;
+          }
           await updatePlayCount(client.clide, audit.song_id);
         } else if (audit.type === RequestType.RhythmGameEnded) {
           const user = await getUser(prisma, client.clide);
