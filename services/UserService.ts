@@ -24,7 +24,15 @@ export class UserService extends BaseService {
 
     const cinta = payload.reqAllInOneLogin.cinta;
     if (!isUUID(cinta)) {
-      // move no account found error here
+      const response = await packet.buildErrorResponse({
+        "{error}": {
+          code: 9587,
+          message: "NO_PROFILE",
+          tokenId: "",
+          name: "NO_PROFILE",
+        },
+      });
+      client.write(response);
       Logger.error("Found non UUID.");
       Logger.error(cinta);
       return;

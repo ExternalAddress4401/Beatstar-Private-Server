@@ -25,7 +25,6 @@ import { capitalize } from "../utilities/capitalize";
 import Settings from "../Settings";
 import { getUser } from "../model-services/PrismaUserService";
 import { getBeatmap } from "../model-services/PrismaBeatmapService";
-import { stringify } from "../utilities/stringify";
 
 const RpcType = {
   5: "Sync",

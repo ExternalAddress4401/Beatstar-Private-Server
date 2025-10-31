@@ -42,7 +42,10 @@ export class Packet {
   }
   parsePayload(proto: any) {
     if (Object.keys(this.payload).length === 0) {
-      this._payload.process();
+      const processResult = this._payload.process();
+      if (processResult === null) {
+        throw new Error(`Unparsable payload found`);
+      }
     }
     this.payload = this._payload.parseProto(proto);
     return this.payload;
