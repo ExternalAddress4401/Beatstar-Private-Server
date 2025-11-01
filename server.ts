@@ -43,7 +43,7 @@ const clients = new Map<net.Socket, Client>();
 
 const saClient = tls.connect(
   {
-    host: "socket-gateway.prod.flamingo.newbirds.net",
+    host: "socket-gateway.prod.robin.newbirds.net",
     port: 443,
   },
   () => {
@@ -70,7 +70,6 @@ saClient.on("data", async (data) => {
   }
 
   client.write(data);
-  return;
 
   client.handlePacket(data);
 
