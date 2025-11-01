@@ -1,15 +1,26 @@
 import { fail, type Cookies } from '@sveltejs/kit';
 
-type ActionFn = (args: { request: Request; cookies: Cookies }) => Promise<any>;
+type ActionFn = (args: {
+	request: Request;
+	cookies: Cookies;
+	session: { id: number };
+}) => Promise<any>;
 
-export function isAuthenticated(action: ActionFn): ActionFn {
+export function isAuthenticated(
+	action: ActionFn
+): (args: { request: Request; cookies: Cookies }) => Promise<any> {
 	return async ({ request, cookies }) => {
-		const session = cookies.get('session');
+		const sessionCookie = cookies.get('session');
 
-		if (!session) {
+		if (!sessionCookie) {
 			return fail(401, { error: 'Not authenticated' });
 		}
 
-		return action({ request, cookies });
+		try {
+			const session = JSON.parse(sessionCookie);
+			return action({ request, cookies, session });
+		} catch (error) {
+			return fail(401, { error: 'Invalid session' });
+		}
 	};
 }

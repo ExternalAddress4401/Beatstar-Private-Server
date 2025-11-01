@@ -46,6 +46,9 @@ export const scoreToMedal = (
   const useTable = isDeluxe ? deluxeTable : table;
 
   const medalIndexes = [1, 2, 5, 3, 4, 6, 7, 8];
+  const deluxeMedalIndexes = [1, 2, 5, 3, 4, 9, 10, 11];
+
+  const medalTable = isDeluxe ? deluxeMedalIndexes : medalIndexes;
 
   const scoreRow = useTable[difficulty];
   if (scoreRow === undefined) {
@@ -56,5 +59,5 @@ export const scoreToMedal = (
     (threshold) => score >= threshold
   );
 
-  return medalIndexes[thresholdIndex];
+  return medalTable[thresholdIndex];
 };

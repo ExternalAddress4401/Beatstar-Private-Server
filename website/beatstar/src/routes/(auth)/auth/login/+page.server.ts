@@ -23,6 +23,7 @@ export const actions = {
 
 		const user = await prisma.user.findFirst({
 			select: {
+				id: true,
 				username: true,
 				password: true,
 				uuid: true,
@@ -42,13 +43,17 @@ export const actions = {
 		}
 
 		// user is authenticated
-		cookies.set('session', JSON.stringify({ username, uuid: user.uuid, admin: user.admin }), {
-			path: '/',
-			httpOnly: true,
-			sameSite: 'strict',
-			secure: process.env.NODE_ENV === 'production',
-			maxAge: ONE_DAY
-		});
+		cookies.set(
+			'session',
+			JSON.stringify({ id: user.id, username, uuid: user.uuid, admin: user.admin }),
+			{
+				path: '/',
+				httpOnly: true,
+				sameSite: 'strict',
+				secure: process.env.NODE_ENV === 'production',
+				maxAge: ONE_DAY
+			}
+		);
 
 		return redirect(303, '/profile');
 	}

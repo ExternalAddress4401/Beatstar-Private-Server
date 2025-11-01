@@ -18,5 +18,6 @@
 		font-weight: 600;
 		cursor: pointer;
 		text-align: center;
+		width: 10rem;
 	}
 </style>

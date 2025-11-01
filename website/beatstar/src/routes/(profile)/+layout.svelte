@@ -11,9 +11,7 @@
 
 <div class="container">
 	<Navigation user={data.user} />
-	<div class="center">
-		{@render children?.()}
-	</div>
+	{@render children?.()}
 </div>
 
 <style>

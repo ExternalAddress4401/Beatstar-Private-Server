@@ -23,26 +23,9 @@ model User {
   selectedBeatmapId Int     @default(3006)
   selectedBeatmap   Beatmap @relation(fields: [selectedBeatmapId], references: [id])
   Score             Score[]
-  CustomScore       CustomScore[]
 }
 
 model Score {
-  beatmapId         Int
-  normalizedScore   Float
-  absoluteScore     Int
-  highestGrade      Int
-  highestCheckpoint Int
-  highestStreak     Int
-  playedCount       Int
-
-  user    User    @relation(fields: [userId], references: [id])
-  beatmap Beatmap @relation(fields: [beatmapId], references: [id])
-  userId  Int
-
-  @@id([userId, beatmapId])
-}
-
-model CustomScore {
   beatmapId         Int
   normalizedScore   Float?
   absoluteScore     Int
@@ -63,7 +46,6 @@ model Beatmap {
   difficulty Int
   deluxe     Boolean
 
-  scores Score[]
   User   User[]
 }
 
