@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "sessionId" SET DATA TYPE CHAR(36);

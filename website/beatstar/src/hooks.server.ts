@@ -1,16 +1,15 @@
 import type { Handle } from '@sveltejs/kit';
+import prisma from '$lib/prisma';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	const session = event.cookies.get('session');
-	if (session) {
-		try {
-			event.locals.user = JSON.parse(session);
-		} catch {
-			event.locals.user = null;
+	const user = await prisma.user.findFirst({
+		where: {
+			sessionId: session
 		}
-	} else {
-		event.locals.user = null;
-	}
+	});
+
+	event.locals.user = user;
 
 	return resolve(event);
 };

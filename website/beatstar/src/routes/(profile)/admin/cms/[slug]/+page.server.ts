@@ -1,12 +1,12 @@
 import prisma from '$lib/prisma';
 import { error, fail } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import { isAuthenticated } from '$lib/wrapper/isAuthenticated';
 import { zfd } from 'zod-form-data';
 import zlib from 'zlib';
 import crypto from 'crypto';
 import { CMSMap } from '@externaladdress4401/protobuf/tools/CMSMap';
 import { ProtobufHandler } from '@externaladdress4401/protobuf/ProtobufHandler';
+import { isAdmin } from '$lib/wrapper/isAdmin';
 
 const schema = zfd.formData({
 	name: zfd.text(),
@@ -35,7 +35,7 @@ export const load: PageServerLoad = async ({ params }) => {
 };
 
 export const actions = {
-	save: isAuthenticated(async ({ request }) => {
+	save: isAdmin(async ({ request }) => {
 		const formData = await request.formData();
 		const response = await schema.safeParseAsync(formData);
 		if (response.error) {

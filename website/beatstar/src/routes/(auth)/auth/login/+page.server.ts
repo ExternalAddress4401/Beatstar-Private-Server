@@ -3,6 +3,7 @@ import { zfd } from 'zod-form-data';
 import argon2 from '@node-rs/argon2';
 import prisma from '$lib/prisma';
 import { fail, redirect } from '@sveltejs/kit';
+import crypto from 'crypto';
 
 const schema = zfd.formData({
 	username: zfd.text(),
@@ -42,18 +43,25 @@ export const actions = {
 			return fail(400, { error: 'Username or password are incorrect.' });
 		}
 
-		// user is authenticated
-		cookies.set(
-			'session',
-			JSON.stringify({ id: user.id, username, uuid: user.uuid, admin: user.admin }),
-			{
-				path: '/',
-				httpOnly: true,
-				sameSite: 'strict',
-				secure: process.env.NODE_ENV === 'production',
-				maxAge: ONE_DAY
+		const sessionId = crypto.randomBytes(18).toString('hex');
+
+		await prisma.user.update({
+			data: {
+				sessionId
+			},
+			where: {
+				id: user.id
 			}
-		);
+		});
+
+		// user is authenticated
+		cookies.set('session', sessionId, {
+			path: '/',
+			httpOnly: true,
+			sameSite: 'strict',
+			secure: process.env.NODE_ENV === 'production',
+			maxAge: ONE_DAY
+		});
 
 		return redirect(303, '/profile');
 	}

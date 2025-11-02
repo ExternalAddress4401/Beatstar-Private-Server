@@ -4,7 +4,7 @@ import { fail, type Cookies } from '@sveltejs/kit';
 
 type ActionFn = (args: { request: Request; cookies: Cookies; user: User }) => Promise<any>;
 
-export function isAuthenticated(
+export function isAdmin(
 	action: ActionFn
 ): (args: { request: Request; cookies: Cookies }) => Promise<any> {
 	return async ({ request, cookies }) => {
@@ -22,6 +22,10 @@ export function isAuthenticated(
 
 		if (!user) {
 			return fail(401, { error: 'Invalid session' });
+		}
+
+		if (!user.admin) {
+			return fail(403, { error: 'Requires admin priviliges.' });
 		}
 
 		return action({ request, cookies, user });

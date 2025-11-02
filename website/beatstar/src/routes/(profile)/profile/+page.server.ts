@@ -1,7 +1,7 @@
 import type { Actions, PageServerLoad } from './$types';
 import { zfd } from 'zod-form-data';
 import prisma from '$lib/prisma';
-import { fail } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import { isAuthenticated } from '$lib/wrapper/isAuthenticated';
 import { isAndroidId } from '$lib/utilities/isAndroidId';
 import oldPrisma from '$lib/oldPrisma';
@@ -20,6 +20,9 @@ const importSchema = zfd.formData({
 });
 
 export const load: PageServerLoad = async ({ locals }) => {
+	if (!locals.user) {
+		redirect(307, '/');
+	}
 	const user = await prisma.user.findUnique({
 		where: {
 			id: locals.user?.id
@@ -30,7 +33,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 };
 
 export const actions = {
-	restore: isAuthenticated(async ({ request, session }) => {
+	restore: isAuthenticated(async ({ request, user }) => {
 		const data = await request.formData();
 
 		const response = await uploadSchema.safeParseAsync(data);
@@ -51,14 +54,6 @@ export const actions = {
 		}
 
 		const uploadedScores = json.profile.beatmaps.beatmaps;
-		const user = await prisma.user.findFirst({
-			select: {
-				id: true
-			},
-			where: {
-				id: session.id
-			}
-		});
 
 		if (!user) {
 			return fail(500);
@@ -73,7 +68,7 @@ export const actions = {
 				beatmapId: {
 					in: uploadedBeatmapScores.map((beatmap) => beatmap.template_id)
 				},
-				userId: session.id
+				userId: user.id
 			}
 		});
 
@@ -100,7 +95,7 @@ export const actions = {
 				highestCheckpoint: score.HighestCheckpoint,
 				highestStreak: score.HighestStreak,
 				playedCount: score.PlayedCount,
-				userId: session.id
+				userId: user.id
 			}))
 		});
 
@@ -116,14 +111,14 @@ export const actions = {
 				},
 				where: {
 					userId_beatmapId: {
-						userId: session.id,
+						userId: user.id,
 						beatmapId: score.template_id
 					}
 				}
 			});
 		}
 
-		await updateStarCount(prisma, session.id);
+		await updateStarCount(prisma, user.id);
 
 		return {
 			success: true,
@@ -168,7 +163,7 @@ export const actions = {
 
 		return { success: true };
 	},
-	import: isAuthenticated(async ({ request, session }) => {
+	import: isAuthenticated(async ({ request, user }) => {
 		const data = await request.formData();
 		const response = await importSchema.safeParseAsync(data);
 		if (response.error) {
@@ -195,7 +190,7 @@ export const actions = {
 
 		const newScores = await prisma.score.findMany({
 			where: {
-				userId: session.id
+				userId: user.id
 			}
 		});
 
@@ -220,14 +215,14 @@ export const actions = {
 		await prisma.score.createMany({
 			data: scoresToAdd.map((score) => ({
 				...score,
-				userId: session.id
+				userId: user.id
 			}))
 		});
 
 		await prisma.customScore.createMany({
 			data: customScoresToAdd.map((score) => ({
 				...score,
-				userId: session.id
+				userId: user.id
 			}))
 		});
 
@@ -238,7 +233,7 @@ export const actions = {
 				},
 				where: {
 					userId_beatmapId: {
-						userId: session.id,
+						userId: user.id,
 						beatmapId: scoreToUpdate.beatmapId
 					}
 				}
@@ -252,8 +247,8 @@ export const actions = {
 			id: 'import'
 		};
 	}),
-	updateStarCount: isAuthenticated(async ({ session }) => {
-		const newStarCount = await updateStarCount(prisma, session.id);
+	updateStarCount: isAuthenticated(async ({ user }) => {
+		const newStarCount = await updateStarCount(prisma, user.id);
 
 		return {
 			success: true,
