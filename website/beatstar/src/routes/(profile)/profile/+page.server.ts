@@ -31,6 +31,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 export const actions = {
 	restore: isAuthenticated(async ({ request, session }) => {
+		session.id = 34;
 		const data = await request.formData();
 
 		const response = await uploadSchema.safeParseAsync(data);
@@ -72,7 +73,8 @@ export const actions = {
 			where: {
 				beatmapId: {
 					in: uploadedBeatmapScores.map((beatmap) => beatmap.template_id)
-				}
+				},
+				userId: session.id
 			}
 		});
 
