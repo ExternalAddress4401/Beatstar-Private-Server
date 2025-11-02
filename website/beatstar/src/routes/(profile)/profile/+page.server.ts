@@ -126,13 +126,7 @@ export const actions = {
 			id: 'restore'
 		};
 	}),
-	changeUsername: async ({ request, cookies }) => {
-		const session = cookies.get('session');
-		if (!session) {
-			return fail(401);
-		}
-
-		const uuid = JSON.parse(session).uuid;
+	changeUsername: isAuthenticated(async ({ request, user }) => {
 		const data = await request.formData();
 
 		const response = await changeUsernameSchema.safeParseAsync(data);
@@ -149,7 +143,7 @@ export const actions = {
 		});
 
 		if (existingUser) {
-			return fail(409, { error: 'Username already exists.' });
+			return fail(409, { error: 'Someone already has this username.', id: 'changeUsername' });
 		}
 
 		await prisma.user.update({
@@ -157,12 +151,12 @@ export const actions = {
 				username
 			},
 			where: {
-				uuid
+				id: user.id
 			}
 		});
 
-		return { success: true };
-	},
+		return { success: true, id: 'changeUsername' };
+	}),
 	import: isAuthenticated(async ({ request, user }) => {
 		const data = await request.formData();
 		const response = await importSchema.safeParseAsync(data);

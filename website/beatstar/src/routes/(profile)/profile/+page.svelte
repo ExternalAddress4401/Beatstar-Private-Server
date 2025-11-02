@@ -38,6 +38,13 @@
 			<TextInput name="username" value={user?.username} placeholder="Username" />
 			<Button type="submit" text="Update username" />
 		</form>
+		{#if form !== null && form.id === 'changeUsername'}
+			{#if form.error}
+				<p>{form.error}</p>
+			{:else}
+				<p>Username updated successfully.</p>
+			{/if}
+		{/if}
 		<p>Star count: {data.starCount}</p>
 		<form method="POST" action="?/updateStarCount" use:enhance>
 			<Button type="submit" text="Update Star Count" />
