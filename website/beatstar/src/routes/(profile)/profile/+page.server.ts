@@ -31,7 +31,6 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 export const actions = {
 	restore: isAuthenticated(async ({ request, session }) => {
-		session.id = 34;
 		const data = await request.formData();
 
 		const response = await uploadSchema.safeParseAsync(data);
