@@ -40,7 +40,15 @@ export const actions = {
 
 		const { profile } = response.data;
 
-		const json = JSON.parse(Buffer.from(await profile.arrayBuffer()).toString());
+		let json;
+		try {
+			json = JSON.parse(Buffer.from(await profile.arrayBuffer()).toString());
+		} catch (e) {
+			return fail(400, {
+				error: 'This file is not valid JSON. Upload your PROFILE file.',
+				id: 'restore'
+			});
+		}
 
 		const uploadedScores = json.profile.beatmaps.beatmaps;
 		const user = await prisma.user.findFirst({

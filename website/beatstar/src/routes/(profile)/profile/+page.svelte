@@ -61,7 +61,10 @@
 			/>
 		</form>
 		{#if form !== null && form.id === 'restore'}
-			<p>Imported {form.scoresAdded} scores.</p>
+			{#if !form.error}
+				<p>Imported {form.scoresAdded} scores.</p>
+			{/if}
+			<p>{form.error}</p>
 		{/if}
 	</div>
 
