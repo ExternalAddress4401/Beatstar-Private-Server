@@ -332,8 +332,8 @@ async function fetchScores(user: any) {
         continue;
       }
 
-      beatmap.HighestCheckpoint = score.highestCheckpoint;
-      beatmap.HighestStreak = score.highestStreak;
+      beatmap.HighestCheckpoint = score.highestCheckpoint ?? 0;
+      beatmap.HighestStreak = score.highestStreak ?? 0;
       beatmap.HighestGrade_id = medal;
       beatmap.PlayedCount = score.playedCount;
       beatmap.absoluteScore = score.absoluteScore;
