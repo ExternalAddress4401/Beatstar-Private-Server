@@ -1,5 +1,4 @@
-- Archive countrystar data, songs, emojis, track skins, etc
-- Missing some track skins?
+- Add better logging with winston and daily-rotate-file
 
 RangeError [ERR_BUFFER_OUT_OF_BOUNDS]: Attempt to access memory outside buffer bounds
     at boundsError (node:internal/buffer:86:11)

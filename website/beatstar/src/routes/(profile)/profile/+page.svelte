@@ -5,6 +5,7 @@
 	import TextInput from '$lib/components/TextInput.svelte';
 
 	let { data, form } = $props();
+
 	const user = data.user;
 
 	const downloadFile = () => {
@@ -37,6 +38,13 @@
 			<TextInput name="username" value={user?.username} placeholder="Username" />
 			<Button type="submit" text="Update username" />
 		</form>
+		<p>Star count: {data.starCount}</p>
+		<form method="POST" action="?/updateStarCount" use:enhance>
+			<Button type="submit" text="Update Star Count" />
+		</form>
+		{#if form !== null && form.id === 'updateStarCount'}
+			<p>New star count: {form.newStarCount}</p>
+		{/if}
 	</div>
 
 	<hr />
@@ -44,32 +52,43 @@
 	<div class="block">
 		<h2>Restore</h2>
 		<p>Restore your official server scores from your profile file.</p>
-		<form method="POST" action="?/upload" use:enhance enctype="multipart/form-data">
-			<FilePicker text="Upload Scores" />
+		<form method="POST" action="?/restore" use:enhance enctype="multipart/form-data">
+			<FilePicker
+				text="Upload Scores"
+				name="profile"
+				accept="*"
+				onchange={(e) => e.currentTarget.form.submit()}
+			/>
 		</form>
+		{#if form !== null && form.id === 'restore'}
+			<p>Imported {form.scoresAdded} scores.</p>
+		{/if}
 	</div>
 
 	<hr />
 
-	<div class="block">
-		<h2>Import</h2>
-		<p>Import your old Beatclone scores.</p>
-		<p>
-			Opening the game will create a file called uuid.txt in your beatstar folder. Upload that file
-			here.
-		</p>
-		<form method="POST" action="?/import" use:enhance enctype="multipart/form-data" nae="import">
-			<FilePicker
-				text="Import Scores"
-				name="uuid"
-				onchange={(e) => e.currentTarget.form.submit()}
-			/>
-		</form>
-		{#if form !== null && form.id === 'import'}
-			<p>Imported {form.scoresAdded} scores.</p>
-			<p>Updated {form.scoresUpdated} scores.</p>
-		{/if}
-	</div>
+	{#if false}
+		<div class="block">
+			<h2>Import</h2>
+			<p>Import your old Beatclone scores.</p>
+			<p>
+				Opening the game will create a file called uuid.txt in your beatstar folder. Upload that
+				file here.
+			</p>
+			<form method="POST" action="?/import" use:enhance enctype="multipart/form-data" name="import">
+				<FilePicker
+					text="Import Scores"
+					name="uuid"
+					accept=".txt"
+					onchange={(e) => e.currentTarget.form.submit()}
+				/>
+			</form>
+			{#if form !== null && form.id === 'import'}
+				<p>Imported {form.scoresAdded} scores.</p>
+				<p>Updated {form.scoresUpdated} scores.</p>
+			{/if}
+		</div>
+	{/if}
 
 	<div class="block">
 		<h2>Download</h2>

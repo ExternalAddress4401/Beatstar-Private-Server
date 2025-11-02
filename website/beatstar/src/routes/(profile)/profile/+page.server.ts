@@ -1,10 +1,11 @@
-import type { Actions } from './$types';
+import type { Actions, PageServerLoad } from './$types';
 import { zfd } from 'zod-form-data';
 import prisma from '$lib/prisma';
 import { fail } from '@sveltejs/kit';
 import { isAuthenticated } from '$lib/wrapper/isAuthenticated';
 import { isAndroidId } from '$lib/utilities/isAndroidId';
 import oldPrisma from '$lib/oldPrisma';
+import { updateStarCount } from '$lib/services/UserService';
 
 const uploadSchema = zfd.formData({
 	profile: zfd.file()
@@ -18,15 +19,18 @@ const importSchema = zfd.formData({
 	uuid: zfd.file()
 });
 
-export const actions = {
-	upload: async ({ request, cookies }) => {
-		const session = cookies.get('session');
-		if (!session) {
-			return fail(401);
+export const load: PageServerLoad = async ({ locals }) => {
+	const user = await prisma.user.findUnique({
+		where: {
+			id: locals.user?.id
 		}
+	});
 
-		const uuid = JSON.parse(session).uuid;
+	return { starCount: user?.starCount };
+};
 
+export const actions = {
+	restore: isAuthenticated(async ({ request, session }) => {
 		const data = await request.formData();
 
 		const response = await uploadSchema.safeParseAsync(data);
@@ -38,13 +42,13 @@ export const actions = {
 
 		const json = JSON.parse(Buffer.from(await profile.arrayBuffer()).toString());
 
-		const scores = json.profile.beatmaps.beatmaps;
+		const uploadedScores = json.profile.beatmaps.beatmaps;
 		const user = await prisma.user.findFirst({
 			select: {
 				id: true
 			},
 			where: {
-				uuid
+				id: session.id
 			}
 		});
 
@@ -52,12 +56,34 @@ export const actions = {
 			return fail(500);
 		}
 
-		const relevantBeatmaps = scores.filter(
+		const uploadedBeatmapScores = uploadedScores.filter(
 			(beatmap) => Object.keys(beatmap.HighestScore).length !== 0
 		);
 
+		const currentScores = await prisma.score.findMany({
+			where: {
+				beatmapId: {
+					in: uploadedBeatmapScores.map((beatmap) => beatmap.template_id)
+				}
+			}
+		});
+
+		const scoresToAdd = [];
+		const scoresToUpdate = [];
+
+		for (const uploadedScore of uploadedBeatmapScores) {
+			const currentScore = currentScores.find(
+				(score) => score.beatmapId === uploadedScore.template_id
+			);
+			if (currentScore === undefined) {
+				scoresToAdd.push(uploadedScore);
+			} else if (currentScore.absoluteScore < uploadedScore.HighestScore.absoluteScore) {
+				scoresToUpdate.push(uploadedScore);
+			}
+		}
+
 		await prisma.score.createMany({
-			data: relevantBeatmaps.map((score: any) => ({
+			data: scoresToAdd.map((score) => ({
 				beatmapId: score.template_id,
 				normalizedScore: score.HighestScore.normalizedScore,
 				absoluteScore: score.HighestScore.absoluteScore,
@@ -65,12 +91,37 @@ export const actions = {
 				highestCheckpoint: score.HighestCheckpoint,
 				highestStreak: score.HighestStreak,
 				playedCount: score.PlayedCount,
-				userId: user.id
+				userId: session.id
 			}))
 		});
 
-		return { success: true };
-	},
+		for (const score of scoresToUpdate) {
+			await prisma.score.update({
+				data: {
+					normalizedScore: score.HighestScore.normalizedScore,
+					absoluteScore: score.HighestScore.absoluteScore,
+					highestGrade: score.HighestGrade_id,
+					highestCheckpoint: score.HighestCheckpoint,
+					highestStreak: score.HighestStreak,
+					playedCount: score.PlayedCount
+				},
+				where: {
+					userId_beatmapId: {
+						userId: session.id,
+						beatmapId: score.template_id
+					}
+				}
+			});
+		}
+
+		await updateStarCount(prisma, session.id);
+
+		return {
+			success: true,
+			scoresAdded: scoresToAdd.length,
+			id: 'restore'
+		};
+	}),
 	changeUsername: async ({ request, cookies }) => {
 		const session = cookies.get('session');
 		if (!session) {
@@ -124,6 +175,8 @@ export const actions = {
 			return fail(400, { error: 'Invalid android ID.' });
 		}
 
+		const beatmaps = await prisma.beatmap.findMany();
+
 		const scoresToMigrate = (
 			await oldPrisma.$queryRaw`SELECT * FROM "Score" as s JOIN "User" as u ON s."userId" = u."userId" WHERE "androidId" = ${beatcloneAndroidId}`
 		).map((score) => ({
@@ -139,18 +192,31 @@ export const actions = {
 
 		const scoresToAdd = [];
 		const scoresToUpdate = [];
+		const customScoresToAdd = [];
 
 		for (const score of scoresToMigrate) {
-			const newScore = newScores.find((newScore) => score.beatmapId === newScore.beatmapId);
-			if (newScore && newScore.absoluteScore < score.absoluteScore) {
-				scoresToUpdate.push(score);
-			} else if (!newScore) {
-				scoresToAdd.push(score);
+			const beatmap = beatmaps.find((beatmap) => beatmap.id === score.beatmapId);
+			if (!beatmap) {
+				customScoresToAdd.push(score);
+			} else {
+				const newScore = newScores.find((newScore) => score.beatmapId === newScore.beatmapId);
+				if (newScore && newScore.absoluteScore < score.absoluteScore) {
+					scoresToUpdate.push(score);
+				} else if (!newScore) {
+					scoresToAdd.push(score);
+				}
 			}
 		}
 
 		await prisma.score.createMany({
 			data: scoresToAdd.map((score) => ({
+				...score,
+				userId: session.id
+			}))
+		});
+
+		await prisma.customScore.createMany({
+			data: customScoresToAdd.map((score) => ({
 				...score,
 				userId: session.id
 			}))
@@ -175,6 +241,15 @@ export const actions = {
 			scoresAdded: scoresToAdd.length,
 			scoresUpdated: scoresToUpdate.length,
 			id: 'import'
+		};
+	}),
+	updateStarCount: isAuthenticated(async ({ session }) => {
+		const newStarCount = await updateStarCount(prisma, session.id);
+
+		return {
+			success: true,
+			newStarCount,
+			id: 'updateStarCount'
 		};
 	})
 } satisfies Actions;

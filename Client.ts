@@ -29,6 +29,7 @@ export class Client {
       }
       if (handler.buffer.length < 4) {
         Logger.saveError("Tried to read int from buffer that was too small!");
+        Logger.saveError(this.buffer.toString("hex"));
         return packets;
       }
       const length = handler.readIntBE() + 4;

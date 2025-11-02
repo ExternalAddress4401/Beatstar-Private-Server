@@ -9,8 +9,10 @@ declare global {
 		// interface Platform {}
 		interface Locals {
 			user: {
+				id: number;
 				username: string;
 				uuid: string;
+				admin: boolean;
 			} | null;
 		}
 	}
