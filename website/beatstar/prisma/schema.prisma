@@ -23,6 +23,7 @@ model User {
   customStarCount   Int           @default(0)
   selectedBeatmapId Int           @default(3006)
   sessionId         String?       @unique @db.Char(36)
+  unlockAllSongs    Boolean       @default(true)
   selectedBeatmap   Beatmap       @relation(fields: [selectedBeatmapId], references: [id])
   Score             Score[]
   CustomScore       CustomScore[]

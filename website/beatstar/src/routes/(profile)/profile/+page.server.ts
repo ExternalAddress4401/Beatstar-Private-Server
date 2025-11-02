@@ -1,7 +1,7 @@
-import type { Actions, PageServerLoad } from './$types';
+import type { Actions } from './$types';
 import { zfd } from 'zod-form-data';
 import prisma from '$lib/prisma';
-import { fail, redirect } from '@sveltejs/kit';
+import { fail } from '@sveltejs/kit';
 import { isAuthenticated } from '$lib/wrapper/isAuthenticated';
 import { isAndroidId } from '$lib/utilities/isAndroidId';
 import oldPrisma from '$lib/oldPrisma';
@@ -19,20 +19,19 @@ const importSchema = zfd.formData({
 	uuid: zfd.file()
 });
 
-export const load: PageServerLoad = async ({ locals }) => {
-	if (!locals.user) {
-		redirect(307, '/');
-	}
-	const user = await prisma.user.findUnique({
-		where: {
-			id: locals.user?.id
-		}
-	});
-
-	return { starCount: user?.starCount };
-};
-
 export const actions = {
+	unlockAllSongs: isAuthenticated(async ({ user }) => {
+		await prisma.user.update({
+			data: {
+				unlockAllSongs: !user.unlockAllSongs
+			},
+			where: {
+				id: user.id
+			}
+		});
+
+		return { success: true };
+	}),
 	restore: isAuthenticated(async ({ request, user }) => {
 		const data = await request.formData();
 

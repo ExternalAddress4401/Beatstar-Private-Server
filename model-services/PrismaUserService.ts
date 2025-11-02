@@ -1,11 +1,14 @@
+import { Prisma } from "@prisma/client";
 import Logger from "../lib/Logger";
 import { PrismaInstance } from "../website/beatstar/src/lib/prisma";
 
-export const getUser = async (prisma: PrismaInstance, clide: string) => {
+export const getUser = async <T extends Prisma.UserSelect>(
+  prisma: PrismaInstance,
+  clide: string,
+  selectFields: T
+) => {
   const user = await prisma.user.findFirst({
-    select: {
-      id: true,
-    },
+    select: selectFields,
     where: {
       uuid: clide,
     },

@@ -13,6 +13,7 @@ declare global {
 				username: string;
 				uuid: string;
 				admin: boolean;
+				unlockAllSongs: boolean;
 			} | null;
 		}
 	}

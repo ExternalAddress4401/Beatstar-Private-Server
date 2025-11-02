@@ -6,7 +6,7 @@
 
 	let { data, form } = $props();
 
-	const user = data.user;
+	const user = $derived(data.user);
 
 	const downloadFile = () => {
 		if (!user) {
@@ -45,13 +45,24 @@
 				<p>Username updated successfully.</p>
 			{/if}
 		{/if}
-		<p>Star count: {data.starCount}</p>
+		<p>Star count: {user.starCount}</p>
 		<form method="POST" action="?/updateStarCount" use:enhance>
 			<Button type="submit" text="Update Star Count" />
 		</form>
 		{#if form !== null && form.id === 'updateStarCount'}
 			<p>New star count: {form.newStarCount}</p>
 		{/if}
+		<form method="POST" action="?/unlockAllSongs" use:enhance>
+			<div class="row">
+				<input
+					type="checkbox"
+					name="unlockAll"
+					bind:checked={user.unlockAllSongs}
+					onchange={(e) => e.currentTarget.form?.requestSubmit()}
+				/>
+				<p>Unlock all songs</p>
+			</div>
+		</form>
 	</div>
 
 	<hr />
@@ -120,6 +131,10 @@
 	.block {
 		display: flex;
 		flex-direction: column;
+		gap: 0.5rem;
+	}
+	.row {
+		display: flex;
 		gap: 0.5rem;
 	}
 </style>
