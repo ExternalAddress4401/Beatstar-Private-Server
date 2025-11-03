@@ -26,6 +26,7 @@ import Settings from "../Settings";
 import { getUser } from "../model-services/PrismaUserService";
 import { getBeatmap } from "../model-services/PrismaBeatmapService";
 import { scoreToNormalStar } from "../website/beatstar/src/lib/utilities/scoreToMedal";
+import { createEmptyResponse } from "@externaladdress4401/protobuf/utils";
 
 const RpcType = {
   5: "Sync",
@@ -191,6 +192,7 @@ export class GameService extends BaseService {
           if (user === null) {
             Logger.error("User is null.", client.clide);
             break;
+            ln;
           }
 
           const beatmap = await getBeatmap(prisma, audit.song_id);
@@ -288,6 +290,7 @@ export class GameService extends BaseService {
             }
           }
         }
+        responses.push(createEmptyResponse(request));
       }
     }
 
