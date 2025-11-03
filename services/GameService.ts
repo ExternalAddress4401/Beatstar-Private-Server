@@ -25,6 +25,7 @@ import { capitalize } from "../utilities/capitalize";
 import Settings from "../Settings";
 import { getUser } from "../model-services/PrismaUserService";
 import { getBeatmap } from "../model-services/PrismaBeatmapService";
+import { scoreToNormalStar } from "../website/beatstar/src/lib/utilities/scoreToMedal";
 
 const RpcType = {
   5: "Sync",
@@ -89,6 +90,7 @@ export class GameService extends BaseService {
             Score: true,
             starCount: true,
             selectedBeatmapId: true,
+            unlockAllSongs: true,
           },
           where: {
             uuid: clide,
@@ -111,14 +113,35 @@ export class GameService extends BaseService {
         const newsArticles = await fetchNewsArticles();
         const scores = await fetchScores(user);
 
+        let starCount = user.starCount || 1;
+
+        if (!user.unlockAllSongs) {
+          const score = scores[0];
+          if (score) {
+            const singleBeatmap = await prisma.beatmap.findFirst({
+              where: {
+                id: score.template_id,
+              },
+            });
+            if (singleBeatmap) {
+              starCount = scoreToNormalStar(
+                score.absoluteScore,
+                singleBeatmap?.difficulty,
+                singleBeatmap?.deluxe
+              );
+            }
+          }
+        }
+
         const response = await packet.buildResponse(
           createServerClientMessageHeader({}),
           createSyncResp({
             "{username}": user.username,
             "{beatmaps}": scores,
             "{NewsFeedStories}": newsArticles,
-            "{starCount}": user.starCount || 1,
+            "{starCount}": starCount || 1,
             "{selectedBeatmap}": user.selectedBeatmapId,
+            "{time}": Date.now(),
           }),
           SyncResp,
           true
@@ -137,7 +160,7 @@ export class GameService extends BaseService {
         }
 
         if (audit.type === RequestType.SetSelectedSong) {
-          const user = await getUser(prisma, client.clide);
+          const user = await getUser(prisma, client.clide, { id: true });
           if (user === null) {
             Logger.error("User is null.", client.clide);
             break;
@@ -164,7 +187,7 @@ export class GameService extends BaseService {
           }
           await updatePlayCount(client.clide, audit.song_id);
         } else if (audit.type === RequestType.RhythmGameEnded) {
-          const user = await getUser(prisma, client.clide);
+          const user = await getUser(prisma, client.clide, { id: true });
           if (user === null) {
             Logger.error("User is null.", client.clide);
             break;
@@ -280,7 +303,14 @@ export class GameService extends BaseService {
 }
 
 async function fetchScores(user: any) {
-  const prismaBeatmaps = await prisma.beatmap.findMany();
+  const prismaBeatmaps = user.unlockAllSongs
+    ? await prisma.beatmap.findMany()
+    : await prisma.beatmap.findMany({
+        where: {
+          id: user.selectedBeatmapId,
+        },
+      });
+
   const scores: Score[] = prismaBeatmaps.map(({ id }) => ({
     template_id: id,
     BragState: {},
@@ -290,8 +320,14 @@ async function fetchScores(user: any) {
     PlayedCount: 0,
   }));
 
-  // force play count for 99999 so we can quit songs and have swipes unlocked?
-  scores.find((beatmap) => beatmap.template_id === 99999)!.PlayedCount = 10;
+  if (user.unlockAllSongs) {
+    // force play count for 99999 so we can quit songs and have swipes unlocked?
+    scores.find((beatmap) => beatmap.template_id === 99999)!.PlayedCount = 10;
+  } else {
+    scores.find(
+      (beatmap) => beatmap.template_id === user.selectedBeatmapId
+    )!.PlayedCount = 10;
+  }
 
   if (user.Score) {
     for (const score of user?.Score) {
@@ -379,7 +415,7 @@ async function fetchNewsArticles() {
 }
 
 async function updatePlayCount(clide: string, beatmapId: number) {
-  const user = await getUser(prisma, clide);
+  const user = await getUser(prisma, clide, { id: true });
   if (user === null) {
     return;
   }
