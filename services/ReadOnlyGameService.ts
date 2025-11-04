@@ -45,6 +45,7 @@ export class ReadOnlyGameService extends BaseService {
         responses.push(createEmptyResponse(request));
       } else {
         Logger.warn(`${this.name}: Unknown rpcType: ${request.rpcType}`);
+        responses.push(createEmptyResponse(request));
       }
     }
 

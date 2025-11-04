@@ -192,7 +192,6 @@ export class GameService extends BaseService {
           if (user === null) {
             Logger.error("User is null.", client.clide);
             break;
-            ln;
           }
 
           const beatmap = await getBeatmap(prisma, audit.song_id);
@@ -290,6 +289,9 @@ export class GameService extends BaseService {
             }
           }
         }
+        responses.push(createEmptyResponse(request));
+      } else {
+        Logger.warn(`${this.name}: Unknown rpcType: ${request.rpcType}`);
         responses.push(createEmptyResponse(request));
       }
     }
