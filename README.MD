@@ -38,3 +38,5 @@ Beatstar is not built to allow cleartext traffic. HTTP requests need to flow thr
 When the ENVIRONMENT variable is set to `dev` the `CMSService` will automatically start a localtunnel instance for you. For a server with a proper SSL certificate the environment should be set to `prod`
 
 `pnpm install` will not download packages from the github registry without a valid PAT. You will experience issues related to the protobuf package if you don't use the `setup` command.
+
+[Beekeeper Studio](https://www.beekeeperstudio.io/) is a great tool for database browsing. By default the databases is run on port 5432 with the credentials `postgres:postgres` and a database called `beatstar`
