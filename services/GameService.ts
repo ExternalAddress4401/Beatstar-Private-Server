@@ -42,6 +42,7 @@ const RequestType = {
   SetSelectedSong: 8,
   RhythmGameStarted: 11,
   RhythmGameEnded: 12,
+  SetCustomization: 100,
 } as const;
 
 export class GameService extends BaseService {
@@ -92,6 +93,9 @@ export class GameService extends BaseService {
             starCount: true,
             selectedBeatmapId: true,
             unlockAllSongs: true,
+            autoShuffle: true,
+            perfectPlusHighlight: true,
+            accuracyText: true,
           },
           where: {
             uuid: clide,
@@ -143,6 +147,11 @@ export class GameService extends BaseService {
             "{starCount}": starCount || 1,
             "{selectedBeatmap}": user.selectedBeatmapId,
             "{time}": Date.now(),
+            "{playerCustomizations}": {
+              AutoShuffleDisabled: !user.autoShuffle,
+              AccuracyModeEnabled: user.perfectPlusHighlight,
+              AccuracyTextEnabled: user.accuracyText,
+            },
           }),
           SyncResp,
           true
@@ -288,6 +297,40 @@ export class GameService extends BaseService {
               });
             }
           }
+        } else if (audit.type == RequestType.SetCustomization) {
+          const enabled = audit.Data.Enabled ?? false;
+          const user = await getUser(prisma, client.clide, { id: true });
+          if (!user) {
+            return;
+          }
+
+          let fieldName: string | null = null;
+
+          switch (audit.Data.type) {
+            case 104:
+              fieldName = "autoShuffle";
+              break;
+            case 105:
+              fieldName = "perfectPlusHighlight";
+              break;
+            case 106:
+              fieldName = "accuracyText";
+              break;
+          }
+
+          if (fieldName === null) {
+            Logger.error("Got unknown settings type: ", audit.Data.type);
+            break;
+          }
+
+          await prisma.user.update({
+            data: {
+              [fieldName]: enabled,
+            },
+            where: {
+              id: user.id,
+            },
+          });
         }
         responses.push(createEmptyResponse(request));
       } else {

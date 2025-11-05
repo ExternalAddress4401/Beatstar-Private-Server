@@ -14,19 +14,22 @@ datasource db {
 }
 
 model User {
-  id                Int           @id @default(autoincrement())
-  uuid              String        @unique @db.Uuid
-  username          String        @unique
-  password          String
-  admin             Boolean       @default(false)
-  starCount         Int           @default(0)
-  customStarCount   Int           @default(0)
-  selectedBeatmapId Int           @default(3006)
-  sessionId         String?       @unique @db.Char(36)
-  unlockAllSongs    Boolean       @default(true)
-  selectedBeatmap   Beatmap       @relation(fields: [selectedBeatmapId], references: [id])
-  Score             Score[]
-  CustomScore       CustomScore[]
+  id                   Int           @id @default(autoincrement())
+  uuid                 String        @unique @db.Uuid
+  username             String        @unique
+  password             String
+  admin                Boolean       @default(false)
+  starCount            Int           @default(0)
+  customStarCount      Int           @default(0)
+  selectedBeatmapId    Int           @default(3006)
+  sessionId            String?       @unique @db.Char(36)
+  unlockAllSongs       Boolean       @default(true)
+  perfectPlusHighlight Boolean       @default(false)
+  accuracyText         Boolean       @default(false)
+  autoShuffle          Boolean       @default(false)
+  selectedBeatmap      Beatmap       @relation(fields: [selectedBeatmapId], references: [id])
+  Score                Score[]
+  CustomScore          CustomScore[]
 }
 
 model Score {
