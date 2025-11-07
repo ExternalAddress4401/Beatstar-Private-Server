@@ -45,6 +45,25 @@ export class HttpServer {
       );
     });
 
+    this.app.post("/scores", async (req, res) => {
+      const cinta = req.body.cinta;
+      if (!cinta) {
+        res.writeHead(400, { error: "No cinta provided." });
+        return res.end();
+      }
+
+      const scores = await prisma.customScore.findMany({
+        where: {
+          user: {
+            uuid: cinta,
+          },
+        },
+      });
+
+      res.json(scores);
+      res.end();
+    });
+
     this.app.listen(Settings.EXPRESS_PORT, () => {
       console.log(`HTTP server running on port ${Settings.EXPRESS_PORT}`);
     });

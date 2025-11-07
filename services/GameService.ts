@@ -206,6 +206,7 @@ export class GameService extends BaseService {
           const beatmap = await getBeatmap(prisma, audit.song_id);
           if (beatmap === null) {
             Logger.error(`Unknown beatmap provided: ${audit.song_id}`);
+            // treat this a custom beatmap
             break;
           }
 
@@ -217,7 +218,6 @@ export class GameService extends BaseService {
             },
           });
 
-          // TODO: handle deluxe here
           const oldMedal = scoreToMedal(
             oldScore?.absoluteScore,
             beatmap.difficulty,
