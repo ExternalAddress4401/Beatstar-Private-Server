@@ -172,7 +172,7 @@ export const actions = {
 			return fail(400, { error: 'Invalid android ID.' });
 		}
 
-		const beatmaps = await prisma.beatmap.findMany();
+		const beatmaps = (await prisma.beatmap.findMany()).map((beatmap) => beatmap.id);
 
 		const scoresToMigrate = (
 			await oldPrisma.$queryRaw`SELECT * FROM "Score" as s JOIN "User" as u ON s."userId" = u."userId" WHERE "androidId" = ${beatcloneAndroidId}`
@@ -187,21 +187,40 @@ export const actions = {
 			}
 		});
 
+		// separate into custom songs and non custom songs
+		const customScores = scoresToMigrate.filter((score) => !beatmaps.includes(score.beatmapId));
+		const vanillaScores = scoresToMigrate.filter((score) => beatmaps.includes(score.beatmapId));
+
+		console.log(
+			customScores.map((score) => ({
+				beatmapId: score.beatmapId,
+				absoluteScore: score.absoluteScore,
+				userId: user.id
+			}))
+		);
+
+		// custom scores we can just import...
+		const customInsertResult = await prisma.customScore.createMany({
+			data: customScores.map((score) => ({
+				beatmapId: score.beatmapId,
+				absoluteScore: score.absoluteScore,
+				userId: user.id
+			})),
+			skipDuplicates: true
+		});
+
+		// for vanilla scores we need to compare to what they already have...
+
 		const scoresToAdd = [];
 		const scoresToUpdate = [];
-		const customScoresToAdd = [];
 
-		for (const score of scoresToMigrate) {
-			const beatmap = beatmaps.find((beatmap) => beatmap.id === score.beatmapId);
-			if (!beatmap) {
-				customScoresToAdd.push(score);
-			} else {
-				const newScore = newScores.find((newScore) => score.beatmapId === newScore.beatmapId);
-				if (newScore && newScore.absoluteScore < score.absoluteScore) {
-					scoresToUpdate.push(score);
-				} else if (!newScore) {
-					scoresToAdd.push(score);
-				}
+		for (const score of vanillaScores) {
+			// do they already have a score for this song
+			const oldScore = newScores.find((old) => old.beatmapId === score.beatmapId);
+			if (!oldScore) {
+				scoresToAdd.push(score);
+			} else if (oldScore.absoluteScore < score.absoluteScore) {
+				scoresToUpdate.push(score);
 			}
 		}
 
@@ -209,14 +228,8 @@ export const actions = {
 			data: scoresToAdd.map((score) => ({
 				...score,
 				userId: user.id
-			}))
-		});
-
-		await prisma.customScore.createMany({
-			data: customScoresToAdd.map((score) => ({
-				...score,
-				userId: user.id
-			}))
+			})),
+			skipDuplicates: true
 		});
 
 		for (const scoreToUpdate of scoresToUpdate) {
@@ -235,7 +248,7 @@ export const actions = {
 
 		return {
 			success: true,
-			scoresAdded: scoresToAdd.length,
+			scoresAdded: scoresToAdd.length + customInsertResult.count,
 			scoresUpdated: scoresToUpdate.length,
 			id: 'import'
 		};
