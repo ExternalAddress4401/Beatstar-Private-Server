@@ -172,13 +172,11 @@ export class GameService extends BaseService {
         if (audit.type === RequestType.SetSelectedSong) {
           const user = await getUser(prisma, client.clide, { id: true });
           if (user === null) {
-            Logger.error("User is null.", client.clide);
             break;
           }
 
           const beatmap = await getBeatmap(prisma, audit.song_id);
           if (beatmap === null) {
-            Logger.error("Beatmap is null.", client.clide);
             break;
           }
 
@@ -199,19 +197,23 @@ export class GameService extends BaseService {
         } else if (audit.type === RequestType.RhythmGameEnded) {
           const user = await getUser(prisma, client.clide, { id: true });
           if (user === null) {
-            Logger.error("User is null.", client.clide);
             break;
           }
 
           const beatmap = await getBeatmap(prisma, audit.song_id);
+
+          let table: typeof prisma.score | typeof prisma.customScore =
+            prisma.score;
+          let isCustom = false;
+
           if (beatmap === null) {
-            Logger.error(`Unknown beatmap provided: ${audit.song_id}`);
-            // treat this a custom beatmap
+            table = prisma.customScore;
+            isCustom = true;
             break;
           }
 
           // this is only used in the update so a score definitely exists
-          const oldScore = await prisma.score.findFirst({
+          const oldScore = await table.findFirst({
             where: {
               userId: user.id,
               beatmapId: parseInt(audit.song_id),
@@ -236,8 +238,7 @@ export class GameService extends BaseService {
           }
 
           if (!oldScore || oldScore.absoluteScore < audit.score.absoluteScore) {
-            console.log("Score update!");
-            await prisma.score.upsert({
+            await table.upsert({
               create: {
                 beatmapId: parseInt(audit.song_id),
                 normalizedScore: audit.score.normalizedScore ?? 0,
@@ -276,25 +277,27 @@ export class GameService extends BaseService {
             });
 
             // do we need to update the starCount?
-            if (oldMedal !== newMedal) {
-              const oldStarCount = medalToNormalStar(oldMedal);
-              const newStarCount = medalToNormalStar(newMedal);
+            if (!isCustom) {
+              if (oldMedal !== newMedal) {
+                const oldStarCount = medalToNormalStar(oldMedal);
+                const newStarCount = medalToNormalStar(newMedal);
 
-              let incrementCount = newStarCount - oldStarCount;
-              if (incrementCount > 5) {
-                incrementCount = 5;
-              }
+                let incrementCount = newStarCount - oldStarCount;
+                if (incrementCount > 5) {
+                  incrementCount = 5;
+                }
 
-              await prisma.user.update({
-                data: {
-                  starCount: {
-                    increment: incrementCount,
+                await prisma.user.update({
+                  data: {
+                    starCount: {
+                      increment: incrementCount,
+                    },
                   },
-                },
-                where: {
-                  uuid: client.clide,
-                },
-              });
+                  where: {
+                    uuid: client.clide,
+                  },
+                });
+              }
             }
           }
         } else if (audit.type == RequestType.SetCustomization) {
