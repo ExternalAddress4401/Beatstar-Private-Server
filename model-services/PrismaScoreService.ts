@@ -35,7 +35,7 @@ export const tryToUpdateScore = async (
   const isDeluxe = beatmap?.deluxe ?? audit.isDeluxe;
   let isCustom = beatmap === null;
 
-  if ((isCustom && !audit.difficulty) || !audit.isDeluxe) {
+  if (isCustom && (!audit.difficulty || !audit.isDeluxe)) {
     Logger.info(`Not inserting score for ${beatmap?.id}`);
   }
 
