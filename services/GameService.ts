@@ -3,8 +3,7 @@ import { Client } from "../Client";
 import { Score } from "../interfaces/Score";
 import Logger from "../lib/Logger";
 import { Packet } from "../Packet";
-import { greater } from "../utilities/greater";
-import { medalToNormalStar, scoreToMedal } from "../utilities/scoreToMedal";
+import { scoreToMedal } from "../utilities/scoreToMedal";
 import { toArray } from "../utilities/toArray";
 import prisma from "../website/beatstar/src/lib/prisma";
 import { BaseService } from "./BaseService";
@@ -27,6 +26,7 @@ import { getUser } from "../model-services/PrismaUserService";
 import { getBeatmap } from "../model-services/PrismaBeatmapService";
 import { scoreToNormalStar } from "../website/beatstar/src/lib/utilities/scoreToMedal";
 import { createEmptyResponse } from "@externaladdress4401/protobuf/utils";
+import { tryToUpdateScore } from "../model-services/PrismaScoreService";
 
 const RpcType = {
   5: "Sync",
@@ -199,111 +199,11 @@ export class GameService extends BaseService {
           if (user === null) {
             break;
           }
-
-          const beatmap = await getBeatmap(prisma, audit.song_id);
-
-          let table: typeof prisma.score | typeof prisma.customScore =
-            prisma.score;
-          let isCustom = false;
-
-          if (beatmap === null) {
-            table = prisma.customScore;
-            isCustom = true;
-            break;
-          }
-
-          // this is only used in the update so a score definitely exists
-          const oldScore = await table.findFirst({
-            where: {
-              userId: user.id,
-              beatmapId: parseInt(audit.song_id),
-            },
-          });
-
-          const oldMedal = scoreToMedal(
-            oldScore?.absoluteScore,
-            beatmap.difficulty,
-            beatmap.deluxe
-          );
-
-          const newMedal = scoreToMedal(
-            audit.score.absoluteScore,
-            beatmap.difficulty,
-            beatmap.deluxe
-          );
-
-          if (newMedal === null || newMedal === undefined) {
-            Logger.error(`Invalid difficulty provided: ${beatmap.difficulty}`);
-            break;
-          }
-
-          if (!oldScore || oldScore.absoluteScore < audit.score.absoluteScore) {
-            await table.upsert({
-              create: {
-                beatmapId: parseInt(audit.song_id),
-                normalizedScore: audit.score.normalizedScore ?? 0,
-                absoluteScore: audit.score.absoluteScore ?? 0,
-                highestGrade: newMedal,
-                highestCheckpoint: audit.checkpointReached ?? 0,
-                highestStreak: audit.maxStreak ?? 0,
-                playedCount: 1,
-                userId: user.id,
-              },
-              update: {
-                normalizedScore: greater(
-                  audit.score.normalizedScore,
-                  oldScore?.normalizedScore ?? 0
-                ),
-                absoluteScore: greater(
-                  audit.score.absoluteScore,
-                  oldScore?.absoluteScore ?? 0
-                ),
-                highestGrade: newMedal,
-                highestCheckpoint: greater(
-                  audit.checkpointReached,
-                  oldScore?.highestCheckpoint ?? 0
-                ),
-                highestStreak: greater(
-                  audit.highestStreak,
-                  oldScore?.highestStreak ?? 0
-                ),
-              },
-              where: {
-                userId_beatmapId: {
-                  userId: user.id,
-                  beatmapId: parseInt(audit.song_id),
-                },
-              },
-            });
-
-            // do we need to update the starCount?
-            if (!isCustom) {
-              if (oldMedal !== newMedal) {
-                const oldStarCount = medalToNormalStar(oldMedal);
-                const newStarCount = medalToNormalStar(newMedal);
-
-                let incrementCount = newStarCount - oldStarCount;
-                if (incrementCount > 5) {
-                  incrementCount = 5;
-                }
-
-                await prisma.user.update({
-                  data: {
-                    starCount: {
-                      increment: incrementCount,
-                    },
-                  },
-                  where: {
-                    uuid: client.clide,
-                  },
-                });
-              }
-            }
-          }
+          tryToUpdateScore(prisma, user.id, audit);
         } else if (audit.type == RequestType.SetCustomization) {
           const enabled = audit.Data.Enabled ?? false;
           const user = await getUser(prisma, client.clide, { id: true });
-          if (!user) {
+          if (user === null) {
             return;
           }
 
