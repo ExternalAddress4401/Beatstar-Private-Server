@@ -1,4 +1,4 @@
-import type { Actions } from './$types';
+import type { Actions, PageServerLoad } from './$types';
 import { zfd } from 'zod-form-data';
 import prisma from '$lib/prisma';
 import { fail } from '@sveltejs/kit';
@@ -6,6 +6,7 @@ import { isAuthenticated } from '$lib/wrapper/isAuthenticated';
 import { isAndroidId } from '$lib/utilities/isAndroidId';
 import oldPrisma from '$lib/oldPrisma';
 import { updateStarCount } from '$lib/services/UserService';
+import { getFlags } from '$lib/featureFlags';
 
 const uploadSchema = zfd.formData({
 	profile: zfd.file()
@@ -18,6 +19,12 @@ const changeUsernameSchema = zfd.formData({
 const importSchema = zfd.formData({
 	uuid: zfd.file()
 });
+
+export const load: PageServerLoad = async () => {
+	return {
+		flags: await getFlags()
+	};
+};
 
 export const actions = {
 	unlockAllSongs: isAuthenticated(async ({ user }) => {

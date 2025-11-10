@@ -106,6 +106,12 @@ model Image {
   News       News[]
 }
 
+model FeatureFlag {
+  id      Int     @id @default(autoincrement())
+  name    String
+  enabled Boolean
+}
+
 enum NewsType {
   TEXT
 }

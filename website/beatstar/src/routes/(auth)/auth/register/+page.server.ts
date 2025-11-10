@@ -4,6 +4,7 @@ import argon2 from '@node-rs/argon2';
 import prisma from '$lib/prisma';
 import crypto from 'crypto';
 import { fail } from '@sveltejs/kit';
+import Logger from '$lib/Logger';
 
 const schema = zfd.formData({
 	username: zfd.text(),
@@ -27,27 +28,25 @@ export const actions = {
 			return fail(400, { error: 'Username must be at least 3 characters.' });
 		}
 
-		const existingUser = await prisma.user.findFirst({
-			where: {
-				username
-			}
-		});
-
-		if (existingUser !== null) {
-			return fail(409, { error: 'Username already exists.' });
-		}
-
 		if (password !== verifyPassword) {
 			return fail(400, { error: 'Passwords do not match.' });
 		}
 
-		await prisma.user.create({
-			data: {
-				username,
-				uuid: crypto.randomUUID(),
-				password: await argon2.hash(password)
+		try {
+			await prisma.user.create({
+				data: {
+					username: username.toLowerCase(),
+					uuid: crypto.randomUUID(),
+					password: await argon2.hash(password)
+				}
+			});
+		} catch (error) {
+			if (error.code === 'P2002') {
+				return fail(409, { error: 'Username already exists.' });
+			} else {
+				Logger.log(error.toString());
 			}
-		});
+		}
 
 		return { success: true };
 	}

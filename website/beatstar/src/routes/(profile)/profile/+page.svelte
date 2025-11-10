@@ -6,6 +6,8 @@
 
 	let { data, form } = $props();
 
+	const flags = data.flags;
+
 	const user = $derived(data.user);
 
 	const downloadFile = () => {
@@ -88,26 +90,28 @@
 
 	<hr />
 
-	<div class="block">
-		<h2>Import</h2>
-		<p>Import your old Beatclone scores.</p>
-		<p>
-			Opening the game will create a file called uuid.txt in your beatstar folder. Upload that file
-			here.
-		</p>
-		<form method="POST" action="?/import" use:enhance enctype="multipart/form-data" name="import">
-			<FilePicker
-				text="Import Scores"
-				name="uuid"
-				accept=".txt"
-				onchange={(e) => e.currentTarget.form.submit()}
-			/>
-		</form>
-		{#if form !== null && form.id === 'import'}
-			<p>Imported {form.scoresAdded} scores.</p>
-			<p>Updated {form.scoresUpdated} scores.</p>
-		{/if}
-	</div>
+	{#if flags.includes('allow_beatclone_import')}
+		<div class="block">
+			<h2>Import</h2>
+			<p>Import your old Beatclone scores.</p>
+			<p>
+				Opening the game will create a file called uuid.txt in your beatstar folder. Upload that
+				file here.
+			</p>
+			<form method="POST" action="?/import" use:enhance enctype="multipart/form-data" name="import">
+				<FilePicker
+					text="Import Scores"
+					name="uuid"
+					accept=".txt"
+					onchange={(e) => e.currentTarget.form.submit()}
+				/>
+			</form>
+			{#if form !== null && form.id === 'import'}
+				<p>Imported {form.scoresAdded} scores.</p>
+				<p>Updated {form.scoresUpdated} scores.</p>
+			{/if}
+		</div>
+	{/if}
 
 	<div class="block">
 		<h2>Download</h2>

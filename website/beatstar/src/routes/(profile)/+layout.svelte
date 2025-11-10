@@ -2,6 +2,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import Navigation from '$lib/components/Navigation.svelte';
 	import '../../app.css';
+
 	let { data, children } = $props();
 </script>
 
