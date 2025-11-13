@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Login from '$lib/icons/login.svelte';
 	import Logout from '$lib/icons/logout.svelte';
+	import Music from '$lib/icons/music.svelte';
 	import Register from '$lib/icons/register.svelte';
 	import User from '$lib/icons/user.svelte';
 	interface Props {
@@ -32,6 +33,7 @@
 			<a class="link" href="/auth/register">Register</a>
 		</div>
 	{/if}
+
 	{#if user !== null}
 		<div class="row">
 			<User size="32" color="#f4f3ee" />
@@ -41,12 +43,16 @@
 			<Logout size="32" color="#f4f3ee" />
 			<p>Logout</p>
 		</div>
-		{#if user?.admin}
-			<div class="row">
-				<User size="32" color="#f4f3ee" />
-				<a class="link" href="/admin">Admin</a>
-			</div>
-		{/if}
+	{/if}
+	<div class="row">
+		<Music size="32" color="#f4f3ee" />
+		<a class="link" href="/songs">Songs</a>
+	</div>
+	{#if user?.admin}
+		<div class="row">
+			<User size="32" color="#f4f3ee" />
+			<a class="link" href="/admin">Admin</a>
+		</div>
 	{/if}
 </div>
 

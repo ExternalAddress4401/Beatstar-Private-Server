@@ -47,6 +47,7 @@
 		"@node-rs/argon2": "^2.0.2",
 		"@prisma/client": "6.17.0",
 		"@sveltejs/adapter-node": "^5.4.0",
+		"dotenv": "^17.2.3",
 		"zod-form-data": "^3.0.1"
 	}
 }

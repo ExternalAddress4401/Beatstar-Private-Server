@@ -6,12 +6,13 @@
 		type?: HTMLInputAttributes['type'];
 		placeholder: string;
 		value?: string;
+		onkeyup?: (e: Event) => void;
 	}
 
-	let { name, type = 'text', placeholder, value }: Props = $props();
+	let { name, type = 'text', placeholder, value, onkeyup }: Props = $props();
 </script>
 
-<input {type} class="input" {placeholder} {name} {value} />
+<input {type} class="input" {placeholder} {name} {value} {onkeyup} />
 
 <style>
 	.input {
