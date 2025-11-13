@@ -31,7 +31,10 @@ export const actions = {
 				admin: true
 			},
 			where: {
-				username: username.toLowerCase()
+				username: {
+					mode: 'insensitive',
+					equals: username
+				}
 			}
 		});
 
