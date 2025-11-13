@@ -22,7 +22,7 @@ const importSchema = zfd.formData({
 
 export const load: PageServerLoad = async () => {
 	return {
-		flags: await getFlags()
+		//flags: await getFlags()
 	};
 };
 
