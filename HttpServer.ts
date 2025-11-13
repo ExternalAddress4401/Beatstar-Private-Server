@@ -7,7 +7,24 @@ export class HttpServer {
   app: Express = express();
 
   constructor() {
+    this.app.use("/cms/:slug/raw", async (req, res) => {
+      const slug = req.params.slug.split(".")[0]!;
+
+      const cms = await prisma.cms.findFirst({
+        select: { data: true },
+        where: { name: slug },
+      });
+
+      if (!cms || !cms.data) {
+        return res.status(404).send("CMS not found");
+      }
+
+      res.setHeader("Access-Control-Allow-Origin", "*");
+
+      res.json(cms.data);
+    });
     this.app.use("/cms/:slug", async (req, res) => {
+      console.log("WAWWAWA");
       const slug = req.params.slug.split(".")[0]!;
 
       const cms = await prisma.cms.findFirst({
@@ -19,6 +36,7 @@ export class HttpServer {
 
       const buffer = Buffer.from(cms.gzip);
 
+      res.setHeader("Access-Control-Allow-Origin", "*");
       res.setHeader("Content-Type", "application/gzip");
       res.setHeader("Content-Length", buffer.length);
 
