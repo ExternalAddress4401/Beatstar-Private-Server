@@ -6,7 +6,7 @@ import { isAuthenticated } from '$lib/wrapper/isAuthenticated';
 import { isAndroidId } from '$lib/utilities/isAndroidId';
 import oldPrisma from '$lib/oldPrisma';
 import { updateStarCount } from '$lib/services/UserService';
-import { getFlags } from '$lib/featureFlags';
+//import { getFlags } from '$lib/featureFlags';
 
 const uploadSchema = zfd.formData({
 	profile: zfd.file()
