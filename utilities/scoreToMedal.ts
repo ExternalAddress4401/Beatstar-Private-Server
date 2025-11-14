@@ -10,6 +10,24 @@ DELUXE_GOLD = 9
 DELUXE_PLATINUM = 10
 DELUXE_DIAMOND = 11*/
 
+export const isNewMedalBetter = (
+  oldMedal: number,
+  newMedal: number,
+  isDeluxe?: boolean
+) => {
+  if (!oldMedal) {
+    return true;
+  }
+  const normalMedals = [1, 2, 5, 3, 4, 6, 7, 8];
+  const deluxeMedals = [1, 2, 5, 3, 4, 9, 10, 11];
+
+  const table = isDeluxe ? deluxeMedals : normalMedals;
+
+  const oldIndex = table.indexOf(oldMedal);
+  const newIndex = table.indexOf(newMedal);
+  return newIndex > oldIndex;
+};
+
 /**
  * Given a goofy Beatstar medal index convert it to normal
  * @param medal Goofy Beatstar medal index from the above table
