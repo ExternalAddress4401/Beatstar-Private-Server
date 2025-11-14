@@ -72,7 +72,7 @@ export const actions = {
 		const currentScores = await prisma.score.findMany({
 			where: {
 				beatmapId: {
-					in: uploadedBeatmapScores.map((beatmap) => beatmap.template_id)
+					in: uploadedBeatmapScores.map((beatmap) => beatmap.template_id ? beatmap.template_id : beatmap.templateId)
 				},
 				userId: user.id
 			}
@@ -83,7 +83,7 @@ export const actions = {
 
 		for (const uploadedScore of uploadedBeatmapScores) {
 			const currentScore = currentScores.find(
-				(score) => score.beatmapId === uploadedScore.template_id
+				(score) => score.beatmapId === uploadedScore.template_id ? uploadedScore.template_id : uploadedScore.templateId
 			);
 			if (currentScore === undefined) {
 				scoresToAdd.push(uploadedScore);
@@ -94,10 +94,10 @@ export const actions = {
 
 		await prisma.score.createMany({
 			data: scoresToAdd.map((score) => ({
-				beatmapId: score.template_id,
+				beatmapId: score.template_id ? score.template_id : score.templateId,
 				normalizedScore: score.HighestScore.normalizedScore,
 				absoluteScore: score.HighestScore.absoluteScore,
-				highestGrade: score.HighestGrade_id,
+				highestGrade: score.HighestGrade_id ? score.HighestGrade_id : score.HighestGradeId,
 				highestCheckpoint: score.HighestCheckpoint,
 				highestStreak: score.HighestStreak,
 				playedCount: score.PlayedCount,
@@ -110,7 +110,7 @@ export const actions = {
 				data: {
 					normalizedScore: score.HighestScore.normalizedScore,
 					absoluteScore: score.HighestScore.absoluteScore,
-					highestGrade: score.HighestGrade_id,
+					highestGrade: score.HighestGrade_id ? score.HighestGrade_id : score.HighestGradeId,
 					highestCheckpoint: score.HighestCheckpoint,
 					highestStreak: score.HighestStreak,
 					playedCount: score.PlayedCount
@@ -118,7 +118,7 @@ export const actions = {
 				where: {
 					userId_beatmapId: {
 						userId: user.id,
-						beatmapId: score.template_id
+						beatmapId: score.template_id ? score.template_id : score.templateId
 					}
 				}
 			});
