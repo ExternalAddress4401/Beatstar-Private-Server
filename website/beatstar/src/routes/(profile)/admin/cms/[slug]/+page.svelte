@@ -11,7 +11,7 @@
 
 	let { data }: PageProps = $props();
 
-	const cms = JSON.stringify(data.cms.data, null, 2);
+	const cms = JSON.stringify(data.cms, null, 2);
 
 	const validate = () => {
 		const v = textArea.value;
