@@ -1,5 +1,9 @@
 import Logger from "../lib/Logger";
-import { medalToNormalStar, scoreToMedal } from "../utilities/scoreToMedal";
+import {
+  isNewMedalBetter,
+  medalToNormalStar,
+  scoreToMedal,
+} from "../utilities/scoreToMedal";
 import { PrismaInstance } from "../website/beatstar/src/lib/prisma";
 import { getBeatmap } from "./PrismaBeatmapService";
 
@@ -102,7 +106,7 @@ export const tryToUpdateScore = async (
 
   // do we need to update the starCount?
   if (!isCustom) {
-    if (oldMedal !== newMedal) {
+    if (isNewMedalBetter(oldMedal, newMedal, beatmap.deluxe)) {
       const oldStarCount = medalToNormalStar(oldMedal);
       const newStarCount = medalToNormalStar(newMedal);
 
