@@ -26,7 +26,7 @@ export class UserService extends BaseService {
     // receive the new error codes from LangConfig so we can show the user what they've
     // done incorrectly
     let cinta = payload.reqAllInOneLogin.cinta ?? "";
-    Logger.info(`Cinta, ${cinta}`);
+    Logger.info(`Cinta ${cinta}`);
     if (cinta !== "") {
       Logger.saveClientInfo("Received a cinta", { cinta }, cinta);
     }
