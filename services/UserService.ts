@@ -27,12 +27,9 @@ export class UserService extends BaseService {
     // done incorrectly
     let cinta = payload.reqAllInOneLogin.cinta ?? "";
     Logger.info(`Cinta ${cinta}`);
-    if (cinta !== "") {
-      Logger.saveClientInfo("Received a cinta", { cinta }, cinta);
-    }
     cinta = cinta.trim();
 
-    if (cinta !== "{clide}" && cinta !== "") {
+    if (cinta !== "{cinta}" && cinta !== "") {
       const user = await prisma.user.findUnique({
         select: {
           id: true,
