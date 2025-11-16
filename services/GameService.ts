@@ -210,7 +210,15 @@ export class GameService extends BaseService {
         } else if (audit.type === RequestType.RhythmGameEnded) {
           tryToUpdateScore(prisma, client, audit);
         } else if (audit.type == RequestType.SetCustomization) {
+          if (audit.data === undefined) {
+            Logger.saveClientError(
+              "Customization audit data was undefined",
+              { audit },
+              client.user.clide
+            );
+          }
           await setCustomization(client, audit.data);
+          break;
         }
         responses.push(createEmptyResponse(request));
       } else {
