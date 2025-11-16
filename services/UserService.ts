@@ -26,7 +26,7 @@ export class UserService extends BaseService {
     // blank cintas are allowed here since we need to pass CMSService handling to
     // receive the new error codes from LangConfig so we can show the user what they've
     // done incorrectly
-    const cinta = payload.reqAllInOneLogin.cinta.trim() ?? "";
+    const cinta = payload.reqAllInOneLogin.cinta ?? "";
     if (cinta !== "") {
       Logger.saveClientInfo("Received a cinta", { cinta }, cinta);
     }
