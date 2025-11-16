@@ -210,14 +210,7 @@ export class GameService extends BaseService {
         } else if (audit.type === RequestType.RhythmGameEnded) {
           tryToUpdateScore(prisma, client, audit);
         } else if (audit.type == RequestType.SetCustomization) {
-          if (audit.data === undefined) {
-            Logger.saveClientError(
-              "Customization audit data was undefined",
-              { audit },
-              client.user.clide
-            );
-          }
-          await setCustomization(client, audit.data);
+          await setCustomization(client, audit.Data);
           break;
         }
         responses.push(createEmptyResponse(request));
@@ -424,11 +417,13 @@ async function updatePlayCount(
     });
   } catch (err) {
     if (err instanceof PrismaClientKnownRequestError) {
-      Logger.saveClientError(
-        `${err.name}: ${err.message}`,
-        { code: err.code },
-        client.user.clide
-      );
+      if (err.code !== "P2025") {
+        Logger.saveClientError(
+          `${err.name}: ${err.message}`,
+          { code: err.code },
+          client.user.clide
+        );
+      }
     }
   }
 }
