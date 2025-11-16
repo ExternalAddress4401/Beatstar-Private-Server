@@ -59,7 +59,7 @@ export const actions = {
 			});
 		}
 
-		const uploadedScores = json.profile.beatmaps.beatmaps;
+		const uploadedScores = (json.profile === undefined && json.beatmaps !== undefined) ? json.beatmaps.beatmaps : json.profile.beatmaps.beatmaps;
 
 		if (!user) {
 			return fail(500);
