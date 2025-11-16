@@ -17,11 +17,11 @@ export class AnalyticsProxyService extends BaseService {
     try {
       parsedPayload = packet.parsePayload(SendAnalyticEventReq);
     } catch (e) {
-      Logger.saveError(
-        "Unparsable AnalyticsProxyService request",
-        client.clide
+      Logger.saveClientError(
+        `Unable to parse AnalyticsProxyService request`,
+        { buffer: packet.buffer.toString("hex") },
+        client.user.clide
       );
-      Logger.saveError(packet.buffer.toString("hex"), client.clide);
       return;
     }
 

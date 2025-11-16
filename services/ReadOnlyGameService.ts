@@ -29,8 +29,11 @@ export class ReadOnlyGameService extends BaseService {
     try {
       parsedPayload = packet.parsePayload(BatchRequest);
     } catch (e) {
-      Logger.saveError("Failed to parse ReadOnlyGameService request");
-      Logger.saveError(packet.buffer.toString("hex"));
+      Logger.saveClientError(
+        "Unable to parse ReadOnlyGameService request",
+        { buffer: packet.buffer.toString("hex") },
+        client.user.clide
+      );
       return;
     }
 
@@ -44,7 +47,11 @@ export class ReadOnlyGameService extends BaseService {
       if (rpcType === "Leaderboard") {
         responses.push(createEmptyResponse(request));
       } else {
-        Logger.warn(`${this.name}: Unknown rpcType: ${request.rpcType}`);
+        Logger.saveClientError(
+          "Unhandled ReadOnlyGameService request",
+          { rpcType },
+          client.user.clide
+        );
         responses.push(createEmptyResponse(request));
       }
     }

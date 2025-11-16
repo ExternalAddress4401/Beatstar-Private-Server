@@ -16,14 +16,16 @@ const schema = zfd.formData({
 export const load: PageServerLoad = async ({ params }) => {
 	const slug = params.slug;
 
-	const cms = await prisma.cms.findFirst({
-		select: {
-			data: true
-		},
-		where: {
-			name: slug
-		}
-	});
+	const cms = (
+		await prisma.cms.findFirst({
+			select: {
+				data: true
+			},
+			where: {
+				name: slug
+			}
+		})
+	)?.data;
 
 	if (!cms) {
 		error(400, 'Not found');

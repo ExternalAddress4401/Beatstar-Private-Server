@@ -8,6 +8,7 @@ import {
   createServerClientMessageHeader,
 } from "@externaladdress4401/protobuf/responses";
 import Logger from "../lib/Logger";
+import prisma from "../website/beatstar/src/lib/prisma";
 
 export class UserService extends BaseService {
   name = "userservice";
@@ -15,16 +16,36 @@ export class UserService extends BaseService {
   async handlePacket(packet: Packet, client: Client) {
     const payload = packet.parsePayload(AllInOneLoginReq);
     if (payload.reqAllInOneLogin === undefined) {
-      Logger.error("Undefined reqAllInOneLogin", client.clide);
-      Logger.error(packet.buffer.toString("hex"), client.clide);
-      Logger.error(JSON.stringify(payload), client.clide);
+      Logger.error("Undefined reqAllInOneLogin");
+      Logger.error(packet.buffer.toString("hex"));
+      Logger.error(JSON.stringify(payload));
       return;
     }
 
-    const cinta = payload.reqAllInOneLogin.cinta ?? "";
+    // blank cintas are allowed here since we need to pass CMSService handling to
+    // receive the new error codes from LangConfig so we can show the user what they've
+    // done incorrectly
+    let cinta = payload.reqAllInOneLogin.cinta ?? "";
+    Logger.info(`Cinta ${cinta}`);
+    if (cinta !== "") {
+      Logger.saveClientInfo("Received a cinta", { cinta }, cinta);
+    }
+    cinta = cinta.trim();
 
-    // we'll just use this to auth database requests
-    client.setClide(cinta);
+    if (cinta !== "{clide}" && cinta !== "") {
+      const user = await prisma.user.findUnique({
+        select: {
+          id: true,
+        },
+        where: {
+          uuid: cinta,
+        },
+      });
+
+      Logger.saveClientInfo("Found a user", { user }, cinta);
+
+      client.setUser(user?.id, cinta);
+    }
 
     const response = await packet.buildResponse(
       createServerClientMessageHeader({}),

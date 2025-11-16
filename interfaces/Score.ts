@@ -3,13 +3,13 @@ export interface Score {
   HighestGrade_id?: number;
   HighestCheckpoint?: number;
   HighestStreak?: number;
-  BragState?:
+  BragState:
     | {}
     | {
         expireTimeMsecs: number;
         previousRank: number;
       };
-  HighestScore?:
+  HighestScore:
     | {}
     | {
         normalizedScore: number;

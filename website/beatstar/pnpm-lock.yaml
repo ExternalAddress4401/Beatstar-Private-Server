@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@externaladdress4401/protobuf':
-        specifier: ^0.0.3
-        version: 0.0.3
+        specifier: ^0.1.7
+        version: 0.1.7
       '@node-rs/argon2':
         specifier: ^2.0.2
         version: 2.0.2
@@ -296,8 +296,8 @@ packages:
     resolution: {integrity: sha512-sB5uyeq+dwCWyPi31B2gQlVlo+j5brPlWx4yZBrEaRo/nhdDE8Xke1gsGgtiBdaBTxuTkceLVuVt/pclrasb0A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@externaladdress4401/protobuf@0.0.3':
-    resolution: {integrity: sha512-Kw9UFkJl3guYtOFLs8Rma1seG77Usfi5mL66hdI3ad8oCQIhAav7nZNKUp+tcf+HxVM/SHjVBn/1/8LeT+1/Ow==, tarball: https://npm.pkg.github.com/download/@externaladdress4401/protobuf/0.0.3/0deff47d4492bd95a059b041cf7e4b16f51f2f7d}
+  '@externaladdress4401/protobuf@0.1.7':
+    resolution: {integrity: sha512-KxJLRzgcJ0IRM2cR3a7jHxkOWr10Dwb7OC9OQNo/dZ9C9EMxkXJiXz5k7vscA8qHl7NYidnSE+fzZE2NMSpVKA==, tarball: https://npm.pkg.github.com/download/@externaladdress4401/protobuf/0.1.7/08a3829dbf029cbf758adf8e1324a6e4a9906c42}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -1665,7 +1665,7 @@ snapshots:
       '@eslint/core': 0.16.0
       levn: 0.4.1
 
-  '@externaladdress4401/protobuf@0.0.3':
+  '@externaladdress4401/protobuf@0.1.7':
     dependencies:
       undici-types: 7.16.0
 

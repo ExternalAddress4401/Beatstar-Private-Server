@@ -1,11 +1,9 @@
 import { createBatchRequest } from "@externaladdress4401/protobuf/protos/BatchRequest";
-import { Client } from "../Client";
-import { Score } from "../interfaces/Score";
+import { Client, ClientWithExistingUser } from "../Client";
 import Logger from "../lib/Logger";
 import { Packet } from "../Packet";
 import { scoreToMedal } from "../utilities/scoreToMedal";
 import { toArray } from "../utilities/toArray";
-import prisma from "../website/beatstar/src/lib/prisma";
 import { BaseService } from "./BaseService";
 import {
   SyncReq,
@@ -22,11 +20,13 @@ import {
 } from "@externaladdress4401/protobuf/responses";
 import { capitalize } from "../utilities/capitalize";
 import Settings from "../Settings";
-import { getUser } from "../model-services/PrismaUserService";
-import { getBeatmap } from "../model-services/PrismaBeatmapService";
 import { scoreToNormalStar } from "../website/beatstar/src/lib/utilities/scoreToMedal";
 import { createEmptyResponse } from "@externaladdress4401/protobuf/utils";
 import { tryToUpdateScore } from "../model-services/PrismaScoreService";
+import { Score } from "../interfaces/Score";
+import { Difficulty } from "../interfaces/Difficulty";
+import { PrismaClientKnownRequestError } from "../website/beatstar/prisma/generated-client/runtime/library";
+import prisma, { PrismaInstance } from "../website/beatstar/src/lib/prisma";
 
 const RpcType = {
   5: "Sync",
@@ -53,13 +53,42 @@ export class GameService extends BaseService {
     try {
       parsedPayload = packet.parsePayload(BatchRequest);
     } catch (e) {
-      Logger.saveError("Unparsable GameService request", client.clide);
-      Logger.saveError(packet.buffer.toString("hex"), client.clide);
+      Logger.saveClientError(
+        "Unable to parse GameService request",
+        { buffer: packet.buffer.toString("hex") },
+        client.user.clide
+      );
+      return;
+    }
+
+    // if the server resets for any reason we'll lose the ID here
+    // so we should check for it again
+    if (!client.hasUserId() && packet.header.clide !== "{clide}") {
+      Logger.error("Client has no user ID.");
+      const user = await prisma.user.findUnique({
+        select: {
+          id: true,
+          uuid: true,
+        },
+        where: {
+          uuid: packet.header.clide,
+        },
+      });
+      if (user === null) {
+        Logger.error("Tried to find user after crash but failed");
+        return;
+      } else {
+        client.setUser(user.id, user.uuid);
+        Logger.info("Reset user ID.");
+      }
+    }
+
+    // now that we tried to fix it above lets see if we can pass now
+    if (!client.hasUserId() && packet.header.clide !== "{clide}") {
       return;
     }
 
     const requests = toArray(parsedPayload.requests);
-
     const responses = [];
 
     for (const request of requests) {
@@ -89,7 +118,6 @@ export class GameService extends BaseService {
         const user = await prisma.user.findFirst({
           select: {
             username: true,
-            Score: true,
             starCount: true,
             selectedBeatmapId: true,
             unlockAllSongs: true,
@@ -102,7 +130,8 @@ export class GameService extends BaseService {
           },
         });
 
-        if (!user) {
+        if (user === null) {
+          // there's no user in the database matching our user file
           const response = await packet.buildErrorResponse({
             "{error}": {
               code: 9588,
@@ -115,22 +144,27 @@ export class GameService extends BaseService {
           return;
         }
 
-        const newsArticles = await fetchNewsArticles();
-        const scores = await fetchScores(user);
+        const newsArticles = await fetchNewsArticles(prisma);
+        const scores = await fetchScores(
+          prisma,
+          client,
+          user.selectedBeatmapId,
+          user.unlockAllSongs
+        );
 
         let starCount = user.starCount || 1;
 
         if (!user.unlockAllSongs) {
           const score = scores[0];
-          if (score) {
+          if (score !== undefined) {
             const singleBeatmap = await prisma.beatmap.findFirst({
               where: {
                 id: score.template_id,
               },
             });
-            if (singleBeatmap) {
+            if (singleBeatmap && score.HighestScore) {
               starCount = scoreToNormalStar(
-                score.absoluteScore,
+                score.HighestScore.absoluteScore,
                 singleBeatmap?.difficulty,
                 singleBeatmap?.deluxe
               );
@@ -163,77 +197,28 @@ export class GameService extends BaseService {
       if (rpcType === "ExecuteAudit") {
         const audit = request.audit;
 
-        if (!client.clide) {
-          // this should be set before getting here...
-          Logger.error("Got gameservice request for client without a clide.");
+        if (!client.hasUserId()) {
+          Logger.error("Client has no user ID.");
           return;
         }
 
         if (audit.type === RequestType.SetSelectedSong) {
-          const user = await getUser(prisma, client.clide, { id: true });
-          if (user === null) {
-            break;
-          }
-
-          const beatmap = await getBeatmap(prisma, audit.song_id);
-          if (beatmap === null) {
-            break;
-          }
-
-          await prisma.user.update({
-            data: {
-              selectedBeatmapId: audit.song_id,
-            },
-            where: {
-              id: user.id,
-            },
-          });
+          await setSelectedSong(prisma, client, audit.song_id);
         }
         if (audit.type === RequestType.RhythmGameStarted) {
-          if (audit.song_id > 2147483647) {
-            break;
-          }
-          await updatePlayCount(client.clide, audit.song_id);
+          await updatePlayCount(prisma, client, audit.song_id);
         } else if (audit.type === RequestType.RhythmGameEnded) {
-          const user = await getUser(prisma, client.clide, { id: true });
-          if (user === null) {
-            break;
-          }
-          tryToUpdateScore(prisma, user.id, audit);
+          tryToUpdateScore(prisma, client, audit);
         } else if (audit.type == RequestType.SetCustomization) {
-          const enabled = audit.Data.Enabled ?? false;
-          const user = await getUser(prisma, client.clide, { id: true });
-          if (user === null) {
-            return;
+          if (audit.data === undefined) {
+            Logger.saveClientError(
+              "Customization audit data was undefined",
+              { audit },
+              client.user.clide
+            );
           }
-
-          let fieldName: string | null = null;
-
-          switch (audit.Data.type) {
-            case 104:
-              fieldName = "autoShuffle";
-              break;
-            case 105:
-              fieldName = "perfectPlusHighlight";
-              break;
-            case 106:
-              fieldName = "accuracyText";
-              break;
-          }
-
-          if (fieldName === null) {
-            Logger.error("Got unknown settings type: ", audit.Data.type);
-            break;
-          }
-
-          await prisma.user.update({
-            data: {
-              [fieldName]: enabled,
-            },
-            where: {
-              id: user.id,
-            },
-          });
+          await setCustomization(client, audit.data);
+          break;
         }
         responses.push(createEmptyResponse(request));
       } else {
@@ -253,16 +238,40 @@ export class GameService extends BaseService {
   }
 }
 
-async function fetchScores(user: any) {
-  const prismaBeatmaps = user.unlockAllSongs
-    ? await prisma.beatmap.findMany()
-    : await prisma.beatmap.findMany({
+async function fetchScores(
+  prisma: PrismaInstance,
+  client: ClientWithExistingUser,
+  selectedBeatmapId: number,
+  unlockAllSongs: boolean
+) {
+  const prismaScores = unlockAllSongs
+    ? await prisma.score.findMany({
         where: {
-          id: user.selectedBeatmapId,
+          userId: client.user.id,
+        },
+      })
+    : await prisma.score.findMany({
+        where: {
+          userId: client.user.id,
+          beatmapId: selectedBeatmapId,
         },
       });
 
-  const scores: Score[] = prismaBeatmaps.map(({ id }) => ({
+  Logger.saveClientInfo(
+    "Unlock all songs status",
+    { unlockAllSongs },
+    client.user.clide
+  );
+
+  const prismaBeatmaps = unlockAllSongs
+    ? await prisma.beatmap.findMany()
+    : await prisma.beatmap.findMany({
+        where: {
+          id: selectedBeatmapId,
+        },
+      });
+
+  const createdScores: Score[] = prismaBeatmaps.map(({ id }) => ({
     template_id: id,
     BragState: {},
     HighestScore: {},
@@ -271,56 +280,81 @@ async function fetchScores(user: any) {
     PlayedCount: 0,
   }));
 
-  if (user.unlockAllSongs) {
-    // force play count for 99999 so we can quit songs and have swipes unlocked?
-    scores.find((beatmap) => beatmap.template_id === 99999)!.PlayedCount = 10;
+  // force play count to 10 so we can quit songs and have swipes unlocked
+  if (unlockAllSongs) {
+    createdScores.find(
+      (beatmap) => beatmap.template_id === 99999
+    )!.PlayedCount = 10;
   } else {
-    scores.find(
-      (beatmap) => beatmap.template_id === user.selectedBeatmapId
+    createdScores.find(
+      (beatmap) => beatmap.template_id === selectedBeatmapId
     )!.PlayedCount = 10;
   }
 
-  if (user.Score) {
-    for (const score of user?.Score) {
-      // TODO: remove !
-      const difficulty = prismaBeatmaps.find(
-        (beatmap) => beatmap.id === score.beatmapId
-      )?.difficulty!;
-      const beatmap = scores.find(
-        (beatmap) => beatmap.template_id === score.beatmapId
+  for (const score of prismaScores) {
+    const relevantBeatmap = prismaBeatmaps.find(
+      (beatmap) => beatmap.id === score.beatmapId
+    );
+    if (relevantBeatmap === undefined) {
+      Logger.saveClientError(
+        "Relevant beatmap was undefined",
+        { id: score.beatmapId },
+        client.user.clide
       );
-      if (!beatmap) {
-        // this shouldn't happen...
-        break;
-      }
-
-      beatmap.HighestScore = {
-        normalizedScore: score.normalizedScore,
-        absoluteScore: score.absoluteScore,
-      };
-
-      const medal = scoreToMedal(
-        score.absoluteScore,
-        difficulty,
-        prismaBeatmaps.find((beatmap) => beatmap.id === score.beatmapId)?.deluxe
-      );
-
-      if (medal === undefined || medal === null) {
-        continue;
-      }
-
-      beatmap.HighestCheckpoint = score.highestCheckpoint ?? 0;
-      beatmap.HighestStreak = score.highestStreak ?? 0;
-      beatmap.HighestGrade_id = medal;
-      beatmap.PlayedCount = score.playedCount;
-      beatmap.absoluteScore = score.absoluteScore;
+      break;
     }
+    const difficulty = relevantBeatmap.difficulty as Difficulty;
+    const beatmap = createdScores.find(
+      (beatmap) => beatmap.template_id === score.beatmapId
+    );
+    if (beatmap === undefined) {
+      Logger.saveClientError(
+        "Beatmap was undefined",
+        { id: score.beatmapId },
+        client.user.clide
+      );
+      break;
+    }
+
+    beatmap.HighestScore = {
+      normalizedScore: score.normalizedScore,
+      absoluteScore: score.absoluteScore,
+    };
+
+    const medal = scoreToMedal(
+      score.absoluteScore,
+      difficulty,
+      relevantBeatmap.deluxe
+    );
+
+    if (medal === null) {
+      Logger.saveClientError(
+        "Medal was null",
+        {
+          score: score.absoluteScore,
+          difficulty,
+          deluxe: relevantBeatmap.deluxe,
+        },
+        client.user.clide
+      );
+      continue;
+    }
+
+    beatmap.HighestCheckpoint = score.highestCheckpoint ?? 0;
+    beatmap.HighestStreak = score.highestStreak ?? 0;
+    beatmap.HighestGrade_id = medal;
+    beatmap.PlayedCount = score.playedCount ?? 0;
+    beatmap.absoluteScore = score.absoluteScore ?? 0;
   }
 
-  return scores;
+  return createdScores;
 }
 
-async function fetchNewsArticles() {
+/**
+ * Returns a list of articles we should show in game
+ * @returns JSON representation of news articles
+ */
+async function fetchNewsArticles(prisma: PrismaInstance) {
   const articles = [];
   const news = await prisma.news.findMany({
     include: {
@@ -365,17 +399,17 @@ async function fetchNewsArticles() {
   return articles;
 }
 
-async function updatePlayCount(clide: string, beatmapId: number) {
-  const user = await getUser(prisma, clide, { id: true });
-  if (user === null) {
-    return;
-  }
-
-  const beatmap = await getBeatmap(prisma, beatmapId);
-  if (beatmap === null) {
-    return;
-  }
-
+/**
+ * Updates the play count of a beatmap
+ * @param {PrismaInstance} prisma DI instance of prisma
+ * @param {Client} client instance of client object
+ * @param {number} beatmapId ID of beatmap to update
+ */
+async function updatePlayCount(
+  prisma: PrismaInstance,
+  client: ClientWithExistingUser,
+  beatmapId: number
+) {
   try {
     await prisma.score.update({
       data: {
@@ -383,12 +417,101 @@ async function updatePlayCount(clide: string, beatmapId: number) {
       },
       where: {
         userId_beatmapId: {
-          userId: user.id,
+          userId: client.user.id,
           beatmapId,
         },
       },
     });
   } catch (err) {
-    if (err.code !== "P2025") throw err;
+    if (err instanceof PrismaClientKnownRequestError) {
+      Logger.saveClientError(
+        `${err.name}: ${err.message}`,
+        { code: err.code },
+        client.user.clide
+      );
+    }
   }
 }
+
+const setSelectedSong = async (
+  prisma: PrismaInstance,
+  client: ClientWithExistingUser,
+  songId: number
+) => {
+  try {
+    await prisma.user.update({
+      data: {
+        selectedBeatmapId: songId,
+      },
+      where: {
+        id: client.user.id,
+      },
+    });
+  } catch (err) {
+    if (err instanceof PrismaClientKnownRequestError) {
+      if (err.code === "P2003") {
+        // we tried to set a custom song as selected. Ignore it
+        return;
+      }
+      Logger.saveClientError(
+        `${err.name}: ${err.message}`,
+        { code: err.code },
+        client.user.clide
+      );
+    }
+  }
+};
+
+const setCustomization = async (
+  client: ClientWithExistingUser,
+  {
+    type,
+    Enabled,
+  }: {
+    type: number;
+    Enabled: boolean;
+  }
+) => {
+  const enabled = Enabled ?? false;
+  let fieldName: string | null = null;
+
+  switch (type) {
+    case 104:
+      fieldName = "autoShuffle";
+      break;
+    case 105:
+      fieldName = "perfectPlusHighlight";
+      break;
+    case 106:
+      fieldName = "accuracyText";
+      break;
+  }
+
+  if (fieldName === null) {
+    Logger.saveClientError(
+      "Invalid customization provided",
+      { type, Enabled },
+      client.user.clide
+    );
+    return;
+  }
+
+  try {
+    await prisma.user.update({
+      data: {
+        [fieldName]: enabled,
+      },
+      where: {
+        id: client.user.id,
+      },
+    });
+  } catch (err) {
+    if (err instanceof Error) {
+      Logger.saveClientError(
+        `${err.name}: ${err.message}`,
+        {},
+        client.user.clide
+      );
+    }
+  }
+};

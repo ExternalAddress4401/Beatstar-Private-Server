@@ -10,6 +10,8 @@ DELUXE_GOLD = 9
 DELUXE_PLATINUM = 10
 DELUXE_DIAMOND = 11*/
 
+import { Difficulty } from "../interfaces/Difficulty";
+
 export const isNewMedalBetter = (
   oldMedal: number,
   newMedal: number,
@@ -32,50 +34,61 @@ export const isNewMedalBetter = (
  * Given a goofy Beatstar medal index convert it to normal
  * @param medal Goofy Beatstar medal index from the above table
  */
-export const medalToNormalStar = (medal: number | undefined) => {
-  if (!medal) {
-    return 0;
+export const medalToNormalStar = (medal: number) => {
+  const medalIndex = [1, 2, 5, 3, 4].indexOf(medal) + 1;
+  if (medalIndex === -1) {
+    return null;
   }
-  return [1, 2, 5, 3, 4].indexOf(medal) + 1;
+  return medalIndex;
 };
 
+/**
+ * Converts an absoluteScore to the appropriate medal
+ * @param score absoluteScore the play achieved
+ * @param difficulty the difficulty of the beatmap
+ * @param isDeluxe whether the song is a deluxe or not
+ * @returns
+ */
 export const scoreToMedal = (
   score: number | undefined,
-  difficulty: number,
+  difficulty: Difficulty,
   isDeluxe: boolean
 ) => {
-  if (score === undefined) {
-    return 0;
-  }
-  const table: Record<number, number[]> = {
+  const fixedScore = score ?? 0;
+
+  const vanillaTable: Record<number, number[]> = {
     1: [0, 20000, 50000, 80000, 95000, 97000, 98000, 99000], // extreme
-    2: [0, 10000, 17500, 35000, 47500, 48500, 49000, 49500], // tutoral
     3: [0, 15000, 37500, 60000, 71250, 72750, 73500, 74250], // hard
     4: [0, 10000, 17500, 35000, 47500, 48500, 49000, 49500], // normal
+    5: [0, 10000, 17500, 35000, 47500, 48500, 49000, 49500], // tutoral
   };
 
   const deluxeTable: Record<number, number[]> = {
     1: [0, 20000, 50000, 80000, 95000, 97800, 98600, 99500], // extreme
-    2: [0, 10000, 17500, 35000, 47500, 48900, 49300, 49750], // tutoral
     3: [0, 15000, 37500, 60000, 71250, 73350, 73950, 74625], // hard
     4: [0, 10000, 17500, 35000, 47500, 48900, 49300, 49750], // normal
+    5: [0, 10000, 17500, 35000, 47500, 48900, 49300, 49750], // tutoral
   };
 
-  const useTable = isDeluxe ? deluxeTable : table;
+  const useTable = isDeluxe ? deluxeTable : vanillaTable;
 
-  const medalIndexes = [1, 2, 5, 3, 4, 6, 7, 8];
+  const vanlaMedalIndexes = [1, 2, 5, 3, 4, 6, 7, 8];
   const deluxeMedalIndexes = [1, 2, 5, 3, 4, 9, 10, 11];
 
-  const medalTable = isDeluxe ? deluxeMedalIndexes : medalIndexes;
+  const medalTable = isDeluxe ? deluxeMedalIndexes : vanlaMedalIndexes;
 
   const scoreRow = useTable[difficulty];
   if (scoreRow === undefined) {
-    return 0;
+    return null;
   }
 
   const thresholdIndex = scoreRow.findLastIndex(
-    (threshold) => score >= threshold
+    (threshold) => fixedScore >= threshold
   );
 
-  return medalTable[thresholdIndex];
+  if (thresholdIndex < 0) {
+    return null;
+  }
+
+  return medalTable[thresholdIndex] ?? null;
 };

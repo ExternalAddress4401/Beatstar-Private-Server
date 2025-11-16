@@ -1,12 +1,18 @@
-export const getMaxScore = (difficulty: number) => {
+import { Difficulty } from "../interfaces/Difficulty";
+
+/**
+ * Returns the maximum score for a given difficulty
+ * @param {Difficulty} difficulty the ID of the difficulty
+ * @returns {number} the maximum score possible for this beatmap
+ */
+export const getMaxScore = (difficulty: Difficulty): number => {
   switch (difficulty) {
-    case 1:
+    case Difficulty.EXTREME:
       return 100000;
-    case 2:
-      return 50000;
-    case 3:
+    case Difficulty.HARD:
       return 75000;
-    case 4:
+    case Difficulty.NORMAL:
+    case Difficulty.TUTORIAL:
       return 50000;
   }
 };
