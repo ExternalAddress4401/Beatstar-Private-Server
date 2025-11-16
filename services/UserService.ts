@@ -32,7 +32,7 @@ export class UserService extends BaseService {
     }
     cinta = cinta.trim();
 
-    if (cinta !== "{clide}") {
+    if (cinta !== "{clide}" && cinta !== "") {
       const user = await prisma.user.findUnique({
         select: {
           id: true,
