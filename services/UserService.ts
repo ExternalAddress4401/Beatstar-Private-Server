@@ -32,18 +32,20 @@ export class UserService extends BaseService {
     }
     cinta = cinta.trim();
 
-    const user = await prisma.user.findUnique({
-      select: {
-        id: true,
-      },
-      where: {
-        uuid: cinta,
-      },
-    });
+    if (cinta !== "") {
+      const user = await prisma.user.findUnique({
+        select: {
+          id: true,
+        },
+        where: {
+          uuid: cinta,
+        },
+      });
 
-    Logger.saveClientInfo("Found a user", { user }, cinta);
+      Logger.saveClientInfo("Found a user", { user }, cinta);
 
-    client.setUser(user?.id, cinta);
+      client.setUser(user?.id, cinta);
+    }
 
     const response = await packet.buildResponse(
       createServerClientMessageHeader({}),
