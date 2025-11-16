@@ -27,6 +27,7 @@ import { Score } from "../interfaces/Score";
 import { Difficulty } from "../interfaces/Difficulty";
 import { PrismaClientKnownRequestError } from "../website/beatstar/prisma/generated-client/runtime/library";
 import prisma, { PrismaInstance } from "../website/beatstar/src/lib/prisma";
+import { isUUID } from "../utilities/isUuid";
 
 const RpcType = {
   5: "Sync",
@@ -63,7 +64,7 @@ export class GameService extends BaseService {
 
     // if the server resets for any reason we'll lose the ID here
     // so we should check for it again
-    if (!client.hasUserId() && packet.header.clide !== "{clide}") {
+    if (!client.hasUserId() && isUUID(packet.header.clide)) {
       Logger.error("Client has no user ID.");
       const user = await prisma.user.findUnique({
         select: {
@@ -84,7 +85,7 @@ export class GameService extends BaseService {
     }
 
     // now that we tried to fix it above lets see if we can pass now
-    if (!client.hasUserId() && packet.header.clide !== "{clide}") {
+    if (!client.hasUserId() && isUUID(packet.header.clide)) {
       return;
     }
 
