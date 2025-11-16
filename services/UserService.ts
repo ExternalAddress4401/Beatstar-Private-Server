@@ -9,6 +9,7 @@ import {
 } from "@externaladdress4401/protobuf/responses";
 import Logger from "../lib/Logger";
 import prisma from "../website/beatstar/src/lib/prisma";
+import { isUUID } from "../utilities/isUuid";
 
 export class UserService extends BaseService {
   name = "userservice";
@@ -29,7 +30,7 @@ export class UserService extends BaseService {
     Logger.info(`Cinta ${cinta}`);
     cinta = cinta.trim();
 
-    if (cinta !== "{cinta}" && cinta !== "") {
+    if (isUUID(cinta)) {
       const user = await prisma.user.findUnique({
         select: {
           id: true,
