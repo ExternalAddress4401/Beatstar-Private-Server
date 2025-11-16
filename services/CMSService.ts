@@ -33,18 +33,34 @@ export class CMSService extends BaseService {
     const rpcType: ValueOf<typeof CMSType> = (CMSType as any)[
       payload.requests.rpcType
     ];
-    const parsedPayload = packet.parsePayload(BatchRequest);
+
+    let parsedPayload;
+    try {
+      parsedPayload = packet.parsePayload(BatchRequest);
+    } catch (e) {
+      Logger.saveClientError(
+        "Unable to parse CMSService request",
+        { buffer: packet.buffer.toString("hex") },
+        client.user.clide
+      );
+      return;
+    }
 
     let serverIp = Settings.SERVER_IP;
 
+    // local testing doesn't have SSL we use localtunnel in those cases
     if (Settings.ENVIRONMENT === "dev") {
       serverIp = Settings.TUNNEL;
       Settings.SERVER_IP = serverIp;
     }
 
-    Logger.info(`Server IP: ${serverIp}`);
-
     if (rpcType === "GetCMSMetaInfo") {
+      Logger.saveClientInfo(
+        `Requested CMS`,
+        { IP: serverIp, port: Settings.EXPRESS_PORT },
+        client.user.clide
+      );
+
       const hashesResponse = await fetch(
         `http://localhost:${Settings.EXPRESS_PORT}/info`
       );
@@ -68,7 +84,11 @@ export class CMSService extends BaseService {
 
       client.write(response);
     } else {
-      console.error(`Unhandled CMSService: ${rpcType}`);
+      Logger.saveClientError(
+        "Unhandled CMSService request",
+        { rpcType },
+        client.user.clide
+      );
     }
   }
 }

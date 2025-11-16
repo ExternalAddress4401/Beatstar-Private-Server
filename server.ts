@@ -112,10 +112,6 @@ net
       for (const packet of packets) {
         const header = packet.parseHeader(ClientServerMessageHeaderMap);
 
-        if (!client.clide) {
-          client.setClide(header.clide);
-        }
-
         if (!Settings.USE_PRIVATE_SERVER) {
           if (header.compressed) {
             await packet.payload.decompress();
@@ -135,7 +131,7 @@ net
 
         Logger.info(
           `${service.name} received a packet.`,
-          client.clide ?? undefined
+          client.user.clide ?? undefined
         );
 
         await service.handlePacket(packet, client);
@@ -146,14 +142,14 @@ net
     socket.on("end", () => {
       const client = clients.get(socket);
       clients.delete(socket);
-      Logger.info("Client disconnected.", client?.clide);
+      Logger.info("Client disconnected.", client?.user.clide);
       globalSocket = null;
     });
 
     socket.on("error", (err) => {
       const client = clients.get(socket);
       clients.delete(socket);
-      Logger.error(err.message, client?.clide);
+      Logger.error(err.message, client?.user.clide);
     });
   })
   .listen(Settings.SERVER_PORT, "0.0.0.0", () => {

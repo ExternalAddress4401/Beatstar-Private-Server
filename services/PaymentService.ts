@@ -35,14 +35,18 @@ export class PaymentService extends BaseService {
     try {
       parsedPayload = packet.parsePayload(BatchRequest);
     } catch (e) {
-      Logger.saveError("Unparsable PaymentService request", client.clide);
-      Logger.saveError(packet.buffer.toString("hex"), client.clide);
+      Logger.saveClientError(
+        "Unable to parse PaymentService request",
+        { buffer: packet.buffer.toString("hex") },
+        client.user.clide
+      );
       return;
     }
     const requests = toArray(parsedPayload.requests);
     const responses = [];
 
     for (const request of requests) {
+      // we're never going to use the payment service so just send an empty response
       const rpcType: ValueOf<typeof RpcType> = (RpcType as any)[
         Number(request.rpcType)
       ];

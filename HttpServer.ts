@@ -24,7 +24,6 @@ export class HttpServer {
       res.json(cms.data);
     });
     this.app.use("/cms/:slug", async (req, res) => {
-      console.log("WAWWAWA");
       const slug = req.params.slug.split(".")[0]!;
 
       const cms = await prisma.cms.findFirst({

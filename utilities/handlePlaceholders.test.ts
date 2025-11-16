@@ -1,6 +1,6 @@
 import { handlePlaceholders } from "./handlePlaceholders";
 
-test("it should replace placeholders", () => {
+it("Should replace placeholders", () => {
   const data = {
     test: {
       nested: {

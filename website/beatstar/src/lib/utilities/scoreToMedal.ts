@@ -14,23 +14,20 @@ DELUXE_DIAMOND = 11*/
  * Given a goofy Beatstar medal index convert it to normal
  * @param medal Goofy Beatstar medal index from the above table
  */
-export const medalToNormalStar = (medal: number | undefined) => {
-	if (!medal) {
-		return 0;
-	}
+export const medalToNormalStar = (medal: number) => {
 	const starCount = [1, 2, 5, 3, 4].indexOf(medal);
-	return starCount === -1 ? 5 : starCount + 1;
+	// if we have a medal and not stars...
+	if (starCount === -1) {
+		return 5;
+	}
+	return starCount + 1;
 };
 
-export const scoreToNormalStar = (
-	score: number | undefined,
-	difficulty: number,
-	isDeluxe: boolean
-) => {
+export const scoreToNormalStar = (score: number, difficulty: number, isDeluxe: boolean) => {
 	return medalToNormalStar(scoreToMedal(score, difficulty, isDeluxe));
 };
 
-export const scoreToMedal = (score: number | undefined, difficulty: number, isDeluxe: boolean) => {
+export const scoreToMedal = (score: number, difficulty: number, isDeluxe: boolean) => {
 	if (score === undefined) {
 		return 0;
 	}

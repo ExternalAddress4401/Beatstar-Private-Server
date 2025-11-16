@@ -41,8 +41,13 @@ export class NotificationService extends BaseService {
     try {
       parsedPayload = packet.parsePayload(BatchRequest);
     } catch (e) {
-      Logger.saveError("Unparsable NotificationService request", client.clide);
-      Logger.saveError(packet.buffer.toString("hex"), client.clide);
+      Logger.saveClientError(
+        "Unable to parse NotificationService request",
+        {
+          buffer: packet.buffer.toString("hex"),
+        },
+        client.user.clide
+      );
       return;
     }
 
@@ -54,12 +59,17 @@ export class NotificationService extends BaseService {
         Number(request.rpcType)
       ];
       if (rpcType === "SendNotification") {
+        responses.push(createEmptyResponse(request));
       } else if (rpcType === "Subscribe") {
         responses.push(createEmptyResponse(request));
       } else if (rpcType === "SetPlatformNotificationPrefs") {
         responses.push(createEmptyResponse(request));
       } else {
-        Logger.warn(`${this.name}: Unknown rpcType: ${request.rpcType}`);
+        Logger.saveClientError(
+          "Unhandled NotificationService request",
+          { rpcType },
+          client.user.clide
+        );
         responses.push(createEmptyResponse(request));
       }
     }

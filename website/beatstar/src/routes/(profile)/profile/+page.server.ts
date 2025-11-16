@@ -198,14 +198,6 @@ export const actions = {
 		const customScores = scoresToMigrate.filter((score) => !beatmaps.includes(score.beatmapId));
 		const vanillaScores = scoresToMigrate.filter((score) => beatmaps.includes(score.beatmapId));
 
-		console.log(
-			customScores.map((score) => ({
-				beatmapId: score.beatmapId,
-				absoluteScore: score.absoluteScore,
-				userId: user.id
-			}))
-		);
-
 		// custom scores we can just import...
 		const customInsertResult = await prisma.customScore.createMany({
 			data: customScores.map((score) => ({

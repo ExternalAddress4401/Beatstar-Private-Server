@@ -35,12 +35,12 @@ model User {
 
 model Score {
   beatmapId         Int
-  normalizedScore   Float @default(0)
+  normalizedScore   Float
   absoluteScore     Int
-  highestGrade      Int   @default(0)
-  highestCheckpoint Int   @default(0)
-  highestStreak     Int   @default(0)
-  playedCount       Int   @default(0)
+  highestGrade      Int
+  highestCheckpoint Int?
+  highestStreak     Int?
+  playedCount       Int
 
   user    User    @relation(fields: [userId], references: [id])
   userId  Int
