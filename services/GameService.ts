@@ -279,13 +279,10 @@ async function fetchScores(
       (beatmap) => beatmap.template_id === 99999
     )!.PlayedCount = 10;
   } else {
-    console.log(selectedBeatmapId);
     createdScores.find(
       (beatmap) => beatmap.template_id === selectedBeatmapId
     )!.PlayedCount = 10;
   }
-
-  console.log(createdScores);
 
   for (const score of prismaScores) {
     const relevantBeatmap = prismaBeatmaps.find(
