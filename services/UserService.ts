@@ -9,7 +9,6 @@ import {
 } from "@externaladdress4401/protobuf/responses";
 import Logger from "../lib/Logger";
 import prisma from "../website/beatstar/src/lib/prisma";
-import { stringify } from "../utilities/stringify";
 
 export class UserService extends BaseService {
   name = "userservice";
