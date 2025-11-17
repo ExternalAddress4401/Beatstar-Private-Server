@@ -101,9 +101,10 @@ export class GameService extends BaseService {
         const parsedPayload = packet.parsePayload(SyncReq);
 
         const clide = parsedPayload.requests.body.session.clide.trim();
+        Logger.info("Clide " + clide);
 
         // the user has no profile file on their device
-        if (clide === "{clide}") {
+        if (!isUUID(clide)) {
           const response = await packet.buildErrorResponse({
             "{error}": {
               code: 9587,
