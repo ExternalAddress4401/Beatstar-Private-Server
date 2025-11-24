@@ -26,6 +26,20 @@
 		document.body.removeChild(a);
 		URL.revokeObjectURL(a.href);
 	};
+
+	const reset = async () => {
+		if (confirm('All your progress will be deleted. You cannot get it back. Are you sure?')) {
+			await fetch('/profile/reset', {
+				method: 'POST',
+				body: JSON.stringify({
+					uuid: user?.uuid
+				}),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			});
+		}
+	};
 </script>
 
 <div class="container">
@@ -118,6 +132,16 @@
 		<p>Place this file in your beatstar directory.</p>
 		<div>
 			<Button type="button" text="Download" onclick={downloadFile} />
+		</div>
+	</div>
+
+	<hr />
+
+	<div class="block">
+		<h2>Reset</h2>
+		<p>Resets all of your progress. This is non reversible.</p>
+		<div>
+			<Button type="button" text="Reset" onclick={reset} />
 		</div>
 	</div>
 </div>

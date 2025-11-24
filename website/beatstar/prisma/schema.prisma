@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "./generated-client"
+  output   = "../node_modules/@prisma-app/client"
 }
 
 datasource db {
@@ -79,6 +79,7 @@ model Cms {
   data Json
   gzip Bytes
   hash String @db.Char(32)
+  game Game @default(BEATSTAR)
 }
 
 model News {
@@ -115,4 +116,9 @@ model FeatureFlag {
 
 enum NewsType {
   TEXT
+}
+
+enum Game {
+  BEATSTAR
+  COUNTRYSTAR
 }
