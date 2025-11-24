@@ -6,7 +6,7 @@ import { isAuthenticated } from '$lib/wrapper/isAuthenticated';
 import { isAndroidId } from '$lib/utilities/isAndroidId';
 import oldPrisma from '$lib/oldPrisma';
 import { updateStarCount } from '$lib/services/UserService';
-//import { getFlags } from '$lib/featureFlags';
+import { getFlags } from '$lib/featureFlags';
 
 const uploadSchema = zfd.formData({
 	profile: zfd.file()
@@ -22,7 +22,7 @@ const importSchema = zfd.formData({
 
 export const load: PageServerLoad = async () => {
 	return {
-		//flags: await getFlags()
+		flags: await getFlags()
 	};
 };
 
@@ -59,7 +59,10 @@ export const actions = {
 			});
 		}
 
-		const uploadedScores = (json.profile === undefined && json.beatmaps !== undefined) ? json.beatmaps.beatmaps : json.profile.beatmaps.beatmaps;
+		const uploadedScores =
+			json.profile === undefined && json.beatmaps !== undefined
+				? json.beatmaps.beatmaps
+				: json.profile.beatmaps.beatmaps;
 
 		if (!user) {
 			return fail(500);
@@ -72,7 +75,9 @@ export const actions = {
 		const currentScores = await prisma.score.findMany({
 			where: {
 				beatmapId: {
-					in: uploadedBeatmapScores.map((beatmap) => beatmap.template_id ? beatmap.template_id : beatmap.templateId)
+					in: uploadedBeatmapScores.map((beatmap) =>
+						beatmap.template_id ? beatmap.template_id : beatmap.templateId
+					)
 				},
 				userId: user.id
 			}
@@ -82,8 +87,10 @@ export const actions = {
 		const scoresToUpdate = [];
 
 		for (const uploadedScore of uploadedBeatmapScores) {
-			const currentScore = currentScores.find(
-				(score) => score.beatmapId === uploadedScore.template_id ? uploadedScore.template_id : uploadedScore.templateId
+			const currentScore = currentScores.find((score) =>
+				score.beatmapId === uploadedScore.template_id
+					? uploadedScore.template_id
+					: uploadedScore.templateId
 			);
 			if (currentScore === undefined) {
 				scoresToAdd.push(uploadedScore);

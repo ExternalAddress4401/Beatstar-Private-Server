@@ -6,7 +6,7 @@
 
 	let { data, form } = $props();
 
-	//const flags = data.flags;
+	const flags = data.flags;
 
 	const user = $derived(data.user);
 
@@ -104,7 +104,7 @@
 
 	<hr />
 
-	{#if [].includes('allow_beatclone_import')}
+	{#if flags.includes('allow_beatclone_import')}
 		<div class="block">
 			<h2>Import</h2>
 			<p>Import your old Beatclone scores.</p>
