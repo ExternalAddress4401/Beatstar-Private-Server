@@ -25,9 +25,9 @@ import { createEmptyResponse } from "@externaladdress4401/protobuf/utils";
 import { tryToUpdateScore } from "../model-services/PrismaScoreService";
 import { Score } from "../interfaces/Score";
 import { Difficulty } from "../interfaces/Difficulty";
-import { PrismaClientKnownRequestError } from "../website/beatstar/prisma/generated-client/runtime/library";
 import prisma, { PrismaInstance } from "../website/beatstar/src/lib/prisma";
 import { isUUID } from "../utilities/isUuid";
+import { PrismaClientKnownRequestError } from "../website/beatstar/src/lib/generated/prisma/internal/prismaNamespace";
 
 const RpcType = {
   5: "Sync",

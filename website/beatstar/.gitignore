@@ -23,4 +23,7 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 token
-prisma/generated-client
+src/lib/generated
+/../generated/prisma
+
+/../generated/prisma
