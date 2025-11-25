@@ -17,20 +17,21 @@ export async function POST({ request }) {
 		return error(404, 'No user found.');
 	}
 
-	await prisma.score.deleteMany({
-		where: {
-			userId: user.id
-		}
-	});
-
-	await prisma.user.update({
-		data: {
-			starCount: 0
-		},
-		where: {
-			id: user.id
-		}
-	});
+	await prisma.$transaction([
+		prisma.score.deleteMany({
+			where: {
+				userId: user.id
+			}
+		}),
+		prisma.user.update({
+			data: {
+				starCount: 0
+			},
+			where: {
+				id: user.id
+			}
+		})
+	]);
 
 	return json({});
 }
