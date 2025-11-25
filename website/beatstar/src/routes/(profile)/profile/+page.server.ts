@@ -87,16 +87,7 @@ export const actions = {
 		const scoresToUpdate = [];
 
 		for (const uploadedScore of uploadedBeatmapScores) {
-			const currentScore = currentScores.find((score) =>
-				score.beatmapId === uploadedScore.template_id
-					? uploadedScore.template_id
-					: uploadedScore.templateId
-			);
-			if (currentScore === undefined) {
-				scoresToAdd.push(uploadedScore);
-			} else if (currentScore.absoluteScore < uploadedScore.HighestScore.absoluteScore) {
-				scoresToUpdate.push(uploadedScore);
-			}
+			scoresToAdd.push(uploadedScore);
 		}
 
 		await prisma.score.createMany({
