@@ -1,5 +1,5 @@
 import prisma from '$lib/prisma';
-import type { User } from '@prisma/client';
+import type { User } from '@prisma-app/client';
 import { fail, type Cookies } from '@sveltejs/kit';
 
 type ActionFn = (args: { request: Request; cookies: Cookies; user: User }) => Promise<any>;
