@@ -257,7 +257,7 @@ export const tryToUpdateScore = async (
         }
 
         let incrementCount = newStarCount - oldStarCount;
-        Logger.saveClientError(
+        Logger.saveClientInfo(
           `Increment count`,
           { incrementCount },
           client.user.clide
