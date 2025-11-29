@@ -2,7 +2,7 @@ import { createBatchRequest } from "@externaladdress4401/protobuf/protos/BatchRe
 import { Client, ClientWithExistingUser } from "../Client";
 import Logger from "../lib/Logger";
 import { Packet } from "../Packet";
-import { scoreToMedal } from "../utilities/scoreToMedal";
+import { scoreToMedal, scoreToNormalStar } from "../utilities/scoreToMedal";
 import { toArray } from "../utilities/toArray";
 import { BaseService } from "./BaseService";
 import {
@@ -20,14 +20,14 @@ import {
 } from "@externaladdress4401/protobuf/responses";
 import { capitalize } from "../utilities/capitalize";
 import Settings from "../Settings";
-import { scoreToNormalStar } from "../website/beatstar/src/lib/utilities/scoreToMedal";
 import { createEmptyResponse } from "@externaladdress4401/protobuf/utils";
 import { tryToUpdateScore } from "../model-services/PrismaScoreService";
 import { Score } from "../interfaces/Score";
 import { Difficulty } from "../interfaces/Difficulty";
-import prisma, { PrismaInstance } from "../website/beatstar/src/lib/prisma";
 import { isUUID } from "../utilities/isUuid";
-import { PrismaClientKnownRequestError } from "../website/beatstar/src/lib/generated/prisma/internal/prismaNamespace";
+import prisma from "../lib/prisma";
+import { PrismaClient } from "../lib/generated/prisma/client";
+import { PrismaClientKnownRequestError } from "../lib/generated/prisma/internal/prismaNamespace";
 
 const RpcType = {
   5: "Sync",
@@ -241,7 +241,7 @@ export class GameService extends BaseService {
 }
 
 async function fetchScores(
-  prisma: PrismaInstance,
+  prisma: PrismaClient,
   client: ClientWithExistingUser,
   selectedBeatmapId: number,
   unlockAllSongs: boolean
@@ -356,7 +356,7 @@ async function fetchScores(
  * Returns a list of articles we should show in game
  * @returns JSON representation of news articles
  */
-async function fetchNewsArticles(prisma: PrismaInstance) {
+async function fetchNewsArticles(prisma: PrismaClient) {
   const articles = [];
   const news = await prisma.news.findMany({
     include: {
@@ -403,12 +403,12 @@ async function fetchNewsArticles(prisma: PrismaInstance) {
 
 /**
  * Updates the play count of a beatmap
- * @param {PrismaInstance} prisma DI instance of prisma
+ * @param {PrismaClient} prisma DI instance of prisma
  * @param {Client} client instance of client object
  * @param {number} beatmapId ID of beatmap to update
  */
 async function updatePlayCount(
-  prisma: PrismaInstance,
+  prisma: PrismaClient,
   client: ClientWithExistingUser,
   beatmapId: number
 ) {
@@ -438,7 +438,7 @@ async function updatePlayCount(
 }
 
 const setSelectedSong = async (
-  prisma: PrismaInstance,
+  prisma: PrismaClient,
   client: ClientWithExistingUser,
   songId: number
 ) => {

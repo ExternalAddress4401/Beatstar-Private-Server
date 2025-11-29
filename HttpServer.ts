@@ -1,7 +1,7 @@
 import express, { Express } from "express";
 import Settings from "./Settings";
 import path from "path";
-import prisma from "./website/beatstar/src/lib/prisma";
+import prisma from "./lib/prisma";
 
 export class HttpServer {
   app: Express = express();

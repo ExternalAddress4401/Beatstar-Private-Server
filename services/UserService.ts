@@ -8,8 +8,8 @@ import {
   createServerClientMessageHeader,
 } from "@externaladdress4401/protobuf/responses";
 import Logger from "../lib/Logger";
-import prisma from "../website/beatstar/src/lib/prisma";
 import { isUUID } from "../utilities/isUuid";
+import prisma from "../lib/prisma";
 
 export class UserService extends BaseService {
   name = "userservice";

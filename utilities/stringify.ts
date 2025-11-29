@@ -4,9 +4,5 @@
  * @returns {string} a pretty stringified version of the object
  */
 export const stringify = (data: any): string => {
-  return JSON.stringify(
-    data,
-    (_, v) => (typeof v === "bigint" ? Number(v) : v === undefined ? null : v),
-    2
-  );
+  return JSON.stringify(data, null, 2);
 };

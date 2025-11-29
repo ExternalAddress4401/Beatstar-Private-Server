@@ -38,13 +38,20 @@ class InternalLogger {
     params: Record<string, any>,
     clide: string | null
   ) {
+    console.log("Caught a client error");
     if (!clide) {
       this.error(str, clide);
       Logger.error("[X] Failed to save log for null clide");
       return;
     }
+
+    const strings = params.strings;
+    delete params.strings;
     fs.appendFileSync(`./logs/${clide}.txt`, `[X] ${str}` + "\n");
     fs.appendFileSync(`./logs/${clide}.txt`, stringify(params) + "\n");
+    if (strings) {
+      fs.appendFileSync(`./logs/${clide}.txt`, strings + "\n");
+    }
   }
 }
 

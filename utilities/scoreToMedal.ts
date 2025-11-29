@@ -10,6 +10,7 @@ DELUXE_GOLD = 9
 DELUXE_PLATINUM = 10
 DELUXE_DIAMOND = 11*/
 
+import { diff } from "util";
 import { Difficulty } from "../interfaces/Difficulty";
 
 export const isNewMedalBetter = (
@@ -36,10 +37,15 @@ export const isNewMedalBetter = (
  */
 export const medalToNormalStar = (medal: number) => {
   const medalIndex = [1, 2, 5, 3, 4].indexOf(medal) + 1;
-  if (medalIndex === -1) {
-    return null;
-  }
   return medalIndex;
+};
+
+export const scoreToNormalStar = (
+  score: number,
+  difficulty: number,
+  isDeluxe: boolean
+) => {
+  return medalToNormalStar(scoreToMedal(score, difficulty, isDeluxe));
 };
 
 /**
@@ -50,7 +56,7 @@ export const medalToNormalStar = (medal: number) => {
  * @returns
  */
 export const scoreToMedal = (
-  score: number | undefined,
+  score: number,
   difficulty: Difficulty,
   isDeluxe: boolean
 ) => {

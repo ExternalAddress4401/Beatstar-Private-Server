@@ -1,7 +1,7 @@
 import { BeatmapIdInvalidError } from "../errors/BeatmapIdInvalidError";
+import { Beatmap } from "../lib/generated/prisma/client";
+import { PrismaInstance } from "../lib/prisma";
 import { isBeatmapIdValid } from "../utilities/isBeatmapIdValid";
-import { Beatmap } from "../website/beatstar/src/lib/generated/prisma/browser";
-import { PrismaInstance } from "../website/beatstar/src/lib/prisma";
 
 /**
  * Returns a beatmap from the database

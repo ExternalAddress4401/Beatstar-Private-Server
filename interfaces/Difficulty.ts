@@ -1,3 +1,5 @@
+import z from "zod";
+
 export const Difficulty = {
   EXTREME: 1,
   HARD: 3,
@@ -15,3 +17,10 @@ export const DifficultyFromNumber = {
 } as const;
 
 export type DifficultyName = keyof typeof Difficulty;
+
+export const difficultySchema = z.union([
+  z.literal(1),
+  z.literal(3),
+  z.literal(4),
+  z.literal(5),
+]);

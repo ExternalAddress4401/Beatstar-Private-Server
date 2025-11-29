@@ -1,16 +1,19 @@
 import { ClientWithExistingUser } from "../Client";
 import { CustomError } from "../errors/CustomError";
+import { Difficulty } from "../interfaces/Difficulty";
+import { ScoreAudit, scoreAuditSchema } from "../interfaces/ScoreAudit";
+import { PrismaClient } from "../lib/generated/prisma/client";
 import Logger from "../lib/Logger";
 import {
   isNewMedalBetter,
   medalToNormalStar,
   scoreToMedal,
 } from "../utilities/scoreToMedal";
-import { PrismaInstance } from "../website/beatstar/src/lib/prisma";
+import { stringify } from "../utilities/stringify";
 import { getBeatmap } from "./PrismaBeatmapService";
 
 export const getScore = async (
-  prisma: PrismaInstance,
+  prisma: PrismaClient,
   client: ClientWithExistingUser,
   beatmapId: number,
   isCustomScore: boolean
@@ -32,15 +35,33 @@ export const getScore = async (
 };
 
 export const tryToUpdateScore = async (
-  prisma: PrismaInstance,
+  prisma: PrismaClient,
   client: ClientWithExistingUser,
-  audit: any
+  audit: ScoreAudit
 ) => {
+  const result = await scoreAuditSchema.safeParseAsync(audit);
+  if (result.error) {
+    Logger.saveClientError(
+      "Failed to parse audit",
+      {
+        audit: audit,
+        strings: [result.error.message],
+      },
+      client.user.clide
+    );
+    return;
+  }
+
+  const parsedAudit = result.data;
+
   try {
-    const beatmap = await getBeatmap(prisma, audit.song_id);
+    const beatmap = await getBeatmap(prisma, parsedAudit.song_id);
     if (beatmap === null) {
       // the script defines these custom attributes so we must be using a valid script
-      if (!audit.difficulty || !audit.isDeluxe) {
+      if (
+        parsedAudit.difficulty === undefined ||
+        parsedAudit.isDeluxe === undefined
+      ) {
         Logger.saveClientError(
           "Unable to insert custom song as custom parameters are missing",
           {},
@@ -50,27 +71,45 @@ export const tryToUpdateScore = async (
       }
     }
 
-    const difficulty = beatmap?.difficulty ?? audit.difficulty;
+    const difficulty = (beatmap?.difficulty ??
+      parsedAudit.difficulty) as Difficulty;
+    if (difficulty === undefined) {
+      Logger.saveClientError(
+        "Unable to handle difficulty",
+        {
+          difficulty,
+          beatmapDifficulty: beatmap?.difficulty,
+          auditDifficulty: parsedAudit.difficulty,
+        },
+        client.user.clide
+      );
+      return;
+    }
     const isDeluxe = beatmap?.deluxe ?? audit.isDeluxe;
     const isCustom = beatmap === null;
 
-    const oldScore = await getScore(prisma, client, audit.song_id, isCustom);
+    const oldScore = await getScore(
+      prisma,
+      client,
+      parsedAudit.song_id,
+      isCustom
+    );
 
     // if we don't have a score we can just insert it as it's the highest
     if (oldScore === null) {
       Logger.saveClientInfo(
         "User didn't have a score for this song yet",
         {
-          beatmapId: audit.song_id,
-          score: audit.score.absoluteScore,
-          normalizedScore: audit.score.normalizedScore,
+          beatmapId: parsedAudit.song_id,
+          score: parsedAudit.score.absoluteScore,
+          normalizedScore: parsedAudit.score.normalizedScore,
           difficulty,
           isDeluxe,
         },
         client.user.clide
       );
       const medal = scoreToMedal(
-        audit.score.absoluteScore ?? 0,
+        parsedAudit.score.absoluteScore,
         difficulty,
         isDeluxe
       );
@@ -84,22 +123,28 @@ export const tryToUpdateScore = async (
       }
       const params = {
         data: {
-          beatmapId: parseInt(audit.song_id),
-          normalizedScore: audit.score.normalizedScore ?? 0,
-          absoluteScore: audit.score.absoluteScore ?? 0,
-          highestGrade: scoreToMedal(
-            audit.score.absoluteScore,
-            difficulty,
-            isDeluxe
-          ),
-          highestCheckpoint: audit.checkpointReached,
-          highestStreak: audit.maxStreak,
+          beatmapId: parsedAudit.song_id,
+          normalizedScore: parsedAudit.score.normalizedScore ?? 0,
+          absoluteScore: parsedAudit.score.absoluteScore ?? 0,
+          highestGrade: medal,
+          highestCheckpoint: parsedAudit.checkpointReached,
+          highestStreak: parsedAudit.maxStreak,
           playedCount: 1,
           userId: client.user.id,
         },
       };
       if (beatmap !== null) {
         await prisma.score.create(params);
+        await prisma.user.update({
+          data: {
+            starCount: {
+              increment: medalToNormalStar(medal),
+            },
+          },
+          where: {
+            id: client.user.id,
+          },
+        });
       } else {
         await prisma.customScore.create(params);
       }
@@ -109,7 +154,7 @@ export const tryToUpdateScore = async (
     // we already have a score for this beatmap so we need to compare it to the old
     const oldMedal = scoreToMedal(oldScore.absoluteScore, difficulty, isDeluxe);
     const newMedal = scoreToMedal(
-      audit.score.absoluteScore,
+      parsedAudit.score.absoluteScore,
       difficulty,
       isDeluxe
     );
@@ -125,9 +170,9 @@ export const tryToUpdateScore = async (
     Logger.saveClientInfo(
       `Received score`,
       {
-        beatmapId: audit.song_id,
+        beatmapId: parsedAudit.song_id,
         oldScore: oldScore.absoluteScore,
-        newScore: audit.score.absoluteScore,
+        newScore: parsedAudit.score.absoluteScore,
         oldMedal,
         newMedal,
       },
@@ -137,34 +182,34 @@ export const tryToUpdateScore = async (
     const params = {
       data: {
         normalizedScore: Math.max(
-          audit.score.normalizedScore,
+          parsedAudit.score.normalizedScore,
           oldScore?.normalizedScore ?? 0
         ),
         absoluteScore: Math.max(
-          audit.score.absoluteScore,
+          parsedAudit.score.absoluteScore,
           oldScore?.absoluteScore ?? 0
         ),
         highestGrade: newMedal,
         highestCheckpoint: Math.max(
-          audit.checkpointReached,
+          parsedAudit.checkpointReached,
           oldScore?.highestCheckpoint ?? 0
         ),
         highestStreak: Math.max(
-          audit.highestStreak,
+          parsedAudit.highestStreak,
           oldScore?.highestStreak ?? 0
         ),
       },
       where: {
         userId_beatmapId: {
           userId: client.user.id,
-          beatmapId: parseInt(audit.song_id),
+          beatmapId: parsedAudit.song_id,
         },
       },
     };
 
     Logger.saveClientInfo("Score params", { params }, client.user.clide);
 
-    if (oldScore.absoluteScore < audit.score.absoluteScore) {
+    if (oldScore.absoluteScore < parsedAudit.score.absoluteScore) {
       if (!isCustom) {
         Logger.saveClientInfo(
           `Updating vanilla score as it was better`,

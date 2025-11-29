@@ -1,11 +1,14 @@
 {
   "dependencies": {
     "@externaladdress4401/protobuf": "0.1.6",
+    "@prisma/adapter-pg": "^7.0.1",
+    "@prisma/client": "^7.0.1",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "frida-il2cpp-bridge": "^0.12.0",
     "frida-java-bridge": "^7.0.8",
     "localtunnel": "^2.0.2",
+    "prisma": "^7.0.1",
     "zod": "^4.1.12"
   },
   "devDependencies": {

@@ -9,3 +9,4 @@ output.txt
 token
 notes.txt
 logs
+/lib/generated/prisma
