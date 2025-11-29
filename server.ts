@@ -41,58 +41,7 @@ for (const service of servicesToRegister) {
 
 const clients = new Map<net.Socket, Client>();
 
-const saClient = tls.connect(
-  {
-    host: "socket-gateway.prod.robin.newbirds.net",
-    port: 443,
-  },
-  () => {
-    console.log("Connected to remote TLS server");
-  }
-);
-
-saClient.on("error", (err) => {
-  console.error("TLS client error:", err.message);
-});
-
 let globalSocket: net.Socket | null;
-
-// this will only run if useCustomServer is false
-// sa server isn't used otherwise
-saClient.on("data", async (data) => {
-  if (!globalSocket) {
-    return;
-  }
-
-  const client = clients.get(globalSocket);
-  if (!client) {
-    return;
-  }
-
-  client.write(data);
-
-  client.handlePacket(data);
-
-  const packets = client.extractPackets();
-  for (const packet of packets) {
-    await fs.writeFile(`./packets/server/${serverIndex++}`, data);
-    globalSocket.write(packet.buffer);
-    client.reset();
-  }
-
-  /*const fullPayload = new ProtobufHandler("READ", client.packet?.payload);
-
-  if (client.packet?.header.compressed) {
-    await fullPayload.decompress();
-  }
-
-  fullPayload.process();
-
-  console.log("Server", fullPayload.bytes);
-
-  // do something with the payload here
-  client.reset();*/
-});
 
 net
   .createServer((socket) => {
@@ -118,7 +67,6 @@ net
           }
 
           await fs.writeFile(`./packets/client/${clientIndex++}`, data);
-          saClient.write(data);
           client.reset();
           return;
         }

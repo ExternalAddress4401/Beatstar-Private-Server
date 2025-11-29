@@ -1,4 +1,0 @@
--- AlterTable
-ALTER TABLE "Score" ALTER COLUMN "normalizedScore" DROP DEFAULT,
-ALTER COLUMN "highestGrade" DROP DEFAULT,
-ALTER COLUMN "playedCount" DROP DEFAULT;
