@@ -9,7 +9,6 @@ import {
   medalToNormalStar,
   scoreToMedal,
 } from "../utilities/scoreToMedal";
-import { stringify } from "../utilities/stringify";
 import { getBeatmap } from "./PrismaBeatmapService";
 
 export const getScore = async (
