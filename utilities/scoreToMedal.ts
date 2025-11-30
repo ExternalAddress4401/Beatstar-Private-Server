@@ -36,6 +36,10 @@ export const isNewMedalBetter = (
  * @param medal Goofy Beatstar medal index from the above table
  */
 export const medalToNormalStar = (medal: number) => {
+  // if we scored gold or above
+  if (medal > 5) {
+    return 5;
+  }
   const medalIndex = [1, 2, 5, 3, 4].indexOf(medal) + 1;
   return medalIndex;
 };
