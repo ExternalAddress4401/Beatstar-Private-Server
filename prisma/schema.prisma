@@ -51,12 +51,8 @@ model Score {
 
 model CustomScore {
   beatmapId         Int
-  normalizedScore   Float?
+  normalizedScore   Float
   absoluteScore     Int
-  highestGrade      Int?
-  highestCheckpoint Int?
-  highestStreak     Int?
-  playedCount       Int?
 
   user   User @relation(fields: [userId], references: [id])
   userId Int

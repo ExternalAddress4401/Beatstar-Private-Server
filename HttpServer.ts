@@ -2,11 +2,14 @@ import express, { Express } from "express";
 import Settings from "./Settings";
 import path from "path";
 import prisma from "./lib/prisma";
+import z from "zod";
 
 export class HttpServer {
   app: Express = express();
 
   constructor() {
+    this.app.use(express.json());
+
     this.app.use("/cms/:slug/raw", async (req, res) => {
       const slug = req.params.slug.split(".")[0]!;
 
@@ -63,11 +66,17 @@ export class HttpServer {
     });
 
     this.app.post("/scores", async (req, res) => {
-      const cinta = req.body.cinta;
-      if (!cinta) {
-        res.writeHead(400, { error: "No cinta provided." });
+      const schema = z.object({
+        cinta: z.string().uuid(),
+      });
+
+      const response = await schema.safeParseAsync(req.body);
+      if (response.error) {
+        res.writeHead(400, { error: response.error.message });
         return res.end();
       }
+
+      const cinta = response.data.cinta;
 
       const scores = await prisma.customScore.findMany({
         where: {

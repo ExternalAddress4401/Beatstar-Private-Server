@@ -10,7 +10,6 @@ DELUXE_GOLD = 9
 DELUXE_PLATINUM = 10
 DELUXE_DIAMOND = 11*/
 
-import { diff } from "util";
 import { Difficulty } from "../interfaces/Difficulty";
 
 export const isNewMedalBetter = (

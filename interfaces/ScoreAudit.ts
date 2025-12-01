@@ -34,8 +34,6 @@ export interface ScoreAudit {
   };
   currentBeatmapLeaderboardNumEntries: number;
   deluxeInteractionScores: {};
-  difficulty: Difficulty;
-  isDeluxe: boolean;
   timestampMsecs: number;
   cmdHeader: CmdHeader;
 }
@@ -75,8 +73,6 @@ export const scoreAuditSchema = z.object({
   }),
   currentBeatmapLeaderboardNumEntries: z.number(),
   deluxeInteractionScores: z.any(),
-  difficulty: difficultySchema.optional(),
-  isDeluxe: z.boolean().optional(),
   timestampMsecs: z.number(),
   cmdHeader: cmdHeaderSchema,
 });

@@ -14,23 +14,14 @@ import { getBeatmap } from "./PrismaBeatmapService";
 export const getScore = async (
   prisma: PrismaClient,
   client: ClientWithExistingUser,
-  beatmapId: number,
-  isCustomScore: boolean
+  beatmapId: number
 ) => {
-  if (isCustomScore) {
-    return prisma.customScore.findFirst({
-      where: {
-        userId: client.user.id,
-      },
-    });
-  } else {
-    return prisma.score.findFirst({
-      where: {
-        userId: client.user.id,
-        beatmapId,
-      },
-    });
-  }
+  return prisma.score.findFirst({
+    where: {
+      userId: client.user.id,
+      beatmapId,
+    },
+  });
 };
 
 export const tryToUpdateScore = async (
@@ -55,44 +46,63 @@ export const tryToUpdateScore = async (
 
   try {
     const beatmap = await getBeatmap(prisma, parsedAudit.song_id);
+
     if (beatmap === null) {
-      // the script defines these custom attributes so we must be using a valid script
-      if (
-        parsedAudit.difficulty === undefined ||
-        parsedAudit.isDeluxe === undefined
-      ) {
-        Logger.saveClientError(
-          "Unable to insert custom song as custom parameters are missing",
-          {},
-          client.user.clide
-        );
+      // this is a custom song
+      const oldScore = await prisma.customScore.findFirst({
+        where: {
+          beatmapId: parsedAudit.song_id,
+          userId: client.user.id,
+        },
+      });
+
+      // with no old score we can just create it
+      if (!oldScore) {
+        await prisma.customScore.create({
+          data: {
+            beatmapId: parsedAudit.song_id,
+            normalizedScore: parsedAudit.score.normalizedScore,
+            absoluteScore: parsedAudit.score.absoluteScore,
+            userId: client.user.id,
+          },
+        });
         return;
       }
+
+      // if we have an old score our score needs to be greater
+      if (parsedAudit.score.absoluteScore > oldScore.absoluteScore) {
+        await prisma.customScore.update({
+          data: {
+            normalizedScore: parsedAudit.score.normalizedScore,
+            absoluteScore: parsedAudit.score.absoluteScore,
+          },
+          where: {
+            userId_beatmapId: {
+              userId: client.user.id,
+              beatmapId: parsedAudit.song_id,
+            },
+          },
+        });
+      }
+      return;
     }
 
-    const difficulty = (beatmap?.difficulty ??
-      parsedAudit.difficulty) as Difficulty;
+    const difficulty = beatmap.difficulty as Difficulty;
     if (difficulty === undefined) {
       Logger.saveClientError(
         "Unable to handle difficulty",
         {
           difficulty,
           beatmapDifficulty: beatmap?.difficulty,
-          auditDifficulty: parsedAudit.difficulty,
+          auditDifficulty: difficulty,
         },
         client.user.clide
       );
       return;
     }
-    const isDeluxe = beatmap?.deluxe ?? audit.isDeluxe;
-    const isCustom = beatmap === null;
+    const isDeluxe = beatmap.deluxe;
 
-    const oldScore = await getScore(
-      prisma,
-      client,
-      parsedAudit.song_id,
-      isCustom
-    );
+    const oldScore = await getScore(prisma, client, parsedAudit.song_id);
 
     // if we don't have a score we can just insert it as it's the highest
     if (oldScore === null) {
@@ -123,8 +133,8 @@ export const tryToUpdateScore = async (
       const params = {
         data: {
           beatmapId: parsedAudit.song_id,
-          normalizedScore: parsedAudit.score.normalizedScore ?? 0,
-          absoluteScore: parsedAudit.score.absoluteScore ?? 0,
+          normalizedScore: parsedAudit.score.normalizedScore,
+          absoluteScore: parsedAudit.score.absoluteScore,
           highestGrade: medal,
           highestCheckpoint: parsedAudit.checkpointReached,
           highestStreak: parsedAudit.maxStreak,
@@ -132,21 +142,18 @@ export const tryToUpdateScore = async (
           userId: client.user.id,
         },
       };
-      if (beatmap !== null) {
-        await prisma.score.create(params);
-        await prisma.user.update({
-          data: {
-            starCount: {
-              increment: medalToNormalStar(medal),
-            },
+      await prisma.score.create(params);
+      await prisma.user.update({
+        data: {
+          starCount: {
+            increment: medalToNormalStar(medal),
           },
-          where: {
-            id: client.user.id,
-          },
-        });
-      } else {
-        await prisma.customScore.create(params);
-      }
+        },
+        where: {
+          id: client.user.id,
+        },
+      });
+
       return;
     }
 
@@ -209,86 +216,75 @@ export const tryToUpdateScore = async (
     Logger.saveClientInfo("Score params", { params }, client.user.clide);
 
     if (oldScore.absoluteScore < parsedAudit.score.absoluteScore) {
-      if (!isCustom) {
-        Logger.saveClientInfo(
-          `Updating vanilla score as it was better`,
-          {},
-          client.user.clide
-        );
-        await prisma.score.update(params);
-      } else {
-        Logger.saveClientInfo(
-          `Updating custom score as it was better`,
-          {},
-          client.user.clide
-        );
-        await prisma.customScore.update(params);
-      }
+      Logger.saveClientInfo(
+        `Updating vanilla score as it was better`,
+        {},
+        client.user.clide
+      );
+      await prisma.score.update(params);
     }
 
     // do we need to update the starCount?
-    if (!isCustom) {
+    Logger.saveClientInfo(
+      `Comparing medals`,
+      { oldMedal, newMedal },
+      client.user.clide
+    );
+    if (isNewMedalBetter(oldMedal, newMedal, beatmap.deluxe)) {
       Logger.saveClientInfo(
-        `Comparing medals`,
-        { oldMedal, newMedal },
+        `Updating as earned medal is better`,
+        {},
         client.user.clide
       );
-      if (isNewMedalBetter(oldMedal, newMedal, beatmap.deluxe)) {
-        Logger.saveClientInfo(
-          `Updating as earned medal is better`,
-          {},
-          client.user.clide
-        );
-        const oldStarCount = medalToNormalStar(oldMedal);
-        const newStarCount = medalToNormalStar(newMedal);
-        Logger.saveClientInfo(
-          `Star counts`,
+      const oldStarCount = medalToNormalStar(oldMedal);
+      const newStarCount = medalToNormalStar(newMedal);
+      Logger.saveClientInfo(
+        `Star counts`,
+        { oldStarCount, newStarCount },
+        client.user.clide
+      );
+      if (oldStarCount === null || newStarCount === null) {
+        Logger.saveClientError(
+          `Star counts were null`,
           { oldStarCount, newStarCount },
           client.user.clide
         );
-        if (oldStarCount === null || newStarCount === null) {
-          Logger.saveClientError(
-            `Star counts were null`,
-            { oldStarCount, newStarCount },
-            client.user.clide
-          );
-          return;
-        }
+        return;
+      }
 
-        let incrementCount = newStarCount - oldStarCount;
-        Logger.saveClientInfo(
-          `Increment count`,
+      let incrementCount = newStarCount - oldStarCount;
+      Logger.saveClientInfo(
+        `Increment count`,
+        { incrementCount },
+        client.user.clide
+      );
+      if (incrementCount < 0) {
+        Logger.saveClientError(
+          `Star increment was less than 0`,
           { incrementCount },
           client.user.clide
         );
-        if (incrementCount < 0) {
-          Logger.saveClientError(
-            `Star increment was less than 0`,
-            { incrementCount },
-            client.user.clide
-          );
-          return;
-        }
-        if (incrementCount > 5) {
-          incrementCount = 5;
-          Logger.saveClientInfo(
-            `Normalized increment count`,
-            { incrementCount },
-            client.user.clide
-          );
-        }
-
-        await prisma.user.update({
-          data: {
-            starCount: {
-              increment: incrementCount,
-            },
-          },
-          where: {
-            id: client.user.id,
-          },
-        });
+        return;
       }
+      if (incrementCount > 5) {
+        incrementCount = 5;
+        Logger.saveClientInfo(
+          `Normalized increment count`,
+          { incrementCount },
+          client.user.clide
+        );
+      }
+
+      await prisma.user.update({
+        data: {
+          starCount: {
+            increment: incrementCount,
+          },
+        },
+        where: {
+          id: client.user.id,
+        },
+      });
     }
   } catch (err) {
     if (err instanceof CustomError) {
