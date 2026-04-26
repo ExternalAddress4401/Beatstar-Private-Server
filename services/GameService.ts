@@ -1,4 +1,4 @@
-import { createBatchRequest } from "@externaladdress4401/protobuf/protos/BatchRequest";
+import { createBatchRequest } from "@externaladdress4401/beatstar-protobuf/protos/BatchRequest";
 import { Client, ClientWithExistingUser } from "../Client";
 import Logger from "../lib/Logger";
 import { Packet } from "../Packet";
@@ -8,19 +8,19 @@ import { BaseService } from "./BaseService";
 import {
   SyncReq,
   SyncReqEnum,
-} from "@externaladdress4401/protobuf/protos/SyncReq";
-import { ExecuteSharplaAuditReqEnums } from "@externaladdress4401/protobuf/protos/ExecuteSharplaAuditReq";
-import { ValueOf } from "@externaladdress4401/protobuf/interfaces/ValueOf";
-import { SyncResp } from "@externaladdress4401/protobuf/protos/SyncResp";
-import { ExecuteSharplaAuditResp } from "@externaladdress4401/protobuf/protos/ExecuteSharplaAuditResp";
+} from "@externaladdress4401/beatstar-protobuf/protos/SyncReq";
+import { ExecuteSharplaAuditReqEnums } from "@externaladdress4401/beatstar-protobuf/protos/ExecuteSharplaAuditReq";
+import { ValueOf } from "@externaladdress4401/beatstar-protobuf/interfaces/ValueOf";
+import { SyncResp } from "@externaladdress4401/beatstar-protobuf/protos/SyncResp";
+import { ExecuteSharplaAuditResp } from "@externaladdress4401/beatstar-protobuf/protos/ExecuteSharplaAuditResp";
 import {
   createExecuteSharplaAuditResp,
   createServerClientMessageHeader,
   createSyncResp,
-} from "@externaladdress4401/protobuf/responses";
+} from "@externaladdress4401/beatstar-protobuf/responses";
 import { capitalize } from "../utilities/capitalize";
 import Settings from "../Settings";
-import { createEmptyResponse } from "@externaladdress4401/protobuf/utils";
+import { createEmptyResponse } from "@externaladdress4401/beatstar-protobuf/utils";
 import { tryToUpdateScore } from "../model-services/PrismaScoreService";
 import { Score } from "../interfaces/Score";
 import { Difficulty } from "../interfaces/Difficulty";
@@ -57,7 +57,7 @@ export class GameService extends BaseService {
       Logger.saveClientError(
         "Unable to parse GameService request",
         { buffer: packet.buffer.toString("hex") },
-        client.user.clide
+        client.user.clide,
       );
       return;
     }
@@ -151,7 +151,7 @@ export class GameService extends BaseService {
           prisma,
           client,
           user.selectedBeatmapId,
-          user.unlockAllSongs
+          user.unlockAllSongs,
         );
 
         let starCount = user.starCount || 1;
@@ -168,7 +168,7 @@ export class GameService extends BaseService {
               starCount = scoreToNormalStar(
                 score.HighestScore.absoluteScore,
                 singleBeatmap?.difficulty,
-                singleBeatmap?.deluxe
+                singleBeatmap?.deluxe,
               );
             }
           }
@@ -190,7 +190,7 @@ export class GameService extends BaseService {
             },
           }),
           SyncResp,
-          true
+          true,
         );
         client.write(response);
         return;
@@ -216,7 +216,7 @@ export class GameService extends BaseService {
             Logger.saveClientError(
               "Audit data was undefined",
               { audit },
-              client.user.clide
+              client.user.clide,
             );
             break;
           }
@@ -234,7 +234,7 @@ export class GameService extends BaseService {
       createExecuteSharplaAuditResp({
         "{requests}": responses,
       }),
-      ExecuteSharplaAuditResp
+      ExecuteSharplaAuditResp,
     );
     client.write(response);
   }
@@ -244,7 +244,7 @@ async function fetchScores(
   prisma: PrismaClient,
   client: ClientWithExistingUser,
   selectedBeatmapId: number,
-  unlockAllSongs: boolean
+  unlockAllSongs: boolean,
 ) {
   const prismaScores = unlockAllSongs
     ? await prisma.score.findMany({
@@ -262,7 +262,7 @@ async function fetchScores(
   Logger.saveClientInfo(
     "Unlock all songs status",
     { unlockAllSongs },
-    client.user.clide
+    client.user.clide,
   );
 
   const prismaBeatmaps = unlockAllSongs
@@ -285,35 +285,35 @@ async function fetchScores(
   // force play count to 10 so we can quit songs and have swipes unlocked
   if (unlockAllSongs) {
     createdScores.find(
-      (beatmap) => beatmap.template_id === 99999
+      (beatmap) => beatmap.template_id === 99999,
     )!.PlayedCount = 10;
   } else {
     createdScores.find(
-      (beatmap) => beatmap.template_id === selectedBeatmapId
+      (beatmap) => beatmap.template_id === selectedBeatmapId,
     )!.PlayedCount = 10;
   }
 
   for (const score of prismaScores) {
     const relevantBeatmap = prismaBeatmaps.find(
-      (beatmap) => beatmap.id === score.beatmapId
+      (beatmap) => beatmap.id === score.beatmapId,
     );
     if (relevantBeatmap === undefined) {
       Logger.saveClientError(
         "Relevant beatmap was undefined",
         { id: score.beatmapId },
-        client.user.clide
+        client.user.clide,
       );
       break;
     }
     const difficulty = relevantBeatmap.difficulty as Difficulty;
     const beatmap = createdScores.find(
-      (beatmap) => beatmap.template_id === score.beatmapId
+      (beatmap) => beatmap.template_id === score.beatmapId,
     );
     if (beatmap === undefined) {
       Logger.saveClientError(
         "Beatmap was undefined",
         { id: score.beatmapId },
-        client.user.clide
+        client.user.clide,
       );
       break;
     }
@@ -326,7 +326,7 @@ async function fetchScores(
     const medal = scoreToMedal(
       score.absoluteScore,
       difficulty,
-      relevantBeatmap.deluxe
+      relevantBeatmap.deluxe,
     );
 
     if (medal === null) {
@@ -337,7 +337,7 @@ async function fetchScores(
           difficulty,
           deluxe: relevantBeatmap.deluxe,
         },
-        client.user.clide
+        client.user.clide,
       );
       continue;
     }
@@ -410,7 +410,7 @@ async function fetchNewsArticles(prisma: PrismaClient) {
 async function updatePlayCount(
   prisma: PrismaClient,
   client: ClientWithExistingUser,
-  beatmapId: number
+  beatmapId: number,
 ) {
   try {
     await prisma.score.update({
@@ -430,7 +430,7 @@ async function updatePlayCount(
         Logger.saveClientError(
           `${err.name}: ${err.message}`,
           { code: err.code },
-          client.user.clide
+          client.user.clide,
         );
       }
     }
@@ -440,7 +440,7 @@ async function updatePlayCount(
 const setSelectedSong = async (
   prisma: PrismaClient,
   client: ClientWithExistingUser,
-  songId: number
+  songId: number,
 ) => {
   try {
     await prisma.user.update({
@@ -460,7 +460,7 @@ const setSelectedSong = async (
       Logger.saveClientError(
         `${err.name}: ${err.message}`,
         { code: err.code },
-        client.user.clide
+        client.user.clide,
       );
     }
   }
@@ -474,7 +474,7 @@ const setCustomization = async (
   }: {
     type: number;
     Enabled: boolean;
-  }
+  },
 ) => {
   const enabled = Enabled ?? false;
   let fieldName: string | null = null;
@@ -495,7 +495,7 @@ const setCustomization = async (
     Logger.saveClientError(
       "Invalid customization provided",
       { type, Enabled },
-      client.user.clide
+      client.user.clide,
     );
     return;
   }
@@ -514,7 +514,7 @@ const setCustomization = async (
       Logger.saveClientError(
         `${err.name}: ${err.message}`,
         {},
-        client.user.clide
+        client.user.clide,
       );
     }
   }

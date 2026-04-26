@@ -1,12 +1,12 @@
-import { AllInOneLoginReq } from "@externaladdress4401/protobuf/protos/AllInOneLoginReq";
+import { AllInOneLoginReq } from "@externaladdress4401/beatstar-protobuf/protos/AllInOneLoginReq";
 import { Client } from "../Client";
 import { Packet } from "../Packet";
 import { BaseService } from "./BaseService";
-import { AllInOneLoginResp } from "@externaladdress4401/protobuf/protos/AllInOneLoginResp";
+import { AllInOneLoginResp } from "@externaladdress4401/beatstar-protobuf/protos/AllInOneLoginResp";
 import {
   createAllInOneLoginResp,
   createServerClientMessageHeader,
-} from "@externaladdress4401/protobuf/responses";
+} from "@externaladdress4401/beatstar-protobuf/responses";
 import Logger from "../lib/Logger";
 import { isUUID } from "../utilities/isUuid";
 import prisma from "../lib/prisma";
@@ -54,7 +54,7 @@ export class UserService extends BaseService {
         "{authenticationTicket}":
           "VCS1axRWJeq4jFJdpI3RFfnaIPjAV3ksi8W3cc3VYedwSiQFozfoIZpRN663Tmn4oswsBRTRcz6r8E+aDLuhDzh6xg/vB0e6SqjD2fpd/N1oY/4ulGb8qQ4qc2cGwuS4dPAPnGFW1WjP7SZ3MRJI0WRo2iHbz5Qlg21ssolAo0MTDWYPh0dtYg==",
       }),
-      AllInOneLoginResp
+      AllInOneLoginResp,
     );
     client.write(response);
   }

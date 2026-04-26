@@ -1,19 +1,19 @@
-import { SubscribeReqEnums } from "@externaladdress4401/protobuf/protos/SubscribeReq";
+import { SubscribeReqEnums } from "@externaladdress4401/beatstar-protobuf/protos/SubscribeReq";
 import { Client } from "../Client";
 import Logger from "../lib/Logger";
 import { Packet } from "../Packet";
 import { BaseService } from "./BaseService";
-import { RegisterPlatformTokenEnums } from "@externaladdress4401/protobuf/protos/chunks/RegisterPlatformToken";
-import { PlatformNotificationPref } from "@externaladdress4401/protobuf/protos/chunks/PlatformNotificationPref";
-import { createBatchRequest } from "@externaladdress4401/protobuf/protos/BatchRequest";
-import { createEmptyResponse } from "@externaladdress4401/protobuf/utils";
-import { ValueOf } from "@externaladdress4401/protobuf/interfaces/ValueOf";
-import { SubscribeResp } from "@externaladdress4401/protobuf/protos/SubscribeResp";
+import { RegisterPlatformTokenEnums } from "@externaladdress4401/beatstar-protobuf/protos/chunks/RegisterPlatformToken";
+import { PlatformNotificationPref } from "@externaladdress4401/beatstar-protobuf/protos/chunks/PlatformNotificationPref";
+import { createBatchRequest } from "@externaladdress4401/beatstar-protobuf/protos/BatchRequest";
+import { createEmptyResponse } from "@externaladdress4401/beatstar-protobuf/utils";
+import { ValueOf } from "@externaladdress4401/beatstar-protobuf/interfaces/ValueOf";
+import { SubscribeResp } from "@externaladdress4401/beatstar-protobuf/protos/SubscribeResp";
 import { toArray } from "../utilities/toArray";
 import {
   createServerClientMessageHeader,
   createSubscribeResp,
-} from "@externaladdress4401/protobuf/responses";
+} from "@externaladdress4401/beatstar-protobuf/responses";
 
 const RpcType = {
   0: "NA",
@@ -46,7 +46,7 @@ export class NotificationService extends BaseService {
         {
           buffer: packet.buffer.toString("hex"),
         },
-        client.user.clide
+        client.user.clide,
       );
       return;
     }
@@ -68,7 +68,7 @@ export class NotificationService extends BaseService {
         Logger.saveClientError(
           "Unhandled NotificationService request",
           { rpcType },
-          client.user.clide
+          client.user.clide,
         );
         responses.push(createEmptyResponse(request));
       }
@@ -79,7 +79,7 @@ export class NotificationService extends BaseService {
       createSubscribeResp({
         "{requests}": responses,
       }),
-      SubscribeResp
+      SubscribeResp,
     );
     client.write(response);
   }

@@ -1,17 +1,17 @@
-import { GetUnclaimedPurchasesReq } from "@externaladdress4401/protobuf/protos/GetUnclaimedPurchasesReq";
+import { GetUnclaimedPurchasesReq } from "@externaladdress4401/beatstar-protobuf/protos/GetUnclaimedPurchasesReq";
 import { Client } from "../Client";
 import Logger from "../lib/Logger";
 import { Packet } from "../Packet";
 import { BaseService } from "./BaseService";
-import { createBatchRequest } from "@externaladdress4401/protobuf/protos/BatchRequest";
-import { ValueOf } from "@externaladdress4401/protobuf/interfaces/ValueOf";
-import { GetUnclaimedPurchasesResp } from "@externaladdress4401/protobuf/protos/GetUnclaimedPurchasesResp";
+import { createBatchRequest } from "@externaladdress4401/beatstar-protobuf/protos/BatchRequest";
+import { ValueOf } from "@externaladdress4401/beatstar-protobuf/interfaces/ValueOf";
+import { GetUnclaimedPurchasesResp } from "@externaladdress4401/beatstar-protobuf/protos/GetUnclaimedPurchasesResp";
 import {
   createGetUnclaimedPurchasesResp,
   createServerClientMessageHeader,
-} from "@externaladdress4401/protobuf/responses";
+} from "@externaladdress4401/beatstar-protobuf/responses";
 import { toArray } from "../utilities/toArray";
-import { createEmptyResponse } from "@externaladdress4401/protobuf/utils";
+import { createEmptyResponse } from "@externaladdress4401/beatstar-protobuf/utils";
 
 const RpcType = {
   0: "NA",
@@ -38,7 +38,7 @@ export class PaymentService extends BaseService {
       Logger.saveClientError(
         "Unable to parse PaymentService request",
         { buffer: packet.buffer.toString("hex") },
-        client.user.clide
+        client.user.clide,
       );
       return;
     }
@@ -59,7 +59,7 @@ export class PaymentService extends BaseService {
         "{requests}": responses,
       }),
       GetUnclaimedPurchasesResp,
-      true
+      true,
     );
     client.write(response);
   }

@@ -70,13 +70,6 @@ model Beatmap {
   Score Score[]
 }
 
-model Cms {
-  name String @id
-  data Json
-  gzip Bytes
-  hash String @db.Char(32)
-}
-
 model News {
   type           Int
   legacyId       Int

@@ -1,16 +1,16 @@
-import { ProtobufHandler } from "@externaladdress4401/protobuf/ProtobufHandler";
+import { ProtobufHandler } from "@externaladdress4401/beatstar-protobuf/ProtobufHandler";
 import { Client } from "../Client";
 import { Packet } from "../Packet";
 import { BaseService } from "./BaseService";
-import { ServerClientMessageHeaderMap } from "@externaladdress4401/protobuf/protos/ServerClientMessageHeader";
-import { createServerClientMessageHeader } from "@externaladdress4401/protobuf/responses";
+import { ServerClientMessageHeaderMap } from "@externaladdress4401/beatstar-protobuf/protos/ServerClientMessageHeader";
+import { createServerClientMessageHeader } from "@externaladdress4401/beatstar-protobuf/responses";
 
 export class PingService extends BaseService {
   name = "ping";
 
   async handlePacket(packet: Packet, client: Client) {
     const response = await this.buildResponse(
-      createServerClientMessageHeader({})
+      createServerClientMessageHeader({}),
     );
     client.write(response);
   }
@@ -23,7 +23,7 @@ export class PingService extends BaseService {
 
     const preparedHeader = await new ProtobufHandler("WRITE").writeProto(
       headerJson,
-      ServerClientMessageHeaderMap
+      ServerClientMessageHeaderMap,
     );
 
     const packetHandler = new ProtobufHandler("WRITE");

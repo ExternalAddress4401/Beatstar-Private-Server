@@ -1,6 +1,6 @@
 import net from "net";
 import { Packet } from "./Packet";
-import { ProtobufHandler } from "@externaladdress4401/protobuf/ProtobufHandler";
+import { ProtobufHandler } from "@externaladdress4401/beatstar-protobuf/ProtobufHandler";
 import Logger from "./lib/Logger";
 
 export type ClientWithExistingUser = typeof Client & { user: ExistingUser };

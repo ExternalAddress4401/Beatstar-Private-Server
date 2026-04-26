@@ -1,12 +1,12 @@
 import { handlePlaceholders } from "./utilities/handlePlaceholders";
-import { ProtobufHandler } from "@externaladdress4401/protobuf/ProtobufHandler";
-import { ClientServerMessageHeaderMap } from "@externaladdress4401/protobuf/protos/ClientServerMessageHeader";
-import { ServerClientMessageHeaderMap } from "@externaladdress4401/protobuf/protos/ServerClientMessageHeader";
-import { ErrorResp } from "@externaladdress4401/protobuf/protos/ErrorResp";
+import { ProtobufHandler } from "@externaladdress4401/beatstar-protobuf/ProtobufHandler";
+import { ClientServerMessageHeaderMap } from "@externaladdress4401/beatstar-protobuf/protos/ClientServerMessageHeader";
+import { ServerClientMessageHeaderMap } from "@externaladdress4401/beatstar-protobuf/protos/ServerClientMessageHeader";
+import { ErrorResp } from "@externaladdress4401/beatstar-protobuf/protos/ErrorResp";
 import {
   createErrorResp,
   createServerClientMessageHeader,
-} from "@externaladdress4401/protobuf/responses";
+} from "@externaladdress4401/beatstar-protobuf/responses";
 
 export class Packet {
   buffer: Buffer;
@@ -32,7 +32,7 @@ export class Packet {
   parseHeader(
     proto:
       | typeof ClientServerMessageHeaderMap
-      | typeof ServerClientMessageHeaderMap
+      | typeof ServerClientMessageHeaderMap,
   ) {
     if (Object.keys(this.header).length === 0) {
       this._header.process();
@@ -54,7 +54,7 @@ export class Packet {
     headerJson: any,
     responseJson: any,
     payloadProto: any,
-    compress: boolean = false
+    compress: boolean = false,
   ) {
     headerJson.version = "1";
     headerJson.timestamp = Date.now();
@@ -68,18 +68,18 @@ export class Packet {
 
     const preparedHeader = await new ProtobufHandler("WRITE").writeProto(
       headerJson,
-      ServerClientMessageHeaderMap
+      ServerClientMessageHeaderMap,
     );
 
     const preparedPayload = await new ProtobufHandler("WRITE").writeProto(
       responseJson,
       payloadProto,
-      compress
+      compress,
     );
 
     const packetHandler = new ProtobufHandler("WRITE");
     packetHandler.writeIntBE(
-      preparedHeader.length + preparedPayload.length + 4
+      preparedHeader.length + preparedPayload.length + 4,
     );
     packetHandler.writeIntBE(preparedHeader.length);
     packetHandler.writeBuffer(preparedHeader);
@@ -104,16 +104,16 @@ export class Packet {
 
     const preparedHeader = await new ProtobufHandler("WRITE").writeProto(
       headerJson,
-      ServerClientMessageHeaderMap
+      ServerClientMessageHeaderMap,
     );
     const preparedPayload = await new ProtobufHandler("WRITE").writeProto(
       responseJson,
-      ErrorResp
+      ErrorResp,
     );
 
     const packetHandler = new ProtobufHandler("WRITE");
     packetHandler.writeIntBE(
-      preparedHeader.length + preparedPayload.length + 4
+      preparedHeader.length + preparedPayload.length + 4,
     );
     packetHandler.writeIntBE(preparedHeader.length);
     packetHandler.writeBuffer(preparedHeader);

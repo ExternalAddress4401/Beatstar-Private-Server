@@ -1,12 +1,12 @@
-import { SendAnalyticEventReq } from "@externaladdress4401/protobuf/protos/SendAnalyticEventReq";
+import { SendAnalyticEventReq } from "@externaladdress4401/beatstar-protobuf/protos/SendAnalyticEventReq";
 import { Client } from "../Client";
 import { Packet } from "../Packet";
 import { BaseService } from "./BaseService";
 import {
   createSendAnalyticEventResp,
   createServerClientMessageHeader,
-} from "@externaladdress4401/protobuf/responses";
-import { SendAnalyticEventResp } from "@externaladdress4401/protobuf/protos/SendAnalyticEventResp";
+} from "@externaladdress4401/beatstar-protobuf/responses";
+import { SendAnalyticEventResp } from "@externaladdress4401/beatstar-protobuf/protos/SendAnalyticEventResp";
 import Logger from "../lib/Logger";
 
 export class AnalyticsProxyService extends BaseService {
@@ -20,7 +20,7 @@ export class AnalyticsProxyService extends BaseService {
       Logger.saveClientError(
         `Unable to parse AnalyticsProxyService request`,
         { buffer: packet.buffer.toString("hex") },
-        client.user.clide
+        client.user.clide,
       );
       return;
     }
@@ -28,7 +28,7 @@ export class AnalyticsProxyService extends BaseService {
     const response = await packet.buildResponse(
       createServerClientMessageHeader({}),
       createSendAnalyticEventResp({}),
-      SendAnalyticEventResp
+      SendAnalyticEventResp,
     );
     client.write(response);
   }

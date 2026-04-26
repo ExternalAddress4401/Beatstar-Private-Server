@@ -3,7 +3,7 @@
 RangeError [ERR_BUFFER_OUT_OF_BOUNDS]: Attempt to access memory outside buffer bounds
     at boundsError (node:internal/buffer:86:11)
     at Buffer.readUInt32BE (node:internal/buffer:311:5)
-    at ProtobufHandler.readIntBE (/root/beatstar/Beatstar-Private-Server/node_modules/@externaladdress4401/protobuf/dist/ProtobufHandler.js:364:31)
+    at ProtobufHandler.readIntBE (/root/beatstar/Beatstar-Private-Server/node_modules/@externaladdress4401/beatstar-protobuf/dist/ProtobufHandler.js:364:31)
     at Client.extractPackets (/root/beatstar/Beatstar-Private-Server/Client.ts:29:30)
     at Socket.<anonymous> (/root/beatstar/Beatstar-Private-Server/server.ts:112:30)
     at Socket.emit (node:events:519:28)

@@ -14,7 +14,7 @@ import { AnalyticsProxyService } from "./services/AnalyticsProxyService";
 import Settings from "./Settings";
 import { HttpServer } from "./HttpServer";
 import Logger from "./lib/Logger";
-import { ClientServerMessageHeaderMap } from "@externaladdress4401/protobuf/protos/ClientServerMessageHeader";
+import { ClientServerMessageHeaderMap } from "@externaladdress4401/beatstar-protobuf/protos/ClientServerMessageHeader";
 
 Settings.init();
 
@@ -79,7 +79,7 @@ net
 
         Logger.info(
           `${service.name} received a packet.`,
-          client.user.clide ?? undefined
+          client.user.clide ?? undefined,
         );
 
         await service.handlePacket(packet, client);

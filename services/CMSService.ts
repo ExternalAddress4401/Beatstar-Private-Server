@@ -1,17 +1,17 @@
-import { createBatchRequest } from "@externaladdress4401/protobuf/protos/BatchRequest";
+import { createBatchRequest } from "@externaladdress4401/beatstar-protobuf/protos/BatchRequest";
 import { Client } from "../Client";
 import Logger from "../lib/Logger";
 import { Packet } from "../Packet";
 import Settings from "../Settings";
 import { BaseService } from "./BaseService";
-import { GetCMSMetaInfoReq } from "@externaladdress4401/protobuf/protos/GetCMSMetaInfoReq";
-import { PartialReq } from "@externaladdress4401/protobuf/protos/reused/PartialReq";
-import { ValueOf } from "@externaladdress4401/protobuf/interfaces/ValueOf";
-import { GetCMSMetaInfoResp } from "@externaladdress4401/protobuf/protos/GetCMSMetaInfoResp";
+import { GetCMSMetaInfoReq } from "@externaladdress4401/beatstar-protobuf/protos/GetCMSMetaInfoReq";
+import { PartialReq } from "@externaladdress4401/beatstar-protobuf/protos/reused/PartialReq";
+import { ValueOf } from "@externaladdress4401/beatstar-protobuf/interfaces/ValueOf";
+import { GetCMSMetaInfoResp } from "@externaladdress4401/beatstar-protobuf/protos/GetCMSMetaInfoResp";
 import {
   createGetCMSMetaInfoResp,
   createServerClientMessageHeader,
-} from "@externaladdress4401/protobuf/responses";
+} from "@externaladdress4401/beatstar-protobuf/responses";
 
 const CMSType = {
   0: "NA",
@@ -41,7 +41,7 @@ export class CMSService extends BaseService {
       Logger.saveClientError(
         "Unable to parse CMSService request",
         { buffer: packet.buffer.toString("hex") },
-        client.user.clide
+        client.user.clide,
       );
       return;
     }
@@ -58,11 +58,11 @@ export class CMSService extends BaseService {
       Logger.saveClientInfo(
         `Requested CMS`,
         { IP: serverIp, port: Settings.EXPRESS_PORT },
-        client.user.clide
+        client.user.clide,
       );
 
       const hashesResponse = await fetch(
-        `http://localhost:${Settings.EXPRESS_PORT}/info`
+        `http://localhost:${Settings.EXPRESS_PORT}/info`,
       );
 
       const cmsFilesAndHashes = await hashesResponse.json();
@@ -79,7 +79,7 @@ export class CMSService extends BaseService {
       const response = await packet.buildResponse(
         createServerClientMessageHeader({}),
         createGetCMSMetaInfoResp(placeholders),
-        GetCMSMetaInfoResp
+        GetCMSMetaInfoResp,
       );
 
       client.write(response);
@@ -87,7 +87,7 @@ export class CMSService extends BaseService {
       Logger.saveClientError(
         "Unhandled CMSService request",
         { rpcType },
-        client.user.clide
+        client.user.clide,
       );
     }
   }

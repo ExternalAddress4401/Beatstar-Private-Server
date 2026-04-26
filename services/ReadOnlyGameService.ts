@@ -2,16 +2,16 @@ import { Client } from "../Client";
 import Logger from "../lib/Logger";
 import { Packet } from "../Packet";
 import { BaseService } from "./BaseService";
-import { createBatchRequest } from "@externaladdress4401/protobuf/protos/BatchRequest";
-import { ValueOf } from "@externaladdress4401/protobuf/interfaces/ValueOf";
-import { Leaderboard_Resp } from "@externaladdress4401/protobuf/protos/Leaderboard_Resp";
-import { createEmptyResponse } from "@externaladdress4401/protobuf/utils";
+import { createBatchRequest } from "@externaladdress4401/beatstar-protobuf/protos/BatchRequest";
+import { ValueOf } from "@externaladdress4401/beatstar-protobuf/interfaces/ValueOf";
+import { Leaderboard_Resp } from "@externaladdress4401/beatstar-protobuf/protos/Leaderboard_Resp";
+import { createEmptyResponse } from "@externaladdress4401/beatstar-protobuf/utils";
 import { toArray } from "../utilities/toArray";
 import {
   createGetUnclaimedPurchasesResp,
   createServerClientMessageHeader,
-} from "@externaladdress4401/protobuf/responses";
-import { Leaderboard_ReqEnums } from "@externaladdress4401/protobuf/protos/Leaderboard_Req";
+} from "@externaladdress4401/beatstar-protobuf/responses";
+import { Leaderboard_ReqEnums } from "@externaladdress4401/beatstar-protobuf/protos/Leaderboard_Req";
 
 const RpcType = {
   16: "Leaderboard",
@@ -32,7 +32,7 @@ export class ReadOnlyGameService extends BaseService {
       Logger.saveClientError(
         "Unable to parse ReadOnlyGameService request",
         { buffer: packet.buffer.toString("hex") },
-        client.user.clide
+        client.user.clide,
       );
       return;
     }
@@ -50,7 +50,7 @@ export class ReadOnlyGameService extends BaseService {
         Logger.saveClientError(
           "Unhandled ReadOnlyGameService request",
           { rpcType },
-          client.user.clide
+          client.user.clide,
         );
         responses.push(createEmptyResponse(request));
       }
@@ -61,7 +61,7 @@ export class ReadOnlyGameService extends BaseService {
       createGetUnclaimedPurchasesResp({
         "{requests}": responses,
       }),
-      Leaderboard_Resp
+      Leaderboard_Resp,
     );
 
     client.write(response);

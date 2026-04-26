@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@externaladdress4401/protobuf": "0.1.6",
+    "@externaladdress4401/beatstar-protobuf": "^1.1.1",
     "@prisma/adapter-pg": "^7.0.1",
     "@prisma/client": "^7.0.1",
     "dotenv": "^17.2.2",
